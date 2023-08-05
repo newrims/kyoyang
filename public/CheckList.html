@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <style>
+            div#선호 {
+                display: inline-block;
+                border: 2px black solid;
+                padding: 10px 310px 20px 10px;
+            }
+            div#불호 {
+                display: inline-block;
+                border: 2px black solid;
+                padding: 10px 10px 20px 10px;
+            }
+        </style>
+    </head>
+    <body>
+        <label>선호하는 항목을 체크해주세요.(복수선택 가능,1개 이상 체크해주세요)</label>
+        <br>
+        <div id="message"></div>
+        <div id="선호">
+            <label>시험 방식</label>
+            <br>
+            <input type="checkbox" id="과제 대체">
+            <label>과제 대체</label>
+            <input type="checkbox" id="시험 2번">
+            <label>시험 2번</label>
+            <input type="checkbox" id="시험 1번">
+            <label>시험 1번</label>
+        </div>
+        <br>
+        <label>불호하는 항목을 체크해주세요.</label>
+        <br>
+        <div id="불호">
+            <div id="message1"></div>
+            <div>
+                <label>출석 방식(복수선택 불가,1개 체크 or 0개 체크)</label>
+                <br>
+                <input type="checkbox" id="전자 출결">
+                <label>전자 출결</label>
+                <input type="checkbox" id="직접 호명">
+                <label>직접 호명</label>
+                <input type="checkbox" id="랜덤 또는 불시 출석">
+                <label>랜덤 또는 불시 출석</label>
+                
+            </div>
+            <br>
+            <div>
+                <label>과제 방식 또는 수업 진행 방식(복수선택 가능, 선택안하기 가능)</label>
+                <br>
+                <input type="checkbox" id="퀴즈">
+                <label>퀴즈</label>
+                <input type="checkbox" id="레포트">
+                <label>레포트</label>
+                <input type="checkbox" id="발표">
+                <label>발표</label>
+                <input type="checkbox" id="토론">
+                <label>토론</label>
+                <input type="checkbox" id="실습">
+                <label>실습</label>
+                <input type="checkbox" id="조별활동, 조별과제">
+                <label>조별활동, 조별과제</label>
+                
+            </div>
+            <br>
+            <div id="message2"></div>
+            <div>
+                <label>강의 시간(복수선택 가능, 선택안하기 가능)</label>
+                <br>
+                <input type="checkbox" id="오전 수업">
+                <label>오전 수업</label>
+                <input type="checkbox" id="야간 수업">
+                <label>야간 수업</label>
+                
+            </div>
+        </div>
+        <br>
+    <button onclick="submitAndRedirect()">제출</button>
+
+
+    </body>
+    <script>
+        // Get the modal
+        var modal = document.getElementById("myModal");
+
+        // Get the button that opens the modal
+        var btn = document.getElementById("modalBtn");
+
+        // Get the <span> element that closes the modal
+        var span = document.getElementById("closeBtn");
+
+        // When the user clicks the button, open the modal 
+        btn.onclick = function() {
+            modal.style.display = "block";
+        }
+
+        // When the user clicks on <span> (x), close the modal
+        span.onclick = function() {
+            modal.style.display = "none";
+        }
+
+        // When the user clicks anywhere outside of the modal, close it
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+
+
+    </script>
+    
+    <script>
+        function submitAndRedirect() {
+        // 무엇이 체크되었는지에 따라 넘버링
+        let check_num0 = [];
+        const check0_1 = document.getElementById("과제 대체");
+        const check0_2 = document.getElementById("시험 1번");
+        const check0_3 = document.getElementById("시험 2번");
+
+        if (check0_1.checked){
+            check_num0.push(0, 2, 4, 5);
+        }
+        if (check0_2.checked){
+            check_num0.push(1, 5);
+        }
+        if (check0_3.checked){
+            check_num0.push(2, 3, 5);
+        }
+
+
+
+        let check_num1 = [0, 1, 2, 3];
+        const check1_1 = document.getElementById("전자 출결");
+        const check1_2 = document.getElementById("직접 호명");
+        const check1_3 = document.getElementById("랜덤 또는 불시 출석");
+
+        let check_num2 = [
+        [0, 0, 0, 0, 0, 0],
+        ["퀴즈", "레포트", "발표", "토론", "실습", "조별활동, 조별과제"]
+        ];
+        const check2_1 = document.getElementById("퀴즈");
+        const check2_2 = document.getElementById("레포트");
+        const check2_3 = document.getElementById("발표");
+        const check2_4 = document.getElementById("토론");
+        const check2_5 = document.getElementById("실습");
+        const check2_6 = document.getElementById("조별활동, 조별과제");
+
+        let check_num3 = [1, 2, 3];
+        const check3_1 = document.getElementById("오전 수업");
+        const check3_2 = document.getElementById("야간 수업");
+
+        if (check1_1.checked) {
+            check_num1.splice(0, 3);
+        }
+        if (check1_2.checked) {
+            check_num1.splice(0, 1);
+            check_num1.splice(2, 2);
+        }
+        if (check1_3.checked) {
+            check_num1.splice(0, 2);
+            check_num1.splice(3, 1);
+        }
+
+        if (check2_1.checked) {
+            check_num2[0][0] = 1;
+        }
+        if (check2_2.checked) {
+            check_num2[0][1] = 1;
+        }
+        if (check2_3.checked) {
+            check_num2[0][2] = 1;
+        }
+        if (check2_4.checked) {
+            check_num2[0][3] = 1;
+        }
+        if (check2_5.checked) {
+            check_num2[0][4] = 1;
+        }
+        if (check2_6.checked) {
+            check_num2[0][5] = 1;
+        }
+
+        if (check3_1.checked) {
+            check_num3.splice(1, 2);
+        }
+        if (check3_2.checked) {
+            check_num3.splice(0, 2);
+        }
+
+        // 중복 제거 (Set 객체 사용)
+        const uniqueCheckNum0 = [...new Set(check_num0)];
+        const uniqueCheckNum1 = [...new Set(check_num1)];
+        const uniqueCheckNum3 = [...new Set(check_num3)];
+
+        // 오름차순으로 정렬
+        uniqueCheckNum0.sort((a, b) => a - b);
+        uniqueCheckNum1.sort((a, b) => a - b);
+        uniqueCheckNum3.sort((a, b) => a - b);
+
+       
+
+
+        
+       
+        const checkedElements = document.querySelectorAll('input[type="checkbox"]:checked');
+        const ids = Array.from(checkedElements).map(element => element.id);
+        console.log("check_num0:", uniqueCheckNum0);
+        console.log("check_num1:", uniqueCheckNum1);
+        console.log("check_num2:", check_num2);
+        console.log("check_num3:", uniqueCheckNum3);
+        console.log("선택된 항목: " + ids.join(', '));
+
+            
+            window.location.href = "main.html"; // "다음_페이지의_주소.html" 부분에 실제로 이동하고자 하는 다음 페이지의 주소를 채워넣으세요. -->
+        }
+
+
+        
+
+
+
+    
+    </script>
+</html>

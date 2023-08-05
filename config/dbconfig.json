@@ -1,0 +1,7 @@
+{
+    "host": "localhost",
+    "user": "root",
+    "password": "song1201*",
+    "database": "gyoyang",
+    "port": 3306
+}
