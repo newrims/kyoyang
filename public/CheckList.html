@@ -190,6 +190,8 @@
         uniqueCheckNum3.sort((a, b) => a - b);
 
         if (check_cnt0 >= 1 && check_cnt1 <= 1){
+	    document.querySelector('#message').textContent = "";
+            document.querySelector('#message1').textContent = "";
             location.href = '#SelectTime'; //다음페이지 넘어가게
         }
         else {
