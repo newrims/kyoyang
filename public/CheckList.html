@@ -199,10 +199,25 @@
             again_message1.textContent = '*체크항목을 다시 확인 해주세요.*'
         }
        
+        for (let i = 0; i < check_num0.length ; i++){
+            query_arr0 = `SELECT * FROM 테이블명 WHERE 컬럼명 = '${check_num0[i]}';`
+        }
 
+        for (let i = 0; i < check_num1.length ; i++){
+            query_arr1 = `SELECT * FROM 테이블명 WHERE 컬럼명 NOT IN = '${check_num1[i]}';`
+        }
 
+        for (let i = 0; i < check_num2.length ; i++){
+            if (check_num2[0][i] === 1) {
+                query_arr0 = `SELECT * FROM 테이블명 WHERE ${check_num2[1][i]} NOT IN = '${check_num2[0][i]}';`
+            }
+        }
         
-       
+        for (let i = 0; i < check_num3.length ; i++){
+            query_arr1 = `SELECT * FROM 테이블명 WHERE 컬럼명 NOT IN = '${check_num3[i]}';`
+        }
+
+
         const checkedElements = document.querySelectorAll('input[type="checkbox"]:checked');
         const ids = Array.from(checkedElements).map(element => element.id);
         console.log("check_num0:", uniqueCheckNum0);
@@ -213,12 +228,6 @@
 
             
     }
-
-
-        
-
-
-
     
     </script>
 </html>
