@@ -18,7 +18,7 @@
         </style>
     </head>
     <body>
-        <label>선호하는 항목을 체크해주세요.(복수선택 가능,1개 이상 체크해주세요)</label>
+        <label>선호하는 항목을 체크해주세요.</label>
         <br>
         <div id="message"></div>
         <div id="선호">
@@ -37,7 +37,7 @@
         <div id="불호">
             <div id="message1"></div>
             <div>
-                <label>출석 방식(복수선택 불가,1개 체크 or 0개 체크)</label>
+                <label>출석 방식</label>
                 <br>
                 <input type="checkbox" id="전자 출결">
                 <label>전자 출결</label>
@@ -49,7 +49,7 @@
             </div>
             <br>
             <div>
-                <label>과제 방식 또는 수업 진행 방식(복수선택 가능, 선택안하기 가능)</label>
+                <label>과제 방식 또는 수업 진행 방식</label>
                 <br>
                 <input type="checkbox" id="퀴즈">
                 <label>퀴즈</label>
@@ -68,7 +68,7 @@
             <br>
             <div id="message2"></div>
             <div>
-                <label>강의 시간(복수선택 가능, 선택안하기 가능)</label>
+                <label>강의 시간</label>
                 <br>
                 <input type="checkbox" id="오전 수업">
                 <label>오전 수업</label>
@@ -82,57 +82,35 @@
 
 
     </body>
-    <script>
-        // Get the modal
-        var modal = document.getElementById("myModal");
-
-        // Get the button that opens the modal
-        var btn = document.getElementById("modalBtn");
-
-        // Get the <span> element that closes the modal
-        var span = document.getElementById("closeBtn");
-
-        // When the user clicks the button, open the modal 
-        btn.onclick = function() {
-            modal.style.display = "block";
-        }
-
-        // When the user clicks on <span> (x), close the modal
-        span.onclick = function() {
-            modal.style.display = "none";
-        }
-
-        // When the user clicks anywhere outside of the modal, close it
-        window.onclick = function(event) {
-            if (event.target == modal) {
-                modal.style.display = "none";
-            }
-        }
-
-
-    </script>
     
     <script>
         function submitAndRedirect() {
         // 무엇이 체크되었는지에 따라 넘버링
+
+        
         let check_num0 = [];
+        let check_cnt0 = 0;
         const check0_1 = document.getElementById("과제 대체");
         const check0_2 = document.getElementById("시험 1번");
         const check0_3 = document.getElementById("시험 2번");
 
         if (check0_1.checked){
             check_num0.push(0, 2, 4, 5);
+            check_cnt0++;
         }
         if (check0_2.checked){
             check_num0.push(1, 5);
+            check_cnt0++;
         }
         if (check0_3.checked){
             check_num0.push(2, 3, 5);
+            check_cnt0++;
         }
 
 
 
         let check_num1 = [0, 1, 2, 3];
+        let check_cnt1 = 0;
         const check1_1 = document.getElementById("전자 출결");
         const check1_2 = document.getElementById("직접 호명");
         const check1_3 = document.getElementById("랜덤 또는 불시 출석");
@@ -141,6 +119,7 @@
         [0, 0, 0, 0, 0, 0],
         ["퀴즈", "레포트", "발표", "토론", "실습", "조별활동, 조별과제"]
         ];
+        
         const check2_1 = document.getElementById("퀴즈");
         const check2_2 = document.getElementById("레포트");
         const check2_3 = document.getElementById("발표");
@@ -149,38 +128,48 @@
         const check2_6 = document.getElementById("조별활동, 조별과제");
 
         let check_num3 = [1, 2, 3];
+        let check_cnt3 = 0;
         const check3_1 = document.getElementById("오전 수업");
         const check3_2 = document.getElementById("야간 수업");
 
         if (check1_1.checked) {
             check_num1.splice(0, 3);
+            check_cnt1++;
         }
         if (check1_2.checked) {
             check_num1.splice(0, 1);
             check_num1.splice(2, 2);
+            check_cnt1++;
         }
         if (check1_3.checked) {
             check_num1.splice(0, 2);
             check_num1.splice(3, 1);
+            check_cnt1++;
         }
 
         if (check2_1.checked) {
             check_num2[0][0] = 1;
+            
         }
         if (check2_2.checked) {
             check_num2[0][1] = 1;
+            
         }
         if (check2_3.checked) {
             check_num2[0][2] = 1;
+            
         }
         if (check2_4.checked) {
             check_num2[0][3] = 1;
+            
         }
         if (check2_5.checked) {
             check_num2[0][4] = 1;
+            
         }
         if (check2_6.checked) {
             check_num2[0][5] = 1;
+            
         }
 
         if (check3_1.checked) {
@@ -200,6 +189,12 @@
         uniqueCheckNum1.sort((a, b) => a - b);
         uniqueCheckNum3.sort((a, b) => a - b);
 
+        if (check_cnt0 >= 1 && check_cnt1 <= 1){
+            //다음페이지 넘어가게
+        }
+        else {
+            //다음페이지 넘어가지 않고 경고메세지? 띄우기
+        }
        
 
 
@@ -214,13 +209,7 @@
         console.log("선택된 항목: " + ids.join(', '));
 
             
-            window.location.href = "main.html"; // "다음_페이지의_주소.html" 부분에 실제로 이동하고자 하는 다음 페이지의 주소를 채워넣으세요. -->
-        }
-
-
-        
-
-
+    }
 
     
     </script>
