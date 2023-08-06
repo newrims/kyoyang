@@ -22,7 +22,7 @@
         <br>
         <div id="message"></div>
         <div id="선호">
-            <label>시험 방식</label>
+            <label>시험 방식(무조건 1개 이상 체크해주세요, 복수선택 가능)</label>
             <br>
             <input type="checkbox" id="과제 대체">
             <label>과제 대체</label>
@@ -32,12 +32,12 @@
             <label>시험 1번</label>
         </div>
         <br>
-        <label>불호하는 항목을 체크해주세요.</label>
+        <label>불호하는 항목을 체크해주세요.(체크하지 않으면 '상관없음'으로 간주합니다)</label>
         <br>
         <div id="불호">
             <div id="message1"></div>
             <div>
-                <label>출석 방식</label>
+                <label>출석 방식(복수선택 불가)</label>
                 <br>
                 <input type="checkbox" id="전자 출결">
                 <label>전자 출결</label>
@@ -49,7 +49,7 @@
             </div>
             <br>
             <div>
-                <label>과제 방식 또는 수업 진행 방식</label>
+                <label>과제 방식 또는 수업 진행 방식(복수선택 가능)</label>
                 <br>
                 <input type="checkbox" id="퀴즈">
                 <label>퀴즈</label>
@@ -66,9 +66,9 @@
                 
             </div>
             <br>
-            <div id="message2"></div>
+            <div></div>
             <div>
-                <label>강의 시간</label>
+                <label>강의 시간(복수선택 가능)</label>
                 <br>
                 <input type="checkbox" id="오전 수업">
                 <label>오전 수업</label>
@@ -193,7 +193,10 @@
             //다음페이지 넘어가게
         }
         else {
-            //다음페이지 넘어가지 않고 경고메세지? 띄우기
+            const again_message = document.querySelector('#message')
+            const again_message1 = document.querySelector('#message1')
+            again_message.textContent = '체크항목을 다시 확인 해주세요.'
+            again_message1.textContent = '체크항목을 다시 확인 해주세요.'
         }
        
 
@@ -210,6 +213,11 @@
 
             
     }
+
+
+        
+
+
 
     
     </script>
