@@ -86,8 +86,8 @@
     <script>
         function submitAndRedirect() {
         // 무엇이 체크되었는지에 따라 넘버링
-	
-        location.href = '#SelectTime';
+
+        
         let check_num0 = [];
         let check_cnt0 = 0;
         const check0_1 = document.getElementById("과제 대체");
@@ -190,7 +190,7 @@
         uniqueCheckNum3.sort((a, b) => a - b);
 
         if (check_cnt0 >= 1 && check_cnt1 <= 1){
-            //다음페이지 넘어가게
+            location.href = '#SelectTime'; //다음페이지 넘어가게
         }
         else {
             const again_message = document.querySelector('#message')
@@ -199,24 +199,25 @@
             again_message1.textContent = '*체크항목을 다시 확인 해주세요.*'
         }
        
-        for (let i = 0; i < check_num0.length ; i++){
-            query_arr0 = `SELECT * FROM 테이블명 WHERE 컬럼명 = '${check_num0[i]}';`
-        }
+        // for (let i = 0; i < check_num0.length ; i++){
+        //     query_arr0 = `SELECT * FROM 테이블명 WHERE 컬럼명 = '${check_num0[i]}';`
+        // }
 
-        for (let i = 0; i < check_num1.length ; i++){
-            query_arr1 = `SELECT * FROM 테이블명 WHERE 컬럼명 NOT IN = '${check_num1[i]}';`
-        }
+        // for (let i = 0; i < check_num1.length ; i++){
+        //     query_arr1 = `SELECT * FROM 테이블명 WHERE 컬럼명 NOT IN = '${check_num1[i]}';`
+        // }
 
-        for (let i = 0; i < check_num2.length ; i++){
-            if (check_num2[0][i] === 1) {
-                query_arr2 = `SELECT * FROM 테이블명 WHERE ${check_num2[1][i]} NOT IN = '${check_num2[0][i]}';`
-            }
-        }
+        // for (let i = 0; i < check_num2.length ; i++){
+        //     if (check_num2[0][i] === 1) {
+        //         query_arr2 = `SELECT * FROM 테이블명 WHERE ${check_num2[1][i]} NOT IN = '${check_num2[0][i]}';`
+        //     }
+        // }
         
-        for (let i = 0; i < check_num3.length ; i++){
-            query_arr3 = `SELECT * FROM 테이블명 WHERE 컬럼명 NOT IN = '${check_num3[i]}';`
-        }
+        // for (let i = 0; i < check_num3.length ; i++){
+        //     query_arr3 = `SELECT * FROM 테이블명 WHERE 컬럼명 NOT IN = '${check_num3[i]}';`
+        // }
 
+        console.log(check_num0, check_num1, check_num2, check_num3);
 
         const checkedElements = document.querySelectorAll('input[type="checkbox"]:checked');
         const ids = Array.from(checkedElements).map(element => element.id);
@@ -226,6 +227,65 @@
         console.log("check_num3:", uniqueCheckNum3);
         console.log("선택된 항목: " + ids.join(', '));
 
+
+        let query_arr0 = ""
+        let query_arr1 = ""
+        let query_arr2 = ""
+        let query_arr3 = ""
+
+        if (check_num0.length > 0) {
+            query_arr0 = check_num0.reduce((acc, course, idx)=>{
+                if (idx === check_num0.length - 1) {
+                    return acc+`${course}) and `;
+                }
+                return acc+`${course},`;
+            },"시험 in (");
+        }
+
+        query_arr1 = "출석 not in ("+check_num1[0]+") and ";
+        
+        if (check_num2[0][0] === 1) {
+            query_arr2 += "퀴즈 not in (1) and ";
+        }
+        if (check_num2[0][1] === 1) {
+            query_arr2 += "레포트 not in (1) and ";
+        }
+        if (check_num2[0][2] === 1) {
+            query_arr2 += "발표 not in (1) and ";
+        }
+        if (check_num2[0][3] === 1) {
+            query_arr2 += "토론 not in (1) and ";
+        }
+        if (check_num2[0][4] === 1) {
+            query_arr2 += "실습 not in (1) and ";
+        }
+        if (check_num2[0][5] === 1) {
+            query_arr2 += "조별 not in (1) and ";
+        }
+
+
+        if (check_num3.length === 3) {
+            query_arr3 = "";
+        }
+        else if (check_num3.length === 1) {
+            query_arr3 = "강의시간 not in ("+check_num3[0]+") and ";
+        }
+        else if (check_num3.length === 0) {
+            query_arr3 = "강의시간 not in (1,3) and ";
+        }
+
+        fetch('/next_to_slecttime',{
+            method : 'post',
+            headers : {
+                'content-type':'application/json'
+            },
+            body : JSON.stringify({
+                query_arr0 : query_arr0,
+                query_arr1 : query_arr1,
+                query_arr2 : query_arr2,
+                query_arr3 : query_arr3
+            })
+        })
             
     }
     
