@@ -19,67 +19,67 @@
     </head>
     <body>
        <h1 style="font-size: 20px;">취향을 알려주세요!</h1>
+		<br>
+		<label>선호하는 항목을 체크해주세요.<br class='break-m'> (복수선택가능, 1개 이상 체크해주세요)</label>
+		<div id="message"></div>
+		<div id="선호">
+			<label>시험 방식</label>
+			<br>
+			<input type="checkbox" id="과제 대체">
+			<label>과제 대체</label>
+			<input type="checkbox" id="시험 2번">
+			<label>시험 2번</label>
+			<input type="checkbox" id="시험 1번">
+			<label>시험 1번</label>
+		</div>
+		<br><br>
+		<label>불호하는 항목을 체크해주세요. <br class='break-m'>(체크하지 않으면 '상관없음'으로 간주)</label>
+		<br>
+		<div id="불호">
+			<div id="message1"></div>
+			<div>
+				<label>출석 방식(복수 선택 불가)</label>
 				<br>
-				<label>선호하는 항목을 체크해주세요.<br class='break-m'> (복수선택가능, 1개 이상 체크해주세요)</label>
-				<div id="message"></div>
-				<div id="선호">
-					<label>시험 방식</label>
-					<br>
-					<input type="checkbox" id="과제 대체">
-					<label>과제 대체</label>
-					<input type="checkbox" id="시험 2번">
-					<label>시험 2번</label>
-					<input type="checkbox" id="시험 1번">
-					<label>시험 1번</label>
-				</div>
-				<br><br>
-				<label>불호하는 항목을 체크해주세요. <br class='break-m'>(체크하지 않으면 '상관없음'으로 간주)</label>
+				<input type="checkbox" id="전자 출결">
+				<label>전자 출결</label>
+				<input type="checkbox" id="직접 호명">
+				<label>직접 호명</label>
+				<br class='break-m'>
+				<input type="checkbox" id="랜덤 또는 불시 출석">
+				<label>랜덤 또는 불시 출석</label>
+	
+			</div>
+			<hr>
+			<div>
+				<label >과제 방식 또는 수업 진행 방식<br class='break-m'>(복수선택 가능)</label>
 				<br>
-				<div id="불호">
-					<div id="message1"></div>
-					<div>
-						<label>출석 방식(복수 선택 불가)</label>
-						<br>
-						<input type="checkbox" id="전자 출결">
-						<label>전자 출결</label>
-						<input type="checkbox" id="직접 호명">
-						<label>직접 호명</label>
-						<br class='break-m'>
-						<input type="checkbox" id="랜덤 또는 불시 출석">
-						<label>랜덤 또는 불시 출석</label>
-
-					</div>
-					<hr>
-					<div>
-						<label >과제 방식 또는 수업 진행 방식<br class='break-m'>(복수선택 가능)</label>
-						<br>
-						<input type="checkbox" id="퀴즈">
-						<label>퀴즈</label>
-						<input type="checkbox" id="레포트">
-						<label>레포트</label>
-						<input type="checkbox" id="발표">
-						<label>발표</label>
-						<input type="checkbox" id="토론">
-						<label>토론</label>
-						<br class='break-m'>
-						<input type="checkbox" id="실습">
-						<label>실습</label>
-						<input type="checkbox" id="조별활동, 조별과제">
-						<label>조별활동, 조별과제</label>
-
-					</div>
-					<hr>
-					<div>
-						<label>강의 시간(복수 선택 가능)</label>
-						<br>
-						<input type="checkbox" id="오전 수업">
-						<label>오전 수업</label>
-						<input type="checkbox" id="야간 수업">
-						<label>야간 수업</label>
-					</div>
-				</div>
-				<br><br>
-				<button onclick="submitAndRedirect()">확인</button>
+				<input type="checkbox" id="퀴즈">
+				<label>퀴즈</label>
+				<input type="checkbox" id="레포트">
+				<label>레포트</label>
+				<input type="checkbox" id="발표">
+				<label>발표</label>
+				<input type="checkbox" id="토론">
+				<label>토론</label>
+				<br class='break-m'>
+				<input type="checkbox" id="실습">
+				<label>실습</label>
+				<input type="checkbox" id="조별활동, 조별과제">
+				<label>조별활동, 조별과제</label>
+	
+			</div>
+			<hr>
+			<div>
+				<label>강의 시간(복수 선택 가능)</label>
+				<br>
+				<input type="checkbox" id="오전 수업">
+				<label>오전 수업</label>
+				<input type="checkbox" id="야간 수업">
+				<label>야간 수업</label>
+			</div>
+		</div>
+		<br><br>
+		<button onclick="submitAndRedirect()">확인</button>
 
     </body>
     
