@@ -91,8 +91,8 @@
         let check_num0 = [];
         let check_cnt0 = 0;
         const check0_1 = document.getElementById("과제 대체");
-        const check0_2 = document.getElementById("시험 1번");
-        const check0_3 = document.getElementById("시험 2번");
+        const check0_2 = document.getElementById("시험 2번");
+        const check0_3 = document.getElementById("시험 1번");
 
         if (check0_1.checked){
             check_num0.push(0, 2, 4, 5);
@@ -138,12 +138,12 @@
         }
         if (check1_2.checked) {
             check_num1.splice(0, 1);
-            check_num1.splice(2, 2);
+            check_num1.splice(1, 2);
             check_cnt1++;
         }
         if (check1_3.checked) {
             check_num1.splice(0, 2);
-            check_num1.splice(3, 1);
+            check_num1.splice(1, 1);
             check_cnt1++;
         }
 
@@ -195,8 +195,8 @@
         else {
             const again_message = document.querySelector('#message')
             const again_message1 = document.querySelector('#message1')
-            again_message.textContent = '체크항목을 다시 확인 해주세요.'
-            again_message1.textContent = '체크항목을 다시 확인 해주세요.'
+            again_message.textContent = '*체크항목을 다시 확인 해주세요.*'
+            again_message1.textContent = '*체크항목을 다시 확인 해주세요.*'
         }
        
 
