@@ -16,83 +16,94 @@
         <div>
             <label id="change_name">""님의 학과를 학과는 무엇인가요?</label>
             <br>
-            <form action="/next_to_checklist" method="post">
-                <select name="department" id="department">
-                    <option value=”건설환경공학과”>건설환경공학과</option> 
-                    <option value=”건축공학”>건축공학</option> 
-                    <option value=”경영학부”>경영학부</option> 
-                    <option value=”경제학과”>경제학과</option> 
-                    <option value=”공연예술학과”>공연예술학과</option> 
-                    <option value=”국어교육과”>국어교육과</option> 
-                    <option value=”국어국문학과”>국어국문학과</option> 
-                    <option value=”기계공학과”>기계공학과</option> 
-                    <option value=”나노바이오”>나노바이오</option> 
-                    <option value=”도시건축학”>도시건축학</option> 
-                    <option value=”도시공학과”>도시공학과</option> 
-                    <option value=”도시행정학과”>도시행정학과</option> 
-                    <option value=”독어독문학과”>독어독문학과</option> 
-                    <option value=”동북아통상전공”>동북아통상전공</option> 
-                    <option value=”디자인학부”>디자인학부</option> 
-                    <option value=”무역학부”>무역학부</option> 
-                    <option value=”문헌정보학과”>문헌정보학과</option> 
-                    <option value=”물리학과”>물리학과</option> 
-                    <option value=”미디어커뮤니케이션학과”>미디어커뮤니케이션학과</option> 
-                    <option value=”바이오-로봇 시스템공학과”>바이오-로봇 시스템공학과</option> 
-                    <option value=”법학부”>법학부</option> 
-                    <option value=”분자의생명”>분자의생명</option> 
-                    <option value=”불어불문학과”>불어불문학과</option> 
-                    <option value=”사회복지학과”>사회복지학과</option> 
-                    <option value=”산업경영공학과”>산업경영공학과</option> 
-                    <option value=”생명공학”>생명공학</option> 
-                    <option value=”생명과학”>생명과학</option> 
-                    <option value=”세무회계학과”>세무회계학과</option> 
-                    <option value=”소비자학과”>소비자학과</option> 
-                    <option value=”소셜데이터사이언스 연계전공”>소셜데이터사이언스 연계전공</option> 
-                    <option value=”수학과”>수학과</option> 
-                    <option value=”수학교육과”>수학교육과</option> 
-                    <option value=”신소재 공학과”>신소재 공학과</option> 
-                    <option value=”안전공학과”>안전공학과</option> 
-                    <option value=”에너지화학공학과”>에너지화학공학과</option> 
-                    <option value=”역사교육과”>역사교육과</option> 
-                    <option value=”영어교육과”>영어교육과</option> 
-                    <option value=”영어영문학과”>영어영문학과</option> 
-                    <option value=”운동건강학부”>운동건강학부</option> 
-                    <option value=”유아교육과”>유아교육과</option> 
-                    <option value=”윤리교육과”>윤리교육과</option> 
-                    <option value=”일어교육과”>일어교육과</option> 
-                    <option value=”일어일문학과”>일어일문학과</option> 
-                    <option value=”임베디드시스템공학과”>임베디드시스템공학과</option> 
-                    <option value=”전기공학과”>전기공학과</option> 
-                    <option value=”전자공학과”>전자공학과</option> 
-                    <option value=”정보통신공학과”>정보통신공학과</option> 
-                    <option value=”정치외교학과”>정치외교학과</option> 
-                    <option value=”조형예술학부”>조형예술학부</option> 
-                    <option value=”중어중국학과”>중어중국학과</option> 
-                    <option value=”창의인재개발학과”>창의인재개발학과</option> 
-                    <option value=”체육교육과”>체육교육과</option> 
-                    <option value=”체육학부”>체육학부</option> 
-                    <option value=”컴퓨터공학부”>컴퓨터공학부</option> 
-                    <option value=”테크노경영학과”>테크노경영학과</option> 
-                    <option value=”패션산업학과”>패션산업학과</option> 
-                    <option value=”한국통상전공”>한국통상전공</option> 
-                    <option value=”해양학과”>해양학과</option> 
-                    <option value=”행정학과”>행정학과</option> 
-                    <option value=”화학과”>화학과</option> 
-                    <option value=”환경공학”>환경공학</option>                 
-                </select>
-
-                <input type="submit" value="확인" id="nextpage_to_checklist">
-            </form>
+            <select name="GE" id="GE">
+            <option value=”건설환경공학과”>건설환경공학과</option> 
+            <option value=”건축공학”>건축공학</option> 
+            <option value=”경영학부”>경영학부</option> 
+            <option value=”경제학과”>경제학과</option> 
+            <option value=”공연예술학과”>공연예술학과</option> 
+            <option value=”국어교육과”>국어교육과</option> 
+            <option value=”국어국문학과”>국어국문학과</option> 
+            <option value=”기계공학과”>기계공학과</option> 
+            <option value=”나노바이오”>나노바이오</option> 
+            <option value=”도시건축학”>도시건축학</option> 
+            <option value=”도시공학과”>도시공학과</option> 
+            <option value=”도시행정학과”>도시행정학과</option> 
+            <option value=”독어독문학과”>독어독문학과</option> 
+            <option value=”동북아통상전공”>동북아통상전공</option> 
+            <option value=”디자인학부”>디자인학부</option> 
+            <option value=”무역학부”>무역학부</option> 
+            <option value=”문헌정보학과”>문헌정보학과</option> 
+            <option value=”물리학과”>물리학과</option> 
+            <option value=”미디어커뮤니케이션학과”>미디어커뮤니케이션학과</option> 
+            <option value=”바이오-로봇 시스템공학과”>바이오-로봇 시스템공학과</option> 
+            <option value=”법학부”>법학부</option> 
+            <option value=”분자의생명”>분자의생명</option> 
+            <option value=”불어불문학과”>불어불문학과</option> 
+            <option value=”사회복지학과”>사회복지학과</option> 
+            <option value=”산업경영공학과”>산업경영공학과</option> 
+            <option value=”생명공학”>생명공학</option> 
+            <option value=”생명과학”>생명과학</option> 
+            <option value=”세무회계학과”>세무회계학과</option> 
+            <option value=”소비자학과”>소비자학과</option> 
+            <option value=”소셜데이터사이언스 연계전공”>소셜데이터사이언스 연계전공</option> 
+            <option value=”수학과”>수학과</option> 
+            <option value=”수학교육과”>수학교육과</option> 
+            <option value=”신소재 공학과”>신소재 공학과</option> 
+            <option value=”안전공학과”>안전공학과</option> 
+            <option value=”에너지화학공학과”>에너지화학공학과</option> 
+            <option value=”역사교육과”>역사교육과</option> 
+            <option value=”영어교육과”>영어교육과</option> 
+            <option value=”영어영문학과”>영어영문학과</option> 
+            <option value=”운동건강학부”>운동건강학부</option> 
+            <option value=”유아교육과”>유아교육과</option> 
+            <option value=”윤리교육과”>윤리교육과</option> 
+            <option value=”일어교육과”>일어교육과</option> 
+            <option value=”일어일문학과”>일어일문학과</option> 
+            <option value=”임베디드시스템공학과”>임베디드시스템공학과</option> 
+            <option value=”전기공학과”>전기공학과</option> 
+            <option value=”전자공학과”>전자공학과</option> 
+            <option value=”정보통신공학과”>정보통신공학과</option> 
+            <option value=”정치외교학과”>정치외교학과</option> 
+            <option value=”조형예술학부”>조형예술학부</option> 
+            <option value=”중어중국학과”>중어중국학과</option> 
+            <option value=”창의인재개발학과”>창의인재개발학과</option> 
+            <option value=”체육교육과”>체육교육과</option> 
+            <option value=”체육학부”>체육학부</option> 
+            <option value=”컴퓨터공학부”>컴퓨터공학부</option> 
+            <option value=”테크노경영학과”>테크노경영학과</option> 
+            <option value=”패션산업학과”>패션산업학과</option> 
+            <option value=”한국통상전공”>한국통상전공</option> 
+            <option value=”해양학과”>해양학과</option> 
+            <option value=”행정학과”>행정학과</option> 
+            <option value=”화학과”>화학과</option> 
+            <option value=”환경공학”>환경공학</option>                 
+            </select>
+            <input type="submit" value="확인" id="nextpage_to_checklist">
         </div>
     </body>
     <script>
         const btn_name = document.getElementById("input_name");
         const btn_nextpage_to_checklist = document.getElementById("nextpage_to_checklist");
-        const change_name_department = document.getElementById("change_name");
+        const change_name_GE = document.getElementById("change_name");
         
         btn_name.addEventListener("click",()=>{
             const name = document.getElementById("name").value;
-            change_name_department.textContent = name+"님의 학과를 학과는 무엇인가요?"
+            change_name_GE.textContent = name+"님의 학과를 학과는 무엇인가요?"
         })
+
+        btn_nextpage_to_checklist.addEventListener("click",()=>{
+            fetch('/next_to_checklist',{
+                method : 'post',
+                headers : {
+                    'content-type':'application/json'
+                },
+                body : JSON.stringify({
+                    GE : GE.value
+                })
+            })
+
+            window.location.href = "CheckList.html";
+        });
     </script>
 </html>
