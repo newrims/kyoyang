@@ -1,168 +1,5 @@
 <html>
 <head>
-    <table>
-        <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-        </tr>
-        <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-        </tr>
-        <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-        </tr>
-        <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-        </tr>
-        <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-        </tr>
-        <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-        </tr>
-        <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-        </tr>
-        <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-        </tr>
-        <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-        </tr>
-        <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-        </tr>
-        <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-        </tr>
-        <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-        </tr>
-        <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-        </tr>
-        <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-        </tr>
-        <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-        </tr>
-        <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-        </tr>
-        <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-        </tr>
-        <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-        </tr>
-        <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-        </tr>
-        <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-        </tr>
-        <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-        </tr>
-        <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-        </tr>
-        <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-        </tr>
-    </table>
     <style>
         table {
             border-collapse: collapse;
@@ -177,19 +14,216 @@
 </head>
 
 <body>
+    <table>
+    </table>
+    <input type="checkbox" id="time90">
     <script>
+        // 테이블 요소 선택
+        var table = document.querySelector('table');
+
+        // 카운터 초기화
+        var counter_tr = -1;
+        var counter_th = 0;
+
+        // 행을 28개 생성
+        for (var i = 0; i < 23; i++) {
+            var tr = document.createElement('tr');
+            counter_tr++;
+            counter_th = 0;
+
+            // 각 행에 5개의 셀 생성
+            for (var j = 0; j < 5; j++) {
+                var td = document.createElement('td');
+                td.id = counter_tr + counter_th; // 현재 카운터 값을 ID로 설정
+                counter_th += 23;
+                td.style.backgroundColor = 'white';
+                tr.appendChild(td);
+            }
+            table.appendChild(tr);
+        }
+
         const cells = document.querySelectorAll('td');
-        const index_row = [];
-        const index_col = [];
-        const index = [];
-        const idx = []; // Array to store the string representation of the indices
+        const checkbox = document.getElementById('time90');
 
         cells.forEach(cell => {
             cell.addEventListener('click', () => {
-                if (cell.style.backgroundColor !== 'rgb(0, 48, 242)') {
-                    cell.style.backgroundColor = '#0030f2';
-                } else {
-                    cell.style.backgroundColor = '';
+                if (checkbox.checked) {
+                    if (cell.id < 18 || (cell.id >= 69 && cell.id < 87)) {
+                        if (cell.id % 3 === 0) {
+                            if (cell.style.backgroundColor !== 'rgb(0, 48, 242)') {
+                                cell.style.backgroundColor = '#0030f2';
+                                document.getElementById(Number(cell.id)+1).style.backgroundColor = '#0030f2';
+                                document.getElementById(Number(cell.id)+2).style.backgroundColor = '#0030f2';
+                            } 
+                            else {
+                                cell.style.backgroundColor = '';
+                                document.getElementById(Number(cell.id)+1).style.backgroundColor = '';
+                                document.getElementById(Number(cell.id)+2).style.backgroundColor = '';
+                            }
+                        }
+                        else if (cell.id % 3 === 1){
+                            if (cell.style.backgroundColor !== 'rgb(0, 48, 242)') {
+                                cell.style.backgroundColor = '#0030f2';
+                                document.getElementById(Number(cell.id)-1).style.backgroundColor = '#0030f2';
+                                document.getElementById(Number(cell.id)+1).style.backgroundColor = '#0030f2';
+                            } 
+                            else {
+                                cell.style.backgroundColor = '';
+                                document.getElementById(Number(cell.id)-1).style.backgroundColor = '';
+                                document.getElementById(Number(cell.id)+1).style.backgroundColor = '';
+                            }
+                        }
+                        else {
+                            if (cell.style.backgroundColor !== 'rgb(0, 48, 242)') {
+                                cell.style.backgroundColor = '#0030f2';
+                                document.getElementById(Number(cell.id)-1).style.backgroundColor = '#0030f2';
+                                document.getElementById(Number(cell.id)-2).style.backgroundColor = '#0030f2';
+                            } 
+                            else {
+                                cell.style.backgroundColor = '';
+                                document.getElementById(Number(cell.id)-1).style.backgroundColor = '';
+                                document.getElementById(Number(cell.id)-2).style.backgroundColor = '';
+                            }
+                        }
+                    }
+                    else if ((cell.id >= 23 && cell.id < 41) || (cell.id >= 92 && cell.id < 110)) {
+                        if (cell.id % 3 === 2) {
+                            if (cell.style.backgroundColor !== 'rgb(0, 48, 242)') {
+                                cell.style.backgroundColor = '#0030f2';
+                                document.getElementById(Number(cell.id)+1).style.backgroundColor = '#0030f2';
+                                document.getElementById(Number(cell.id)+2).style.backgroundColor = '#0030f2';
+                            } 
+                            else {
+                                cell.style.backgroundColor = '';
+                                document.getElementById(Number(cell.id)+1).style.backgroundColor = '';
+                                document.getElementById(Number(cell.id)+2).style.backgroundColor = '';
+                            }
+                        }
+                        else if (cell.id % 3 === 0){
+                            if (cell.style.backgroundColor !== 'rgb(0, 48, 242)') {
+                                cell.style.backgroundColor = '#0030f2';
+                                document.getElementById(Number(cell.id)-1).style.backgroundColor = '#0030f2';
+                                document.getElementById(Number(cell.id)+1).style.backgroundColor = '#0030f2';
+                            } 
+                            else {
+                                cell.style.backgroundColor = '';
+                                document.getElementById(Number(cell.id)-1).style.backgroundColor = '';
+                                document.getElementById(Number(cell.id)+1).style.backgroundColor = '';
+                            }
+                        }
+                        else {
+                            if (cell.style.backgroundColor !== 'rgb(0, 48, 242)') {
+                                cell.style.backgroundColor = '#0030f2';
+                                document.getElementById(Number(cell.id)-1).style.backgroundColor = '#0030f2';
+                                document.getElementById(Number(cell.id)-2).style.backgroundColor = '#0030f2';
+                            } 
+                            else {
+                                cell.style.backgroundColor = '';
+                                document.getElementById(Number(cell.id)-1).style.backgroundColor = '';
+                                document.getElementById(Number(cell.id)-2).style.backgroundColor = '';
+                            }
+                        }
+                    }
+                    else if ((cell.id >= 46 && cell.id < 64)) {
+                        if (cell.id % 3 === 1) {
+                            if (cell.style.backgroundColor !== 'rgb(0, 48, 242)') {
+                                cell.style.backgroundColor = '#0030f2';
+                                document.getElementById(Number(cell.id)+1).style.backgroundColor = '#0030f2';
+                                document.getElementById(Number(cell.id)+2).style.backgroundColor = '#0030f2';
+                            } 
+                            else {
+                                cell.style.backgroundColor = '';
+                                document.getElementById(Number(cell.id)+1).style.backgroundColor = '';
+                                document.getElementById(Number(cell.id)+2).style.backgroundColor = '';
+                            }
+                        }
+                        else if (cell.id % 3 === 2){
+                            if (cell.style.backgroundColor !== 'rgb(0, 48, 242)') {
+                                cell.style.backgroundColor = '#0030f2';
+                                document.getElementById(Number(cell.id)-1).style.backgroundColor = '#0030f2';
+                                document.getElementById(Number(cell.id)+1).style.backgroundColor = '#0030f2';
+                            } 
+                            else {
+                                cell.style.backgroundColor = '';
+                                document.getElementById(Number(cell.id)-1).style.backgroundColor = '';
+                                document.getElementById(Number(cell.id)+1).style.backgroundColor = '';
+                            }
+                        }
+                        else {
+                            if (cell.style.backgroundColor !== 'rgb(0, 48, 242)') {
+                                cell.style.backgroundColor = '#0030f2';
+                                document.getElementById(Number(cell.id)-1).style.backgroundColor = '#0030f2';
+                                document.getElementById(Number(cell.id)-2).style.backgroundColor = '#0030f2';
+                            } 
+                            else {
+                                cell.style.backgroundColor = '';
+                                document.getElementById(Number(cell.id)-1).style.backgroundColor = '';
+                                document.getElementById(Number(cell.id)-2).style.backgroundColor = '';
+                            }
+                        }
+                    }
+                    else {
+                        if (cell.style.backgroundColor !== 'rgb(0, 48, 242)') {
+                                cell.style.backgroundColor = '#0030f2';
+                            } 
+                            else {
+                                cell.style.backgroundColor = '';
+                            }
+                    }
+                }
+                else {
+                    if (cell.id < 18 || (cell.id >= 46 && cell.id < 64) || (cell.id >= 92 && cell.id < 110)) {
+                        if (cell.id % 2 === 0) {
+                            if (cell.style.backgroundColor !== 'rgb(0, 48, 242)') {
+                                cell.style.backgroundColor = '#0030f2';
+                                document.getElementById(Number(cell.id)+1).style.backgroundColor = '#0030f2';
+                            } 
+                            else {
+                                cell.style.backgroundColor = '';
+                                document.getElementById(Number(cell.id)+1).style.backgroundColor = '';
+                            }
+                        }
+                        else {
+                            if (cell.style.backgroundColor !== 'rgb(0, 48, 242)') {
+                                cell.style.backgroundColor = '#0030f2';
+                                document.getElementById(Number(cell.id)-1).style.backgroundColor = '#0030f2';
+                            } 
+                            else {
+                                cell.style.backgroundColor = '';
+                                document.getElementById(Number(cell.id)-1).style.backgroundColor = '';
+                            }
+                        }
+                    }
+                    else if ((cell.id >= 23 && cell.id < 41) || (cell.id >= 69 && cell.id < 87)) {
+                        if (cell.id % 2 === 1) {
+                            if (cell.style.backgroundColor !== 'rgb(0, 48, 242)') {
+                                cell.style.backgroundColor = '#0030f2';
+                                document.getElementById(Number(cell.id)+1).style.backgroundColor = '#0030f2';
+                            } 
+                            else {
+                                cell.style.backgroundColor = '';
+                                document.getElementById(Number(cell.id)+1).style.backgroundColor = '';
+                            }
+                        }
+                        else {
+                            if (cell.style.backgroundColor !== 'rgb(0, 48, 242)') {
+                                cell.style.backgroundColor = '#0030f2';
+                                document.getElementById(Number(cell.id)-1).style.backgroundColor = '#0030f2';
+                            } 
+                            else {
+                                cell.style.backgroundColor = '';
+                                document.getElementById(Number(cell.id)-1).style.backgroundColor = '';
+                            }
+                        }
+                    }
+                    else {
+                        if (cell.style.backgroundColor !== 'rgb(0, 48, 242)') {
+                                cell.style.backgroundColor = '#0030f2';
+                            } 
+                            else {
+                                cell.style.backgroundColor = '';
+                            }
+                    }
                 }
             });
         });
@@ -198,23 +232,15 @@
         function displayColoredCellPositions() {
             const coloredCells = document.querySelectorAll('td[style*="background-color: rgb(0, 48, 242)"]');
 
-            // Reset the arrays
-            index_row.length = 0;
-            index_col.length = 0;
-            index.length = 0;
-            idx.length = 0;
-
+            const index = [];
             coloredCells.forEach(cell => {
-                const rowIndex = cell.parentNode.rowIndex;
-                const cellIndex = cell.cellIndex;
-                index_row.push(rowIndex);
-                index_col.push(cellIndex);
-                index.push(rowIndex + cellIndex * 23);
+                index.push(Number(cell.id));
             });
 
-            index.sort((a, b) => a - b);
-            index.forEach(val => {
-                switch (val) {
+            const idx = [];
+            console.log(index)
+            for (let i=0; i < index.length; i++) {
+                switch (index[i]) {
                     case 0:
                         idx.push('011');
                         break;
@@ -560,15 +586,9 @@
                         idx.push('950');
                         break;
                 }
-            });
-
-            console.log('Row Indices:', index_row);
-            console.log('Column Indices:', index_col);
-            console.log('Calculated Index (Sorted):', index);
-            console.log('String Representation of Indices:', idx);
-
+            };
             
-            fetch('/next_to_selecttime',{
+            fetch('/next_to_test',{
                 method : 'post',
                 headers : {
                     'content-type':'application/json'
@@ -577,6 +597,8 @@
                     idx : idx
                 })
             })
+
+            window.location.href = "time.html";
         }
     </script>
     <!-- Button to display colored cell positions -->
