@@ -209,12 +209,12 @@
 
         for (let i = 0; i < check_num2.length ; i++){
             if (check_num2[0][i] === 1) {
-                query_arr0 = `SELECT * FROM 테이블명 WHERE ${check_num2[1][i]} NOT IN = '${check_num2[0][i]}';`
+                query_arr2 = `SELECT * FROM 테이블명 WHERE ${check_num2[1][i]} NOT IN = '${check_num2[0][i]}';`
             }
         }
         
         for (let i = 0; i < check_num3.length ; i++){
-            query_arr1 = `SELECT * FROM 테이블명 WHERE 컬럼명 NOT IN = '${check_num3[i]}';`
+            query_arr3 = `SELECT * FROM 테이블명 WHERE 컬럼명 NOT IN = '${check_num3[i]}';`
         }
 
 
