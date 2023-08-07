@@ -1,104 +1,300 @@
-const express = require('express');
-const mysql = require('mysql2');
-const path = require('path');
-const static = require('serve-static');
-const dbconfig = require('./config/dbconfig.json');
-
-const pool = mysql.createPool({
-    connectionLimit: 10,
-    host: dbconfig.host,
-    user: dbconfig.user,
-    password: dbconfig.password,
-    database: dbconfig.database,
-    debug: false
-})
-
-const app = express();
-app.use(express.urlencoded({ extended: true }));
-app.use(express.json());
-app.use('/public', static(path.join(__dirname, 'public')));
-
-let query_GE;
-let query_time;
-let query_checklist = "";
-
-app.post('/next_to_checklist', (req, res) => {
-    console.log('next_to_checklist 호출됨')
-
-    let GE = req.body.GE;
-
-    query_GE = GE;
-    console.log(query_GE);
-
-})
-
-app.post('/next_to_slecttime', (req, res) => {
-    console.log('next_to_selecttime 호출됨');
-
-    let query_arr0 = req.body.query_arr0;
-    let query_arr1 = req.body.query_arr1;
-    let query_arr2 = req.body.query_arr2;
-    let query_arr3 = req.body.query_arr3;
-
-    query_checklist = query_arr0 + query_arr1 + query_arr2 + query_arr3;
-    console.log(query_checklist);
-})
-
-app.post('/next_to_test', (req, res) => {
-    console.log('next_to_test 호출됨')
-
-    const selected_time = req.body.idx;
-
-    query_time = selected_time.reduce((acc, course, idx)=>{
-        if (idx === selected_time.length - 1) {
-            return acc+`${course}')`;
-        }
-        return acc+`${course}|`;
-    },"(`시간표 - 데이터베이스용`, '");  // not regexp_like
-
-    console.log(query_time);
-    
-})
-
-app.post('/callDB', (req, res) => {
-    console.log('callDB 호출됨')
-    
-    const resData = {}
-    resData.result = 'error'
-    resData.time = []
-    resData.num = []
-    resData.name = []
-
-    pool.getConnection((err, conn)=>{
-        if (err) {
-            conn.release();
-            console.log('pool.getConnection 에러발생');
-            console.dir(err);
-            res.json(resData);
-            return;
-        }
-
-        conn.query(`select * from kyoyang where not regexp_like ${query_time} and '수강제한학과' not like '%${query_GE}%' and ${query_checklist} 학점 = 3;`, (error, rows, fields)=>{
-            if (error) {  // db query 실패
-                conn.release();
-                console.dir(error);
-                res.json(resData);
-                return;
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <style>
+            div#선호 {
+                display: inline-block;
+                border: 2px black solid;
+                padding: 10px 310px 20px 10px;
             }
+            div#불호 {
+                display: inline-block;
+                border: 2px black solid;
+                padding: 10px 10px 20px 10px;
+            }
+        </style>
+    </head>
+    <body>
+       <h1 style="font-size: 20px;">취향을 알려주세요!</h1>
+		<br>
+		<label>선호하는 항목을 체크해주세요.<br class='break-m'> (복수선택가능, 1개 이상 체크해주세요)</label>
+		<div id="message"></div>
+		<div id="선호">
+			<label>시험 방식</label>
+			<br>
+			<input type="checkbox" id="과제 대체">
+			<label>과제 대체</label>
+			<input type="checkbox" id="시험 2번">
+			<label>시험 2번</label>
+			<input type="checkbox" id="시험 1번">
+			<label>시험 1번</label>
+		</div>
+		<br><br>
+		<label>불호하는 항목을 체크해주세요. <br class='break-m'>(체크하지 않으면 '상관없음'으로 간주)</label>
+		<br>
+		<div id="불호">
+			<div id="message1"></div>
+			<div>
+				<label>출석 방식(복수 선택 불가)</label>
+				<br>
+				<input type="checkbox" id="전자 출결">
+				<label>전자 출결</label>
+				<input type="checkbox" id="직접 호명">
+				<label>직접 호명</label>
+				<br class='break-m'>
+				<input type="checkbox" id="랜덤 또는 불시 출석">
+				<label>랜덤 또는 불시 출석</label>
+	
+			</div>
+			<hr>
+			<div>
+				<label >과제 방식 또는 수업 진행 방식<br class='break-m'>(복수선택 가능)</label>
+				<br>
+				<input type="checkbox" id="퀴즈">
+				<label>퀴즈</label>
+				<input type="checkbox" id="레포트">
+				<label>레포트</label>
+				<input type="checkbox" id="발표">
+				<label>발표</label>
+				<input type="checkbox" id="토론">
+				<label>토론</label>
+				<br class='break-m'>
+				<input type="checkbox" id="실습">
+				<label>실습</label>
+				<input type="checkbox" id="조별활동, 조별과제">
+				<label>조별활동, 조별과제</label>
+	
+			</div>
+			<hr>
+			<div>
+				<label>강의 시간(복수 선택 가능)</label>
+				<br>
+				<input type="checkbox" id="오전 수업">
+				<label>오전 수업</label>
+				<input type="checkbox" id="야간 수업">
+				<label>야간 수업</label>
+			</div>
+		</div>
+		<br><br>
+		<button onclick="submitAndRedirect()">확인</button>
 
-            conn.release();
-            resData.result = 'ok';
-
-            rows.forEach((val)=>{
-                // resData.num.push(val.num)
-                resData.name.push(val.교과목명)
-            })
-            res.json(resData);
-        })
-    })
+    </body>
     
-})
+    <script>
+        function submitAndRedirect() {
+        // 무엇이 체크되었는지에 따라 넘버링
 
-app.listen(3000, ()=>{
-    console.log('Server started at 3000');
-})
+        
+        let check_num0 = [];
+        let check_cnt0 = 0;
+        const check0_1 = document.getElementById("과제 대체");
+        const check0_2 = document.getElementById("시험 2번");
+        const check0_3 = document.getElementById("시험 1번");
+
+        if (check0_1.checked){
+            check_num0.push(0, 2, 4, 5);
+            check_cnt0++;
+        }
+        if (check0_2.checked){
+            check_num0.push(1, 5);
+            check_cnt0++;
+        }
+        if (check0_3.checked){
+            check_num0.push(2, 3, 5);
+            check_cnt0++;
+        }
+
+
+
+        let check_num1 = [0, 1, 2, 3];
+        let check_cnt1 = 0;
+        const check1_1 = document.getElementById("전자 출결");
+        const check1_2 = document.getElementById("직접 호명");
+        const check1_3 = document.getElementById("랜덤 또는 불시 출석");
+
+        let check_num2 = [
+        [0, 0, 0, 0, 0, 0],
+        ["퀴즈", "레포트", "발표", "토론", "실습", "조별활동, 조별과제"]
+        ];
+        
+        const check2_1 = document.getElementById("퀴즈");
+        const check2_2 = document.getElementById("레포트");
+        const check2_3 = document.getElementById("발표");
+        const check2_4 = document.getElementById("토론");
+        const check2_5 = document.getElementById("실습");
+        const check2_6 = document.getElementById("조별활동, 조별과제");
+
+        let check_num3 = [1, 2, 3];
+        let check_cnt3 = 0;
+        const check3_1 = document.getElementById("오전 수업");
+        const check3_2 = document.getElementById("야간 수업");
+
+        if (check1_1.checked) {
+            check_num1.splice(0, 3);
+            check_cnt1++;
+        }
+        if (check1_2.checked) {
+            check_num1.splice(0, 1);
+            check_num1.splice(1, 2);
+            check_cnt1++;
+        }
+        if (check1_3.checked) {
+            check_num1.splice(0, 2);
+            check_num1.splice(1, 1);
+            check_cnt1++;
+        }
+
+        if (check2_1.checked) {
+            check_num2[0][0] = 1;
+            
+        }
+        if (check2_2.checked) {
+            check_num2[0][1] = 1;
+            
+        }
+        if (check2_3.checked) {
+            check_num2[0][2] = 1;
+            
+        }
+        if (check2_4.checked) {
+            check_num2[0][3] = 1;
+            
+        }
+        if (check2_5.checked) {
+            check_num2[0][4] = 1;
+            
+        }
+        if (check2_6.checked) {
+            check_num2[0][5] = 1;
+            
+        }
+
+        if (check3_1.checked) {
+            check_num3.splice(1, 2);
+        }
+        if (check3_2.checked) {
+            check_num3.splice(0, 2);
+        }
+
+        // 중복 제거 (Set 객체 사용)
+        const uniqueCheckNum0 = [...new Set(check_num0)];
+        const uniqueCheckNum1 = [...new Set(check_num1)];
+        const uniqueCheckNum3 = [...new Set(check_num3)];
+
+        // 오름차순으로 정렬
+        uniqueCheckNum0.sort((a, b) => a - b);
+        uniqueCheckNum1.sort((a, b) => a - b);
+        uniqueCheckNum3.sort((a, b) => a - b);
+
+        if (check_cnt0 >= 1 && check_cnt1 <= 1){
+	        document.querySelector('#message').textContent = "";
+            document.querySelector('#message1').textContent = "";
+            location.href = '#SelectTime'; //다음페이지 넘어가게
+        }
+        else {
+            const again_message = document.querySelector('#message')
+            const again_message1 = document.querySelector('#message1')
+            again_message.textContent = '*체크항목을 다시 확인 해주세요.*'
+            again_message1.textContent = '*체크항목을 다시 확인 해주세요.*'
+        }
+       
+        // for (let i = 0; i < check_num0.length ; i++){
+        //     query_arr0 = `SELECT * FROM 테이블명 WHERE 컬럼명 = '${check_num0[i]}';`
+        // }
+
+        // for (let i = 0; i < check_num1.length ; i++){
+        //     query_arr1 = `SELECT * FROM 테이블명 WHERE 컬럼명 NOT IN = '${check_num1[i]}';`
+        // }
+
+        // for (let i = 0; i < check_num2.length ; i++){
+        //     if (check_num2[0][i] === 1) {
+        //         query_arr2 = `SELECT * FROM 테이블명 WHERE ${check_num2[1][i]} NOT IN = '${check_num2[0][i]}';`
+        //     }
+        // }
+        
+        // for (let i = 0; i < check_num3.length ; i++){
+        //     query_arr3 = `SELECT * FROM 테이블명 WHERE 컬럼명 NOT IN = '${check_num3[i]}';`
+        // }
+
+        console.log(check_num0, check_num1, check_num2, check_num3);
+
+        const checkedElements = document.querySelectorAll('input[type="checkbox"]:checked');
+        const ids = Array.from(checkedElements).map(element => element.id);
+        console.log("check_num0:", uniqueCheckNum0);
+        console.log("check_num1:", uniqueCheckNum1);
+        console.log("check_num2:", check_num2);
+        console.log("check_num3:", uniqueCheckNum3);
+        console.log("선택된 항목: " + ids.join(', '));
+
+
+        let query_arr0 = ""
+        let query_arr1 = ""
+        let query_arr2 = ""
+        let query_arr3 = ""
+
+        if (check_num0.length > 0) {
+            query_arr0 = check_num0.reduce((acc, course, idx)=>{
+                if (idx === check_num0.length - 1) {
+                    return acc+`${course}) and `;
+                }
+                return acc+`${course},`;
+            },"시험 in (");
+        }
+
+        if (check_num1.length === 4) {
+            query_arr1 = "";
+        }
+        else {
+            query_arr1 = "출석 not in ("+check_num1[0]+") and ";
+        }
+        
+        if (check_num2[0][0] === 1) {
+            query_arr2 += "퀴즈 not in (1) and ";
+        }
+        if (check_num2[0][1] === 1) {
+            query_arr2 += "레포트 not in (1) and ";
+        }
+        if (check_num2[0][2] === 1) {
+            query_arr2 += "발표 not in (1) and ";
+        }
+        if (check_num2[0][3] === 1) {
+            query_arr2 += "토론 not in (1) and ";
+        }
+        if (check_num2[0][4] === 1) {
+            query_arr2 += "실습 not in (1) and ";
+        }
+        if (check_num2[0][5] === 1) {
+            query_arr2 += "조별 not in (1) and ";
+        }
+
+
+        if (check_num3.length === 3) {
+            query_arr3 = "";
+        }
+        else if (check_num3.length === 1) {
+            query_arr3 = "강의시간 not in ("+check_num3[0]+") and ";
+        }
+        else if (check_num3.length === 0) {
+            query_arr3 = "강의시간 not in (1,3) and ";
+        }
+
+        fetch('/next_to_slecttime',{
+            method : 'post',
+            headers : {
+                'content-type':'application/json'
+            },
+            body : JSON.stringify({
+                query_arr0 : query_arr0,
+                query_arr1 : query_arr1,
+                query_arr2 : query_arr2,
+                query_arr3 : query_arr3
+            })
+        })
+            
+    }
+    
+    </script>
+</html>
