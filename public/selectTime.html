@@ -1,4 +1,5 @@
 <html>
+
 <head>
     <style>
         table {
@@ -14,601 +15,646 @@
 </head>
 
 <body>
-<label class="switch-button">
-    <input type="checkbox" id="time90"/>
-    <span class="onoff-switch"></span>
-</label>
+    <label class="switch-button">
+        <input type="checkbox" id="time90" />
+        <span class="onoff-switch"></span>
+    </label>
 
-<table>
-</table>
+    <table>
+    </table>
 
-<script>
-    // 테이블 요소 선택
-    var table = document.querySelector('table');
+    <script>
+        // 테이블 요소 선택
+        var table = document.querySelector('table');
 
-    // 카운터 초기화
-    var counter_tr = -1;
-    var counter_th = 0;
+        // 카운터 초기화
+        var counter_tr = -1;
+        var counter_th = 0;
 
-    // 행을 28개 생성
-    for (var i = 0; i < 23; i++) {
-        var tr = document.createElement('tr');
-        counter_tr++;
-        counter_th = 0;
+        // 행을 28개 생성
+        for (var i = 0; i < 23; i++) {
+            var tr = document.createElement('tr');
+            counter_tr++;
+            counter_th = 0;
 
-        // 각 행에 5개의 셀 생성
-        for (var j = 0; j < 5; j++) {
-            var td = document.createElement('td');
-            td.id = counter_tr + counter_th; // 현재 카운터 값을 ID로 설정
-            counter_th += 23;
-            td.style.backgroundColor = 'white';
-            tr.appendChild(td);
+            // 각 행에 5개의 셀 생성
+            for (var j = 0; j < 5; j++) {
+                var td = document.createElement('td');
+                td.id = counter_tr + counter_th; // 현재 카운터 값을 ID로 설정
+                counter_th += 23;
+                td.style.backgroundColor = 'white';
+                tr.appendChild(td);
+            }
+            table.appendChild(tr);
         }
-        table.appendChild(tr);
-    }
 
-    const cells = document.querySelectorAll('td');
-    const checkbox = document.getElementById('time90');
+        const cells = document.querySelectorAll('td');
+        const checkbox = document.getElementById('time90');
 
-    cells.forEach(cell => {
-        cell.addEventListener('click', () => {
-            if (checkbox.checked) {
-                if (cell.id < 18 || (cell.id >= 69 && cell.id < 87)) {
-                    if (cell.id % 3 === 0) {
-                        if (cell.style.backgroundColor !== 'rgb(0, 48, 242)') {
-                            cell.style.backgroundColor = '#0030f2';
-                            document.getElementById(Number(cell.id)+1).style.backgroundColor = '#0030f2';
-                            document.getElementById(Number(cell.id)+2).style.backgroundColor = '#0030f2';
-                        } 
-                        else {
-                            cell.style.backgroundColor = '';
-                            document.getElementById(Number(cell.id)+1).style.backgroundColor = '';
-                            document.getElementById(Number(cell.id)+2).style.backgroundColor = '';
+
+        function setCellsToGray() {
+            cells.forEach(cell => {
+                if (cell.style.backgroundColor !== 'rgb(0, 48, 242)') {
+                    if (checkbox.checked) {
+
+                        if (cell.id % 23 == 0 || cell.id % 23 == 1 || cell.id % 23 == 2 || cell.id % 23 == 6 || cell.id % 23 == 7 || cell.id % 23 == 8 || cell.id % 23 == 12 || cell.id % 23 == 13 || cell.id % 23 == 14 || cell.id % 23 == 18 || cell.id % 23 == 20 || cell.id % 23 == 22) {
+                            cell.style.backgroundColor = ('#c3c3c3');
                         }
-                    }
-                    else if (cell.id % 3 === 1){
-                        if (cell.style.backgroundColor !== 'rgb(0, 48, 242)') {
-                            cell.style.backgroundColor = '#0030f2';
-                            document.getElementById(Number(cell.id)-1).style.backgroundColor = '#0030f2';
-                            document.getElementById(Number(cell.id)+1).style.backgroundColor = '#0030f2';
-                        } 
                         else {
-                            cell.style.backgroundColor = '';
-                            document.getElementById(Number(cell.id)-1).style.backgroundColor = '';
-                            document.getElementById(Number(cell.id)+1).style.backgroundColor = '';
+                            cell.style.backgroundColor = ('');
                         }
                     }
                     else {
-                        if (cell.style.backgroundColor !== 'rgb(0, 48, 242)') {
-                            cell.style.backgroundColor = '#0030f2';
-                            document.getElementById(Number(cell.id)-1).style.backgroundColor = '#0030f2';
-                            document.getElementById(Number(cell.id)-2).style.backgroundColor = '#0030f2';
-                        } 
-                        else {
-                            cell.style.backgroundColor = '';
-                            document.getElementById(Number(cell.id)-1).style.backgroundColor = '';
-                            document.getElementById(Number(cell.id)-2).style.backgroundColor = '';
-                        }
-                    }
-                }
-                else if ((cell.id >= 23 && cell.id < 41) || (cell.id >= 92 && cell.id < 110)) {
-                    if (cell.id % 3 === 2) {
-                        if (cell.style.backgroundColor !== 'rgb(0, 48, 242)') {
-                            cell.style.backgroundColor = '#0030f2';
-                            document.getElementById(Number(cell.id)+1).style.backgroundColor = '#0030f2';
-                            document.getElementById(Number(cell.id)+2).style.backgroundColor = '#0030f2';
-                        } 
-                        else {
-                            cell.style.backgroundColor = '';
-                            document.getElementById(Number(cell.id)+1).style.backgroundColor = '';
-                            document.getElementById(Number(cell.id)+2).style.backgroundColor = '';
-                        }
-                    }
-                    else if (cell.id % 3 === 0){
-                        if (cell.style.backgroundColor !== 'rgb(0, 48, 242)') {
-                            cell.style.backgroundColor = '#0030f2';
-                            document.getElementById(Number(cell.id)-1).style.backgroundColor = '#0030f2';
-                            document.getElementById(Number(cell.id)+1).style.backgroundColor = '#0030f2';
-                        } 
-                        else {
-                            cell.style.backgroundColor = '';
-                            document.getElementById(Number(cell.id)-1).style.backgroundColor = '';
-                            document.getElementById(Number(cell.id)+1).style.backgroundColor = '';
-                        }
-                    }
-                    else {
-                        if (cell.style.backgroundColor !== 'rgb(0, 48, 242)') {
-                            cell.style.backgroundColor = '#0030f2';
-                            document.getElementById(Number(cell.id)-1).style.backgroundColor = '#0030f2';
-                            document.getElementById(Number(cell.id)-2).style.backgroundColor = '#0030f2';
-                        } 
-                        else {
-                            cell.style.backgroundColor = '';
-                            document.getElementById(Number(cell.id)-1).style.backgroundColor = '';
-                            document.getElementById(Number(cell.id)-2).style.backgroundColor = '';
-                        }
-                    }
-                }
-                else if ((cell.id >= 46 && cell.id < 64)) {
-                    if (cell.id % 3 === 1) {
-                        if (cell.style.backgroundColor !== 'rgb(0, 48, 242)') {
-                            cell.style.backgroundColor = '#0030f2';
-                            document.getElementById(Number(cell.id)+1).style.backgroundColor = '#0030f2';
-                            document.getElementById(Number(cell.id)+2).style.backgroundColor = '#0030f2';
-                        } 
-                        else {
-                            cell.style.backgroundColor = '';
-                            document.getElementById(Number(cell.id)+1).style.backgroundColor = '';
-                            document.getElementById(Number(cell.id)+2).style.backgroundColor = '';
-                        }
-                    }
-                    else if (cell.id % 3 === 2){
-                        if (cell.style.backgroundColor !== 'rgb(0, 48, 242)') {
-                            cell.style.backgroundColor = '#0030f2';
-                            document.getElementById(Number(cell.id)-1).style.backgroundColor = '#0030f2';
-                            document.getElementById(Number(cell.id)+1).style.backgroundColor = '#0030f2';
-                        } 
-                        else {
-                            cell.style.backgroundColor = '';
-                            document.getElementById(Number(cell.id)-1).style.backgroundColor = '';
-                            document.getElementById(Number(cell.id)+1).style.backgroundColor = '';
-                        }
-                    }
-                    else {
-                        if (cell.style.backgroundColor !== 'rgb(0, 48, 242)') {
-                            cell.style.backgroundColor = '#0030f2';
-                            document.getElementById(Number(cell.id)-1).style.backgroundColor = '#0030f2';
-                            document.getElementById(Number(cell.id)-2).style.backgroundColor = '#0030f2';
-                        } 
-                        else {
-                            cell.style.backgroundColor = '';
-                            document.getElementById(Number(cell.id)-1).style.backgroundColor = '';
-                            document.getElementById(Number(cell.id)-2).style.backgroundColor = '';
-                        }
-                    }
-                }
-                else {
-                    if (cell.style.backgroundColor !== 'rgb(0, 48, 242)') {
-                            cell.style.backgroundColor = '#0030f2';
-                        } 
-                        else {
-                            cell.style.backgroundColor = '';
-                        }
-                }
-            }
-            else {
-                if (cell.id < 18 || (cell.id >= 46 && cell.id < 64) || (cell.id >= 92 && cell.id < 110)) {
-                    if (cell.id % 2 === 0) {
-                        if (cell.style.backgroundColor !== 'rgb(0, 48, 242)') {
-                            cell.style.backgroundColor = '#0030f2';
-                            document.getElementById(Number(cell.id)+1).style.backgroundColor = '#0030f2';
-                        } 
-                        else {
-                            cell.style.backgroundColor = '';
-                            document.getElementById(Number(cell.id)+1).style.backgroundColor = '';
-                        }
-                    }
-                    else {
-                        if (cell.style.backgroundColor !== 'rgb(0, 48, 242)') {
-                            cell.style.backgroundColor = '#0030f2';
-                            document.getElementById(Number(cell.id)-1).style.backgroundColor = '#0030f2';
-                        } 
-                        else {
-                            cell.style.backgroundColor = '';
-                            document.getElementById(Number(cell.id)-1).style.backgroundColor = '';
-                        }
-                    }
-                }
-                else if ((cell.id >= 23 && cell.id < 41) || (cell.id >= 69 && cell.id < 87)) {
-                    if (cell.id % 2 === 1) {
-                        if (cell.style.backgroundColor !== 'rgb(0, 48, 242)') {
-                            cell.style.backgroundColor = '#0030f2';
-                            document.getElementById(Number(cell.id)+1).style.backgroundColor = '#0030f2';
-                        } 
-                        else {
-                            cell.style.backgroundColor = '';
-                            document.getElementById(Number(cell.id)+1).style.backgroundColor = '';
-                        }
-                    }
-                    else {
-                        if (cell.style.backgroundColor !== 'rgb(0, 48, 242)') {
-                            cell.style.backgroundColor = '#0030f2';
-                            document.getElementById(Number(cell.id)-1).style.backgroundColor = '#0030f2';
-                        } 
-                        else {
-                            cell.style.backgroundColor = '';
-                            document.getElementById(Number(cell.id)-1).style.backgroundColor = '';
-                        }
-                    }
-                }
-                else {
-                    if (cell.style.backgroundColor !== 'rgb(0, 48, 242)') {
-                            cell.style.backgroundColor = '#0030f2';
-                        } 
-                        else {
-                            cell.style.backgroundColor = '';
-                        }
-                }
-            }
-        });
-    });
 
-    // Function to handle button click and display colored cell positions
-    function displayColoredCellPositions() {
-        
-        const coloredCells = document.querySelectorAll('td[style*="background-color: rgb(0, 48, 242)"]');
+                        if ((cell.id % 23 == 0 || cell.id % 23 == 1 || cell.id % 23 == 4 || cell.id % 23 == 5 || cell.id % 23 == 8 || cell.id % 23 == 9 || cell.id % 23 == 12 || cell.id % 23 == 13 || cell.id % 23 == 17 || cell.id % 23 == 16 || cell.id % 23 == 19 || cell.id % 23 == 21)) {
+                            cell.style.backgroundColor = ('#c3c3c3');
+                        }
+                        else {
+                            cell.style.backgroundColor = ('');
+                        }
 
-        const index = [];
-        coloredCells.forEach(cell => {
-            index.push(Number(cell.id));
-        });
-
-        const idx = [];
-        console.log(index)
-        for (let i=0; i < index.length; i++) {
-            switch (index[i]) {
-                case 0:
-                    idx.push('011');
-                    break;
-                case 1:
-                    idx.push('012');
-                    break;
-                case 2:
-                    idx.push('021');
-                    break;
-                case 3:
-                    idx.push('022');
-                    break;
-                case 4:
-                    idx.push('031');
-                    break;
-                case 5:
-                    idx.push('032');
-                    break;
-                case 6:
-                    idx.push('041');
-                    break;
-                case 7:
-                    idx.push('042');
-                    break;
-                case 8:
-                    idx.push('051');
-                    break;
-                case 9:
-                    idx.push('052');
-                    break;
-                case 10:
-                    idx.push('061');
-                    break;
-                case 11:
-                    idx.push('062');
-                    break;
-                case 12:
-                    idx.push('071');
-                    break;
-                case 13:
-                    idx.push('072');
-                    break;
-                case 14:
-                    idx.push('081');
-                    break;
-                case 15:
-                    idx.push('082');
-                    break;
-                case 16:
-                    idx.push('091');
-                    break;
-                case 17:
-                    idx.push('092');
-                    break;
-                case 18:
-                    idx.push('510');
-                    break;
-                case 19:
-                    idx.push('520');
-                    break;
-                case 20:
-                    idx.push('530');
-                    break;
-                case 21:
-                    idx.push('540');
-                    break;
-                case 22:
-                    idx.push('550');
-                    break;
-                case 23:
-                    idx.push('111');
-                    break;
-                case 24:
-                    idx.push('112');
-                    break;
-                case 25:
-                    idx.push('121');
-                    break;
-                case 26:
-                    idx.push('122');
-                    break;
-                case 27:
-                    idx.push('131');
-                    break;
-                case 28:
-                    idx.push('132');
-                    break;
-                case 29:
-                    idx.push('141');
-                    break;
-                case 30:
-                    idx.push('142');
-                    break;
-                case 31:
-                    idx.push('151');
-                    break;
-                case 32:
-                    idx.push('152');
-                    break;
-                case 33:
-                    idx.push('161');
-                    break;
-                case 34:
-                    idx.push('162');
-                    break;
-                case 35:
-                    idx.push('171');
-                    break;
-                case 36:
-                    idx.push('172');
-                    break;
-                case 37:
-                    idx.push('181');
-                    break;
-                case 38:
-                    idx.push('182');
-                    break;
-                case 39:
-                    idx.push('191');
-                    break;
-                case 40:
-                    idx.push('192');
-                    break;
-                case 41:
-                    idx.push('610');
-                    break;
-                case 42:
-                    idx.push('620');
-                    break;
-                case 43:
-                    idx.push('630');
-                    break;
-                case 44:
-                    idx.push('640');
-                    break;
-                case 45:
-                    idx.push('650');
-                    break;
-                case 46:
-                    idx.push('211');
-                    break;
-                case 47:
-                    idx.push('212');
-                    break;
-                case 48:
-                    idx.push('221');
-                    break;
-                case 49:
-                    idx.push('222');
-                    break;
-                case 50:
-                    idx.push('231');
-                    break;
-                case 51:
-                    idx.push('232');
-                    break;
-                case 52:
-                    idx.push('241');
-                    break;
-                case 53:
-                    idx.push('242');
-                case 54:
-                    idx.push('251');
-                    break;
-                case 55:
-                    idx.push('252');
-                    break;
-                case 56:
-                    idx.push('261');
-                    break;
-                case 57:
-                    idx.push('262');
-                    break;
-                case 58:
-                    idx.push('271');
-                    break;
-                case 59:
-                    idx.push('272');
-                    break;
-                case 60:
-                    idx.push('281');
-                    break;
-                case 61:
-                    idx.push('282');
-                    break;
-                case 62:
-                    idx.push('291');
-                    break;
-                case 63:
-                    idx.push('292');
-                    break;
-                case 64:
-                    idx.push('710');
-                    break;
-                case 65:
-                    idx.push('720');
-                    break;
-                case 66:
-                    idx.push('730');
-                    break;
-                case 67:
-                    idx.push('740');
-                    break;
-                case 68:
-                    idx.push('750');
-                    break;
-                case 69:
-                    idx.push('311');
-                    break;
-                case 70:
-                    idx.push('312');
-                    break;
-                case 71:
-                    idx.push('321');
-                    break;
-                case 72:
-                    idx.push('322');
-                    break;
-                case 73:
-                    idx.push('331');
-                    break;
-                case 74:
-                    idx.push('332');
-                    break;
-                case 75:
-                    idx.push('341');
-                    break;
-                case 76:
-                    idx.push('342');
-                    break;
-                case 77:
-                    idx.push('351');
-                    break;
-                case 78:
-                    idx.push('352');
-                    break;
-                case 79:
-                    idx.push('361');
-                    break;
-                case 80:
-                    idx.push('362');
-                    break;
-                case 81:
-                    idx.push('371');
-                    break;
-                case 82:
-                    idx.push('372');
-                    break;
-                case 83:
-                    idx.push('381');
-                    break;
-                case 84:
-                    idx.push('382');
-                    break;
-                case 85:
-                    idx.push('391');
-                    break;
-                case 86:
-                    idx.push('392');
-                    break;
-                case 87:
-                    idx.push('810');
-                    break;
-                case 88:
-                    idx.push('820');
-                    break;
-                case 89:
-                    idx.push('830');
-                    break;
-                case 90:
-                    idx.push('840');
-                    break;
-                case 91:
-                    idx.push('850');
-                    break;
-                case 92:
-                    idx.push('411');
-                    break;
-                case 93:
-                    idx.push('412');
-                    break;
-                case 94:
-                    idx.push('421');
-                    break;
-                case 95:
-                    idx.push('422');
-                    break;
-                case 96:
-                    idx.push('431');
-                    break;
-                case 97:
-                    idx.push('432');
-                    break;
-                case 98:
-                    idx.push('441');
-                    break;
-                case 99:
-                    idx.push('442');
-                    break;
-                case 100:
-                    idx.push('451');
-                    break;
-                case 101:
-                    idx.push('452');
-                    break;
-                case 102:
-                    idx.push('461');
-                    break;
-                case 103:
-                    idx.push('462');
-                    break;
-                case 104:
-                    idx.push('471');
-                    break;
-                case 105:
-                    idx.push('472');
-                    break;
-                case 106:
-                    idx.push('481');
-                    break;
-                case 107:
-                    idx.push('482');
-                    break;
-                case 108:
-                    idx.push('491');
-                    break;
-                case 109:
-                    idx.push('492');
-                    break;
-                case 110:
-                    idx.push('910');
-                    break;
-                case 111:
-                    idx.push('920');
-                    break;
-                case 112:
-                    idx.push('930');
-                    break;
-                case 113:
-                    idx.push('940');
-                    break;
-                case 114:
-                    idx.push('950');
-                    break;
-            }
-        };
-        
-        fetch('/next_to_test',{
-            method : 'post',
-            headers : {
-                'content-type':'application/json'
-            },
-            body : JSON.stringify({
-                idx : idx
+                    }
+                }
             })
+        }
+
+        checkbox.addEventListener('click', () => {
+            setCellsToGray();
         })
 
-        location.href = '#List';
-    }
-</script>
-<!-- Button to display colored cell positions -->
-<button onclick="displayColoredCellPositions()">확인</button>
+        // 원래 시간표 색 바꾸기
+        cells.forEach(cell => {
+            if (cell.id % 23 == 0 || cell.id % 23 == 1 || cell.id % 23 == 4 || cell.id % 23 == 5 || cell.id % 23 == 8 || cell.id % 23 == 9 || cell.id % 23 == 12 || cell.id % 23 == 13 || cell.id % 23 == 17 || cell.id % 23 == 16 || cell.id % 23 == 19 || cell.id % 23 == 21) {
+                cell.style.backgroundColor = ('#c3c3c3');
+            }
+        })
+
+
+
+        cells.forEach(cell => {
+            cell.addEventListener('click', () => {
+                if (checkbox.checked) {
+                    if (cell.id < 18 || (cell.id >= 69 && cell.id < 87)) {
+                        if (cell.id % 3 === 0) {
+                            if (cell.style.backgroundColor !== 'rgb(0, 48, 242)') {
+                                cell.style.backgroundColor = '#0030f2';
+                                document.getElementById(Number(cell.id) + 1).style.backgroundColor = '#0030f2';
+                                document.getElementById(Number(cell.id) + 2).style.backgroundColor = '#0030f2';
+                            }
+                            else {
+                                cell.style.backgroundColor = '';
+                                document.getElementById(Number(cell.id) + 1).style.backgroundColor = '';
+                                document.getElementById(Number(cell.id) + 2).style.backgroundColor = '';
+                            }
+                        }
+                        else if (cell.id % 3 === 1) {
+                            if (cell.style.backgroundColor !== 'rgb(0, 48, 242)') {
+                                cell.style.backgroundColor = '#0030f2';
+                                document.getElementById(Number(cell.id) - 1).style.backgroundColor = '#0030f2';
+                                document.getElementById(Number(cell.id) + 1).style.backgroundColor = '#0030f2';
+                            }
+                            else {
+                                cell.style.backgroundColor = '';
+                                document.getElementById(Number(cell.id) - 1).style.backgroundColor = '';
+                                document.getElementById(Number(cell.id) + 1).style.backgroundColor = '';
+                            }
+                        }
+                        else {
+                            if (cell.style.backgroundColor !== 'rgb(0, 48, 242)') {
+                                cell.style.backgroundColor = '#0030f2';
+                                document.getElementById(Number(cell.id) - 1).style.backgroundColor = '#0030f2';
+                                document.getElementById(Number(cell.id) - 2).style.backgroundColor = '#0030f2';
+                            }
+                            else {
+                                cell.style.backgroundColor = '';
+                                document.getElementById(Number(cell.id) - 1).style.backgroundColor = '';
+                                document.getElementById(Number(cell.id) - 2).style.backgroundColor = '';
+                            }
+                        }
+                    }
+                    else if ((cell.id >= 23 && cell.id < 41) || (cell.id >= 92 && cell.id < 110)) {
+                        if (cell.id % 3 === 2) {
+                            if (cell.style.backgroundColor !== 'rgb(0, 48, 242)') {
+                                cell.style.backgroundColor = '#0030f2';
+                                document.getElementById(Number(cell.id) + 1).style.backgroundColor = '#0030f2';
+                                document.getElementById(Number(cell.id) + 2).style.backgroundColor = '#0030f2';
+                            }
+                            else {
+                                cell.style.backgroundColor = '';
+                                document.getElementById(Number(cell.id) + 1).style.backgroundColor = '';
+                                document.getElementById(Number(cell.id) + 2).style.backgroundColor = '';
+                            }
+                        }
+                        else if (cell.id % 3 === 0) {
+                            if (cell.style.backgroundColor !== 'rgb(0, 48, 242)') {
+                                cell.style.backgroundColor = '#0030f2';
+                                document.getElementById(Number(cell.id) - 1).style.backgroundColor = '#0030f2';
+                                document.getElementById(Number(cell.id) + 1).style.backgroundColor = '#0030f2';
+                            }
+                            else {
+                                cell.style.backgroundColor = '';
+                                document.getElementById(Number(cell.id) - 1).style.backgroundColor = '';
+                                document.getElementById(Number(cell.id) + 1).style.backgroundColor = '';
+                            }
+                        }
+                        else {
+                            if (cell.style.backgroundColor !== 'rgb(0, 48, 242)') {
+                                cell.style.backgroundColor = '#0030f2';
+                                document.getElementById(Number(cell.id) - 1).style.backgroundColor = '#0030f2';
+                                document.getElementById(Number(cell.id) - 2).style.backgroundColor = '#0030f2';
+                            }
+                            else {
+                                cell.style.backgroundColor = '';
+                                document.getElementById(Number(cell.id) - 1).style.backgroundColor = '';
+                                document.getElementById(Number(cell.id) - 2).style.backgroundColor = '';
+                            }
+                        }
+                    }
+                    else if ((cell.id >= 46 && cell.id < 64)) {
+                        if (cell.id % 3 === 1) {
+                            if (cell.style.backgroundColor !== 'rgb(0, 48, 242)') {
+                                cell.style.backgroundColor = '#0030f2';
+                                document.getElementById(Number(cell.id) + 1).style.backgroundColor = '#0030f2';
+                                document.getElementById(Number(cell.id) + 2).style.backgroundColor = '#0030f2';
+                            }
+                            else {
+                                cell.style.backgroundColor = '';
+                                document.getElementById(Number(cell.id) + 1).style.backgroundColor = '';
+                                document.getElementById(Number(cell.id) + 2).style.backgroundColor = '';
+                            }
+                        }
+                        else if (cell.id % 3 === 2) {
+                            if (cell.style.backgroundColor !== 'rgb(0, 48, 242)') {
+                                cell.style.backgroundColor = '#0030f2';
+                                document.getElementById(Number(cell.id) - 1).style.backgroundColor = '#0030f2';
+                                document.getElementById(Number(cell.id) + 1).style.backgroundColor = '#0030f2';
+                            }
+                            else {
+                                cell.style.backgroundColor = '';
+                                document.getElementById(Number(cell.id) - 1).style.backgroundColor = '';
+                                document.getElementById(Number(cell.id) + 1).style.backgroundColor = '';
+                            }
+                        }
+                        else {
+                            if (cell.style.backgroundColor !== 'rgb(0, 48, 242)') {
+                                cell.style.backgroundColor = '#0030f2';
+                                document.getElementById(Number(cell.id) - 1).style.backgroundColor = '#0030f2';
+                                document.getElementById(Number(cell.id) - 2).style.backgroundColor = '#0030f2';
+                            }
+                            else {
+                                cell.style.backgroundColor = '';
+                                document.getElementById(Number(cell.id) - 1).style.backgroundColor = '';
+                                document.getElementById(Number(cell.id) - 2).style.backgroundColor = '';
+                            }
+                        }
+                    }
+                    else {
+                        if (cell.style.backgroundColor !== 'rgb(0, 48, 242)') {
+                            cell.style.backgroundColor = '#0030f2';
+                        }
+                        else {
+                            cell.style.backgroundColor = '';
+                        }
+                    }
+                }
+                else {
+                    if (cell.id < 18 || (cell.id >= 46 && cell.id < 64) || (cell.id >= 92 && cell.id < 110)) {
+                        if (cell.id % 2 === 0) {
+                            if (cell.style.backgroundColor !== 'rgb(0, 48, 242)') {
+                                cell.style.backgroundColor = '#0030f2';
+                                document.getElementById(Number(cell.id) + 1).style.backgroundColor = '#0030f2';
+                            }
+                            else {
+                                cell.style.backgroundColor = '';
+                                document.getElementById(Number(cell.id) + 1).style.backgroundColor = '';
+                            }
+                        }
+                        else {
+                            if (cell.style.backgroundColor !== 'rgb(0, 48, 242)') {
+                                cell.style.backgroundColor = '#0030f2';
+                                document.getElementById(Number(cell.id) - 1).style.backgroundColor = '#0030f2';
+                            }
+                            else {
+                                cell.style.backgroundColor = '';
+                                document.getElementById(Number(cell.id) - 1).style.backgroundColor = '';
+                            }
+                        }
+                    }
+                    else if ((cell.id >= 23 && cell.id < 41) || (cell.id >= 69 && cell.id < 87)) {
+                        if (cell.id % 2 === 1) {
+                            if (cell.style.backgroundColor !== 'rgb(0, 48, 242)') {
+                                cell.style.backgroundColor = '#0030f2';
+                                document.getElementById(Number(cell.id) + 1).style.backgroundColor = '#0030f2';
+                            }
+                            else {
+                                cell.style.backgroundColor = '';
+                                document.getElementById(Number(cell.id) + 1).style.backgroundColor = '';
+                            }
+                        }
+                        else {
+                            if (cell.style.backgroundColor !== 'rgb(0, 48, 242)') {
+                                cell.style.backgroundColor = '#0030f2';
+                                document.getElementById(Number(cell.id) - 1).style.backgroundColor = '#0030f2';
+                            }
+                            else {
+                                cell.style.backgroundColor = '';
+                                document.getElementById(Number(cell.id) - 1).style.backgroundColor = '';
+                            }
+                        }
+                    }
+                    else {
+                        if (cell.style.backgroundColor !== 'rgb(0, 48, 242)') {
+                            cell.style.backgroundColor = '#0030f2';
+                        }
+                        else {
+                            cell.style.backgroundColor = '';
+                        }
+
+                    }
+
+                }
+                setCellsToGray();
+            });
+        });
+
+        // Function to handle button click and display colored cell positions
+        function displayColoredCellPositions() {
+
+            const coloredCells = document.querySelectorAll('td[style*="background-color: rgb(0, 48, 242)"]');
+
+            const index = [];
+            coloredCells.forEach(cell => {
+                index.push(Number(cell.id));
+            });
+
+            const idx = [];
+            console.log(index)
+            for (let i = 0; i < index.length; i++) {
+                switch (index[i]) {
+                    case 0:
+                        idx.push('011');
+                        break;
+                    case 1:
+                        idx.push('012');
+                        break;
+                    case 2:
+                        idx.push('021');
+                        break;
+                    case 3:
+                        idx.push('022');
+                        break;
+                    case 4:
+                        idx.push('031');
+                        break;
+                    case 5:
+                        idx.push('032');
+                        break;
+                    case 6:
+                        idx.push('041');
+                        break;
+                    case 7:
+                        idx.push('042');
+                        break;
+                    case 8:
+                        idx.push('051');
+                        break;
+                    case 9:
+                        idx.push('052');
+                        break;
+                    case 10:
+                        idx.push('061');
+                        break;
+                    case 11:
+                        idx.push('062');
+                        break;
+                    case 12:
+                        idx.push('071');
+                        break;
+                    case 13:
+                        idx.push('072');
+                        break;
+                    case 14:
+                        idx.push('081');
+                        break;
+                    case 15:
+                        idx.push('082');
+                        break;
+                    case 16:
+                        idx.push('091');
+                        break;
+                    case 17:
+                        idx.push('092');
+                        break;
+                    case 18:
+                        idx.push('510');
+                        break;
+                    case 19:
+                        idx.push('520');
+                        break;
+                    case 20:
+                        idx.push('530');
+                        break;
+                    case 21:
+                        idx.push('540');
+                        break;
+                    case 22:
+                        idx.push('550');
+                        break;
+                    case 23:
+                        idx.push('111');
+                        break;
+                    case 24:
+                        idx.push('112');
+                        break;
+                    case 25:
+                        idx.push('121');
+                        break;
+                    case 26:
+                        idx.push('122');
+                        break;
+                    case 27:
+                        idx.push('131');
+                        break;
+                    case 28:
+                        idx.push('132');
+                        break;
+                    case 29:
+                        idx.push('141');
+                        break;
+                    case 30:
+                        idx.push('142');
+                        break;
+                    case 31:
+                        idx.push('151');
+                        break;
+                    case 32:
+                        idx.push('152');
+                        break;
+                    case 33:
+                        idx.push('161');
+                        break;
+                    case 34:
+                        idx.push('162');
+                        break;
+                    case 35:
+                        idx.push('171');
+                        break;
+                    case 36:
+                        idx.push('172');
+                        break;
+                    case 37:
+                        idx.push('181');
+                        break;
+                    case 38:
+                        idx.push('182');
+                        break;
+                    case 39:
+                        idx.push('191');
+                        break;
+                    case 40:
+                        idx.push('192');
+                        break;
+                    case 41:
+                        idx.push('610');
+                        break;
+                    case 42:
+                        idx.push('620');
+                        break;
+                    case 43:
+                        idx.push('630');
+                        break;
+                    case 44:
+                        idx.push('640');
+                        break;
+                    case 45:
+                        idx.push('650');
+                        break;
+                    case 46:
+                        idx.push('211');
+                        break;
+                    case 47:
+                        idx.push('212');
+                        break;
+                    case 48:
+                        idx.push('221');
+                        break;
+                    case 49:
+                        idx.push('222');
+                        break;
+                    case 50:
+                        idx.push('231');
+                        break;
+                    case 51:
+                        idx.push('232');
+                        break;
+                    case 52:
+                        idx.push('241');
+                        break;
+                    case 53:
+                        idx.push('242');
+                    case 54:
+                        idx.push('251');
+                        break;
+                    case 55:
+                        idx.push('252');
+                        break;
+                    case 56:
+                        idx.push('261');
+                        break;
+                    case 57:
+                        idx.push('262');
+                        break;
+                    case 58:
+                        idx.push('271');
+                        break;
+                    case 59:
+                        idx.push('272');
+                        break;
+                    case 60:
+                        idx.push('281');
+                        break;
+                    case 61:
+                        idx.push('282');
+                        break;
+                    case 62:
+                        idx.push('291');
+                        break;
+                    case 63:
+                        idx.push('292');
+                        break;
+                    case 64:
+                        idx.push('710');
+                        break;
+                    case 65:
+                        idx.push('720');
+                        break;
+                    case 66:
+                        idx.push('730');
+                        break;
+                    case 67:
+                        idx.push('740');
+                        break;
+                    case 68:
+                        idx.push('750');
+                        break;
+                    case 69:
+                        idx.push('311');
+                        break;
+                    case 70:
+                        idx.push('312');
+                        break;
+                    case 71:
+                        idx.push('321');
+                        break;
+                    case 72:
+                        idx.push('322');
+                        break;
+                    case 73:
+                        idx.push('331');
+                        break;
+                    case 74:
+                        idx.push('332');
+                        break;
+                    case 75:
+                        idx.push('341');
+                        break;
+                    case 76:
+                        idx.push('342');
+                        break;
+                    case 77:
+                        idx.push('351');
+                        break;
+                    case 78:
+                        idx.push('352');
+                        break;
+                    case 79:
+                        idx.push('361');
+                        break;
+                    case 80:
+                        idx.push('362');
+                        break;
+                    case 81:
+                        idx.push('371');
+                        break;
+                    case 82:
+                        idx.push('372');
+                        break;
+                    case 83:
+                        idx.push('381');
+                        break;
+                    case 84:
+                        idx.push('382');
+                        break;
+                    case 85:
+                        idx.push('391');
+                        break;
+                    case 86:
+                        idx.push('392');
+                        break;
+                    case 87:
+                        idx.push('810');
+                        break;
+                    case 88:
+                        idx.push('820');
+                        break;
+                    case 89:
+                        idx.push('830');
+                        break;
+                    case 90:
+                        idx.push('840');
+                        break;
+                    case 91:
+                        idx.push('850');
+                        break;
+                    case 92:
+                        idx.push('411');
+                        break;
+                    case 93:
+                        idx.push('412');
+                        break;
+                    case 94:
+                        idx.push('421');
+                        break;
+                    case 95:
+                        idx.push('422');
+                        break;
+                    case 96:
+                        idx.push('431');
+                        break;
+                    case 97:
+                        idx.push('432');
+                        break;
+                    case 98:
+                        idx.push('441');
+                        break;
+                    case 99:
+                        idx.push('442');
+                        break;
+                    case 100:
+                        idx.push('451');
+                        break;
+                    case 101:
+                        idx.push('452');
+                        break;
+                    case 102:
+                        idx.push('461');
+                        break;
+                    case 103:
+                        idx.push('462');
+                        break;
+                    case 104:
+                        idx.push('471');
+                        break;
+                    case 105:
+                        idx.push('472');
+                        break;
+                    case 106:
+                        idx.push('481');
+                        break;
+                    case 107:
+                        idx.push('482');
+                        break;
+                    case 108:
+                        idx.push('491');
+                        break;
+                    case 109:
+                        idx.push('492');
+                        break;
+                    case 110:
+                        idx.push('910');
+                        break;
+                    case 111:
+                        idx.push('920');
+                        break;
+                    case 112:
+                        idx.push('930');
+                        break;
+                    case 113:
+                        idx.push('940');
+                        break;
+                    case 114:
+                        idx.push('950');
+                        break;
+                }
+            };
+
+            fetch('/next_to_test', {
+                method: 'post',
+                headers: {
+                    'content-type': 'application/json'
+                },
+                body: JSON.stringify({
+                    idx: idx
+                })
+            })
+
+            location.href = '#List';
+
+
+        }
+    </script>
+    <!-- Button to display colored cell positions -->
+    <button onclick="displayColoredCellPositions()">확인</button>
 </body>
 
 </html>
