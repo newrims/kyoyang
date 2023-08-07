@@ -190,7 +190,7 @@
         uniqueCheckNum3.sort((a, b) => a - b);
 
         if (check_cnt0 >= 1 && check_cnt1 <= 1){
-	    document.querySelector('#message').textContent = "";
+	        document.querySelector('#message').textContent = "";
             document.querySelector('#message1').textContent = "";
             location.href = '#SelectTime'; //다음페이지 넘어가게
         }
@@ -244,7 +244,12 @@
             },"시험 in (");
         }
 
-        query_arr1 = "출석 not in ("+check_num1[0]+") and ";
+        if (check_num1.length === 4) {
+            query_arr1 = "";
+        }
+        else {
+            query_arr1 = "출석 not in ("+check_num1[0]+") and ";
+        }
         
         if (check_num2[0][0] === 1) {
             query_arr2 += "퀴즈 not in (1) and ";
