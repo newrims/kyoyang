@@ -82,15 +82,8 @@
             setCellsToGray();
         })
 
-        // 원래 시간표 색 바꾸기
-        cells.forEach(cell => {
-            if (cell.id % 23 == 0 || cell.id % 23 == 1 || cell.id % 23 == 4 || cell.id % 23 == 5 || cell.id % 23 == 8 || cell.id % 23 == 9 || cell.id % 23 == 12 || cell.id % 23 == 13 || cell.id % 23 == 17 || cell.id % 23 == 16 || cell.id % 23 == 19 || cell.id % 23 == 21) {
-                cell.style.backgroundColor = ('#c3c3c3');
-            }
-        })
-
-
-
+        setCellsToGray();
+        
         cells.forEach(cell => {
             cell.addEventListener('click', () => {
                 if (checkbox.checked) {
