@@ -10,7 +10,22 @@
         <h1>hi</h1>
         <button id="확인">확인</button>
         <script>
+            const btn = document.getElementById("확인");
 
+            btn.addEventListener("click",()=>{
+                fetch('/callDB',{
+                    method : 'post'
+                }).then((res)=>res.json())
+                .then((res)=>{
+
+                    if (res.result != 'ok') {
+                        console.log('result is not ok');
+                        return;
+                    }
+
+                    console.log(res.name);
+                });
+            });
         </script>
 </body>
 </html>
