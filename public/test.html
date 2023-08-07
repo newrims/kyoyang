@@ -4,13 +4,14 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>교양 추천</title>
-
     </head>
     <body>
         <h1>hi</h1>
         <button id="확인">확인</button>
+        <div id="교양리스트"></div>
         <script>
             const btn = document.getElementById("확인");
+            let labels;
 
             btn.addEventListener("click",()=>{
                 fetch('/callDB',{
@@ -22,10 +23,97 @@
                         console.log('result is not ok');
                         return;
                     }
+                    var div_GE = document.getElementById("교양리스트");
+                    let id = 0;
+                    let len = res.이름.length;
 
-                    console.log(res.name);
+                    for (let i = 0; i < len; i++) {
+                        var label = document.createElement('label');
+                        label.id = id;
+                        label.textContent = res.이름[i]+" / "+res.교수[i]+" / "+res.시간[i];
+                        if (res.이수구분[i] === "심화교양") {
+                            label.style.color = "green";
+                        }
+                        var br = document.createElement('br');
+                        label.onclick = createTable();
+                        div_GE.appendChild(label);
+                        div_GE.appendChild(br);
+                        id++;
+                    }
+
+                    labels = document.querySelectorAll("label");
                 });
             });
+
+            const createTable = () => {
+                // if (document.getElementById("t"+this.id)) {
+                //     $("table").remove("t"+this.id);
+                //     return;
+                // }
+                // let _id = 0;
+
+                var table = document.createElement('table');
+                table.id = "t"+this.id;
+
+                for (let i=0; i<3; i++) {
+                    var tr = document.createElement('tr');
+                    if (i === 0) {
+                        for(let j = 0; j < 4; j++) {
+                            var td = document.createElement('td');
+                            // td.id = this.id+"_"+_id;
+                            if (j === 0) {
+                                td.textContent = "발표";
+                            }
+                            else if (j === 1) {
+                                td.textContent = "시험";
+                            }
+                            else if (j === 2) {
+                                td.textContent = "출석";
+                            }
+                            else if (j === 3) {
+                                td.textContent = "레포트";
+                            }
+                            tr.appendChild(td);
+                            // _id++;
+                        }
+                    }
+                    else if (i === 1) {
+                        for(let j = 0; j < 4; j++) {
+                            var td = document.createElement('td');
+                            // td.id = this.id+"_"+_id;
+                            if (j === 0) {
+                                td.textContent = "토론";
+                            }
+                            else if (j === 1) {
+                                td.textContent = "조별";
+                            }
+                            else if (j === 2) {
+                                td.textContent = "실습";
+                            }
+                            else if (j === 3) {
+                                td.textContent = "평가";
+                            }
+                            tr.appendChild(td);
+                            // _id++;
+                        }
+                    }
+                    else if (i === 2) {
+                        for(let j = 0; j < 2; j++) {
+                            var td = document.createElement('td');
+                            // td.id = this.id+"_"+_id;
+                            if (j === 0) {
+                                td.textContent = "퀴즈";
+                            }
+                            else if (j === 1) {
+                                td.textContent = "특이사항";
+                            }
+                            tr.appendChild(td);
+                            // _id++;
+                        }
+                    }
+                    table.appendChild(tr);
+                }
+            }
         </script>
 </body>
 </html>
