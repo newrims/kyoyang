@@ -61,9 +61,11 @@
                 <button id="thi_2" onclick="query_8()">온라인+오프라인</button>
             </div>
         </details>
-        <div id="교양리스트"></div>
+        <!-- <div id="교양리스트"></div> -->
         <script>
             const btn = document.getElementById("확인");
+            var div = document.createElement("div");
+            div.id = "교양리스트";
             let labels;
 
             let query1 = "이수구분 = '핵심교양'";
@@ -173,7 +175,9 @@
             }
 
             const show_GE = ()=> {
-                $("details").remove();
+                document.getElementById("교양리스트").remove();
+                var div = document.createElement("div");
+                div.id = "교양리스트";
 
                 const last_query = "("+query1+" or "+query2+") and ("+query3+" or "+query4+" or "+query5+") and ("+query6+" or "+query7+" or "+query8+")"
 
@@ -198,7 +202,7 @@
 
                     for (let l = 0; l < len; l++) {
                         var details = document.createElement('details');
-                        details.id = "d"+id;
+                        details.id = "d";
 
                         var summary = document.createElement('summary');
                         summary.id = id;
@@ -431,7 +435,7 @@
 
                     for (let l = 0; l < len; l++) {
                         var details = document.createElement('details');
-                        details.id = "d"+id;
+                        details.id = "d";
 
                         var summary = document.createElement('summary');
                         summary.id = id;
