@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* 스타일을 수정하여 버튼의 색상을 변경할 수 있습니다. */
+        .button {
+            background-color: white; /* 버튼 기본 배경색 */
+            color: black; /* 버튼 기본 텍스트 색상 */
+        }
+
+        .button.active {
+            background-color: green; /* 활성화된 버튼 배경색 */
+            color: white; /* 활성화된 버튼 텍스트 색상 */
+        }
+    </style>
+</head>
+<body>
+    <label>선호하는 항목을 체크해주세요.<br class='break-m'> (복수선택가능, 1개 이상 체크해주세요)</label>
+    <div id="message"> </div> 
+    <div>시험 방식</div>
+    <div>
+        <input type='button' id='과제 대체' value='과제 대체' class='button' onclick='btnClicked("과제 대체")'/>
+        <br>
+        <input type='button' id='시험 2번' value='시험 2번' class='button' onclick='btnClicked("시험 2번")'/>
+        <br>
+        <input type='button' id='시험 1번' value='시험 1번' class='button' onclick='btnClicked("시험 1번")'/>
+    </div>
+    <br>
+    <button id="nextButton" onclick="checkButtonStates()">다음(1/4)</button>
+</body>
+<script>
+    
+    let check_num0 = [];
+    let check_cnt0 = 0;
+    let query_arr0 = ""
+    const check0_1 = document.getElementById("과제 대체");
+    const check0_2 = document.getElementById("시험 2번");
+    const check0_3 = document.getElementById("시험 1번");
+    const again_message = document.querySelector('#message')
+
+    function btnClicked(buttonId) {
+        
+        const target = document.getElementById(buttonId);
+        target.classList.toggle('active');
+    }
+    
+    function checkButtonStates() {
+        if (check0_1.classList.contains('active')) {
+            check_num0.push(0, 2, 4, 5);
+            check_cnt0++;
+        }
+        if (check0_2.classList.contains('active')) {
+            check_num0.push(1, 5);
+            check_cnt0++;
+        }
+        if (check0_3.classList.contains('active')) {
+            check_num0.push(2, 3, 5);
+            check_cnt0++;
+        }
+        if (check_cnt0 === 0){
+            
+            again_message.textContent = '*체크항목을 다시 확인 해주세요.*'
+            check_num0 = []
+        }
+        else{
+            const uniqueCheckNum0 = [...new Set(check_num0)];
+            uniqueCheckNum0.sort((a, b) => a - b);
+            console.log(uniqueCheckNum0);
+            check_num0 = [];
+
+            
+
+            if (uniqueCheckNum0.length > 0) {
+                query_arr0 = uniqueCheckNum0.reduce((acc, course, idx)=>{
+                    if (idx === uniqueCheckNum0.length - 1) {
+                        return acc+`${course}) and `;
+                    }
+                    return acc+`${course},`;
+                },"시험 in (");
+            }
+            again_message.textContent = ''
+            console.log(query_arr0)
+            window.location.href = 'CheckList2.html'
+        }
+    }
+</script>
+</html>
