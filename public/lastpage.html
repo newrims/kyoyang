@@ -5,30 +5,186 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>교양 추천</title>
         <style>
+            table {
+                border-collapse: collapse;
+            }
             td {
-            border: 3px solid black;
-            width: 300px;
-            height: 50px;
+                border: 3px solid black;
+                width: 100px;
+                height: 50px;
+                text-align: center;
+            }
+            #detail_info {
+                border: 3px solid black;
+                width: 300px;
+            }
+            #fir_0 {
+                width: 70px;
+                margin: 5px 0 0 20px ;
+            }
+            #sec_0 {
+                width: 70px;
+            }
+            #fir_1 {
+                width: 70px;
+                margin: 5px 0 0 20px ;
+            }
+            #sec_1 {
+                width: 70px;
+            }
+            #thi_1 {
+                width: 70px;
+            }
+            #fir_2 {
+                width: 70px;
+                margin: 5px 0 5px 20px ;
+            }
+            #sec_2 {
+                width: 70px;
+                margin: 0 0 5px 0 ;
             }
         </style>
     </head>
     <body>
         <details>
-            
+            <summary>필터</summary>
+            <div id="detail_info">
+                <button id="fir_0" onclick="query_1(this)">핵심교양</button>
+                <button style="color:green" id="sec_0" onclick="query_2()">심화교양</button>
+                <br>
+                <button id="fir_1" onclick="query_3()">1학점</button>
+                <button id="sec_1" onclick="query_4()">2학점</button>
+                <button id="thi_1" onclick="query_5()">3학점</button>
+                <br>
+                <button id="fir_2" onclick="query_6()">온라인</button>
+                <button id="sec_2" onclick="query_7()">오프라인</button>
+                <button id="thi_2" onclick="query_8()">온라인+오프라인</button>
+            </div>
         </details>
-        <button id="확인">확인</button>
         <div id="교양리스트"></div>
         <script>
             const btn = document.getElementById("확인");
             let labels;
 
-            btn.addEventListener("click",()=>{
-                if (document.getElementById("d0")) {
-                    $("details").remove();
+            let query1 = "이수구분 = '핵심교양'";
+            let query2 = "이수구분 = '심화교양'";
+            let query3 = "학점 = 1";
+            let query4 = "학점 = 2";
+            let query5 = "학점 = 3";
+            let query6 = "수업방법 in ('온라인(동영상)','온라인(화상)')";
+            let query7 = "수업방법 = ''";
+            let query8 = "수업방법 = '온라인(동영상)+오프라인'";
+
+            const query_1 = ()=> {
+                const _btn = document.getElementById("fir_0");
+                if (_btn.style.opacity == 0.3) {
+                    _btn.style.opacity = 1;
+                    query1 = "이수구분 = '핵심교양'"
                 }
+                else {
+                    _btn.style.opacity = 0.3;
+                    query1 = "이수구분 != '핵심교양'"
+                }
+                show_GE();
+            }
+            const query_2 = ()=> {
+                const _btn = document.getElementById("sec_0");
+                if (_btn.style.opacity == 0.3) {
+                    _btn.style.opacity = 1;
+                    query2 = "이수구분 = '심화교양'"
+                }
+                else {
+                    _btn.style.opacity = 0.3;
+                    query2 = "이수구분 != '심화교양'"
+                }
+                show_GE();
+            }
+            const query_3 = ()=> {
+                const _btn = document.getElementById("fir_1");
+                if (_btn.style.opacity == 0.3) {
+                    _btn.style.opacity = 1;
+                    query3 = "학점 = 1"
+                }
+                else {
+                    _btn.style.opacity = 0.3;
+                    query3 = "학점 != 1"
+                }
+                show_GE();
+            }
+            const query_4 = ()=> {
+                const _btn = document.getElementById("sec_1");
+                if (_btn.style.opacity == 0.3) {
+                    _btn.style.opacity = 1;
+                    query4 = "학점 = 2"
+                }
+                else {
+                    _btn.style.opacity = 0.3;
+                    query4 = "학점 != 2"
+                }
+                show_GE();
+            }
+            const query_5 = ()=> {
+                const _btn = document.getElementById("thi_1");
+                if (_btn.style.opacity == 0.3) {
+                    _btn.style.opacity = 1;
+                    query5 = "학점 = 3"
+                }
+                else {
+                    _btn.style.opacity = 0.3;
+                    query5 = "학점 != 3"
+                }
+                show_GE();
+            }
+            const query_6 = ()=> {
+                const _btn = document.getElementById("fir_2");
+                if (_btn.style.opacity == 0.3) {
+                    _btn.style.opacity = 1;
+                    query6 = "수업방법 in ('온라인(동영상)','온라인(화상)')"
+                }
+                else {
+                    _btn.style.opacity = 0.3;
+                    query6 = "수업방법 not in ('온라인(동영상)','온라인(화상)')"
+                }
+                show_GE();
+            }
+            const query_7 = ()=> {
+                const _btn = document.getElementById("sec_2");
+                if (_btn.style.opacity == 0.3) {
+                    _btn.style.opacity = 1;
+                    query7 = "수업방법 = ''"
+                }
+                else {
+                    _btn.style.opacity = 0.3;
+                    query7 = "수업방법 != ''"
+                }
+                show_GE();
+            }
+            const query_8 = ()=> {
+                const _btn = document.getElementById("thi_2");
+                if (_btn.style.opacity == 0.3) {
+                    _btn.style.opacity = 1;
+                    query8 = "수업방법 = '온라인(동영상)+오프라인'"
+                }
+                else {
+                    _btn.style.opacity = 0.3;
+                    query8 = "수업방법 != '온라인(동영상)+오프라인'"
+                }
+                show_GE();
+            }
+
+            const show_GE = ()=> {
+                $("details").remove();
+
+                const last_query = "("+query1+" or "+query2+") and ("+query3+" or "+query4+" or "+query5+") and ("+query6+" or "+query7+" or "+query8+")"
 
                 fetch('/callDB',{
-                    method : 'post'
+                    method : 'post',
+                    headers : {
+                        'content-type':'application/json'
+                    },
+                    body : JSON.stringify({
+                        last_query : last_query
+                    })
                 }).then((res)=>res.json())
                 .then((res)=>{
 
@@ -40,65 +196,202 @@
                     let id = 0;
                     let len = res.이름.length;
 
-                    for (let i = 0; i < len; i++) {
+                    for (let l = 0; l < len; l++) {
                         var details = document.createElement('details');
                         details.id = "d"+id;
 
                         var summary = document.createElement('summary');
                         summary.id = id;
-                        summary.textContent = res.이름[i]+" / "+res.교수[i]+" / "+res.시간[i];
-                        if (res.이수구분[i] === "심화교양") {
+                        summary.textContent = res.이름[l]+" / "+res.교수[l]+" / "+res.시간[l];
+                        if (res.이수구분[l] === "심화교양") {
                             summary.style.color = "green";
                         }
                         
                         var table = document.createElement('table');
-                        for (let i=0; i<3; i++) {
+                        let td_num = 0;
+                        for (let i=0; i<6; i++) {
                             var tr = document.createElement('tr');
-                            if (i === 0) {
-                                for(let j = 0; j < 4; j++) {
+                            if (i === 5) {
+                                for (let j=0; j<2; j++) {
                                     var td = document.createElement('td');
-                                    if (j === 0) {
-                                        td.textContent = "발표";
-                                    }
-                                    else if (j === 1) {
-                                        td.textContent = "시험";
-                                    }
-                                    else if (j === 2) {
-                                        td.textContent = "출석";
-                                    }
-                                    else if (j === 3) {
-                                        td.textContent = "레포트";
-                                    }
-                                    tr.appendChild(td);
-                                }
-                            }
-                            else if (i === 1) {
-                                for(let j = 0; j < 4; j++) {
-                                    var td = document.createElement('td');
-                                    if (j === 0) {
-                                        td.textContent = "토론";
-                                    }
-                                    else if (j === 1) {
-                                        td.textContent = "조별";
-                                    }
-                                    else if (j === 2) {
-                                        td.textContent = "실습";
-                                    }
-                                    else if (j === 3) {
-                                        td.textContent = "평가";
-                                    }
-                                    tr.appendChild(td);
-                                }
-                            }
-                            else if (i === 2) {
-                                for(let j = 0; j < 2; j++) {
-                                    var td = document.createElement('td');
-                                    if (j === 0) {
-                                        td.textContent = "퀴즈";
-                                    }
-                                    else if (j === 1) {
+                                    if (td_num === 20) {
                                         td.textContent = "특이사항";
                                     }
+                                    else if (td_num === 21) {
+                                        td.colSpan = 3;
+                                    }
+                                    td_num++;
+                                    tr.appendChild(td);
+                                }
+                            }
+                            else {
+                                for (let j=0; j<4; j++) {
+                                    var td = document.createElement('td');
+                                    if (td_num === 0) {
+                                        td.textContent = "발표"
+                                    }
+                                    else if (td_num === 1) {
+                                        if (res.발표[l] === 0) {
+                                            td.textContent = "X";
+                                            td.style.color = "red";
+                                        }
+                                        else if (res.발표[l] === 1) {
+                                            td.textContent = "O";
+                                            td.style.color = "blue";
+                                        }
+                                        else if (res.발표[l] === 2) {
+                                            td.textContent = "정보 없음";
+                                        }
+                                    }
+                                    else if (td_num === 2) {
+                                        td.textContent = "시험"
+                                    }
+                                    else if (td_num === 3) {
+                                        if (res.시험[l] === 1) {
+                                            td.textContent = "2번";
+                                        }
+                                        else if (res.시험[l] === 2) {
+                                            td.textContent = "1번+과제1번";
+                                        }
+                                        else if (res.시험[l] === 3) {
+                                            td.textContent = "1번";
+                                        }
+                                        else if (res.시험[l] === 4) {
+                                            td.textContent = "과제2번";
+                                        }
+                                        else if (res.시험[l] === 5) {
+                                            td.textContent = "정보 없음";
+                                        }
+                                    }
+                                    else if (td_num === 4) {
+                                        td.textContent = "토론"
+                                    }
+                                    else if (td_num === 5) {
+                                        if (res.토론[l] === 0) {
+                                            td.textContent = "X";
+                                            td.style.color = "red";
+                                        }
+                                        else if (res.토론[l] === 1) {
+                                            td.textContent = "O";
+                                            td.style.color = "blue";
+                                        }
+                                        else if (res.토론[l] === 2) {
+                                            td.textContent = "정보 없음";
+                                        }
+                                    }
+                                    else if (td_num === 6) {
+                                        td.textContent = "조별"
+                                    }
+                                    else if (td_num === 7) {
+                                        if (res.조별[l] === 0) {
+                                            td.textContent = "X";
+                                            td.style.color = "red";
+                                        }
+                                        else if (res.조별[l] === 1) {
+                                            td.textContent = "O";
+                                            td.style.color = "blue";
+                                        }
+                                        else if (res.조별[l] === 2) {
+                                            td.textContent = "정보 없음";
+                                        }
+                                    }
+                                    else if (td_num === 8) {
+                                        td.textContent = "퀴즈"
+                                    }
+                                    else if (td_num === 9) {
+                                        if (res.퀴즈[l] === 0) {
+                                            td.textContent = "X";
+                                            td.style.color = "red";
+                                        }
+                                        else if (res.퀴즈[l] === 1) {
+                                            td.textContent = "O";
+                                            td.style.color = "blue";
+                                        }
+                                        else if (res.퀴즈[l] === 2) {
+                                            td.textContent = "정보 없음";
+                                        }
+                                    }
+                                    else if (td_num === 10) {
+                                        td.textContent = "실습"
+                                    }
+                                    else if (td_num === 11) {
+                                        if (res.실습[l] === 0) {
+                                            td.textContent = "X";
+                                            td.style.color = "red";
+                                        }
+                                        else if (res.실습[l] === 1) {
+                                            td.textContent = "O";
+                                            td.style.color = "blue";
+                                        }
+                                        else if (res.실습[l] === 2) {
+                                            td.textContent = "정보 없음";
+                                        }
+                                    }
+                                    else if (td_num === 12) {
+                                        td.textContent = "출석"
+                                    }
+                                    else if (td_num === 13) {
+                                        if (res.출석[l] === 0) {
+                                            td.textContent = "출결 없음";
+                                        }
+                                        else if (res.출석[l] === 1) {
+                                            td.textContent = "호명";
+                                        }
+                                        else if (res.출석[l] === 2) {
+                                            td.textContent = "랜덤";
+                                        }
+                                        else if (res.출석[l] === 3) {
+                                            td.textContent = "전자출결";
+                                        }
+                                        else if (res.출석[l] === 4) {
+                                            td.textContent = "정보 없음";
+                                        }
+                                    }
+                                    else if (td_num === 14) {
+                                        td.textContent = "레포트"
+                                    }
+                                    else if (td_num === 15) {
+                                        if (res.레포트[l] === 0) {
+                                            td.textContent = "X";
+                                            td.style.color = "red";
+                                        }
+                                        else if (res.레포트[l] === 1) {
+                                            td.textContent = "O";
+                                            td.style.color = "blue";
+                                        }
+                                        else if (res.레포트[l] === 2) {
+                                            td.textContent = "정보 없음";
+                                        }
+                                    }
+                                    else if (td_num === 16) {
+                                        td.textContent = "평가"
+                                    }
+                                    else if (td_num === 17) {
+                                        if (res.평가[l] === 0) {
+                                            td.textContent = "상평";
+                                        }
+                                        else if (res.평가[l] === 1) {
+                                            td.textContent = "절평";
+                                        }
+                                        else if (res.평가[l] === 2) {
+                                            td.textContent = "패논패";
+                                        }
+                                    }
+                                    else if (td_num === 18) {
+                                        td.textContent = "학점"
+                                    }
+                                    else if (td_num === 19) {
+                                        if (res.학점[l] === 3) {
+                                            td.textContent = "3";
+                                        }
+                                        else if (res.학점[l] === 2) {
+                                            td.textContent = "2";
+                                        }
+                                        else if (res.학점[l] === 1) {
+                                            td.textContent = "1";
+                                        }
+                                    }
+                                    td_num++;
                                     tr.appendChild(td);
                                 }
                             }
@@ -113,77 +406,239 @@
                         div_GE.appendChild(details);
                     }
                 });
-            });
-
-            const createTable = () => {
-                // if (document.getElementById("t"+this.id)) {
-                //     $("table").remove("t"+this.id);
-                //     return;
-                // }
-                // let _id = 0;
-
-                var table = document.createElement('table');
-                table.id = "t"+this.id;
-
-                for (let i=0; i<3; i++) {
-                    var tr = document.createElement('tr');
-                    if (i === 0) {
-                        for(let j = 0; j < 4; j++) {
-                            var td = document.createElement('td');
-                            // td.id = this.id+"_"+_id;
-                            if (j === 0) {
-                                td.textContent = "발표";
-                            }
-                            else if (j === 1) {
-                                td.textContent = "시험";
-                            }
-                            else if (j === 2) {
-                                td.textContent = "출석";
-                            }
-                            else if (j === 3) {
-                                td.textContent = "레포트";
-                            }
-                            tr.appendChild(td);
-                            // _id++;
-                        }
-                    }
-                    else if (i === 1) {
-                        for(let j = 0; j < 4; j++) {
-                            var td = document.createElement('td');
-                            // td.id = this.id+"_"+_id;
-                            if (j === 0) {
-                                td.textContent = "토론";
-                            }
-                            else if (j === 1) {
-                                td.textContent = "조별";
-                            }
-                            else if (j === 2) {
-                                td.textContent = "실습";
-                            }
-                            else if (j === 3) {
-                                td.textContent = "평가";
-                            }
-                            tr.appendChild(td);
-                            // _id++;
-                        }
-                    }
-                    else if (i === 2) {
-                        for(let j = 0; j < 2; j++) {
-                            var td = document.createElement('td');
-                            // td.id = this.id+"_"+_id;
-                            if (j === 0) {
-                                td.textContent = "퀴즈";
-                            }
-                            else if (j === 1) {
-                                td.textContent = "특이사항";
-                            }
-                            tr.appendChild(td);
-                            // _id++;
-                        }
-                    }
-                    table.appendChild(tr);
-                }
             }
+            
+            const last_query1 = "("+query1+" or "+query2+") and ("+query3+" or "+query4+" or "+query5+") and ("+query6+" or "+query7+" or "+query8+")"
+            
+            fetch('/callDB',{
+                    method : 'post',
+                    headers : {
+                        'content-type':'application/json'
+                    },
+                    body : JSON.stringify({
+                        last_query : last_query1
+                    })
+                }).then((res)=>res.json())
+                .then((res)=>{
+
+                    if (res.result != 'ok') {
+                        console.log('result is not ok');
+                        return;
+                    }
+                    var div_GE = document.getElementById("교양리스트");
+                    let id = 0;
+                    let len = res.이름.length;
+
+                    for (let l = 0; l < len; l++) {
+                        var details = document.createElement('details');
+                        details.id = "d"+id;
+
+                        var summary = document.createElement('summary');
+                        summary.id = id;
+                        summary.textContent = res.이름[l]+" / "+res.교수[l]+" / "+res.시간[l];
+                        if (res.이수구분[l] === "심화교양") {
+                            summary.style.color = "green";
+                        }
+                        
+                        var table = document.createElement('table');
+                        let td_num = 0;
+                        for (let i=0; i<6; i++) {
+                            var tr = document.createElement('tr');
+                            if (i === 5) {
+                                for (let j=0; j<2; j++) {
+                                    var td = document.createElement('td');
+                                    if (td_num === 20) {
+                                        td.textContent = "특이사항";
+                                    }
+                                    else if (td_num === 21) {
+                                        td.colSpan = 3;
+                                    }
+                                    td_num++;
+                                    tr.appendChild(td);
+                                }
+                            }
+                            else {
+                                for (let j=0; j<4; j++) {
+                                    var td = document.createElement('td');
+                                    if (td_num === 0) {
+                                        td.textContent = "발표"
+                                    }
+                                    else if (td_num === 1) {
+                                        if (res.발표[l] === 0) {
+                                            td.textContent = "X";
+                                            td.style.color = "red";
+                                        }
+                                        else if (res.발표[l] === 1) {
+                                            td.textContent = "O";
+                                            td.style.color = "blue";
+                                        }
+                                        else if (res.발표[l] === 2) {
+                                            td.textContent = "정보 없음";
+                                        }
+                                    }
+                                    else if (td_num === 2) {
+                                        td.textContent = "시험"
+                                    }
+                                    else if (td_num === 3) {
+                                        if (res.시험[l] === 1) {
+                                            td.textContent = "2번";
+                                        }
+                                        else if (res.시험[l] === 2) {
+                                            td.textContent = "1번+과제1번";
+                                        }
+                                        else if (res.시험[l] === 3) {
+                                            td.textContent = "1번";
+                                        }
+                                        else if (res.시험[l] === 4) {
+                                            td.textContent = "과제2번";
+                                        }
+                                        else if (res.시험[l] === 5) {
+                                            td.textContent = "정보 없음";
+                                        }
+                                    }
+                                    else if (td_num === 4) {
+                                        td.textContent = "토론"
+                                    }
+                                    else if (td_num === 5) {
+                                        if (res.토론[l] === 0) {
+                                            td.textContent = "X";
+                                            td.style.color = "red";
+                                        }
+                                        else if (res.토론[l] === 1) {
+                                            td.textContent = "O";
+                                            td.style.color = "blue";
+                                        }
+                                        else if (res.토론[l] === 2) {
+                                            td.textContent = "정보 없음";
+                                        }
+                                    }
+                                    else if (td_num === 6) {
+                                        td.textContent = "조별"
+                                    }
+                                    else if (td_num === 7) {
+                                        if (res.조별[l] === 0) {
+                                            td.textContent = "X";
+                                            td.style.color = "red";
+                                        }
+                                        else if (res.조별[l] === 1) {
+                                            td.textContent = "O";
+                                            td.style.color = "blue";
+                                        }
+                                        else if (res.조별[l] === 2) {
+                                            td.textContent = "정보 없음";
+                                        }
+                                    }
+                                    else if (td_num === 8) {
+                                        td.textContent = "퀴즈"
+                                    }
+                                    else if (td_num === 9) {
+                                        if (res.퀴즈[l] === 0) {
+                                            td.textContent = "X";
+                                            td.style.color = "red";
+                                        }
+                                        else if (res.퀴즈[l] === 1) {
+                                            td.textContent = "O";
+                                            td.style.color = "blue";
+                                        }
+                                        else if (res.퀴즈[l] === 2) {
+                                            td.textContent = "정보 없음";
+                                        }
+                                    }
+                                    else if (td_num === 10) {
+                                        td.textContent = "실습"
+                                    }
+                                    else if (td_num === 11) {
+                                        if (res.실습[l] === 0) {
+                                            td.textContent = "X";
+                                            td.style.color = "red";
+                                        }
+                                        else if (res.실습[l] === 1) {
+                                            td.textContent = "O";
+                                            td.style.color = "blue";
+                                        }
+                                        else if (res.실습[l] === 2) {
+                                            td.textContent = "정보 없음";
+                                        }
+                                    }
+                                    else if (td_num === 12) {
+                                        td.textContent = "출석"
+                                    }
+                                    else if (td_num === 13) {
+                                        if (res.출석[l] === 0) {
+                                            td.textContent = "출결 없음";
+                                        }
+                                        else if (res.출석[l] === 1) {
+                                            td.textContent = "호명";
+                                        }
+                                        else if (res.출석[l] === 2) {
+                                            td.textContent = "랜덤";
+                                        }
+                                        else if (res.출석[l] === 3) {
+                                            td.textContent = "전자출결";
+                                        }
+                                        else if (res.출석[l] === 4) {
+                                            td.textContent = "정보 없음";
+                                        }
+                                    }
+                                    else if (td_num === 14) {
+                                        td.textContent = "레포트"
+                                    }
+                                    else if (td_num === 15) {
+                                        if (res.레포트[l] === 0) {
+                                            td.textContent = "X";
+                                            td.style.color = "red";
+                                        }
+                                        else if (res.레포트[l] === 1) {
+                                            td.textContent = "O";
+                                            td.style.color = "blue";
+                                        }
+                                        else if (res.레포트[l] === 2) {
+                                            td.textContent = "정보 없음";
+                                        }
+                                    }
+                                    else if (td_num === 16) {
+                                        td.textContent = "평가"
+                                    }
+                                    else if (td_num === 17) {
+                                        if (res.평가[l] === 0) {
+                                            td.textContent = "상평";
+                                        }
+                                        else if (res.평가[l] === 1) {
+                                            td.textContent = "절평";
+                                        }
+                                        else if (res.평가[l] === 2) {
+                                            td.textContent = "패논패";
+                                        }
+                                    }
+                                    else if (td_num === 18) {
+                                        td.textContent = "학점"
+                                    }
+                                    else if (td_num === 19) {
+                                        if (res.학점[l] === 3) {
+                                            td.textContent = "3";
+                                        }
+                                        else if (res.학점[l] === 2) {
+                                            td.textContent = "2";
+                                        }
+                                        else if (res.학점[l] === 1) {
+                                            td.textContent = "1";
+                                        }
+                                    }
+                                    td_num++;
+                                    tr.appendChild(td);
+                                }
+                            }
+                            table.appendChild(tr);
+                        }
+
+                        var br = document.createElement('br');
+                        details.appendChild(summary);
+                        details.appendChild(table);
+                        details.appendChild(br);
+                        id++;
+                        div_GE.appendChild(details);
+                    }
+                });
         </script>
 </body>
 </html>
