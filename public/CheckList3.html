@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* 스타일을 수정하여 버튼의 색상을 변경할 수 있습니다. */
+        .button {
+            background-color: white; /* 버튼 기본 배경색 */
+            color: black; /* 버튼 기본 텍스트 색상 */
+        }
+
+        .button.active {
+            background-color: green; /* 활성화된 버튼 배경색 */
+            color: white; /* 활성화된 버튼 텍스트 색상 */
+        }
+    </style>
+</head>
+<body>
+    <label>불호하는 항목을 체크해주세요.<br class='break-m'> (체크하지 않으면 '상관없음'으로 간주)</label>
+    <div id="message"></div>
+    <div>과제 방식 또는 수업 진행 방식 (복수선택 가능)</div> 
+    <div>
+        <input type='button' id='퀴즈' value='퀴즈' class='button' onclick='btnClicked("퀴즈")'/>
+        <br>
+        <input type='button' id='레포트' value='레포트' class='button' onclick='btnClicked("레포트")'/>
+        <br>
+        <input type='button' id='발표' value='발표' class='button' onclick='btnClicked("발표")'/>
+        <br>
+        <input type='button' id='토론' value='토론' class='button' onclick='btnClicked("토론")'/>
+        <br>
+        <input type='button' id='실습' value='실습' class='button' onclick='btnClicked("실습")'/>
+        <br>
+        <input type='button' id='조별활동, 조별과제' value='조별활동, 조별과제'class='button' onclick='btnClicked("조별활동, 조별과제")'/>
+    </div>
+    <br>
+    <button id="nextButton" onclick="checkButtonStates()">다음(3/4)</button>
+</body>
+<script>
+    
+    let check_num2 = [
+        [0, 0, 0, 0, 0, 0],
+        ["퀴즈", "레포트", "발표", "토론", "실습", "조별활동, 조별과제"]
+        ];
+    let query_arr2 = ""
+    const check2_1 = document.getElementById("퀴즈");
+    const check2_2 = document.getElementById("레포트");
+    const check2_3 = document.getElementById("발표");
+    const check2_4 = document.getElementById("토론");
+    const check2_5 = document.getElementById("실습");
+    const check2_6 = document.getElementById("조별활동, 조별과제");
+    function btnClicked(buttonId) {
+        
+        const target = document.getElementById(buttonId);
+        target.classList.toggle('active');
+    }
+    function checkButtonStates() {
+
+        if (check2_1.classList.contains('active')) {
+            check_num2[0][0] = 1;
+            
+        }
+        if (check2_2.classList.contains('active')) {
+            check_num2[0][1] = 1;
+            
+        }
+        if (check2_3.classList.contains('active')) {
+            check_num2[0][2] = 1;
+            
+        }
+        if (check2_4.classList.contains('active')) {
+            check_num2[0][3] = 1;
+            
+        }
+        if (check2_5.classList.contains('active')) {
+            check_num2[0][4] = 1;
+            
+        }
+        if (check2_6.classList.contains('active')) {
+            check_num2[0][5] = 1;
+            
+        }
+        if (check_num2[0][0] === 1) {
+            query_arr2 += "퀴즈 not in (1) and ";
+        }
+        if (check_num2[0][1] === 1) {
+            query_arr2 += "레포트 not in (1) and ";
+        }
+        if (check_num2[0][2] === 1) {
+            query_arr2 += "발표 not in (1) and ";
+        }
+        if (check_num2[0][3] === 1) {
+            query_arr2 += "토론 not in (1) and ";
+        }
+        if (check_num2[0][4] === 1) {
+            query_arr2 += "실습 not in (1) and ";
+        }
+        if (check_num2[0][5] === 1) {
+            query_arr2 += "조별 not in (1) and ";
+        }
+
+        
+        console.log(query_arr2)
+        window.location.href = 'CheckList4.html'
+        
+    }
+</script>
+</html>
