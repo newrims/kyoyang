@@ -102,8 +102,24 @@
 
         
         console.log(query_arr2)
-        window.location.href = 'CheckList4.html'
         
+        check_num2 = [
+        [0, 0, 0, 0, 0, 0],
+        ["퀴즈", "레포트", "발표", "토론", "실습", "조별활동, 조별과제"]
+        ];
+        fetch('/next_to_slecttime3',{
+            method : 'post',
+            headers : {
+                'content-type':'application/json'
+            },
+            body : JSON.stringify({
+                //query_arr0 : query_arr0,
+                //query_arr1 : query_arr1,
+                query_arr2 : query_arr2,
+                //query_arr3 : query_arr3
+            })
+        })
+        window.location.href = 'CheckList4.html'
     }
 </script>
 </html>
