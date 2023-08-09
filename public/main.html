@@ -1,0 +1,1643 @@
+<!DOCTYPE HTML>
+<!--
+	Astral by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+
+<head>
+	<title>디자인</title>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+	<link rel="stylesheet" href="assets/css/main.css" />
+	<noscript>
+		<link rel="stylesheet" href="assets/css/noscript.css" />
+	</noscript>
+	<script src="https://kit.fontawesome.com/90f52c3695.js" crossorigin="anonymous"></script>
+</head>
+
+<body class="is-preload">
+
+	<!-- Wrapper-->
+	<div id="wrapper">
+
+		<!-- Nav -->
+		<nav id="nav">
+			<a href="#Name" class="fa-solid fa-house"><span>1</span></a>
+			<a href="#CheckList1" class="fa-solid fa-check-to-slot"><span>2-1</span></a>
+			<a href="#SelectTime" class="icon fa-solid fa-calendar-days"><span>3</span></a>
+			<a href="#List" class="icon fa-solid fa-clipboard"><span>4</span></a>
+			<a href="#ImFormation" class="icon fa-regular fa-circle-question"><span>5</span></a>
+		</nav>
+
+		<!-- Main -->
+		<div id="main">
+
+			<!-- 1 -->
+			<article id="Name" class="panel">
+				<div>
+					<label>소속대학을 선택해주세요.</label>
+					<br>
+					<div style="text-align: center;">
+						<div>
+							<button type="button" class="button-border" onclick="toggleImage(this)" data-id="finance">
+							<img src="icon/finance.png" alt="" class="button-icon">
+							</button>
+							
+							<button type="button" class="button-border" onclick="toggleImage(this)" data-id="gongdae">
+							<img src="icon/gongdae.png" alt="" class="button-icon">
+							</button>
+							
+							<button type="button" class="button-border" onclick="toggleImage(this)" data-id="global">
+							<img src="icon/global.png" alt="" class="button-icon">
+							</button>
+							
+							<button type="button" class="button-border" onclick="toggleImage(this)" data-id="city">
+							<img src="icon/city.png" alt="" class="button-icon">
+							</button>
+							
+							<button type="button" class="button-border" onclick="toggleImage(this)" data-id="dongbuka">
+							<img src="icon/dongbuka.png" alt="" class="button-icon">
+							</button>
+
+							<button type="button" class="button-border" onclick="toggleImage(this)" data-id="law">
+							<img src="icon/law.png" alt="" class="button-icon">
+							</button>
+
+							<button type="button" class="button-border" onclick="toggleImage(this)" data-id="edu">
+							<img src="icon/edu.png" alt="" class="button-icon">
+							</button>
+
+							<button type="button" class="button-border" onclick="toggleImage(this)" data-id="socialscience">
+							<img src="icon/socialscience.png" alt="" class="button-icon">
+							</button>
+							
+							<button type="button" class="button-border" onclick="toggleImage(this)" data-id="bio">
+							<img src="icon/bio.png" alt="" class="button-icon">
+							</button>
+							
+							<button type="button" class="button-border" onclick="toggleImage(this)" data-id="art">
+							<img src="icon/art.png" alt="" class="button-icon">
+							</button>
+							
+							<button type="button" class="button-border" onclick="toggleImage(this)" data-id="humanities">
+							<img src="icon/humanities.png" alt="" class="button-icon">
+							</button>
+
+							<button type="button" class="button-border" onclick="toggleImage(this)" data-id="natural">
+							<img src="icon/natural.png" alt="" class="button-icon">
+							</button>
+							
+							<button type="button" class="button-border" onclick="toggleImage(this)" data-id="computer">
+							<img src="icon/computer.png" alt="" class="button-icon">
+							</button>
+							
+							<button type="button" class="button-border">
+							<img src="icon/white background1.png" alt="" class="button-icon">
+							</button>
+							
+							<button type="button" class="button-border">
+							<img src="icon/white background1.png" alt="" class="button-icon">
+							</button>
+						</div>			
+					</div>
+				</div>
+				
+				<br>
+
+				<div>
+						<div>
+							<label>학과를 선택해주세요.</label>
+							<select required id="GE">
+								<option value="" disabled selected>학과</option>
+								<option value=”건설환경공학과”>건설환경공학과</option>
+								<option value=”건축공학”>건축공학</option>
+								<option value=”경영학부”>경영학부</option>
+								<option value=”경제학과”>경제학과</option>
+								<option value=”공연예술학과”>공연예술학과</option>
+								<option value=”국어교육과”>국어교육과</option>
+								<option value=”국어국문학과”>국어국문학과</option>
+								<option value=”기계공학과”>기계공학과</option>
+								<option value=”나노바이오”>나노바이오</option>
+								<option value=”도시건축학”>도시건축학</option>
+								<option value=”도시공학과”>도시공학과</option>
+								<option value=”도시행정학과”>도시행정학과</option>
+								<option value=”독어독문학과”>독어독문학과</option>
+								<option value=”동북아통상전공”>동북아통상전공</option>
+								<option value=”디자인학부”>디자인학부</option>
+								<option value=”무역학부”>무역학부</option>
+								<option value=”문헌정보학과”>문헌정보학과</option>
+								<option value=”물리학과”>물리학과</option>
+								<option value=”미디어커뮤니케이션학과”>미디어커뮤니케이션학과</option>
+								<option value=”바이오-로봇 시스템공학과”>바이오-로봇 시스템공학과</option>
+								<option value=”법학부”>법학부</option>
+								<option value=”분자의생명”>분자의생명</option>
+								<option value=”불어불문학과”>불어불문학과</option>
+								<option value=”사회복지학과”>사회복지학과</option>
+								<option value=”산업경영공학과”>산업경영공학과</option>
+								<option value=”생명공학”>생명공학</option>
+								<option value=”생명과학”>생명과학</option>
+								<option value=”세무회계학과”>세무회계학과</option>
+								<option value=”소비자학과”>소비자학과</option>
+								<option value=”소셜데이터사이언스 연계전공”>소셜데이터사이언스 연계전공</option>
+								<option value=”수학과”>수학과</option>
+								<option value=”수학교육과”>수학교육과</option>
+								<option value=”신소재 공학과”>신소재 공학과</option>
+								<option value=”안전공학과”>안전공학과</option>
+								<option value=”에너지화학공학과”>에너지화학공학과</option>
+								<option value=”역사교육과”>역사교육과</option>
+								<option value=”영어교육과”>영어교육과</option>
+								<option value=”영어영문학과”>영어영문학과</option>
+								<option value=”운동건강학부”>운동건강학부</option>
+								<option value=”유아교육과”>유아교육과</option>
+								<option value=”윤리교육과”>윤리교육과</option>
+								<option value=”일어교육과”>일어교육과</option>
+								<option value=”일어일문학과”>일어일문학과</option>
+								<option value=”임베디드시스템공학과”>임베디드시스템공학과</option>
+								<option value=”전기공학과”>전기공학과</option>
+								<option value=”전자공학과”>전자공학과</option>
+								<option value=”정보통신공학과”>정보통신공학과</option>
+								<option value=”정치외교학과”>정치외교학과</option>
+								<option value=”조형예술학부”>조형예술학부</option>
+								<option value=”중어중국학과”>중어중국학과</option>
+								<option value=”창의인재개발학과”>창의인재개발학과</option>
+								<option value=”체육교육과”>체육교육과</option>
+								<option value=”체육학부”>체육학부</option>
+								<option value=”컴퓨터공학부”>컴퓨터공학부</option>
+								<option value=”테크노경영학과”>테크노경영학과</option>
+								<option value=”패션산업학과”>패션산업학과</option>
+								<option value=”한국통상전공”>한국통상전공</option>
+								<option value=”해양학과”>해양학과</option>
+								<option value=”행정학과”>행정학과</option>
+								<option value=”화학과”>화학과</option>
+								<option value=”환경공학”>환경공학</option>
+							</select>
+						</div>
+					<input type="submit" value="확인" onclick="location.href='#CheckList1'" id="nextpage_to_checklist"/>
+				</div>
+				
+				<script>
+				var selectedImages = {
+   				"finance": "icon_selected/finance_selected.png",
+    			"gongdae": "icon_selected/gongdae_selected.png",
+				"global": "icon_selected/global_selected.png",
+				"city": "icon_selected/city_selected.png",
+				"dongbuka": "icon_selected/dongbuka_selected.png",
+				"law": "icon_selected/law_selected.png",
+				"edu": "icon_selected/edu_selected.png",
+				"socialscience": "icon_selected/socialscience_selected.png",
+				"bio": "icon_selected/bio_selected.png",
+				"art": "icon_selected/art_selected.png",
+				"humanities": "icon_selected/humanities_selected.png",
+				"natural": "icon_selected/natural_selected.png",
+				"computer": "icon_selected/computer_selected.png",
+				};	
+
+				var currentImage = {
+   				"finance": "icon/finance.png",
+    			"gongdae": "icon/gongdae.png",
+				"global": "icon/global.png",
+				"city": "icon/city.png",
+				"dongbuka": "icon/dongbuka.png",
+				"law": "icon/law.png",
+				"edu": "icon/edu.png",
+				"socialscience": "icon/socialscience.png",
+				"bio": "icon/bio.png",
+				"art": "icon/art.png",
+				"humanities": "icon/humanities.png",
+				"natural": "icon/natural.png",
+				"computer": "icon/computer.png",
+				};	
+
+				var departmentMapping = {
+				"finance": ["경영학부", "세무회계학과", "테크노경영학과"],
+				"gongdae": ["기계공학과", "바이오-로봇 시스템공학과", "산업경영공학과", "신소재 공학과", "안전공학과", "에너지화학공학과", "전기공학과", "전자공학과"],
+				"global": ["경제학과", "무역학부", "소비자학과", "정치외교학과", "행정학과"],
+				"city": ["건설환경공학과", "건축공학", "도시건축학", "도시공학과", "도시행정학과", "환경공학"],
+				"dongbuka": ["동북아통상전공", "한국통상전공"],
+				"law": ["법학부"],
+				"edu": ["국어교육과", "수학교육과", "역사교육과", "영어교육과", "유아교육과", "윤리교육과", "일어교육과", "체육교육과"],
+				"socialscience": ["문헌정보학과", "미디어커뮤니케이션학과", "사회복지학과", "소셜데이터사이언스 연계전공", "창의인재개발학과"],
+				"bio": ["나노바이오", "분자의생명", "생명공학", "생명과학"],
+				"art": ["공연예술학과", "디자인학부", "운동건강학부", "조형예술학부", "체육학부"],
+				"humanities": ["국어국문학과", "독어독문학과", "불어불문학과", "영어영문학과", "일어일문학과", "중어중국학과"],
+				"natural": ["물리학과", "수학과", "패션산업학과", "해양학과", "화학과"],
+				"computer": ["임베디드시스템공학과", "정보통신공학과", "컴퓨터공학부"],
+				};
+
+				
+				
+				function toggleImage(button) {
+				var imgElement = button.querySelector('img');
+				var buttonId = button.getAttribute('data-id');
+				var currentImageSrc = imgElement.getAttribute('src');
+				var selectedImageSrc = selectedImages[buttonId];
+				var originalImageSrc = currentImage[buttonId];
+
+					if (button.classList.contains("button-selected")) {
+					button.classList.remove("button-selected");
+					imgElement.setAttribute('src', originalImageSrc);
+					} 
+					else {
+						button.classList.add("button-selected");
+						imgElement.setAttribute('src', selectedImageSrc);
+	
+						var selectedDepartments = departmentMapping[buttonId];
+						if (selectedDepartments) {
+							var buttons = document.querySelectorAll('.button-border');
+							buttons.forEach(function(btn) {
+								btn.classList.remove("button-selected");
+								btn.querySelector('img').setAttribute('src', currentImage[btn.getAttribute('data-id')]);
+								button.classList.add("button-selected");
+								imgElement.setAttribute('src', selectedImageSrc);
+							});
+
+							selectedDepartments.forEach(function(department) {
+								var departmentButton = document.querySelector('.button-border[data-id="' + department + '"]');
+								if (departmentButton) {
+									departmentButton.classList.add("button-selected");
+									departmentButton.querySelector('img').setAttribute('src', selectedImages[department]);
+								}
+							});
+
+							var departmentSelect = document.querySelector('select');
+							departmentSelect.innerHTML = `
+								<option value="" disabled selected>학과</option>
+								${selectedDepartments.map(dep => `<option value="${dep}">${dep}</option>`).join('')}
+							`;
+						} 
+
+						else {
+							button.classList.add("button-selected");
+							imgElement.setAttribute('src', selectedImageSrc);	
+							}
+					
+					}
+				}
+				const btn_nextpage_to_checklist = document.getElementById("nextpage_to_checklist");
+				btn_nextpage_to_checklist.addEventListener("click",()=>{
+					fetch('/next_to_checklist',{
+						method : 'post',
+						headers : {
+							'content-type':'application/json'
+						},
+						body : JSON.stringify({
+							GE : GE.value
+						})
+					})
+				});
+
+				</script>
+
+			</article>
+
+			<!-- 2-1 -->
+			<article id="CheckList1" class="panel">
+				<label>선호하는 항목을 체크해주세요.<br class='break-m'> (복수선택가능, 1개 이상 체크해주세요)</label>
+				<div id="message"> </div> 
+				<div>시험 방식</div>
+				<br>
+				<div>
+					<input type='button' id='과제 대체' value='과제 대체' class='button-CheckList' onclick='btnClicked("과제 대체")'/>
+					<br>
+					<input type='button' id='시험 2번' value='시험 2번' class='button-CheckList' onclick='btnClicked("시험 2번")'/>
+					<br>
+					<input type='button' id='시험 1번' value='시험 1번' class='button-CheckList' onclick='btnClicked("시험 1번")'/>
+				</div>
+				<br>
+				<button id="nextButton" onclick="checkButtonStates1()">다음(1/4)</button>
+				
+				<script>
+					let check_num0 = [];
+					let check_cnt0 = 0;
+					let query_arr0 = ""
+					const check0_1 = document.getElementById("과제 대체");
+					const check0_2 = document.getElementById("시험 2번");
+					const check0_3 = document.getElementById("시험 1번");
+					const again_message = document.querySelector('#message')
+				
+					function btnClicked(buttonId) {
+						
+						const target = document.getElementById(buttonId);
+						target.classList.toggle('active');
+					}
+					
+					function checkButtonStates1() {
+						if (check0_1.classList.contains('active')) {
+							check_num0.push(0, 2, 4, 5);
+							check_cnt0++;
+						}
+						if (check0_2.classList.contains('active')) {
+							check_num0.push(1, 5);
+							check_cnt0++;
+						}
+						if (check0_3.classList.contains('active')) {
+							check_num0.push(2, 3, 5);
+							check_cnt0++;
+						}
+						if (check_cnt0 === 0){
+							
+							again_message.textContent = '*체크항목을 다시 확인 해주세요.*'
+							check_num0 = []
+						}
+						else{
+							const uniqueCheckNum0 = [...new Set(check_num0)];
+							uniqueCheckNum0.sort((a, b) => a - b);
+							console.log(uniqueCheckNum0);
+							check_num0 = [];
+				
+							
+				
+							if (uniqueCheckNum0.length > 0) {
+								query_arr0 = uniqueCheckNum0.reduce((acc, course, idx)=>{
+									if (idx === uniqueCheckNum0.length - 1) {
+										return acc+`${course}) and `;
+									}
+									return acc+`${course},`;
+								},"시험 in (");
+							}
+							again_message.textContent = ''
+							console.log(query_arr0)
+							window.location.href = 'CheckList2.html#CheckList1'
+						}
+					}
+				</script>
+
+			</article>
+
+			<!-- 3 -->
+			<article id="SelectTime" class="panel">
+				<label>ㅇㅇ님의 전공 시간과 필수 교양 시간을 선택해주세요.</label>
+				<br>
+				<label>60분 기준</label>
+				<label class="switch-button">
+					<input type="checkbox" id="time90"/>
+					<span class="onoff-switch"></span>
+				</label>
+				<label>90분 기준</label>
+				<div class="table-container">
+				<table>
+				</table>
+				</div>
+				<br>
+				<script>
+				// 테이블 요소 선택
+				var table = document.querySelector('table');
+		
+				// 카운터 초기화
+				var counter_tr = -1;
+				var counter_th = 0;
+		
+				// 행을 28개 생성
+				for (var i = 0; i < 23; i++) {
+					var tr = document.createElement('tr');
+					counter_tr++;
+					counter_th = 0;
+		
+					// 각 행에 5개의 셀 생성
+					for (var j = 0; j < 5; j++) {
+						var td = document.createElement('td');
+						td.id = counter_tr + counter_th; // 현재 카운터 값을 ID로 설정
+						counter_th += 23;
+						td.style.backgroundColor = 'white';
+						tr.appendChild(td);
+					}
+					table.appendChild(tr);
+				}
+		
+				const cells = document.querySelectorAll('td');
+				const checkbox = document.getElementById('time90');
+		
+		
+				function setCellsToGray() {
+					cells.forEach(cell => {
+						if (cell.style.backgroundColor !== 'rgb(0, 48, 242)') {
+							if (checkbox.checked) {
+		
+								if (cell.id % 23 == 0 || cell.id % 23 == 1 || cell.id % 23 == 2 || cell.id % 23 == 6 || cell.id % 23 == 7 || cell.id % 23 == 8 || cell.id % 23 == 12 || cell.id % 23 == 13 || cell.id % 23 == 14 || cell.id % 23 == 18 || cell.id % 23 == 20 || cell.id % 23 == 22) {
+									cell.style.backgroundColor = ('#c3c3c3');
+								}
+								else {
+									cell.style.backgroundColor = ('');
+								}
+							}
+							else {
+		
+								if ((cell.id % 23 == 0 || cell.id % 23 == 1 || cell.id % 23 == 4 || cell.id % 23 == 5 || cell.id % 23 == 8 || cell.id % 23 == 9 || cell.id % 23 == 12 || cell.id % 23 == 13 || cell.id % 23 == 17 || cell.id % 23 == 16 || cell.id % 23 == 19 || cell.id % 23 == 21)) {
+									cell.style.backgroundColor = ('#c3c3c3');
+								}
+								else {
+									cell.style.backgroundColor = ('');
+								}
+		
+							}
+						}
+					})
+				}
+		
+				checkbox.addEventListener('click', () => {
+					setCellsToGray();
+				})
+		
+				setCellsToGray();
+				
+				cells.forEach(cell => {
+					cell.addEventListener('click', () => {
+						if (checkbox.checked) {
+							if (cell.id < 18 || (cell.id >= 69 && cell.id < 87)) {
+								if (cell.id % 3 === 0) {
+									if (cell.style.backgroundColor !== 'rgb(0, 48, 242)') {
+										cell.style.backgroundColor = '#0030f2';
+										document.getElementById(Number(cell.id) + 1).style.backgroundColor = '#0030f2';
+										document.getElementById(Number(cell.id) + 2).style.backgroundColor = '#0030f2';
+									}
+									else {
+										cell.style.backgroundColor = '';
+										document.getElementById(Number(cell.id) + 1).style.backgroundColor = '';
+										document.getElementById(Number(cell.id) + 2).style.backgroundColor = '';
+									}
+								}
+								else if (cell.id % 3 === 1) {
+									if (cell.style.backgroundColor !== 'rgb(0, 48, 242)') {
+										cell.style.backgroundColor = '#0030f2';
+										document.getElementById(Number(cell.id) - 1).style.backgroundColor = '#0030f2';
+										document.getElementById(Number(cell.id) + 1).style.backgroundColor = '#0030f2';
+									}
+									else {
+										cell.style.backgroundColor = '';
+										document.getElementById(Number(cell.id) - 1).style.backgroundColor = '';
+										document.getElementById(Number(cell.id) + 1).style.backgroundColor = '';
+									}
+								}
+								else {
+									if (cell.style.backgroundColor !== 'rgb(0, 48, 242)') {
+										cell.style.backgroundColor = '#0030f2';
+										document.getElementById(Number(cell.id) - 1).style.backgroundColor = '#0030f2';
+										document.getElementById(Number(cell.id) - 2).style.backgroundColor = '#0030f2';
+									}
+									else {
+										cell.style.backgroundColor = '';
+										document.getElementById(Number(cell.id) - 1).style.backgroundColor = '';
+										document.getElementById(Number(cell.id) - 2).style.backgroundColor = '';
+									}
+								}
+							}
+							else if ((cell.id >= 23 && cell.id < 41) || (cell.id >= 92 && cell.id < 110)) {
+								if (cell.id % 3 === 2) {
+									if (cell.style.backgroundColor !== 'rgb(0, 48, 242)') {
+										cell.style.backgroundColor = '#0030f2';
+										document.getElementById(Number(cell.id) + 1).style.backgroundColor = '#0030f2';
+										document.getElementById(Number(cell.id) + 2).style.backgroundColor = '#0030f2';
+									}
+									else {
+										cell.style.backgroundColor = '';
+										document.getElementById(Number(cell.id) + 1).style.backgroundColor = '';
+										document.getElementById(Number(cell.id) + 2).style.backgroundColor = '';
+									}
+								}
+								else if (cell.id % 3 === 0) {
+									if (cell.style.backgroundColor !== 'rgb(0, 48, 242)') {
+										cell.style.backgroundColor = '#0030f2';
+										document.getElementById(Number(cell.id) - 1).style.backgroundColor = '#0030f2';
+										document.getElementById(Number(cell.id) + 1).style.backgroundColor = '#0030f2';
+									}
+									else {
+										cell.style.backgroundColor = '';
+										document.getElementById(Number(cell.id) - 1).style.backgroundColor = '';
+										document.getElementById(Number(cell.id) + 1).style.backgroundColor = '';
+									}
+								}
+								else {
+									if (cell.style.backgroundColor !== 'rgb(0, 48, 242)') {
+										cell.style.backgroundColor = '#0030f2';
+										document.getElementById(Number(cell.id) - 1).style.backgroundColor = '#0030f2';
+										document.getElementById(Number(cell.id) - 2).style.backgroundColor = '#0030f2';
+									}
+									else {
+										cell.style.backgroundColor = '';
+										document.getElementById(Number(cell.id) - 1).style.backgroundColor = '';
+										document.getElementById(Number(cell.id) - 2).style.backgroundColor = '';
+									}
+								}
+							}
+							else if ((cell.id >= 46 && cell.id < 64)) {
+								if (cell.id % 3 === 1) {
+									if (cell.style.backgroundColor !== 'rgb(0, 48, 242)') {
+										cell.style.backgroundColor = '#0030f2';
+										document.getElementById(Number(cell.id) + 1).style.backgroundColor = '#0030f2';
+										document.getElementById(Number(cell.id) + 2).style.backgroundColor = '#0030f2';
+									}
+									else {
+										cell.style.backgroundColor = '';
+										document.getElementById(Number(cell.id) + 1).style.backgroundColor = '';
+										document.getElementById(Number(cell.id) + 2).style.backgroundColor = '';
+									}
+								}
+								else if (cell.id % 3 === 2) {
+									if (cell.style.backgroundColor !== 'rgb(0, 48, 242)') {
+										cell.style.backgroundColor = '#0030f2';
+										document.getElementById(Number(cell.id) - 1).style.backgroundColor = '#0030f2';
+										document.getElementById(Number(cell.id) + 1).style.backgroundColor = '#0030f2';
+									}
+									else {
+										cell.style.backgroundColor = '';
+										document.getElementById(Number(cell.id) - 1).style.backgroundColor = '';
+										document.getElementById(Number(cell.id) + 1).style.backgroundColor = '';
+									}
+								}
+								else {
+									if (cell.style.backgroundColor !== 'rgb(0, 48, 242)') {
+										cell.style.backgroundColor = '#0030f2';
+										document.getElementById(Number(cell.id) - 1).style.backgroundColor = '#0030f2';
+										document.getElementById(Number(cell.id) - 2).style.backgroundColor = '#0030f2';
+									}
+									else {
+										cell.style.backgroundColor = '';
+										document.getElementById(Number(cell.id) - 1).style.backgroundColor = '';
+										document.getElementById(Number(cell.id) - 2).style.backgroundColor = '';
+									}
+								}
+							}
+							else {
+								if (cell.style.backgroundColor !== 'rgb(0, 48, 242)') {
+									cell.style.backgroundColor = '#0030f2';
+								}
+								else {
+									cell.style.backgroundColor = '';
+								}
+							}
+						}
+						else {
+							if (cell.id < 18 || (cell.id >= 46 && cell.id < 64) || (cell.id >= 92 && cell.id < 110)) {
+								if (cell.id % 2 === 0) {
+									if (cell.style.backgroundColor !== 'rgb(0, 48, 242)') {
+										cell.style.backgroundColor = '#0030f2';
+										document.getElementById(Number(cell.id) + 1).style.backgroundColor = '#0030f2';
+									}
+									else {
+										cell.style.backgroundColor = '';
+										document.getElementById(Number(cell.id) + 1).style.backgroundColor = '';
+									}
+								}
+								else {
+									if (cell.style.backgroundColor !== 'rgb(0, 48, 242)') {
+										cell.style.backgroundColor = '#0030f2';
+										document.getElementById(Number(cell.id) - 1).style.backgroundColor = '#0030f2';
+									}
+									else {
+										cell.style.backgroundColor = '';
+										document.getElementById(Number(cell.id) - 1).style.backgroundColor = '';
+									}
+								}
+							}
+							else if ((cell.id >= 23 && cell.id < 41) || (cell.id >= 69 && cell.id < 87)) {
+								if (cell.id % 2 === 1) {
+									if (cell.style.backgroundColor !== 'rgb(0, 48, 242)') {
+										cell.style.backgroundColor = '#0030f2';
+										document.getElementById(Number(cell.id) + 1).style.backgroundColor = '#0030f2';
+									}
+									else {
+										cell.style.backgroundColor = '';
+										document.getElementById(Number(cell.id) + 1).style.backgroundColor = '';
+									}
+								}
+								else {
+									if (cell.style.backgroundColor !== 'rgb(0, 48, 242)') {
+										cell.style.backgroundColor = '#0030f2';
+										document.getElementById(Number(cell.id) - 1).style.backgroundColor = '#0030f2';
+									}
+									else {
+										cell.style.backgroundColor = '';
+										document.getElementById(Number(cell.id) - 1).style.backgroundColor = '';
+									}
+								}
+							}
+							else {
+								if (cell.style.backgroundColor !== 'rgb(0, 48, 242)') {
+									cell.style.backgroundColor = '#0030f2';
+								}
+								else {
+									cell.style.backgroundColor = '';
+								}
+		
+							}
+		
+						}
+						setCellsToGray();
+					});
+				});
+		
+				// Function to handle button click and display colored cell positions
+				function displayColoredCellPositions() {
+		
+					const coloredCells = document.querySelectorAll('td[style*="background-color: rgb(0, 48, 242)"]');
+		
+					const index = [];
+					coloredCells.forEach(cell => {
+						index.push(Number(cell.id));
+					});
+		
+					const idx = [];
+					console.log(index)
+					for (let i = 0; i < index.length; i++) {
+						switch (index[i]) {
+							case 0:
+								idx.push('011');
+								break;
+							case 1:
+								idx.push('012');
+								break;
+							case 2:
+								idx.push('021');
+								break;
+							case 3:
+								idx.push('022');
+								break;
+							case 4:
+								idx.push('031');
+								break;
+							case 5:
+								idx.push('032');
+								break;
+							case 6:
+								idx.push('041');
+								break;
+							case 7:
+								idx.push('042');
+								break;
+							case 8:
+								idx.push('051');
+								break;
+							case 9:
+								idx.push('052');
+								break;
+							case 10:
+								idx.push('061');
+								break;
+							case 11:
+								idx.push('062');
+								break;
+							case 12:
+								idx.push('071');
+								break;
+							case 13:
+								idx.push('072');
+								break;
+							case 14:
+								idx.push('081');
+								break;
+							case 15:
+								idx.push('082');
+								break;
+							case 16:
+								idx.push('091');
+								break;
+							case 17:
+								idx.push('092');
+								break;
+							case 18:
+								idx.push('510');
+								break;
+							case 19:
+								idx.push('520');
+								break;
+							case 20:
+								idx.push('530');
+								break;
+							case 21:
+								idx.push('540');
+								break;
+							case 22:
+								idx.push('550');
+								break;
+							case 23:
+								idx.push('111');
+								break;
+							case 24:
+								idx.push('112');
+								break;
+							case 25:
+								idx.push('121');
+								break;
+							case 26:
+								idx.push('122');
+								break;
+							case 27:
+								idx.push('131');
+								break;
+							case 28:
+								idx.push('132');
+								break;
+							case 29:
+								idx.push('141');
+								break;
+							case 30:
+								idx.push('142');
+								break;
+							case 31:
+								idx.push('151');
+								break;
+							case 32:
+								idx.push('152');
+								break;
+							case 33:
+								idx.push('161');
+								break;
+							case 34:
+								idx.push('162');
+								break;
+							case 35:
+								idx.push('171');
+								break;
+							case 36:
+								idx.push('172');
+								break;
+							case 37:
+								idx.push('181');
+								break;
+							case 38:
+								idx.push('182');
+								break;
+							case 39:
+								idx.push('191');
+								break;
+							case 40:
+								idx.push('192');
+								break;
+							case 41:
+								idx.push('610');
+								break;
+							case 42:
+								idx.push('620');
+								break;
+							case 43:
+								idx.push('630');
+								break;
+							case 44:
+								idx.push('640');
+								break;
+							case 45:
+								idx.push('650');
+								break;
+							case 46:
+								idx.push('211');
+								break;
+							case 47:
+								idx.push('212');
+								break;
+							case 48:
+								idx.push('221');
+								break;
+							case 49:
+								idx.push('222');
+								break;
+							case 50:
+								idx.push('231');
+								break;
+							case 51:
+								idx.push('232');
+								break;
+							case 52:
+								idx.push('241');
+								break;
+							case 53:
+								idx.push('242');
+							case 54:
+								idx.push('251');
+								break;
+							case 55:
+								idx.push('252');
+								break;
+							case 56:
+								idx.push('261');
+								break;
+							case 57:
+								idx.push('262');
+								break;
+							case 58:
+								idx.push('271');
+								break;
+							case 59:
+								idx.push('272');
+								break;
+							case 60:
+								idx.push('281');
+								break;
+							case 61:
+								idx.push('282');
+								break;
+							case 62:
+								idx.push('291');
+								break;
+							case 63:
+								idx.push('292');
+								break;
+							case 64:
+								idx.push('710');
+								break;
+							case 65:
+								idx.push('720');
+								break;
+							case 66:
+								idx.push('730');
+								break;
+							case 67:
+								idx.push('740');
+								break;
+							case 68:
+								idx.push('750');
+								break;
+							case 69:
+								idx.push('311');
+								break;
+							case 70:
+								idx.push('312');
+								break;
+							case 71:
+								idx.push('321');
+								break;
+							case 72:
+								idx.push('322');
+								break;
+							case 73:
+								idx.push('331');
+								break;
+							case 74:
+								idx.push('332');
+								break;
+							case 75:
+								idx.push('341');
+								break;
+							case 76:
+								idx.push('342');
+								break;
+							case 77:
+								idx.push('351');
+								break;
+							case 78:
+								idx.push('352');
+								break;
+							case 79:
+								idx.push('361');
+								break;
+							case 80:
+								idx.push('362');
+								break;
+							case 81:
+								idx.push('371');
+								break;
+							case 82:
+								idx.push('372');
+								break;
+							case 83:
+								idx.push('381');
+								break;
+							case 84:
+								idx.push('382');
+								break;
+							case 85:
+								idx.push('391');
+								break;
+							case 86:
+								idx.push('392');
+								break;
+							case 87:
+								idx.push('810');
+								break;
+							case 88:
+								idx.push('820');
+								break;
+							case 89:
+								idx.push('830');
+								break;
+							case 90:
+								idx.push('840');
+								break;
+							case 91:
+								idx.push('850');
+								break;
+							case 92:
+								idx.push('411');
+								break;
+							case 93:
+								idx.push('412');
+								break;
+							case 94:
+								idx.push('421');
+								break;
+							case 95:
+								idx.push('422');
+								break;
+							case 96:
+								idx.push('431');
+								break;
+							case 97:
+								idx.push('432');
+								break;
+							case 98:
+								idx.push('441');
+								break;
+							case 99:
+								idx.push('442');
+								break;
+							case 100:
+								idx.push('451');
+								break;
+							case 101:
+								idx.push('452');
+								break;
+							case 102:
+								idx.push('461');
+								break;
+							case 103:
+								idx.push('462');
+								break;
+							case 104:
+								idx.push('471');
+								break;
+							case 105:
+								idx.push('472');
+								break;
+							case 106:
+								idx.push('481');
+								break;
+							case 107:
+								idx.push('482');
+								break;
+							case 108:
+								idx.push('491');
+								break;
+							case 109:
+								idx.push('492');
+								break;
+							case 110:
+								idx.push('910');
+								break;
+							case 111:
+								idx.push('920');
+								break;
+							case 112:
+								idx.push('930');
+								break;
+							case 113:
+								idx.push('940');
+								break;
+							case 114:
+								idx.push('950');
+								break;
+						}
+					};
+		
+					fetch('/next_to_test', {
+						method: 'post',
+						headers: {
+							'content-type': 'application/json'
+						},
+						body: JSON.stringify({
+							idx: idx
+						})
+					})
+		
+					location.href = '#List';
+		
+		
+				}
+			</script>
+				<!-- Button to display colored cell positions -->
+				<button onclick="displayColoredCellPositions()">확인</button>
+			
+			</article>
+
+			<!-- 4 -->
+			<article id="List" class="panel">
+				<details>
+					<summary>필터</summary>
+					<div id="detail_info">
+						<button id="fir_0" onclick="query_1(this)">핵심교양</button>
+						<button style="color:green" id="sec_0" onclick="query_2()">심화교양</button>
+						<button id="fir_1" onclick="query_3()">1학점</button>
+						<button id="sec_1" onclick="query_4()">2학점</button>
+						<button id="thi_1" onclick="query_5()">3학점</button>
+						<button id="fir_2" onclick="query_6()">온라인</button>
+						<button id="sec_2" onclick="query_7()">오프라인</button>
+						<button id="thi_2" onclick="query_8()">온라인+오프라인</button>
+					</div>
+				</details>
+					<div id="outer"></div>
+					<script>
+						const btn = document.getElementById("확인");
+						var div = document.createElement("div");
+						div.id = "교양리스트";
+						document.getElementById("outer").appendChild(div);
+			
+						let query1real = [];
+						let query1rea2 = [];
+						let query1rea3 = [];
+			
+						let labels;
+			
+						let query1 = "이수구분 = '핵심교양'";
+						let query2 = "이수구분 = '심화교양'";
+						let query3 = "학점 = 1";
+						let query4 = "학점 = 2";
+						let query5 = "학점 = 3";
+						let query6 = "수업방법 in ('온라인(동영상)','온라인(화상)')";
+						let query7 = "수업방법 = ''";
+						let query8 = "수업방법 = '온라인(동영상)+오프라인'";
+			
+						const query_1 = ()=> {
+							const _btn = document.getElementById("fir_0");
+							if (_btn.style.opacity == 0.3) {
+								_btn.style.opacity = 1;
+								query1 = "이수구분 = '핵심교양'"
+							}
+							else {
+								_btn.style.opacity = 0.3;
+								query1 = "이수구분 = ''"
+							}
+							show_GE();
+						}
+						const query_2 = ()=> {
+							const _btn = document.getElementById("sec_0");
+							if (_btn.style.opacity == 0.3) {
+								_btn.style.opacity = 1;
+								query2 = "이수구분 = '심화교양'"
+							}
+							else {
+								_btn.style.opacity = 0.3;
+								query2 = "이수구분 = ''"
+							}
+							show_GE();
+						}
+						const query_3 = ()=> {
+							const _btn = document.getElementById("fir_1");
+							if (_btn.style.opacity == 0.3) {
+								_btn.style.opacity = 1;
+								query3 = "학점 = 1"
+							}
+							else {
+								_btn.style.opacity = 0.3;
+								query3 = "학점 = ''"
+							}
+							show_GE();
+						}
+						const query_4 = ()=> {
+							const _btn = document.getElementById("sec_1");
+							if (_btn.style.opacity == 0.3) {
+								_btn.style.opacity = 1;
+								query4 = "학점 = 2"
+							}
+							else {
+								_btn.style.opacity = 0.3;
+								query4 = "학점 = ''"
+							}
+							show_GE();
+						}
+						const query_5 = ()=> {
+							const _btn = document.getElementById("thi_1");
+							if (_btn.style.opacity == 0.3) {
+								_btn.style.opacity = 1;
+								query5 = "학점 = 3"
+							}
+							else {
+								_btn.style.opacity = 0.3;
+								query5 = "학점 = ''"
+							}
+							show_GE();
+						}
+						const query_6 = ()=> {
+							const _btn = document.getElementById("fir_2");
+							if (_btn.style.opacity == 0.3) {
+								_btn.style.opacity = 1;
+								query6 = "수업방법 in ('온라인(동영상)','온라인(화상)')"
+							}
+							else {
+								_btn.style.opacity = 0.3;
+								query6 = "수업방법 = '123'"
+							}
+							show_GE();
+						}
+						const query_7 = ()=> {
+							const _btn = document.getElementById("sec_2");
+							if (_btn.style.opacity == 0.3) {
+								_btn.style.opacity = 1;
+								query7 = "수업방법 = ''"
+							}
+							else {
+								_btn.style.opacity = 0.3;
+								query7 = "수업방법 = '123'"
+							}
+							show_GE();
+						}
+						const query_8 = ()=> {
+							const _btn = document.getElementById("thi_2");
+							if (_btn.style.opacity == 0.3) {
+								_btn.style.opacity = 1;
+								query8 = "수업방법 = '온라인(동영상)+오프라인'"
+							}
+							else {
+								_btn.style.opacity = 0.3;
+								query8 = "수업방법 = '123'"
+							}
+							show_GE();
+						}
+			
+						const show_GE = ()=> {
+							document.getElementById("교양리스트").remove();
+							var div = document.createElement("div");
+							div.id = "교양리스트";
+							document.getElementById("outer").appendChild(div);
+			
+							const last_query = "("+query1+" or "+query2+") and ("+query3+" or "+query4+" or "+query5+") and ("+query6+" or "+query7+" or "+query8+")"
+			
+							fetch('/callDB',{
+								method : 'post',
+								headers : {
+									'content-type':'application/json'
+								},
+								body : JSON.stringify({
+									last_query : last_query
+								})
+							}).then((res)=>res.json())
+							.then((res)=>{
+			
+								if (res.result != 'ok') {
+									console.log('result is not ok');
+									return;
+								}
+								var div_GE = document.getElementById("교양리스트");
+								let id = 0;
+								let len = res.이름.length;
+			
+								for (let l = 0; l < len; l++) {
+									var details = document.createElement('details');
+									details.id = "d";
+			
+									var summary = document.createElement('summary');
+									summary.id = id;
+									summary.textContent = res.이름[l]+" / "+res.교수[l]+" / "+res.시간[l];
+									if (res.이수구분[l] === "심화교양") {
+										summary.style.color = "green";
+									}
+									
+									var table = document.createElement('table');
+									let td_num = 0;
+									for (let i=0; i<6; i++) {
+										var tr = document.createElement('tr');
+										if (i === 5) {
+											for (let j=0; j<2; j++) {
+												var td = document.createElement('td');
+												if (td_num === 20) {
+													td.textContent = "특이사항";
+												}
+												else if (td_num === 21) {
+													td.colSpan = 3;
+												}
+												td_num++;
+												tr.appendChild(td);
+											}
+										}
+										else {
+											for (let j=0; j<4; j++) {
+												var td = document.createElement('td');
+												if (td_num === 0) {
+													td.textContent = "발표"
+												}
+												else if (td_num === 1) {
+													if (res.발표[l] === 0) {
+														td.textContent = "X";
+														td.style.color = "red";
+													}
+													else if (res.발표[l] === 1) {
+														td.textContent = "O";
+														td.style.color = "blue";
+													}
+													else if (res.발표[l] === 2) {
+														td.textContent = "정보 없음";
+													}
+												}
+												else if (td_num === 2) {
+													td.textContent = "시험"
+												}
+												else if (td_num === 3) {
+													if (res.시험[l] === 1) {
+														td.textContent = "2번";
+													}
+													else if (res.시험[l] === 2) {
+														td.textContent = "1번+과제1번";
+													}
+													else if (res.시험[l] === 3) {
+														td.textContent = "1번";
+													}
+													else if (res.시험[l] === 4) {
+														td.textContent = "과제2번";
+													}
+													else if (res.시험[l] === 5) {
+														td.textContent = "정보 없음";
+													}
+												}
+												else if (td_num === 4) {
+													td.textContent = "토론"
+												}
+												else if (td_num === 5) {
+													if (res.토론[l] === 0) {
+														td.textContent = "X";
+														td.style.color = "red";
+													}
+													else if (res.토론[l] === 1) {
+														td.textContent = "O";
+														td.style.color = "blue";
+													}
+													else if (res.토론[l] === 2) {
+														td.textContent = "정보 없음";
+													}
+												}
+												else if (td_num === 6) {
+													td.textContent = "조별"
+												}
+												else if (td_num === 7) {
+													if (res.조별[l] === 0) {
+														td.textContent = "X";
+														td.style.color = "red";
+													}
+													else if (res.조별[l] === 1) {
+														td.textContent = "O";
+														td.style.color = "blue";
+													}
+													else if (res.조별[l] === 2) {
+														td.textContent = "정보 없음";
+													}
+												}
+												else if (td_num === 8) {
+													td.textContent = "퀴즈"
+												}
+												else if (td_num === 9) {
+													if (res.퀴즈[l] === 0) {
+														td.textContent = "X";
+														td.style.color = "red";
+													}
+													else if (res.퀴즈[l] === 1) {
+														td.textContent = "O";
+														td.style.color = "blue";
+													}
+													else if (res.퀴즈[l] === 2) {
+														td.textContent = "정보 없음";
+													}
+												}
+												else if (td_num === 10) {
+													td.textContent = "실습"
+												}
+												else if (td_num === 11) {
+													if (res.실습[l] === 0) {
+														td.textContent = "X";
+														td.style.color = "red";
+													}
+													else if (res.실습[l] === 1) {
+														td.textContent = "O";
+														td.style.color = "blue";
+													}
+													else if (res.실습[l] === 2) {
+														td.textContent = "정보 없음";
+													}
+												}
+												else if (td_num === 12) {
+													td.textContent = "출석"
+												}
+												else if (td_num === 13) {
+													if (res.출석[l] === 0) {
+														td.textContent = "출결 없음";
+													}
+													else if (res.출석[l] === 1) {
+														td.textContent = "호명";
+													}
+													else if (res.출석[l] === 2) {
+														td.textContent = "랜덤";
+													}
+													else if (res.출석[l] === 3) {
+														td.textContent = "전자출결";
+													}
+													else if (res.출석[l] === 4) {
+														td.textContent = "정보 없음";
+													}
+												}
+												else if (td_num === 14) {
+													td.textContent = "레포트"
+												}
+												else if (td_num === 15) {
+													if (res.레포트[l] === 0) {
+														td.textContent = "X";
+														td.style.color = "red";
+													}
+													else if (res.레포트[l] === 1) {
+														td.textContent = "O";
+														td.style.color = "blue";
+													}
+													else if (res.레포트[l] === 2) {
+														td.textContent = "정보 없음";
+													}
+												}
+												else if (td_num === 16) {
+													td.textContent = "평가"
+												}
+												else if (td_num === 17) {
+													if (res.평가[l] === 0) {
+														td.textContent = "상평";
+													}
+													else if (res.평가[l] === 1) {
+														td.textContent = "절평";
+													}
+													else if (res.평가[l] === 2) {
+														td.textContent = "패논패";
+													}
+												}
+												else if (td_num === 18) {
+													td.textContent = "학점"
+												}
+												else if (td_num === 19) {
+													if (res.학점[l] === 3) {
+														td.textContent = "3";
+													}
+													else if (res.학점[l] === 2) {
+														td.textContent = "2";
+													}
+													else if (res.학점[l] === 1) {
+														td.textContent = "1";
+													}
+												}
+												td_num++;
+												tr.appendChild(td);
+											}
+										}
+										table.appendChild(tr);
+									}
+			
+									var br = document.createElement('br');
+									details.appendChild(summary);
+									details.appendChild(table);
+									details.appendChild(br);
+									id++;
+									div_GE.appendChild(details);
+								}
+							});
+						}
+						
+						const last_query1 = "("+query1+" or "+query2+") and ("+query3+" or "+query4+" or "+query5+") and ("+query6+" or "+query7+" or "+query8+")"
+						
+						fetch('/callDB',{
+								method : 'post',
+								headers : {
+									'content-type':'application/json'
+								},
+								body : JSON.stringify({
+									last_query : last_query1
+								})
+							}).then((res)=>res.json())
+							.then((res)=>{
+			
+								if (res.result != 'ok') {
+									console.log('result is not ok');
+									return;
+								}
+								var div_GE = document.getElementById("교양리스트");
+								let id = 0;
+								let len = res.이름.length;
+			
+								for (let l = 0; l < len; l++) {
+									var details = document.createElement('details');
+									details.id = "d";
+			
+									var summary = document.createElement('summary');
+									summary.id = id;
+									summary.textContent = res.이름[l]+" / "+res.교수[l]+" / "+res.시간[l];
+									if (res.이수구분[l] === "심화교양") {
+										summary.style.color = "green";
+									}
+									
+									var table = document.createElement('table');
+									let td_num = 0;
+									for (let i=0; i<6; i++) {
+										var tr = document.createElement('tr');
+										if (i === 5) {
+											for (let j=0; j<2; j++) {
+												var td = document.createElement('td');
+												if (td_num === 20) {
+													td.textContent = "특이사항";
+												}
+												else if (td_num === 21) {
+													td.colSpan = 3;
+												}
+												td_num++;
+												tr.appendChild(td);
+											}
+										}
+										else {
+											for (let j=0; j<4; j++) {
+												var td = document.createElement('td');
+												if (td_num === 0) {
+													td.textContent = "발표"
+												}
+												else if (td_num === 1) {
+													if (res.발표[l] === 0) {
+														td.textContent = "X";
+														td.style.color = "red";
+													}
+													else if (res.발표[l] === 1) {
+														td.textContent = "O";
+														td.style.color = "blue";
+													}
+													else if (res.발표[l] === 2) {
+														td.textContent = "정보 없음";
+													}
+												}
+												else if (td_num === 2) {
+													td.textContent = "시험"
+												}
+												else if (td_num === 3) {
+													if (res.시험[l] === 0) {
+														td.textContent = "2번";
+													}
+													else if (res.시험[l] === 1) {
+														td.textContent = "1번+과제1번";
+													}
+													else if (res.시험[l] === 2) {
+														td.textContent = "1번";
+													}
+													else if (res.시험[l] === 3) {
+														td.textContent = "과제2번";
+													}
+													else if (res.시험[l] === 4) {
+														td.textContent = "정보 없음";
+													}
+												}
+												else if (td_num === 4) {
+													td.textContent = "토론"
+												}
+												else if (td_num === 5) {
+													if (res.토론[l] === 0) {
+														td.textContent = "X";
+														td.style.color = "red";
+													}
+													else if (res.토론[l] === 1) {
+														td.textContent = "O";
+														td.style.color = "blue";
+													}
+													else if (res.토론[l] === 2) {
+														td.textContent = "정보 없음";
+													}
+												}
+												else if (td_num === 6) {
+													td.textContent = "조별"
+												}
+												else if (td_num === 7) {
+													if (res.조별[l] === 0) {
+														td.textContent = "X";
+														td.style.color = "red";
+													}
+													else if (res.조별[l] === 1) {
+														td.textContent = "O";
+														td.style.color = "blue";
+													}
+													else if (res.조별[l] === 2) {
+														td.textContent = "정보 없음";
+													}
+												}
+												else if (td_num === 8) {
+													td.textContent = "퀴즈"
+												}
+												else if (td_num === 9) {
+													if (res.퀴즈[l] === 0) {
+														td.textContent = "X";
+														td.style.color = "red";
+													}
+													else if (res.퀴즈[l] === 1) {
+														td.textContent = "O";
+														td.style.color = "blue";
+													}
+													else if (res.퀴즈[l] === 2) {
+														td.textContent = "정보 없음";
+													}
+												}
+												else if (td_num === 10) {
+													td.textContent = "실습"
+												}
+												else if (td_num === 11) {
+													if (res.실습[l] === 0) {
+														td.textContent = "X";
+														td.style.color = "red";
+													}
+													else if (res.실습[l] === 1) {
+														td.textContent = "O";
+														td.style.color = "blue";
+													}
+													else if (res.실습[l] === 2) {
+														td.textContent = "정보 없음";
+													}
+												}
+												else if (td_num === 12) {
+													td.textContent = "출석"
+												}
+												else if (td_num === 13) {
+													if (res.출석[l] === 0) {
+														td.textContent = "출결 없음";
+													}
+													else if (res.출석[l] === 1) {
+														td.textContent = "호명";
+													}
+													else if (res.출석[l] === 2) {
+														td.textContent = "랜덤";
+													}
+													else if (res.출석[l] === 3) {
+														td.textContent = "전자출결";
+													}
+													else if (res.출석[l] === 0) {
+														td.textContent = "정보 없음";
+													}
+												}
+												else if (td_num === 14) {
+													td.textContent = "레포트"
+												}
+												else if (td_num === 15) {
+													if (res.레포트[l] === 0) {
+														td.textContent = "X";
+														td.style.color = "red";
+													}
+													else if (res.레포트[l] === 1) {
+														td.textContent = "O";
+														td.style.color = "blue";
+													}
+													else if (res.레포트[l] === 2) {
+														td.textContent = "정보 없음";
+													}
+												}
+												else if (td_num === 16) {
+													td.textContent = "평가"
+												}
+												else if (td_num === 17) {
+													if (res.평가[l] === 1) {
+														td.textContent = "상평";
+													}
+													else if (res.평가[l] === 2) {
+														td.textContent = "절평";
+													}
+													else if (res.평가[l] === 3) {
+														td.textContent = "패논패";
+													}
+												}
+												else if (td_num === 18) {
+													td.textContent = "학점"
+												}
+												else if (td_num === 19) {
+													if (res.학점[l] === 3) {
+														td.textContent = "3";
+													}
+													else if (res.학점[l] === 2) {
+														td.textContent = "2";
+													}
+													else if (res.학점[l] === 1) {
+														td.textContent = "1";
+													}
+												}
+												td_num++;
+												tr.appendChild(td);
+											}
+										}
+										table.appendChild(tr);
+									}
+			
+									var br = document.createElement('br');
+									details.appendChild(summary);
+									details.appendChild(table);
+									details.appendChild(br);
+									id++;
+									div_GE.appendChild(details);
+								}
+							});
+					</script>
+			</article>
+
+			<!-- 5 -->
+			<article id="ImFormation" class="panel">
+			</article>
+
+		</div>
+
+		<!-- Footer -->
+		<div id="footer">
+			<ul class="copyright">
+				<li><a href="#ImFormation">도움말</a></li>
+			</ul>
+		</div>
+
+	</div>
+
+	<!-- Scripts -->
+	<script src="assets/js/jquery.min.js"></script>
+	<script src="assets/js/browser.min.js"></script>
+	<script src="assets/js/breakpoints.min.js"></script>
+	<script src="assets/js/util.js"></script>
+	<script src="assets/js/main.js"></script>
+
+</body>
+
+</html>
