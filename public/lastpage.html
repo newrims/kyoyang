@@ -4,6 +4,13 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>교양 추천</title>
+        <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <link rel="stylesheet" href="assets/css/main.css" />
+    <noscript>
+        <link rel="stylesheet" href="assets/css/noscript.css" />
+    </noscript>
+    <script src="https://kit.fontawesome.com/90f52c3695.js" crossorigin="anonymous"></script>
         <style>
             table {
                 border-collapse: collapse;
@@ -17,31 +24,6 @@
             #detail_info {
                 border: 3px solid black;
                 width: 300px;
-            }
-            #fir_0 {
-                width: 70px;
-                margin: 5px 0 0 20px ;
-            }
-            #sec_0 {
-                width: 70px;
-            }
-            #fir_1 {
-                width: 70px;
-                margin: 5px 0 0 20px ;
-            }
-            #sec_1 {
-                width: 70px;
-            }
-            #thi_1 {
-                width: 70px;
-            }
-            #fir_2 {
-                width: 70px;
-                margin: 5px 0 5px 20px ;
-            }
-            #sec_2 {
-                width: 70px;
-                margin: 0 0 5px 0 ;
             }
         </style>
     </head>
@@ -61,11 +43,17 @@
                 <button id="thi_2" onclick="query_8()">온라인+오프라인</button>
             </div>
         </details>
-        <!-- <div id="교양리스트"></div> -->
+        <div id="outer"></div>
         <script>
             const btn = document.getElementById("확인");
             var div = document.createElement("div");
             div.id = "교양리스트";
+            document.getElementById("outer").appendChild(div);
+
+            let query1real = [];
+            let query1rea2 = [];
+            let query1rea3 = [];
+
             let labels;
 
             let query1 = "이수구분 = '핵심교양'";
@@ -85,7 +73,7 @@
                 }
                 else {
                     _btn.style.opacity = 0.3;
-                    query1 = "이수구분 != '핵심교양'"
+                    query1 = "이수구분 = ''"
                 }
                 show_GE();
             }
@@ -97,7 +85,7 @@
                 }
                 else {
                     _btn.style.opacity = 0.3;
-                    query2 = "이수구분 != '심화교양'"
+                    query2 = "이수구분 = ''"
                 }
                 show_GE();
             }
@@ -109,7 +97,7 @@
                 }
                 else {
                     _btn.style.opacity = 0.3;
-                    query3 = "학점 != 1"
+                    query3 = "학점 = ''"
                 }
                 show_GE();
             }
@@ -121,7 +109,7 @@
                 }
                 else {
                     _btn.style.opacity = 0.3;
-                    query4 = "학점 != 2"
+                    query4 = "학점 = ''"
                 }
                 show_GE();
             }
@@ -133,7 +121,7 @@
                 }
                 else {
                     _btn.style.opacity = 0.3;
-                    query5 = "학점 != 3"
+                    query5 = "학점 = ''"
                 }
                 show_GE();
             }
@@ -145,7 +133,7 @@
                 }
                 else {
                     _btn.style.opacity = 0.3;
-                    query6 = "수업방법 not in ('온라인(동영상)','온라인(화상)')"
+                    query6 = "수업방법 = '123'"
                 }
                 show_GE();
             }
@@ -157,7 +145,7 @@
                 }
                 else {
                     _btn.style.opacity = 0.3;
-                    query7 = "수업방법 != ''"
+                    query7 = "수업방법 = '123'"
                 }
                 show_GE();
             }
@@ -169,7 +157,7 @@
                 }
                 else {
                     _btn.style.opacity = 0.3;
-                    query8 = "수업방법 != '온라인(동영상)+오프라인'"
+                    query8 = "수업방법 = '123'"
                 }
                 show_GE();
             }
@@ -178,6 +166,7 @@
                 document.getElementById("교양리스트").remove();
                 var div = document.createElement("div");
                 div.id = "교양리스트";
+                document.getElementById("outer").appendChild(div);
 
                 const last_query = "("+query1+" or "+query2+") and ("+query3+" or "+query4+" or "+query5+") and ("+query6+" or "+query7+" or "+query8+")"
 
@@ -484,19 +473,19 @@
                                         td.textContent = "시험"
                                     }
                                     else if (td_num === 3) {
-                                        if (res.시험[l] === 1) {
+                                        if (res.시험[l] === 0) {
                                             td.textContent = "2번";
                                         }
-                                        else if (res.시험[l] === 2) {
+                                        else if (res.시험[l] === 1) {
                                             td.textContent = "1번+과제1번";
                                         }
-                                        else if (res.시험[l] === 3) {
+                                        else if (res.시험[l] === 2) {
                                             td.textContent = "1번";
                                         }
-                                        else if (res.시험[l] === 4) {
+                                        else if (res.시험[l] === 3) {
                                             td.textContent = "과제2번";
                                         }
-                                        else if (res.시험[l] === 5) {
+                                        else if (res.시험[l] === 4) {
                                             td.textContent = "정보 없음";
                                         }
                                     }
@@ -580,7 +569,7 @@
                                         else if (res.출석[l] === 3) {
                                             td.textContent = "전자출결";
                                         }
-                                        else if (res.출석[l] === 4) {
+                                        else if (res.출석[l] === 0) {
                                             td.textContent = "정보 없음";
                                         }
                                     }
@@ -604,13 +593,13 @@
                                         td.textContent = "평가"
                                     }
                                     else if (td_num === 17) {
-                                        if (res.평가[l] === 0) {
+                                        if (res.평가[l] === 1) {
                                             td.textContent = "상평";
                                         }
-                                        else if (res.평가[l] === 1) {
+                                        else if (res.평가[l] === 2) {
                                             td.textContent = "절평";
                                         }
-                                        else if (res.평가[l] === 2) {
+                                        else if (res.평가[l] === 3) {
                                             td.textContent = "패논패";
                                         }
                                     }
@@ -644,5 +633,11 @@
                     }
                 });
         </script>
+        <!-- Scripts -->
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/browser.min.js"></script>
+    <script src="assets/js/breakpoints.min.js"></script>
+    <script src="assets/js/util.js"></script>
+    <script src="assets/js/main.js"></script>
 </body>
 </html>
