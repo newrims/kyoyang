@@ -41,6 +41,7 @@
     const check1_2 = document.getElementById("직접 호명");
     const check1_3 = document.getElementById("랜덤 또는 불시 출석");
     const again_message = document.querySelector('#message')
+    again_message.textContent = ''
     function btnClicked(buttonId) {
         
         const target = document.getElementById(buttonId);
@@ -64,7 +65,8 @@
         if (check_cnt1 > 1){
             
             again_message.textContent = '*체크항목을 다시 확인 해주세요.*'
-            check_num1 = [];
+            check_num1 = [0, 1, 2, 3];
+            check_cnt1 = 0;
         }
         else{
             
@@ -75,8 +77,23 @@
             again_message.textContent = ''
             
             console.log(query_arr1)
+            fetch('/next_to_slecttime2',{
+                method : 'post',
+                headers : {
+                    'content-type':'application/json'
+                },
+                body : JSON.stringify({
+                    //query_arr0 : query_arr0,
+                    query_arr1 : query_arr1,
+                    //query_arr2 : query_arr2,
+                    //query_arr3 : query_arr3
+                })
+            })
             window.location.href = 'CheckList3.html'
         }
     }
+    
+
+
 </script>
 </html>
