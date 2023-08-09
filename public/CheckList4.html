@@ -27,12 +27,12 @@
         <input type='button' id='야간 수업' value='야간 수업' class='button' onclick='btnClicked("야간 수업")'/>
     </div>
     <br>
-    <button id="nextButton" onclick="checkButtonStates()">다음(2/4)</button>
+    <button id="nextButton" onclick="checkButtonStates()">다음(4/4)</button>
 </body>
 <script>
     
     let check_num3 = [1, 2, 3];
-    let check_cnt3 = 0;
+    
     const check3_1 = document.getElementById("오전 수업");
     const check3_2 = document.getElementById("야간 수업");
     const again_message = document.querySelector('#message')
@@ -56,10 +56,23 @@
             query_arr3 = "강의시간 not in ("+check_num3[0]+") and ";
         }
         else if (check_num3.length === 0) {
-            query_arr3 = "강의시간 not in (1,3) and ";
+            query_arr3 = "강의시간 not in (1,2,3) and ";
         }
         console.log(query_arr3)
-        //window.location.href = 시간표
+        check_num3 = [1, 2, 3];
+        fetch('/next_to_slecttime4',{
+            method : 'post',
+            headers : {
+                'content-type':'application/json'
+            },
+            body : JSON.stringify({
+                //query_arr0 : query_arr0,
+                //query_arr1 : query_arr1,
+                //query_arr2 : query_arr2,
+                query_arr3 : query_arr3
+            })
+        })
+        window.location.href = 'selectTime.html'
     }
 </script>
 </html>
