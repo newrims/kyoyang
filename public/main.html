@@ -106,7 +106,7 @@
 				
 				<br>
 
-				<div>
+				<div id="department-section" style="display: none;">
 						<div>
 							<label>학과를 선택해주세요.</label>
 							<select required id="GE">
@@ -272,8 +272,9 @@
 							button.classList.add("button-selected");
 							imgElement.setAttribute('src', selectedImageSrc);	
 							}
-					
 					}
+					var departmentSection = document.querySelector('#department-section');
+					departmentSection.style.display = 'block';
 				}
 				const btn_nextpage_to_checklist = document.getElementById("nextpage_to_checklist");
 				btn_nextpage_to_checklist.addEventListener("click",()=>{
