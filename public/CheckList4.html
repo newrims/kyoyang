@@ -27,6 +27,7 @@
         <input type='button' id='야간 수업' value='야간 수업' class='button' onclick='btnClicked("야간 수업")'/>
     </div>
     <br>
+    <button id = "back" onclick="goToPreviousPage()">이전</button>
     <button id="nextButton" onclick="checkButtonStates()">다음(4/4)</button>
 </body>
 <script>
@@ -55,8 +56,23 @@
         history.replaceState(null, null, '?' + params.toString());
     }
 
-    // 페이지 로드 시 버튼 상태를 복원
-    window.addEventListener('load', () => {
+   // 이전 페이지로 이동하면서 버튼 상태 복원
+    function goToPreviousPage() {
+        const activeButtons = JSON.parse(sessionStorage.getItem('activeButtons'));
+        if (activeButtons) {
+            activeButtons.forEach(buttonId => {
+                const button = document.getElementById(buttonId);
+                if (button) {
+                    button.classList.add('active');
+                }
+            });
+        }
+
+        // 이전 페이지 URL로 이동
+        history.back();
+    }
+     // 페이지 로드 시 버튼 상태를 복원
+     window.addEventListener('load', () => {
         const params = new URLSearchParams(location.search);
         const activeButtons = params.get('activeButtons');
         
@@ -70,7 +86,6 @@
             });
         }
     });
-    
     
     function checkButtonStates() {
 
