@@ -39,24 +39,59 @@
 </body>
 <script>
     
-    let check_num2 = [
-        [0, 0, 0, 0, 0, 0],
-        ["퀴즈", "레포트", "발표", "토론", "실습", "조별활동, 조별과제"]
-        ];
-    let query_arr2 = ""
-    const check2_1 = document.getElementById("퀴즈");
-    const check2_2 = document.getElementById("레포트");
-    const check2_3 = document.getElementById("발표");
-    const check2_4 = document.getElementById("토론");
-    const check2_5 = document.getElementById("실습");
-    const check2_6 = document.getElementById("조별활동, 조별과제");
+    // 버튼 클릭 시 호출되는 함수
     function btnClicked(buttonId) {
-        
         const target = document.getElementById(buttonId);
         target.classList.toggle('active');
+        saveButtonStates(); // 버튼 상태를 클릭할 때마다 저장
     }
-    function checkButtonStates() {
 
+    // 버튼 상태를 URL 파라미터로 저장
+    function saveButtonStates() {
+        const buttons = document.querySelectorAll('.button');
+        const activeButtons = [];
+
+        buttons.forEach(button => {
+            if (button.classList.contains('active')) {
+                activeButtons.push(button.id);
+            }
+        });
+
+        const params = new URLSearchParams();
+        params.set('activeButtons', activeButtons.join(','));
+        
+        // 현재 페이지 URL에 파라미터를 추가하여 업데이트
+        history.replaceState(null, null, '?' + params.toString());
+    }
+
+    // 페이지 로드 시 버튼 상태를 복원
+    window.addEventListener('load', () => {
+        const params = new URLSearchParams(location.search);
+        const activeButtons = params.get('activeButtons');
+        
+        if (activeButtons) {
+            const buttons = document.querySelectorAll('.button');
+            activeButtons.split(',').forEach(buttonId => {
+                const button = document.getElementById(buttonId);
+                if (button) {
+                    button.classList.add('active');
+                }
+            });
+        }
+    });
+    
+    function checkButtonStates() {
+        let check_num2 = [
+            [0, 0, 0, 0, 0, 0],
+            ["퀴즈", "레포트", "발표", "토론", "실습", "조별활동, 조별과제"]
+            ];
+        let query_arr2 = ""
+        const check2_1 = document.getElementById("퀴즈");
+        const check2_2 = document.getElementById("레포트");
+        const check2_3 = document.getElementById("발표");
+        const check2_4 = document.getElementById("토론");
+        const check2_5 = document.getElementById("실습");
+        const check2_6 = document.getElementById("조별활동, 조별과제");
         if (check2_1.classList.contains('active')) {
             check_num2[0][0] = 1;
             
