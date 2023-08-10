@@ -34,20 +34,56 @@
 </body>
 <script>
     
-    let check_num1 = [0, 1, 2, 3];
-    let check_cnt1 = 0;
-    let query_arr1 = ""
-    const check1_1 = document.getElementById("전자 출결");
-    const check1_2 = document.getElementById("직접 호명");
-    const check1_3 = document.getElementById("랜덤 또는 불시 출석");
-    const again_message = document.querySelector('#message')
-    again_message.textContent = ''
+    // 버튼 클릭 시 호출되는 함수
     function btnClicked(buttonId) {
-        
         const target = document.getElementById(buttonId);
         target.classList.toggle('active');
+        saveButtonStates(); // 버튼 상태를 클릭할 때마다 저장
     }
+
+    // 버튼 상태를 URL 파라미터로 저장
+    function saveButtonStates() {
+        const buttons = document.querySelectorAll('.button');
+        const activeButtons = [];
+
+        buttons.forEach(button => {
+            if (button.classList.contains('active')) {
+                activeButtons.push(button.id);
+            }
+        });
+
+        const params = new URLSearchParams();
+        params.set('activeButtons', activeButtons.join(','));
+        
+        // 현재 페이지 URL에 파라미터를 추가하여 업데이트
+        history.replaceState(null, null, '?' + params.toString());
+    }
+
+    // 페이지 로드 시 버튼 상태를 복원
+    window.addEventListener('load', () => {
+        const params = new URLSearchParams(location.search);
+        const activeButtons = params.get('activeButtons');
+        
+        if (activeButtons) {
+            const buttons = document.querySelectorAll('.button');
+            activeButtons.split(',').forEach(buttonId => {
+                const button = document.getElementById(buttonId);
+                if (button) {
+                    button.classList.add('active');
+                }
+            });
+        }
+    });
+    
     function checkButtonStates() {
+        let check_num1 = [0, 1, 2, 3];
+        let check_cnt1 = 0;
+        let query_arr1 = ""
+        const check1_1 = document.getElementById("전자 출결");
+        const check1_2 = document.getElementById("직접 호명");
+        const check1_3 = document.getElementById("랜덤 또는 불시 출석");
+        const again_message = document.querySelector('#message')
+        again_message.textContent = ''
         if (check1_1.classList.contains('active')) {
             check_num1.splice(0, 3);
             check_cnt1++;
