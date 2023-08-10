@@ -32,9 +32,10 @@
         <br>
         <input type='button' id='실습' value='실습' class='button' onclick='btnClicked("실습")'/>
         <br>
-        <input type='button' id='조별활동, 조별과제' value='조별활동, 조별과제'class='button' onclick='btnClicked("조별활동, 조별과제")'/>
+        <input type='button' id='조별활동 조별과제' value='조별활동 조별과제'class='button' onclick='btnClicked("조별활동 조별과제")'/>
     </div>
     <br>
+    <button id = "back" onclick="goToPreviousPage()">이전</button>
     <button id="nextButton" onclick="checkButtonStates()">다음(3/4)</button>
 </body>
 <script>
@@ -64,7 +65,22 @@
         history.replaceState(null, null, '?' + params.toString());
     }
 
-    // 페이지 로드 시 버튼 상태를 복원
+    // 이전 페이지로 이동하면서 버튼 상태 복원
+    function goToPreviousPage() {
+        const activeButtons = JSON.parse(sessionStorage.getItem('activeButtons'));
+        if (activeButtons) {
+            activeButtons.forEach(buttonId => {
+                const button = document.getElementById(buttonId);
+                if (button) {
+                    button.classList.add('active');
+                }
+            });
+        }
+
+        // 이전 페이지 URL로 이동
+        history.back();
+    }
+     // 페이지 로드 시 버튼 상태를 복원
     window.addEventListener('load', () => {
         const params = new URLSearchParams(location.search);
         const activeButtons = params.get('activeButtons');
@@ -79,11 +95,10 @@
             });
         }
     });
-    
     function checkButtonStates() {
         let check_num2 = [
             [0, 0, 0, 0, 0, 0],
-            ["퀴즈", "레포트", "발표", "토론", "실습", "조별활동, 조별과제"]
+            ["퀴즈", "레포트", "발표", "토론", "실습", "조별활동 조별과제"]
             ];
         let query_arr2 = ""
         const check2_1 = document.getElementById("퀴즈");
@@ -91,7 +106,7 @@
         const check2_3 = document.getElementById("발표");
         const check2_4 = document.getElementById("토론");
         const check2_5 = document.getElementById("실습");
-        const check2_6 = document.getElementById("조별활동, 조별과제");
+        const check2_6 = document.getElementById("조별활동 조별과제");
         if (check2_1.classList.contains('active')) {
             check_num2[0][0] = 1;
             
@@ -138,10 +153,7 @@
         
         console.log(query_arr2)
         
-        check_num2 = [
-        [0, 0, 0, 0, 0, 0],
-        ["퀴즈", "레포트", "발표", "토론", "실습", "조별활동, 조별과제"]
-        ];
+        
         fetch('/next_to_slecttime3',{
             method : 'post',
             headers : {
