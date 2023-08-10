@@ -30,7 +30,9 @@
                              class='button' onclick='btnClicked("랜덤 또는 불시 출석")'/>
     </div>
     <br>
+    <button id = "back" onclick="goToPreviousPage()">이전</button>
     <button id="nextButton" onclick="checkButtonStates()">다음(2/4)</button>
+
 </body>
 <script>
     
@@ -59,8 +61,23 @@
         history.replaceState(null, null, '?' + params.toString());
     }
 
-    // 페이지 로드 시 버튼 상태를 복원
-    window.addEventListener('load', () => {
+    // 이전 페이지로 이동하면서 버튼 상태 복원
+    function goToPreviousPage() {
+        const activeButtons = JSON.parse(sessionStorage.getItem('activeButtons'));
+        if (activeButtons) {
+            activeButtons.forEach(buttonId => {
+                const button = document.getElementById(buttonId);
+                if (button) {
+                    button.classList.add('active');
+                }
+            });
+        }
+
+        // 이전 페이지 URL로 이동
+        history.back();
+    }
+     // 페이지 로드 시 버튼 상태를 복원
+     window.addEventListener('load', () => {
         const params = new URLSearchParams(location.search);
         const activeButtons = params.get('activeButtons');
         
@@ -74,7 +91,6 @@
             });
         }
     });
-    
     function checkButtonStates() {
         let check_num1 = [0, 1, 2, 3];
         let check_cnt1 = 0;
