@@ -30,18 +30,55 @@
     <button id="nextButton" onclick="checkButtonStates()">다음(4/4)</button>
 </body>
 <script>
-    
-    let check_num3 = [1, 2, 3];
-    
-    const check3_1 = document.getElementById("오전 수업");
-    const check3_2 = document.getElementById("야간 수업");
-    const again_message = document.querySelector('#message')
+    // 버튼 클릭 시 호출되는 함수
     function btnClicked(buttonId) {
-        
         const target = document.getElementById(buttonId);
         target.classList.toggle('active');
+        saveButtonStates(); // 버튼 상태를 클릭할 때마다 저장
     }
+
+    // 버튼 상태를 URL 파라미터로 저장
+    function saveButtonStates() {
+        const buttons = document.querySelectorAll('.button');
+        const activeButtons = [];
+
+        buttons.forEach(button => {
+            if (button.classList.contains('active')) {
+                activeButtons.push(button.id);
+            }
+        });
+
+        const params = new URLSearchParams();
+        params.set('activeButtons', activeButtons.join(','));
+        
+        // 현재 페이지 URL에 파라미터를 추가하여 업데이트
+        history.replaceState(null, null, '?' + params.toString());
+    }
+
+    // 페이지 로드 시 버튼 상태를 복원
+    window.addEventListener('load', () => {
+        const params = new URLSearchParams(location.search);
+        const activeButtons = params.get('activeButtons');
+        
+        if (activeButtons) {
+            const buttons = document.querySelectorAll('.button');
+            activeButtons.split(',').forEach(buttonId => {
+                const button = document.getElementById(buttonId);
+                if (button) {
+                    button.classList.add('active');
+                }
+            });
+        }
+    });
+    
+    
     function checkButtonStates() {
+
+        let check_num3 = [1, 2, 3];
+    
+        const check3_1 = document.getElementById("오전 수업");
+        const check3_2 = document.getElementById("야간 수업");
+        const again_message = document.querySelector('#message')
         if (check3_1.classList.contains('active')) {
             check_num3.splice(1, 2);
         }
