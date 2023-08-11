@@ -1,4 +1,3 @@
-
 html, body, div, span, applet, object,
 iframe, h1, h2, h3, h4, h5, h6, p, blockquote,
 pre, a, abbr, acronym, address, big, cite,
@@ -2063,7 +2062,7 @@ mark {
 	}
 	select{
 		width:100%;
-		margin: 10px 2px 0 2px;
+		margin: 16px 2px 0 2px;
 		padding: 10px 0 10px 5px;
 	}
 
@@ -2087,11 +2086,6 @@ mark {
 		height: 45px;
 		}
 	
-	/* label */
-	label{
-		color:black;
-	}
-
 	/* 단과대 아이콘 버튼 */
 	.button-border {
 		width: 32%;
@@ -2168,7 +2162,7 @@ mark {
 
 	/* 체크리스트 버튼 */
     .button-CheckList {
-		background: linear-gradient(to right, #7fd8b0, #00eb6a); /* 그라디언트 배경 */
+		background: linear-gradient(to right, #7fd8b0, #00eb6a);
 		color: white; /* 버튼 텍스트 색상 */
 		width: 100%;
 		border: none;
@@ -2182,7 +2176,7 @@ mark {
 	  }
   
 	  .button-CheckList.active {
-		background: linear-gradient(to right, #25aae1, #4481eb); /* 활성화된 버튼 그라디언트 배경 */
+		background: linear-gradient(to right, #25aae1, #4481eb); 
 		transform: scale(1.05); /* 약간 확대되는 효과 */
 	  }
 
@@ -2216,19 +2210,75 @@ mark {
 		display: block;
 		animation: fade-in 0.7s ease-in-out;
 		animation: fade-out 0.7s ease-in-out;
+
 	  }
 	  #출석방식 {
 		display: none;
 		animation: fade-in 0.7s ease-in-out;
 		animation: fade-out 0.7s ease-in-out;
+
 	  }
 	  #과제방식또는수업진행방식 {
 		display: none;
 		animation: fade-in 0.7s ease-in-out;
 		animation: fade-out 0.7s ease-in-out;
+
 	  }
 	  #강의시간 {
 		display: none;
 		animation: fade-in 0.7s ease-in-out;
 		animation: fade-out 0.7s ease-in-out;
+
 	  }
+
+
+
+	 @font-face {
+		font-family: "NEXONFootballGothicL"; 
+		src: url("font/NEXONFootballGothicL.ttf") format("opentype");
+
+	
+	  }
+	  
+	/* label */
+	label{
+		color:rgb(61, 61, 61);
+		font-family:"NEXONFootballGothicL";
+		font-size: 27px;
+		
+	}
+	@media screen and (max-width: 736px) {
+
+		label{
+			font-size: 20px;
+		}
+
+	}
+
+	#소속대학선택 {
+		margin: 20px 0 0 0;
+	}
+
+	#선호 {
+		font-size: 30px;
+		color: blue;
+	}
+	@media screen and (max-width: 736px) {
+
+		#선호{
+			font-size: 25px;
+		}
+
+	}
+
+	.불호 {
+		font-size: 30px;
+		color: rgb(240, 58, 61);
+	}
+	@media screen and (max-width: 736px) {
+
+		.불호{
+			font-size: 25px;
+		}
+
+	}
