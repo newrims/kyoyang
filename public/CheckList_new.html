@@ -6,457 +6,458 @@
     <title>Document</title>
     <style>
         /* 스타일을 수정하여 버튼의 색상을 변경할 수 있습니다. */
-        .button {
-            background-color: white; /* 버튼 기본 배경색 */
-            color: black; /* 버튼 기본 텍스트 색상 */
+        .button-CheckList {
+            background-color: white;
+            color: black;
         }
 
-        .button.active {
-            background-color: green; /* 활성화된 버튼 배경색 */
-            color: white; /* 활성화된 버튼 텍스트 색상 */
+        .button-CheckList.active {
+            background-color: green;
+            color: white;
         }
-        
-
-        
     </style>
 </head>
-    <body>
-        <div id="시험방식">
-            <label>선호하는 항목을 체크해주세요.<br class='break-m'> (복수선택가능, 1개 이상 체크해주세요)</label>
-            <div id="message1"> </div> 
-            <div>시험 방식</div>
-            <div>
-                <input type='button' id='과제 대체' value='과제 대체' class='button-CheckList' onclick='btnClicked("과제 대체")'/>
-                <button id="modalBtn1">?</button>
-                <div id="myModal1" class="modal">
-                    <div class="modal-content">
-                        <span id="closeBtn1">&times;</span>
-                        <p>과제 대체 : 일반 시험 대신 레포트, 발표 등으로 대체되는 시험입니다</p>
-                    </div>
-                </div>
-                <br>
-                <input type='button' id='시험 2번' value='시험 2번' class='button-CheckList' onclick='btnClicked("시험 2번")'/>
-                <br>
-                <input type='button' id='시험 1번' value='시험 1번' class='button-CheckList' onclick='btnClicked("시험 1번")'/>
-            </div>
-            <div class="buttons">
-            <button class="btn-hover color-9" id="nextButton" onclick="checkButtonStates1()">다음(1/4)</button>
-            </div>
-        </div>
-    
-    
-        <div id="출석방식">
-            <label>불호하는 항목을 체크해주세요.<br class='break-m'> (체크하지 않으면 '상관없음'으로 간주)</label>
-            <div id="message2"></div>
-            <div>출석 방식(복수선택 불가)</div> 
-            <div>
-                <input type='button' id='전자 출결' value='전자 출결' class='button-CheckList' onclick='btnClicked("전자 출결")'/>
-                <br>
-                <input type='button' id='직접 호명' value='직접 호명' class='button-CheckList' onclick='btnClicked("직접 호명")'/>
-                <br>
-                <input type='button' id='랜덤 또는 불시 출석' value='랜덤 또는 불시 출석' class='button-CheckList' onclick='btnClicked("랜덤 또는 불시 출석")'/>
-            </div>
-            <div class="buttons">
-                <button class="btn-hover color-9" id="previousButton" onclick="PreviousClick2()">이전</button>
-                <button class="btn-hover color-9" id="nextButton" onclick="checkButtonStates2()">다음(2/4)</button>
-            </div>
-        </div>
-    
-    
-        <div id="과제방식또는수업진행방식">
-            <label>불호하는 항목을 체크해주세요.<br class='break-m'> (체크하지 않으면 '상관없음'으로 간주)</label>
-            <div id="message3"></div>
-            <div>과제 방식 또는 수업 진행 방식<br class='break-m'>(복수선택 가능)</div> 
-            <div>
-                <input type='button' id='퀴즈' value='퀴즈' class='button-CheckList' onclick='btnClicked("퀴즈")'/>
-                <br>
-                <input type='button' id='레포트' value='레포트' class='button-CheckList' onclick='btnClicked("레포트")'/>
-                <br>
-                <input type='button' id='발표' value='발표' class='button-CheckList' onclick='btnClicked("발표")'/>
-                <br>
-                <input type='button' id='토론' value='토론' class='button-CheckList' onclick='btnClicked("토론")'/>
-                <br>
-                <input type='button' id='실습' value='실습' class='button-CheckList' onclick='btnClicked("실습")'/>
-                <button id="modalBtn2">?</button>
-                <div id="myModal2" class="modal">
-                    <div class="modal-content">
-                        <span id="closeBtn2">&times;</span>
-                        <p>실습 : 체육, 실험 등 일반 강의와 다르게 진행되는 수업입니다</p>
-                    </div>
-                </div>
-                <br>
-                <input type='button' id='조별활동 조별과제' value='조별활동 조별과제'class='button-CheckList' onclick='btnClicked("조별활동, 조별과제")'/>
-            </div>
-            <div class="buttons">
-            <button class="btn-hover color-9" id="previousButton" onclick="PreviousClick3()">이전</button>
-            <button class="btn-hover color-9" id="nextButton" onclick="checkButtonStates3()">다음(3/4)</button>
-            </div>
-        </div>
-    
-        
-        <div id="강의시간">
-            <label>불호하는 항목을 체크해주세요.<br class='break-m'> (체크하지 않으면 '상관없음'으로 간주)</label>
-            <div id="message4"></div>
-            <div>강의 시간(복수 선택 가능)</div> 
-            <div>
-                <input type='button' id='오전 수업' value='오전 수업' class='button-CheckList' onclick='btnClicked("오전 수업")'/>
-                <button id="modalBtn3">?</button>
-                <div id="myModal3" class="modal">
-                    <div class="modal-content">
-                        <span id="closeBtn3">&times;</span>
-                        <p>오전 강의 : 아침 9시~11시 사이에 시작하는 강의입니다</p>
-                    </div>
-                </div>
-                <br>
-                <input type='button' id='야간 수업' value='야간 수업' class='button-CheckList' onclick='btnClicked("야간 수업")'/>
-                <button id="modalBtn4">?</button>
-                <div id="myModal4" class="modal">
-                    <div class="modal-content">
-                        <span id="closeBtn4">&times;</span>
-                        <p>야간 강의 : 오후 6시 이후에 시작하는 강의입니다</p>
-                    </div>
+<body>
+    <div id="시험방식">
+        <label>선호하는 항목을 체크해주세요.<br class='break-m'> (복수선택가능, 1개 이상 체크해주세요)</label>
+        <div id="message1"> </div> 
+        <div>시험 방식</div>
+        <div>
+            <input type='button' id='과제 대체' value='과제 대체' class='button-CheckList' onclick='btnClicked("과제 대체")'/>
+            <button id="modalBtn1">?</button>
+            <div id="myModal1" class="modal">
+                <div class="modal-content">
+                    <span id="closeBtn1">&times;</span>
+                    <p>과제 대체 : 일반 시험 대신 레포트, 발표 등으로 대체되는 시험입니다</p>
                 </div>
             </div>
-            <div class="buttons">
-                <button class="btn-hover color-9" id="previousButton" onclick="PreviousClick4()">이전</button>
-                <button class="btn-hover color-9" id="nextButton" onclick="checkButtonStates4()">다음(4/4)</button>
+            <br>
+            <input type='button' id='시험 2번' value='시험 2번' class='button-CheckList' onclick='btnClicked("시험 2번")'/>
+            <br>
+            <input type='button' id='시험 1번' value='시험 1번' class='button-CheckList' onclick='btnClicked("시험 1번")'/>
+        </div>
+        <div class="buttons">
+        <button class="btn-hover color-9" id="nextButton" onclick="checkButtonStates1()">다음(1/4)</button>
+        </div>
+    </div>
+
+
+    <div id="출석방식">
+        <label>불호하는 항목을 체크해주세요.<br class='break-m'> (체크하지 않으면 '상관없음'으로 간주)</label>
+        <div id="message2"></div>
+        <div>출석 방식(복수선택 불가)</div> 
+        <div>
+            <input type='button' id='전자 출결' value='전자 출결' class='button-CheckList' onclick='btnClicked("전자 출결")'/>
+            <br>
+            <input type='button' id='직접 호명' value='직접 호명' class='button-CheckList' onclick='btnClicked("직접 호명")'/>
+            <br>
+            <input type='button' id='랜덤 또는 불시 출석' value='랜덤 또는 불시 출석' class='button-CheckList' onclick='btnClicked("랜덤 또는 불시 출석")'/>
+        </div>
+        <div class="buttons">
+            <button class="btn-hover color-9" id="previousButton" onclick="PreviousClick2()">이전</button>
+            <button class="btn-hover color-9" id="nextButton" onclick="checkButtonStates2()">다음(2/4)</button>
+        </div>
+    </div>
+
+
+    <div id="과제방식또는수업진행방식">
+        <label>불호하는 항목을 체크해주세요.<br class='break-m'> (체크하지 않으면 '상관없음'으로 간주)</label>
+        <div id="message3"></div>
+        <div>과제 방식 또는 수업 진행 방식<br class='break-m'>(복수선택 가능)</div> 
+        <div>
+            <input type='button' id='퀴즈' value='퀴즈' class='button-CheckList' onclick='btnClicked("퀴즈")'/>
+            <br>
+            <input type='button' id='레포트' value='레포트' class='button-CheckList' onclick='btnClicked("레포트")'/>
+            <br>
+            <input type='button' id='발표' value='발표' class='button-CheckList' onclick='btnClicked("발표")'/>
+            <br>
+            <input type='button' id='토론' value='토론' class='button-CheckList' onclick='btnClicked("토론")'/>
+            <br>
+            <input type='button' id='실습' value='실습' class='button-CheckList' onclick='btnClicked("실습")'/>
+            <button id="modalBtn2">?</button>
+            <div id="myModal2" class="modal">
+                <div class="modal-content">
+                    <span id="closeBtn2">&times;</span>
+                    <p>실습 : 체육, 실험 등 일반 강의와 다르게 진행되는 수업입니다</p>
+                </div>
+            </div>
+            <br>
+            <input type='button' id='조별활동 조별과제' value='조별활동 조별과제'class='button-CheckList' onclick='btnClicked("조별활동 조별과제")'/>
+        </div>
+        <div class="buttons">
+        <button class="btn-hover color-9" id="previousButton" onclick="PreviousClick3()">이전</button>
+        <button class="btn-hover color-9" id="nextButton" onclick="checkButtonStates3()">다음(3/4)</button>
+        </div>
+    </div>
+
+    
+    <div id="강의시간">
+        <label>불호하는 항목을 체크해주세요.<br class='break-m'> (체크하지 않으면 '상관없음'으로 간주)</label>
+        <div id="message4"></div>
+        <div>강의 시간(복수 선택 가능)</div> 
+        <div>
+            <input type='button' id='오전 수업' value='오전 수업' class='button-CheckList' onclick='btnClicked("오전 수업")'/>
+            <button id="modalBtn3">?</button>
+            <div id="myModal3" class="modal">
+                <div class="modal-content">
+                    <span id="closeBtn3">&times;</span>
+                    <p>오전 강의 : 아침 9시~11시 사이에 시작하는 강의입니다</p>
+                </div>
+            </div>
+            <br>
+            <input type='button' id='야간 수업' value='야간 수업' class='button-CheckList' onclick='btnClicked("야간 수업")'/>
+            <button id="modalBtn4">?</button>
+            <div id="myModal4" class="modal">
+                <div class="modal-content">
+                    <span id="closeBtn4">&times;</span>
+                    <p>야간 강의 : 오후 6시 이후에 시작하는 강의입니다</p>
+                </div>
             </div>
         </div>
-    </body>
-    
+        <div class="buttons">
+            <button class="btn-hover color-9" id="previousButton" onclick="PreviousClick4()">이전</button>
+            <button class="btn-hover color-9" id="nextButton" onclick="checkButtonStates4()">다음(4/4)</button>
+        </div>
+    </div>
     <script>
-    // Get the modal elements
-    var modal1 = document.getElementById("myModal1");
-    var modal2 = document.getElementById("myModal2");
-    var modal3 = document.getElementById("myModal3");
-    var modal4 = document.getElementById("myModal4");
-
-
-    // Get the button elements that open the modals
-    var btn1 = document.getElementById("modalBtn1");
-    var btn2 = document.getElementById("modalBtn2");
-    var btn3 = document.getElementById("modalBtn3");
-    var btn4 = document.getElementById("modalBtn4");
-
-    // Get the close button elements in the modals
-    var closeBtn1 = document.getElementById("closeBtn1");
-    var closeBtn2 = document.getElementById("closeBtn2");
-    var closeBtn3 = document.getElementById("closeBtn3");
-    var closeBtn4 = document.getElementById("closeBtn4");
-
-    // Function to open the modal
-    function openModal(modal) {
-        modal.style.display = "block";
-    }
-
-    // Function to close the modal
-    function closeModal(modal) {
-        modal.style.display = "none";
-    }
-
-    // Event listeners for opening modals
-    btn1.addEventListener("click", function() {
-        openModal(modal1);
-    });
-
-    btn2.addEventListener("click", function() {
-        openModal(modal2);
-    });
-
-    btn3.addEventListener("click", function() {
-        openModal(modal3);
-    });
-
-    btn4.addEventListener("click", function() {
-        openModal(modal4);
-    });
-
-    // Event listeners for closing modals
-    closeBtn1.addEventListener("click", function() {
-        closeModal(modal1);
-    });
-
-    closeBtn2.addEventListener("click", function() {
-        closeModal(modal2);
-    });
-
-    closeBtn3.addEventListener("click", function() {
-        closeModal(modal3);
-    });
-
-    closeBtn4.addEventListener("click", function() {
-        closeModal(modal4);
-    });
-
-    // Initially hide the modals
-    modal1.style.display = "none";
-    modal2.style.display = "none";
-    modal3.style.display = "none";
-    modal4.style.display = "none";
-    
-    //------------------------------------------
-
-    function checkButtonStates1() {
-        let check_num0 = [];
-        let check_cnt0 = 0;
-        let query_arr0 = ""
-        const check0_1 = document.getElementById("과제 대체");
-        const check0_2 = document.getElementById("시험 2번");
-        const check0_3 = document.getElementById("시험 1번");
-        const again_message1 = document.querySelector('#message1')
-
-        if (check0_1.classList.contains('active')) {
-            check_num0.push(0, 2, 4, 5);
-            check_cnt0++;
+        // 버튼 클릭 시 호출되는 함수
+        function btnClicked(buttonId) {
+            const target = document.getElementById(buttonId);
+            target.classList.toggle('active');
         }
-        if (check0_2.classList.contains('active')) {
-            check_num0.push(1, 5);
-            check_cnt0++;
-        }
-        if (check0_3.classList.contains('active')) {
-            check_num0.push(2, 3, 5);
-            check_cnt0++;
-        }
-        if (check_cnt0 === 0){
-            
-            again_message1.textContent = '*체크항목을 다시 확인 해주세요.*'
-            check_num0 = []
-            check_cnt0 = 0;
-        }
-        else{
-            const uniqueCheckNum0 = [...new Set(check_num0)];
-            uniqueCheckNum0.sort((a, b) => a - b);
-            console.log(uniqueCheckNum0);
-            check_num0 = [];
-            check_cnt0 = 0;
-            
 
-            if (uniqueCheckNum0.length > 0) {
-                query_arr0 = uniqueCheckNum0.reduce((acc, course, idx)=>{
-                    if (idx === uniqueCheckNum0.length - 1) {
-                        return acc+`${course}) and `;
-                    }
-                    return acc+`${course},`;
-                },"시험 in (");
+        
+        // Get the modal elements
+        var modal1 = document.getElementById("myModal1");
+        var modal2 = document.getElementById("myModal2");
+        var modal3 = document.getElementById("myModal3");
+        var modal4 = document.getElementById("myModal4");
+
+
+        // Get the button elements that open the modals
+        var btn1 = document.getElementById("modalBtn1");
+        var btn2 = document.getElementById("modalBtn2");
+        var btn3 = document.getElementById("modalBtn3");
+        var btn4 = document.getElementById("modalBtn4");
+
+        // Get the close button elements in the modals
+        var closeBtn1 = document.getElementById("closeBtn1");
+        var closeBtn2 = document.getElementById("closeBtn2");
+        var closeBtn3 = document.getElementById("closeBtn3");
+        var closeBtn4 = document.getElementById("closeBtn4");
+
+        // Function to open the modal
+        function openModal(modal) {
+            modal.style.display = "block";
+        }
+
+        // Function to close the modal
+        function closeModal(modal) {
+            modal.style.display = "none";
+        }
+
+        // Event listeners for opening modals
+        btn1.addEventListener("click", function() {
+            openModal(modal1);
+        });
+
+        btn2.addEventListener("click", function() {
+            openModal(modal2);
+        });
+
+        btn3.addEventListener("click", function() {
+            openModal(modal3);
+        });
+
+        btn4.addEventListener("click", function() {
+            openModal(modal4);
+        });
+
+        // Event listeners for closing modals
+        closeBtn1.addEventListener("click", function() {
+            closeModal(modal1);
+        });
+
+        closeBtn2.addEventListener("click", function() {
+            closeModal(modal2);
+        });
+
+        closeBtn3.addEventListener("click", function() {
+            closeModal(modal3);
+        });
+
+        closeBtn4.addEventListener("click", function() {
+            closeModal(modal4);
+        });
+
+        // Initially hide the modals
+        modal1.style.display = "none";
+        modal2.style.display = "none";
+        modal3.style.display = "none";
+        modal4.style.display = "none";
+        
+        //------------------------------------------
+
+        function checkButtonStates1() {
+            let check_num0 = [];
+            let check_cnt0 = 0;
+            let query_arr0 = ""
+            const check0_1 = document.getElementById("과제 대체");
+            const check0_2 = document.getElementById("시험 2번");
+            const check0_3 = document.getElementById("시험 1번");
+            const again_message1 = document.querySelector('#message1')
+
+            if (check0_1.classList.contains('active')) {
+                check_num0.push(0, 2, 4, 5);
+                check_cnt0++;
             }
-            again_message1.textContent = ''
-            console.log(query_arr0)
-            fetch('/next_to_slecttime1',{
-                method : 'post',
-                headers : {
-                    'content-type':'application/json'
-                },
-                body : JSON.stringify({
-                    query_arr0 : query_arr0,
-                    //query_arr1 : query_arr1,
-                    //query_arr2 : query_arr2,
-                    //query_arr3 : query_arr3
+            if (check0_2.classList.contains('active')) {
+                check_num0.push(1, 5);
+                check_cnt0++;
+            }
+            if (check0_3.classList.contains('active')) {
+                check_num0.push(2, 3, 5);
+                check_cnt0++;
+            }
+            if (check_cnt0 === 0){
+                
+                again_message1.textContent = '*체크항목을 다시 확인 해주세요.*'
+                check_num0 = []
+                check_cnt0 = 0;
+            }
+            else{
+                const uniqueCheckNum0 = [...new Set(check_num0)];
+                uniqueCheckNum0.sort((a, b) => a - b);
+                console.log(uniqueCheckNum0);
+                check_num0 = [];
+                check_cnt0 = 0;
+                
+
+                if (uniqueCheckNum0.length > 0) {
+                    query_arr0 = uniqueCheckNum0.reduce((acc, course, idx)=>{
+                        if (idx === uniqueCheckNum0.length - 1) {
+                            return acc+`${course}) and `;
+                        }
+                        return acc+`${course},`;
+                    },"시험 in (");
+                }
+                again_message1.textContent = ''
+                console.log(query_arr0)
+                fetch('/next_to_slecttime1',{
+                    method : 'post',
+                    headers : {
+                        'content-type':'application/json'
+                    },
+                    body : JSON.stringify({
+                        query_arr0 : query_arr0,
+                        //query_arr1 : query_arr1,
+                        //query_arr2 : query_arr2,
+                        //query_arr3 : query_arr3
+                    })
                 })
-            })
-            시험방식.style.display = 'none';
-            출석방식.style.display = 'block';
-            //window.location.href = 'CheckList2.html'
-            //다음으로 넘어가는 코드
-        }
-    }
-    
-    //------------------------------------------------
-    function checkButtonStates2() {
-        let check_num1 = [0, 1, 2, 3];
-        let check_cnt1 = 0;
-        let query_arr1 = ""
-        const check1_1 = document.getElementById("전자 출결");
-        const check1_2 = document.getElementById("직접 호명");
-        const check1_3 = document.getElementById("랜덤 또는 불시 출석");
-        const again_message2 = document.querySelector('#message2')
-        again_message2.textContent = ''
-        if (check1_1.classList.contains('active')) {
-            check_num1.splice(0, 3);
-            check_cnt1++;
-        }
-        if (check1_2.classList.contains('active')) {
-            check_num1.splice(0, 1);
-            check_num1.splice(1, 2);
-            check_cnt1++;
-        }
-        if (check1_3.classList.contains('active')) {
-            check_num1.splice(0, 2);
-            check_num1.splice(1, 1);
-            check_cnt1++;
-        }
-        if (check_cnt1 > 1){
-            
-            again_message2.textContent = '*체크항목을 다시 확인 해주세요.*'
-            check_num1 = [0, 1, 2, 3];
-            check_cnt1 = 0;
-        }
-        else{
-            
-
-            if (check_num1.length !== 4) {
-                query_arr1 = "출석 not in ("+check_num1[0]+") and ";
+                시험방식.style.display = 'none';
+                출석방식.style.display = 'block';
+                //window.location.href = 'CheckList2.html'
+                //다음으로 넘어가는 코드
             }
+        }
+        
+        //------------------------------------------------
+        function checkButtonStates2() {
+            let check_num1 = [0, 1, 2, 3];
+            let check_cnt1 = 0;
+            let query_arr1 = ""
+            const check1_1 = document.getElementById("전자 출결");
+            const check1_2 = document.getElementById("직접 호명");
+            const check1_3 = document.getElementById("랜덤 또는 불시 출석");
+            const again_message2 = document.querySelector('#message2')
             again_message2.textContent = ''
+            if (check1_1.classList.contains('active')) {
+                check_num1.splice(0, 3);
+                check_cnt1++;
+            }
+            if (check1_2.classList.contains('active')) {
+                check_num1.splice(0, 1);
+                check_num1.splice(1, 2);
+                check_cnt1++;
+            }
+            if (check1_3.classList.contains('active')) {
+                check_num1.splice(0, 2);
+                check_num1.splice(1, 1);
+                check_cnt1++;
+            }
+            if (check_cnt1 > 1){
+                
+                again_message2.textContent = '*체크항목을 다시 확인 해주세요.*'
+                check_num1 = [0, 1, 2, 3];
+                check_cnt1 = 0;
+            }
+            else{
+                
+
+                if (check_num1.length !== 4) {
+                    query_arr1 = "출석 not in ("+check_num1[0]+") and ";
+                }
+                again_message2.textContent = ''
+                
+                console.log(query_arr1)
+                fetch('/next_to_slecttime2',{
+                    method : 'post',
+                    headers : {
+                        'content-type':'application/json'
+                    },
+                    body : JSON.stringify({
+                        //query_arr0 : query_arr0,
+                        query_arr1 : query_arr1,
+                        //query_arr2 : query_arr2,
+                        //query_arr3 : query_arr3
+                    })
+                })
+
+                출석방식.style.display = 'none';
+                과제방식또는수업진행방식.style.display = 'block';
+                //window.location.href = 'CheckList3.html'
+                //다음으로 넘어가는 코드
+            }
+        }
+
+        //-----------------------------------------------------------
+        function checkButtonStates3() {
+            let check_num2 = [
+                [0, 0, 0, 0, 0, 0],
+                ["퀴즈", "레포트", "발표", "토론", "실습", "조별활동 조별과제"]
+                ];
+            let query_arr2 = ""
+            const check2_1 = document.getElementById("퀴즈");
+            const check2_2 = document.getElementById("레포트");
+            const check2_3 = document.getElementById("발표");
+            const check2_4 = document.getElementById("토론");
+            const check2_5 = document.getElementById("실습");
+            const check2_6 = document.getElementById("조별활동 조별과제");
+            if (check2_1.classList.contains('active')) {
+                check_num2[0][0] = 1;
+                
+            }
+            if (check2_2.classList.contains('active')) {
+                check_num2[0][1] = 1;
+                
+            }
+            if (check2_3.classList.contains('active')) {
+                check_num2[0][2] = 1;
+                
+            }
+            if (check2_4.classList.contains('active')) {
+                check_num2[0][3] = 1;
+                
+            }
+            if (check2_5.classList.contains('active')) {
+                check_num2[0][4] = 1;
+                
+            }
+            if (check2_6.classList.contains('active')) {
+                check_num2[0][5] = 1;
+                
+            }
+            if (check_num2[0][0] === 1) {
+                query_arr2 += "퀴즈 not in (1) and ";
+            }
+            if (check_num2[0][1] === 1) {
+                query_arr2 += "레포트 not in (1) and ";
+            }
+            if (check_num2[0][2] === 1) {
+                query_arr2 += "발표 not in (1) and ";
+            }
+            if (check_num2[0][3] === 1) {
+                query_arr2 += "토론 not in (1) and ";
+            }
+            if (check_num2[0][4] === 1) {
+                query_arr2 += "실습 not in (1) and ";
+            }
+            if (check_num2[0][5] === 1) {
+                query_arr2 += "조별 not in (1) and ";
+            }
+
             
-            console.log(query_arr1)
-            fetch('/next_to_slecttime2',{
+            console.log(query_arr2)
+            
+            
+            fetch('/next_to_slecttime3',{
                 method : 'post',
                 headers : {
                     'content-type':'application/json'
                 },
                 body : JSON.stringify({
                     //query_arr0 : query_arr0,
-                    query_arr1 : query_arr1,
-                    //query_arr2 : query_arr2,
+                    //query_arr1 : query_arr1,
+                    query_arr2 : query_arr2,
                     //query_arr3 : query_arr3
                 })
             })
 
-            출석방식.style.display = 'none';
-            과제방식또는수업진행방식.style.display = 'block';
-            //window.location.href = 'CheckList3.html'
+            과제방식또는수업진행방식.style.display = 'none';
+            강의시간.style.display = 'block';
+            //window.location.href = 'CheckList4.html'
             //다음으로 넘어가는 코드
         }
-    }
 
-    //-----------------------------------------------------------
-    function checkButtonStates3() {
-        let check_num2 = [
-            [0, 0, 0, 0, 0, 0],
-            ["퀴즈", "레포트", "발표", "토론", "실습", "조별활동 조별과제"]
-            ];
-        let query_arr2 = ""
-        const check2_1 = document.getElementById("퀴즈");
-        const check2_2 = document.getElementById("레포트");
-        const check2_3 = document.getElementById("발표");
-        const check2_4 = document.getElementById("토론");
-        const check2_5 = document.getElementById("실습");
-        const check2_6 = document.getElementById("조별활동 조별과제");
-        if (check2_1.classList.contains('active')) {
-            check_num2[0][0] = 1;
-            
-        }
-        if (check2_2.classList.contains('active')) {
-            check_num2[0][1] = 1;
-            
-        }
-        if (check2_3.classList.contains('active')) {
-            check_num2[0][2] = 1;
-            
-        }
-        if (check2_4.classList.contains('active')) {
-            check_num2[0][3] = 1;
-            
-        }
-        if (check2_5.classList.contains('active')) {
-            check_num2[0][4] = 1;
-            
-        }
-        if (check2_6.classList.contains('active')) {
-            check_num2[0][5] = 1;
-            
-        }
-        if (check_num2[0][0] === 1) {
-            query_arr2 += "퀴즈 not in (1) and ";
-        }
-        if (check_num2[0][1] === 1) {
-            query_arr2 += "레포트 not in (1) and ";
-        }
-        if (check_num2[0][2] === 1) {
-            query_arr2 += "발표 not in (1) and ";
-        }
-        if (check_num2[0][3] === 1) {
-            query_arr2 += "토론 not in (1) and ";
-        }
-        if (check_num2[0][4] === 1) {
-            query_arr2 += "실습 not in (1) and ";
-        }
-        if (check_num2[0][5] === 1) {
-            query_arr2 += "조별 not in (1) and ";
-        }
+        //----------------------------------------------------
+        function checkButtonStates4() {
 
+            let check_num3 = [1, 2, 3];
         
-        console.log(query_arr2)
-        
-        
-        fetch('/next_to_slecttime3',{
-            method : 'post',
-            headers : {
-                'content-type':'application/json'
-            },
-            body : JSON.stringify({
-                //query_arr0 : query_arr0,
-                //query_arr1 : query_arr1,
-                query_arr2 : query_arr2,
-                //query_arr3 : query_arr3
+            const check3_1 = document.getElementById("오전 수업");
+            const check3_2 = document.getElementById("야간 수업");
+            const again_message3 = document.querySelector('#message3')
+            if (check3_1.classList.contains('active')) {
+                check_num3.splice(1, 2);
+            }
+            if (check3_2.classList.contains('active')) {
+                check_num3.splice(0, 2);
+            }
+
+            if (check_num3.length === 3) {
+                query_arr3 = "";
+            }
+            else if (check_num3.length === 1) {
+                query_arr3 = "강의시간 not in ("+check_num3[0]+") and ";
+            }
+            else if (check_num3.length === 0) {
+                query_arr3 = "강의시간 not in (1,2,3) and ";
+            }
+            console.log(query_arr3)
+            check_num3 = [1, 2, 3];
+            fetch('/next_to_slecttime4',{
+                method : 'post',
+                headers : {
+                    'content-type':'application/json'
+                },
+                body : JSON.stringify({
+                    //query_arr0 : query_arr0,
+                    //query_arr1 : query_arr1,
+                    //query_arr2 : query_arr2,
+                    query_arr3 : query_arr3
+                })
             })
-        })
-
-        과제방식또는수업진행방식.style.display = 'none';
-        강의시간.style.display = 'block';
-        //window.location.href = 'CheckList4.html'
-        //다음으로 넘어가는 코드
-    }
-
-    //----------------------------------------------------
-    function checkButtonStates4() {
-
-        let check_num3 = [1, 2, 3];
+            강의시간.style.display = 'none';
+            시험방식.style.display = 'block';
+            location.href = '#SelectTime';
+        }
     
-        const check3_1 = document.getElementById("오전 수업");
-        const check3_2 = document.getElementById("야간 수업");
-        const again_message3 = document.querySelector('#message3')
-        if (check3_1.classList.contains('active')) {
-            check_num3.splice(1, 2);
-        }
-        if (check3_2.classList.contains('active')) {
-            check_num3.splice(0, 2);
+        // --------------------------
+        function PreviousClick2() {
+            시험방식.style.display = 'block';
+            출석방식.style.display = 'none';
         }
 
-        if (check_num3.length === 3) {
-            query_arr3 = "";
+        function PreviousClick3() {
+            출석방식.style.display = 'block';
+            과제방식또는수업진행방식.style.display = 'none';
         }
-        else if (check_num3.length === 1) {
-            query_arr3 = "강의시간 not in ("+check_num3[0]+") and ";
+
+        function PreviousClick4() {
+            과제방식또는수업진행방식.style.display = 'block';
+            강의시간.style.display = 'none';
         }
-        else if (check_num3.length === 0) {
-            query_arr3 = "강의시간 not in (1,2,3) and ";
-        }
-        console.log(query_arr3)
-        check_num3 = [1, 2, 3];
-        fetch('/next_to_slecttime4',{
-            method : 'post',
-            headers : {
-                'content-type':'application/json'
-            },
-            body : JSON.stringify({
-                //query_arr0 : query_arr0,
-                //query_arr1 : query_arr1,
-                //query_arr2 : query_arr2,
-                query_arr3 : query_arr3
-            })
-        })
-        강의시간.style.display = 'none';
-        시험방식.style.display = 'block';
-        location.href = '#SelectTime';
-    }
-   
-    // --------------------------
-    function PreviousClick2() {
-        시험방식.style.display = 'block';
-        출석방식.style.display = 'none';
-    }
-
-    function PreviousClick3() {
-        출석방식.style.display = 'block';
-        과제방식또는수업진행방식.style.display = 'none';
-    }
-
-    function PreviousClick4() {
-        과제방식또는수업진행방식.style.display = 'block';
-        강의시간.style.display = 'none';
-    }
-
-	
-</script>
+    </script>
+</body>
 </html>
