@@ -2062,7 +2062,7 @@ mark {
 	}
 	select{
 		width:100%;
-		margin: 10px 1px 0 1px;
+		margin: 10px 2px 0 2px;
 		padding: 10px 0 10px 5px;
 	}
 
@@ -2185,3 +2185,49 @@ mark {
 		transform: scale(1.05); /* 약간 확대되는 효과 */
 	  }
 
+
+	  /* 페이드인 페이드아웃 애니메이션 */
+	  @keyframes fade-in {
+		from {
+		  opacity: 0;
+		}
+		to {
+		  opacity: 1;
+		}
+	  }
+
+	  @keyframes fade-out {
+		from {
+		  opacity: 0;
+		}
+		to {
+		  opacity: 1;
+		}
+	  }
+	  
+	  #department-section {
+		display: none;
+		animation: fade-in 0.7s ease-in-out;
+	  }
+
+	  /* 체크리스트 애니메이션 */
+	  #시험방식 {
+		display: block;
+		animation: fade-in 0.7s ease-in-out;
+		animation: fade-out 0.7s ease-in-out;
+	  }
+	  #출석방식 {
+		display: none;
+		animation: fade-in 0.7s ease-in-out;
+		animation: fade-out 0.7s ease-in-out;
+	  }
+	  #과제방식또는수업진행방식 {
+		display: none;
+		animation: fade-in 0.7s ease-in-out;
+		animation: fade-out 0.7s ease-in-out;
+	  }
+	  #강의시간 {
+		display: none;
+		animation: fade-in 0.7s ease-in-out;
+		animation: fade-out 0.7s ease-in-out;
+	  }
