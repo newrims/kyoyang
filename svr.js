@@ -19,7 +19,7 @@ app.use(express.json());
 app.use('/public', static(path.join(__dirname, 'public')));
 
 let query_GE;
-let query_times;
+let query_time;
 let query_checklist = "";
 
 app.post('/next_to_checklist', (req, res) => {
@@ -29,6 +29,7 @@ app.post('/next_to_checklist', (req, res) => {
 
     query_GE = GE;
     console.log(query_GE);
+    return;
 
 })
 let query_arr0 = '';
@@ -37,41 +38,46 @@ let query_arr2 = '';
 let query_arr3 = '';
 
 app.post('/next_to_slecttime1', (req, res) => {
-    console.log('next_to_selecttime1 호출됨');
+    console.log('next_to_selecttime 호출됨');
 
     query_arr0 = req.body.query_arr0;
 
     console.log(query_arr0);
+    return;
 })
 app.post('/next_to_slecttime2', (req, res) => {
-    console.log('next_to_selecttime2 호출됨');
+    console.log('next_to_selecttime 호출됨');
 
     query_arr1 = req.body.query_arr1;
 
     console.log(query_arr1);
+    return;
 })
 app.post('/next_to_slecttime3', (req, res) => {
-    console.log('next_to_selecttime3 호출됨');
+    console.log('next_to_selecttime 호출됨');
 
     query_arr2 = req.body.query_arr2;
 
     console.log(query_arr2);
+    return;
 })
 app.post('/next_to_slecttime4', (req, res) => {
-    console.log('next_to_selecttime4 호출됨');
+    console.log('next_to_selecttime 호출됨');
 
     query_arr3 = req.body.query_arr3;
 
     query_checklist = query_arr0 + query_arr1 + query_arr2 + query_arr3;
     console.log(query_checklist);
+    return;
 })
 
-app.post('/next_to_test', (req, res) => {
+app.post('/next_to_test', (req) => {
     console.log('next_to_test 호출됨')
 
-    query_times = req.body.query_time;
+    query_time = req.body.idx;
 
-    console.log(query_times);
+    console.log(query_time);
+    return;
 })
 
 app.post('/callDB', (req, res) => {
@@ -97,6 +103,8 @@ app.post('/callDB', (req, res) => {
     resData.특이사항 = []
     resData.학점 = []
 
+    console.log(`select * from kyoyang where not regexp_like ${query_time} and '수강제한학과' not like '%${query_GE}%' and ${query_checklist} ${last_query};`);
+
     pool.getConnection((err, conn)=>{
         if (err) {
             conn.release();
@@ -106,7 +114,7 @@ app.post('/callDB', (req, res) => {
             return;
         }
 
-        conn.query(`select * from kyoyang where not regexp_like ${query_times} and '수강제한학과' not like '%${query_GE}%' and ${query_checklist} ${last_query};`, (error, rows, fields)=>{
+        conn.query(`select * from kyoyang where not regexp_like ${query_time} and '수강제한학과' not like '%${query_GE}%' and ${query_checklist} ${last_query};`, (error, rows, fields)=>{
             if (error) {  // db query 실패
                 conn.release();
                 console.dir(error);
