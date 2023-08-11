@@ -34,338 +34,633 @@
 		<!-- Main -->
 		<div id="main">
 
-			<!-- 1 -->
-			<article id="Name" class="panel">
+		<!-- 1 -->
+		<article id="Name" class="panel">
+			<div>
+			<label>소속대학을 선택해주세요.</label>
+			<br>
+			<div style="text-align: center;">
 				<div>
-					<label>소속대학을 선택해주세요.</label>
-					<br>
-					<div style="text-align: center;">
-						<div>
-							<button type="button" class="button-border" onclick="toggleImage(this)" data-id="finance">
-							<img src="icon/finance.png" alt="" class="button-icon">
-							</button>
-							
-							<button type="button" class="button-border" onclick="toggleImage(this)" data-id="gongdae">
-							<img src="icon/gongdae.png" alt="" class="button-icon">
-							</button>
-							
-							<button type="button" class="button-border" onclick="toggleImage(this)" data-id="global">
-							<img src="icon/global.png" alt="" class="button-icon">
-							</button>
-							
-							<button type="button" class="button-border" onclick="toggleImage(this)" data-id="city">
-							<img src="icon/city.png" alt="" class="button-icon">
-							</button>
-							
-							<button type="button" class="button-border" onclick="toggleImage(this)" data-id="dongbuka">
-							<img src="icon/dongbuka.png" alt="" class="button-icon">
-							</button>
+				<button type="button" class="button-border" onclick="toggleImage(this)" data-id="finance">
+				<img src="icon/finance.png" alt="" class="button-icon">
+				</button>
+				
+				<button type="button" class="button-border" onclick="toggleImage(this)" data-id="gongdae">
+				<img src="icon/gongdae.png" alt="" class="button-icon">
+				</button>
+				
+				<button type="button" class="button-border" onclick="toggleImage(this)" data-id="global">
+				<img src="icon/global.png" alt="" class="button-icon">
+				</button>
+				
+				<button type="button" class="button-border" onclick="toggleImage(this)" data-id="city">
+				<img src="icon/city.png" alt="" class="button-icon">
+				</button>
+				
+				<button type="button" class="button-border" onclick="toggleImage(this)" data-id="dongbuka">
+				<img src="icon/dongbuka.png" alt="" class="button-icon">
+				</button>
 
-							<button type="button" class="button-border" onclick="toggleImage(this)" data-id="law">
-							<img src="icon/law.png" alt="" class="button-icon">
-							</button>
+				<button type="button" class="button-border" onclick="toggleImage(this)" data-id="law">
+				<img src="icon/law.png" alt="" class="button-icon">
+				</button>
 
-							<button type="button" class="button-border" onclick="toggleImage(this)" data-id="edu">
-							<img src="icon/edu.png" alt="" class="button-icon">
-							</button>
+				<button type="button" class="button-border" onclick="toggleImage(this)" data-id="edu">
+				<img src="icon/edu.png" alt="" class="button-icon">
+				</button>
 
-							<button type="button" class="button-border" onclick="toggleImage(this)" data-id="socialscience">
-							<img src="icon/socialscience.png" alt="" class="button-icon">
-							</button>
-							
-							<button type="button" class="button-border" onclick="toggleImage(this)" data-id="bio">
-							<img src="icon/bio.png" alt="" class="button-icon">
-							</button>
-							
-							<button type="button" class="button-border" onclick="toggleImage(this)" data-id="art">
-							<img src="icon/art.png" alt="" class="button-icon">
-							</button>
-							
-							<button type="button" class="button-border" onclick="toggleImage(this)" data-id="humanities">
-							<img src="icon/humanities.png" alt="" class="button-icon">
-							</button>
+				<button type="button" class="button-border" onclick="toggleImage(this)" data-id="socialscience">
+				<img src="icon/socialscience.png" alt="" class="button-icon">
+				</button>
+				
+				<button type="button" class="button-border" onclick="toggleImage(this)" data-id="bio">
+				<img src="icon/bio.png" alt="" class="button-icon">
+				</button>
+				
+				<button type="button" class="button-border" onclick="toggleImage(this)" data-id="art">
+				<img src="icon/art.png" alt="" class="button-icon">
+				</button>
+				
+				<button type="button" class="button-border" onclick="toggleImage(this)" data-id="humanities">
+				<img src="icon/humanities.png" alt="" class="button-icon">
+				</button>
 
-							<button type="button" class="button-border" onclick="toggleImage(this)" data-id="natural">
-							<img src="icon/natural.png" alt="" class="button-icon">
-							</button>
-							
-							<button type="button" class="button-border" onclick="toggleImage(this)" data-id="computer">
-							<img src="icon/computer.png" alt="" class="button-icon">
-							</button>
-							
-							<button type="button" class="button-border">
-							<img src="icon/white background1.png" alt="" class="button-icon">
-							</button>
-							
-							<button type="button" class="button-border">
-							<img src="icon/white background1.png" alt="" class="button-icon">
-							</button>
-						</div>			
-					</div>
+				<button type="button" class="button-border" onclick="toggleImage(this)" data-id="natural">
+				<img src="icon/natural.png" alt="" class="button-icon">
+				</button>
+				
+				<button type="button" class="button-border" onclick="toggleImage(this)" data-id="computer">
+				<img src="icon/computer.png" alt="" class="button-icon">
+				</button>
+				
+				<button type="button" class="button-border">
+				<img src="icon/white background1.png" alt="" class="button-icon">
+				</button>
+				
+				<button type="button" class="button-border">
+				<img src="icon/white background1.png" alt="" class="button-icon">
+				</button>
+				</div>			
+			</div>
+		</div>
+			
+		<br>
+
+			<div id="department-section">
+				<label>학과를 선택해주세요.</label>
+					<div>
+					<select required id="GE">
+						<option value="" disabled selected>학과</option>
+						<option value=”건설환경공학과”>건설환경공학과</option>
+						<option value=”건축공학”>건축공학</option>
+						<option value=”경영학부”>경영학부</option>
+						<option value=”경제학과”>경제학과</option>
+						<option value=”공연예술학과”>공연예술학과</option>
+						<option value=”국어교육과”>국어교육과</option>
+						<option value=”국어국문학과”>국어국문학과</option>
+						<option value=”기계공학과”>기계공학과</option>
+						<option value=”나노바이오”>나노바이오</option>
+						<option value=”도시건축학”>도시건축학</option>
+						<option value=”도시공학과”>도시공학과</option>
+						<option value=”도시행정학과”>도시행정학과</option>
+						<option value=”독어독문학과”>독어독문학과</option>
+						<option value=”동북아통상전공”>동북아통상전공</option>
+						<option value=”디자인학부”>디자인학부</option>
+						<option value=”무역학부”>무역학부</option>
+						<option value=”문헌정보학과”>문헌정보학과</option>
+						<option value=”물리학과”>물리학과</option>
+						<option value=”미디어커뮤니케이션학과”>미디어커뮤니케이션학과</option>
+						<option value=”바이오-로봇 시스템공학과”>바이오-로봇 시스템공학과</option>
+						<option value=”법학부”>법학부</option>
+						<option value=”분자의생명”>분자의생명</option>
+						<option value=”불어불문학과”>불어불문학과</option>
+						<option value=”사회복지학과”>사회복지학과</option>
+						<option value=”산업경영공학과”>산업경영공학과</option>
+						<option value=”생명공학”>생명공학</option>
+						<option value=”생명과학”>생명과학</option>
+						<option value=”세무회계학과”>세무회계학과</option>
+						<option value=”소비자학과”>소비자학과</option>
+						<option value=”소셜데이터사이언스 연계전공”>소셜데이터사이언스 연계전공</option>
+						<option value=”수학과”>수학과</option>
+						<option value=”수학교육과”>수학교육과</option>
+						<option value=”신소재 공학과”>신소재 공학과</option>
+						<option value=”안전공학과”>안전공학과</option>
+						<option value=”에너지화학공학과”>에너지화학공학과</option>
+						<option value=”역사교육과”>역사교육과</option>
+						<option value=”영어교육과”>영어교육과</option>
+						<option value=”영어영문학과”>영어영문학과</option>
+						<option value=”운동건강학부”>운동건강학부</option>
+						<option value=”유아교육과”>유아교육과</option>
+						<option value=”윤리교육과”>윤리교육과</option>
+						<option value=”일어교육과”>일어교육과</option>
+						<option value=”일어일문학과”>일어일문학과</option>
+						<option value=”임베디드시스템공학과”>임베디드시스템공학과</option>
+						<option value=”전기공학과”>전기공학과</option>
+						<option value=”전자공학과”>전자공학과</option>
+						<option value=”정보통신공학과”>정보통신공학과</option>
+						<option value=”정치외교학과”>정치외교학과</option>
+						<option value=”조형예술학부”>조형예술학부</option>
+						<option value=”중어중국학과”>중어중국학과</option>
+						<option value=”창의인재개발학과”>창의인재개발학과</option>
+						<option value=”체육교육과”>체육교육과</option>
+						<option value=”체육학부”>체육학부</option>
+						<option value=”컴퓨터공학부”>컴퓨터공학부</option>
+						<option value=”테크노경영학과”>테크노경영학과</option>
+						<option value=”패션산업학과”>패션산업학과</option>
+						<option value=”한국통상전공”>한국통상전공</option>
+						<option value=”해양학과”>해양학과</option>
+						<option value=”행정학과”>행정학과</option>
+						<option value=”화학과”>화학과</option>
+						<option value=”환경공학”>환경공학</option>
+					</select>
+	
 				</div>
-				
-				<br>
+					
+			<div class="buttons">
+			<input class="btn-hover color-9" type="submit" value="확인" id="nextpage_to_checklist"/>
+			</div>
+	
+			</div>
+			
+		<script>
+		var selectedImages = {
+		"finance": "icon_selected/finance_selected.png",
+		"gongdae": "icon_selected/gongdae_selected.png",
+		"global": "icon_selected/global_selected.png",
+		"city": "icon_selected/city_selected.png",
+		"dongbuka": "icon_selected/dongbuka_selected.png",
+		"law": "icon_selected/law_selected.png",
+		"edu": "icon_selected/edu_selected.png",
+		"socialscience": "icon_selected/socialscience_selected.png",
+		"bio": "icon_selected/bio_selected.png",
+		"art": "icon_selected/art_selected.png",
+		"humanities": "icon_selected/humanities_selected.png",
+		"natural": "icon_selected/natural_selected.png",
+		"computer": "icon_selected/computer_selected.png",
+		};	
 
-				<div id="department-section" style="display: none;">
-						<div>
-							<label>학과를 선택해주세요.</label>
-							<select required id="GE">
-								<option value="" disabled selected>학과</option>
-								<option value=”건설환경공학과”>건설환경공학과</option>
-								<option value=”건축공학”>건축공학</option>
-								<option value=”경영학부”>경영학부</option>
-								<option value=”경제학과”>경제학과</option>
-								<option value=”공연예술학과”>공연예술학과</option>
-								<option value=”국어교육과”>국어교육과</option>
-								<option value=”국어국문학과”>국어국문학과</option>
-								<option value=”기계공학과”>기계공학과</option>
-								<option value=”나노바이오”>나노바이오</option>
-								<option value=”도시건축학”>도시건축학</option>
-								<option value=”도시공학과”>도시공학과</option>
-								<option value=”도시행정학과”>도시행정학과</option>
-								<option value=”독어독문학과”>독어독문학과</option>
-								<option value=”동북아통상전공”>동북아통상전공</option>
-								<option value=”디자인학부”>디자인학부</option>
-								<option value=”무역학부”>무역학부</option>
-								<option value=”문헌정보학과”>문헌정보학과</option>
-								<option value=”물리학과”>물리학과</option>
-								<option value=”미디어커뮤니케이션학과”>미디어커뮤니케이션학과</option>
-								<option value=”바이오-로봇 시스템공학과”>바이오-로봇 시스템공학과</option>
-								<option value=”법학부”>법학부</option>
-								<option value=”분자의생명”>분자의생명</option>
-								<option value=”불어불문학과”>불어불문학과</option>
-								<option value=”사회복지학과”>사회복지학과</option>
-								<option value=”산업경영공학과”>산업경영공학과</option>
-								<option value=”생명공학”>생명공학</option>
-								<option value=”생명과학”>생명과학</option>
-								<option value=”세무회계학과”>세무회계학과</option>
-								<option value=”소비자학과”>소비자학과</option>
-								<option value=”소셜데이터사이언스 연계전공”>소셜데이터사이언스 연계전공</option>
-								<option value=”수학과”>수학과</option>
-								<option value=”수학교육과”>수학교육과</option>
-								<option value=”신소재 공학과”>신소재 공학과</option>
-								<option value=”안전공학과”>안전공학과</option>
-								<option value=”에너지화학공학과”>에너지화학공학과</option>
-								<option value=”역사교육과”>역사교육과</option>
-								<option value=”영어교육과”>영어교육과</option>
-								<option value=”영어영문학과”>영어영문학과</option>
-								<option value=”운동건강학부”>운동건강학부</option>
-								<option value=”유아교육과”>유아교육과</option>
-								<option value=”윤리교육과”>윤리교육과</option>
-								<option value=”일어교육과”>일어교육과</option>
-								<option value=”일어일문학과”>일어일문학과</option>
-								<option value=”임베디드시스템공학과”>임베디드시스템공학과</option>
-								<option value=”전기공학과”>전기공학과</option>
-								<option value=”전자공학과”>전자공학과</option>
-								<option value=”정보통신공학과”>정보통신공학과</option>
-								<option value=”정치외교학과”>정치외교학과</option>
-								<option value=”조형예술학부”>조형예술학부</option>
-								<option value=”중어중국학과”>중어중국학과</option>
-								<option value=”창의인재개발학과”>창의인재개발학과</option>
-								<option value=”체육교육과”>체육교육과</option>
-								<option value=”체육학부”>체육학부</option>
-								<option value=”컴퓨터공학부”>컴퓨터공학부</option>
-								<option value=”테크노경영학과”>테크노경영학과</option>
-								<option value=”패션산업학과”>패션산업학과</option>
-								<option value=”한국통상전공”>한국통상전공</option>
-								<option value=”해양학과”>해양학과</option>
-								<option value=”행정학과”>행정학과</option>
-								<option value=”화학과”>화학과</option>
-								<option value=”환경공학”>환경공학</option>
-							</select>
-						</div>
-					<input type="submit" value="확인" onclick="location.href='#CheckList1'" id="nextpage_to_checklist"/>
-				</div>
-				
-				<script>
-				var selectedImages = {
-   				"finance": "icon_selected/finance_selected.png",
-    			"gongdae": "icon_selected/gongdae_selected.png",
-				"global": "icon_selected/global_selected.png",
-				"city": "icon_selected/city_selected.png",
-				"dongbuka": "icon_selected/dongbuka_selected.png",
-				"law": "icon_selected/law_selected.png",
-				"edu": "icon_selected/edu_selected.png",
-				"socialscience": "icon_selected/socialscience_selected.png",
-				"bio": "icon_selected/bio_selected.png",
-				"art": "icon_selected/art_selected.png",
-				"humanities": "icon_selected/humanities_selected.png",
-				"natural": "icon_selected/natural_selected.png",
-				"computer": "icon_selected/computer_selected.png",
-				};	
+		var currentImage = {
+		"finance": "icon/finance.png",
+		"gongdae": "icon/gongdae.png",
+		"global": "icon/global.png",
+		"city": "icon/city.png",
+		"dongbuka": "icon/dongbuka.png",
+		"law": "icon/law.png",
+		"edu": "icon/edu.png",
+		"socialscience": "icon/socialscience.png",
+		"bio": "icon/bio.png",
+		"art": "icon/art.png",
+		"humanities": "icon/humanities.png",
+		"natural": "icon/natural.png",
+		"computer": "icon/computer.png",
+		};	
 
-				var currentImage = {
-   				"finance": "icon/finance.png",
-    			"gongdae": "icon/gongdae.png",
-				"global": "icon/global.png",
-				"city": "icon/city.png",
-				"dongbuka": "icon/dongbuka.png",
-				"law": "icon/law.png",
-				"edu": "icon/edu.png",
-				"socialscience": "icon/socialscience.png",
-				"bio": "icon/bio.png",
-				"art": "icon/art.png",
-				"humanities": "icon/humanities.png",
-				"natural": "icon/natural.png",
-				"computer": "icon/computer.png",
-				};	
+		var departmentMapping = {
+		"finance": ["경영학부", "세무회계학과", "테크노경영학과"],
+		"gongdae": ["기계공학과", "바이오-로봇 시스템공학과", "산업경영공학과", "신소재 공학과", "안전공학과", "에너지화학공학과", "전기공학과", "전자공학과"],
+		"global": ["경제학과", "무역학부", "소비자학과", "정치외교학과", "행정학과"],
+		"city": ["건설환경공학과", "건축공학", "도시건축학", "도시공학과", "도시행정학과", "환경공학"],
+		"dongbuka": ["동북아통상전공", "한국통상전공"],
+		"law": ["법학부"],
+		"edu": ["국어교육과", "수학교육과", "역사교육과", "영어교육과", "유아교육과", "윤리교육과", "일어교육과", "체육교육과"],
+		"socialscience": ["문헌정보학과", "미디어커뮤니케이션학과", "사회복지학과", "소셜데이터사이언스 연계전공", "창의인재개발학과"],
+		"bio": ["나노바이오", "분자의생명", "생명공학", "생명과학"],
+		"art": ["공연예술학과", "디자인학부", "운동건강학부", "조형예술학부", "체육학부"],
+		"humanities": ["국어국문학과", "독어독문학과", "불어불문학과", "영어영문학과", "일어일문학과", "중어중국학과"],
+		"natural": ["물리학과", "수학과", "패션산업학과", "해양학과", "화학과"],
+		"computer": ["임베디드시스템공학과", "정보통신공학과", "컴퓨터공학부"],
+		};
 
-				var departmentMapping = {
-				"finance": ["경영학부", "세무회계학과", "테크노경영학과"],
-				"gongdae": ["기계공학과", "바이오-로봇 시스템공학과", "산업경영공학과", "신소재 공학과", "안전공학과", "에너지화학공학과", "전기공학과", "전자공학과"],
-				"global": ["경제학과", "무역학부", "소비자학과", "정치외교학과", "행정학과"],
-				"city": ["건설환경공학과", "건축공학", "도시건축학", "도시공학과", "도시행정학과", "환경공학"],
-				"dongbuka": ["동북아통상전공", "한국통상전공"],
-				"law": ["법학부"],
-				"edu": ["국어교육과", "수학교육과", "역사교육과", "영어교육과", "유아교육과", "윤리교육과", "일어교육과", "체육교육과"],
-				"socialscience": ["문헌정보학과", "미디어커뮤니케이션학과", "사회복지학과", "소셜데이터사이언스 연계전공", "창의인재개발학과"],
-				"bio": ["나노바이오", "분자의생명", "생명공학", "생명과학"],
-				"art": ["공연예술학과", "디자인학부", "운동건강학부", "조형예술학부", "체육학부"],
-				"humanities": ["국어국문학과", "독어독문학과", "불어불문학과", "영어영문학과", "일어일문학과", "중어중국학과"],
-				"natural": ["물리학과", "수학과", "패션산업학과", "해양학과", "화학과"],
-				"computer": ["임베디드시스템공학과", "정보통신공학과", "컴퓨터공학부"],
-				};
+		
+		
+		function toggleImage(button) {
+		var imgElement = button.querySelector('img');
+		var buttonId = button.getAttribute('data-id');
+		var currentImageSrc = imgElement.getAttribute('src');
+		var selectedImageSrc = selectedImages[buttonId];
+		var originalImageSrc = currentImage[buttonId];
+		var departmentSection = document.querySelector('#department-section');
+			if (button.classList.contains("button-selected")) {
+			button.classList.remove("button-selected");
+			imgElement.setAttribute('src', originalImageSrc);
+			} 
+			else {
+				button.classList.add("button-selected");
+				imgElement.setAttribute('src', selectedImageSrc);
 
-				
-				
-				function toggleImage(button) {
-				var imgElement = button.querySelector('img');
-				var buttonId = button.getAttribute('data-id');
-				var currentImageSrc = imgElement.getAttribute('src');
-				var selectedImageSrc = selectedImages[buttonId];
-				var originalImageSrc = currentImage[buttonId];
-
-					if (button.classList.contains("button-selected")) {
-					button.classList.remove("button-selected");
-					imgElement.setAttribute('src', originalImageSrc);
-					} 
-					else {
+				var selectedDepartments = departmentMapping[buttonId];
+				if (selectedDepartments) {
+					var buttons = document.querySelectorAll('.button-border');
+					buttons.forEach(function(btn) {
+						btn.classList.remove("button-selected");
+						btn.querySelector('img').setAttribute('src', currentImage[btn.getAttribute('data-id')]);
 						button.classList.add("button-selected");
 						imgElement.setAttribute('src', selectedImageSrc);
+					});
+
+					selectedDepartments.forEach(function(department) {
+						var departmentButton = document.querySelector('.button-border[data-id="' + department + '"]');
+						if (departmentButton) {
+							departmentButton.classList.add("button-selected");
+							departmentButton.querySelector('img').setAttribute('src', selectedImages[department]);
+						}
+					});
+
+					var departmentSelect = document.querySelector('select');
+					departmentSelect.innerHTML = `
+						<option value="" disabled selected>학과</option>
+						${selectedDepartments.map(dep => `<option value="${dep}">${dep}</option>`).join('')}
+					`;
+				} 
+
+				else {
+					button.classList.add("button-selected");
+					imgElement.setAttribute('src', selectedImageSrc);	
+					}
+			
+			}
+			departmentSection.style.display = 'block';
+		}
+
+		const btn_nextpage_to_checklist = document.getElementById("nextpage_to_checklist");
+		btn_nextpage_to_checklist.addEventListener("click", (event) => {
+		event.preventDefault();
+		const departmentSelect = document.getElementById("GE");
+		if (departmentSelect.value === "") {			
+			
+			return; 
+		}
+
 	
-						var selectedDepartments = departmentMapping[buttonId];
-						if (selectedDepartments) {
-							var buttons = document.querySelectorAll('.button-border');
-							buttons.forEach(function(btn) {
-								btn.classList.remove("button-selected");
-								btn.querySelector('img').setAttribute('src', currentImage[btn.getAttribute('data-id')]);
-								button.classList.add("button-selected");
-								imgElement.setAttribute('src', selectedImageSrc);
-							});
+		fetch('/next_to_checklist', {
+			method: 'post',
+			headers: {
+				'content-type': 'application/json'
+			},
+			body: JSON.stringify({
+				GE: departmentSelect.value
+			})
+		}).then(() => {
+			nextpage();
+		});
+	});
 
-							selectedDepartments.forEach(function(department) {
-								var departmentButton = document.querySelector('.button-border[data-id="' + department + '"]');
-								if (departmentButton) {
-									departmentButton.classList.add("button-selected");
-									departmentButton.querySelector('img').setAttribute('src', selectedImages[department]);
-								}
-							});
+		function nextpage(){
+			location.href = '#CheckList1';
+		}
 
-							var departmentSelect = document.querySelector('select');
-							departmentSelect.innerHTML = `
-								<option value="" disabled selected>학과</option>
-								${selectedDepartments.map(dep => `<option value="${dep}">${dep}</option>`).join('')}
-							`;
-						} 
+	</script>
+	
+	</article>
+	
+	<!-- 2 -->
+	<article id="CheckList1" class="panel">
 
-						else {
-							button.classList.add("button-selected");
-							imgElement.setAttribute('src', selectedImageSrc);	
-							}
-					}
-					var departmentSection = document.querySelector('#department-section');
-					departmentSection.style.display = 'block';
+		<div id="시험방식">
+			<label>선호하는 항목을 체크해주세요.<br class='break-m'> (복수선택가능, 1개 이상 체크해주세요)</label>
+			<div id="message1"> </div> 
+			<div>시험 방식</div>
+			<div>
+				<input type='button' id='과제 대체' value='과제 대체' class='button-CheckList' onclick='btnClicked("과제 대체")'/>
+				<br>
+				<input type='button' id='시험 2번' value='시험 2번' class='button-CheckList' onclick='btnClicked("시험 2번")'/>
+				<br>
+				<input type='button' id='시험 1번' value='시험 1번' class='button-CheckList' onclick='btnClicked("시험 1번")'/>
+			</div>
+			<div class="buttons">
+			<button class="btn-hover color-9" id="nextButton" onclick="checkButtonStates1()">다음(1/4)</button>
+			</div>
+		</div>
+
+
+		<div id="출석방식">
+			<label>불호하는 항목을 체크해주세요.<br class='break-m'> (체크하지 않으면 '상관없음'으로 간주)</label>
+			<div id="message2"></div>
+			<div>출석 방식(복수선택 불가)</div> 
+			<div>
+				<input type='button' id='전자 출결' value='전자 출결' class='button-CheckList' onclick='btnClicked("전자 출결")'/>
+				<br>
+				<input type='button' id='직접 호명' value='직접 호명' class='button-CheckList' onclick='btnClicked("직접 호명")'/>
+				<br>
+				<input type='button' id='랜덤 또는 불시 출석' value='랜덤 또는 불시 출석' class='button-CheckList' onclick='btnClicked("랜덤 또는 불시 출석")'/>
+			</div>
+			<div class="buttons">
+				<button class="btn-hover color-9" id="previousButton" onclick="PreviousClick2()">이전</button>
+				<button class="btn-hover color-9" id="nextButton" onclick="checkButtonStates2()">다음(2/4)</button>
+			</div>
+		</div>
+
+
+		<div id="과제방식또는수업진행방식">
+			<label>불호하는 항목을 체크해주세요.<br class='break-m'> (체크하지 않으면 '상관없음'으로 간주)</label>
+			<div id="message3"></div>
+			<div>과제 방식 또는 수업 진행 방식<br class='break-m'>(복수선택 가능)</div> 
+			<div>
+				<input type='button' id='퀴즈' value='퀴즈' class='button-CheckList' onclick='btnClicked("퀴즈")'/>
+				<br>
+				<input type='button' id='레포트' value='레포트' class='button-CheckList' onclick='btnClicked("레포트")'/>
+				<br>
+				<input type='button' id='발표' value='발표' class='button-CheckList' onclick='btnClicked("발표")'/>
+				<br>
+				<input type='button' id='토론' value='토론' class='button-CheckList' onclick='btnClicked("토론")'/>
+				<br>
+				<input type='button' id='실습' value='실습' class='button-CheckList' onclick='btnClicked("실습")'/>
+				<br>
+				<input type='button' id='조별활동 조별과제' value='조별활동 조별과제'class='button-CheckList' onclick='btnClicked("조별활동, 조별과제")'/>
+			</div>
+			<div class="buttons">
+			<button class="btn-hover color-9" id="previousButton" onclick="PreviousClick3()">이전</button>
+			<button class="btn-hover color-9" id="nextButton" onclick="checkButtonStates3()">다음(3/4)</button>
+			</div>
+		</div>
+
+		
+		<div id="강의시간">
+			<label>불호하는 항목을 체크해주세요.<br class='break-m'> (체크하지 않으면 '상관없음'으로 간주)</label>
+			<div id="message4"></div>
+			<div>강의 시간(복수 선택 가능)</div> 
+			<div>
+				<input type='button' id='오전 수업' value='오전 수업' class='button-CheckList' onclick='btnClicked("오전 수업")'/>
+				<br>
+				<input type='button' id='야간 수업' value='야간 수업' class='button-CheckList' onclick='btnClicked("야간 수업")'/>
+			</div>
+			<div class="buttons">
+				<button class="btn-hover color-9" id="previousButton" onclick="PreviousClick4()">이전</button>
+				<button class="btn-hover color-9" id="nextButton" onclick="checkButtonStates4()">다음(4/4)</button>
+			</div>
+		</div>
+
+
+		<script>
+		// 버튼 클릭 시 호출되는 함수
+		function btnClicked(buttonId) {
+			const target = document.getElementById(buttonId);
+			target.classList.toggle('active');
+		}
+		
+		function checkButtonStates1() {
+			let check_num0 = [];
+			let check_cnt0 = 0;
+			let query_arr0 = ""
+			const check0_1 = document.getElementById("과제 대체");
+			const check0_2 = document.getElementById("시험 2번");
+			const check0_3 = document.getElementById("시험 1번");
+			const again_message1 = document.querySelector('#message1')
+
+			if (check0_1.classList.contains('active')) {
+				check_num0.push(0, 2, 4, 5);
+				check_cnt0++;
+			}
+			if (check0_2.classList.contains('active')) {
+				check_num0.push(1, 5);
+				check_cnt0++;
+			}
+			if (check0_3.classList.contains('active')) {
+				check_num0.push(2, 3, 5);
+				check_cnt0++;
+			}
+			if (check_cnt0 === 0){
+				
+				again_message1.textContent = '*체크항목을 다시 확인 해주세요.*'
+				check_num0 = []
+				check_cnt0 = 0;
+			}
+			else{
+				const uniqueCheckNum0 = [...new Set(check_num0)];
+				uniqueCheckNum0.sort((a, b) => a - b);
+				console.log(uniqueCheckNum0);
+				check_num0 = [];
+				check_cnt0 = 0;
+				
+
+				if (uniqueCheckNum0.length > 0) {
+					query_arr0 = uniqueCheckNum0.reduce((acc, course, idx)=>{
+						if (idx === uniqueCheckNum0.length - 1) {
+							return acc+`${course}) and `;
+						}
+						return acc+`${course},`;
+					},"시험 in (");
 				}
-				const btn_nextpage_to_checklist = document.getElementById("nextpage_to_checklist");
-				btn_nextpage_to_checklist.addEventListener("click",()=>{
-					fetch('/next_to_checklist',{
-						method : 'post',
-						headers : {
-							'content-type':'application/json'
-						},
-						body : JSON.stringify({
-							GE : GE.value
-						})
+				again_message1.textContent = ''
+				console.log(query_arr0)
+				fetch('/next_to_slecttime1',{
+					method : 'post',
+					headers : {
+						'content-type':'application/json'
+					},
+					body : JSON.stringify({
+						query_arr0 : query_arr0,
+						//query_arr1 : query_arr1,
+						//query_arr2 : query_arr2,
+						//query_arr3 : query_arr3
 					})
-				});
-
-				</script>
-
-			</article>
-
-			<!-- 2-1 -->
-			<article id="CheckList1" class="panel">
-				<label>선호하는 항목을 체크해주세요.<br class='break-m'> (복수선택가능, 1개 이상 체크해주세요)</label>
-				<div id="message"> </div> 
-				<div>시험 방식</div>
-				<br>
-				<div>
-					<input type='button' id='과제 대체' value='과제 대체' class='button-CheckList' onclick='btnClicked("과제 대체")'/>
-					<br>
-					<input type='button' id='시험 2번' value='시험 2번' class='button-CheckList' onclick='btnClicked("시험 2번")'/>
-					<br>
-					<input type='button' id='시험 1번' value='시험 1번' class='button-CheckList' onclick='btnClicked("시험 1번")'/>
-				</div>
-				<br>
-				<button id="nextButton" onclick="checkButtonStates1()">다음(1/4)</button>
+				})
+				시험방식.style.display = 'none';
+				출석방식.style.display = 'block';
+				//window.location.href = 'CheckList2.html'
+				//다음으로 넘어가는 코드
+			}
+		}
+		
+		//------------------------------------------------
+		function checkButtonStates2() {
+			let check_num1 = [0, 1, 2, 3];
+			let check_cnt1 = 0;
+			let query_arr1 = ""
+			const check1_1 = document.getElementById("전자 출결");
+			const check1_2 = document.getElementById("직접 호명");
+			const check1_3 = document.getElementById("랜덤 또는 불시 출석");
+			const again_message2 = document.querySelector('#message2')
+			again_message2.textContent = ''
+			if (check1_1.classList.contains('active')) {
+				check_num1.splice(0, 3);
+				check_cnt1++;
+			}
+			if (check1_2.classList.contains('active')) {
+				check_num1.splice(0, 1);
+				check_num1.splice(1, 2);
+				check_cnt1++;
+			}
+			if (check1_3.classList.contains('active')) {
+				check_num1.splice(0, 2);
+				check_num1.splice(1, 1);
+				check_cnt1++;
+			}
+			if (check_cnt1 > 1){
 				
-				<script>
-					let check_num0 = [];
-					let check_cnt0 = 0;
-					let query_arr0 = ""
-					const check0_1 = document.getElementById("과제 대체");
-					const check0_2 = document.getElementById("시험 2번");
-					const check0_3 = document.getElementById("시험 1번");
-					const again_message = document.querySelector('#message')
+				again_message2.textContent = '*체크항목을 다시 확인 해주세요.*'
+				check_num1 = [0, 1, 2, 3];
+				check_cnt1 = 0;
+			}
+			else{
 				
-					function btnClicked(buttonId) {
-						
-						const target = document.getElementById(buttonId);
-						target.classList.toggle('active');
-					}
-					
-					function checkButtonStates1() {
-						if (check0_1.classList.contains('active')) {
-							check_num0.push(0, 2, 4, 5);
-							check_cnt0++;
-						}
-						if (check0_2.classList.contains('active')) {
-							check_num0.push(1, 5);
-							check_cnt0++;
-						}
-						if (check0_3.classList.contains('active')) {
-							check_num0.push(2, 3, 5);
-							check_cnt0++;
-						}
-						if (check_cnt0 === 0){
-							
-							again_message.textContent = '*체크항목을 다시 확인 해주세요.*'
-							check_num0 = []
-						}
-						else{
-							const uniqueCheckNum0 = [...new Set(check_num0)];
-							uniqueCheckNum0.sort((a, b) => a - b);
-							console.log(uniqueCheckNum0);
-							check_num0 = [];
-				
-							
-				
-							if (uniqueCheckNum0.length > 0) {
-								query_arr0 = uniqueCheckNum0.reduce((acc, course, idx)=>{
-									if (idx === uniqueCheckNum0.length - 1) {
-										return acc+`${course}) and `;
-									}
-									return acc+`${course},`;
-								},"시험 in (");
-							}
-							again_message.textContent = ''
-							console.log(query_arr0)
-							window.location.href = 'CheckList2.html#CheckList1'
-						}
-					}
-				</script>
 
-			</article>
+				if (check_num1.length !== 4) {
+					query_arr1 = "출석 not in ("+check_num1[0]+") and ";
+				}
+				again_message2.textContent = ''
+				
+				console.log(query_arr1)
+				fetch('/next_to_slecttime2',{
+					method : 'post',
+					headers : {
+						'content-type':'application/json'
+					},
+					body : JSON.stringify({
+						//query_arr0 : query_arr0,
+						query_arr1 : query_arr1,
+						//query_arr2 : query_arr2,
+						//query_arr3 : query_arr3
+					})
+				})
+
+				출석방식.style.display = 'none';
+				과제방식또는수업진행방식.style.display = 'block';
+				//window.location.href = 'CheckList3.html'
+				//다음으로 넘어가는 코드
+			}
+		}
+
+		//-----------------------------------------------------------
+		function checkButtonStates3() {
+			let check_num2 = [
+				[0, 0, 0, 0, 0, 0],
+				["퀴즈", "레포트", "발표", "토론", "실습", "조별활동 조별과제"]
+				];
+			let query_arr2 = ""
+			const check2_1 = document.getElementById("퀴즈");
+			const check2_2 = document.getElementById("레포트");
+			const check2_3 = document.getElementById("발표");
+			const check2_4 = document.getElementById("토론");
+			const check2_5 = document.getElementById("실습");
+			const check2_6 = document.getElementById("조별활동 조별과제");
+			if (check2_1.classList.contains('active')) {
+				check_num2[0][0] = 1;
+				
+			}
+			if (check2_2.classList.contains('active')) {
+				check_num2[0][1] = 1;
+				
+			}
+			if (check2_3.classList.contains('active')) {
+				check_num2[0][2] = 1;
+				
+			}
+			if (check2_4.classList.contains('active')) {
+				check_num2[0][3] = 1;
+				
+			}
+			if (check2_5.classList.contains('active')) {
+				check_num2[0][4] = 1;
+				
+			}
+			if (check2_6.classList.contains('active')) {
+				check_num2[0][5] = 1;
+				
+			}
+			if (check_num2[0][0] === 1) {
+				query_arr2 += "퀴즈 not in (1) and ";
+			}
+			if (check_num2[0][1] === 1) {
+				query_arr2 += "레포트 not in (1) and ";
+			}
+			if (check_num2[0][2] === 1) {
+				query_arr2 += "발표 not in (1) and ";
+			}
+			if (check_num2[0][3] === 1) {
+				query_arr2 += "토론 not in (1) and ";
+			}
+			if (check_num2[0][4] === 1) {
+				query_arr2 += "실습 not in (1) and ";
+			}
+			if (check_num2[0][5] === 1) {
+				query_arr2 += "조별 not in (1) and ";
+			}
+
+			
+			console.log(query_arr2)
+			
+			
+			fetch('/next_to_slecttime3',{
+				method : 'post',
+				headers : {
+					'content-type':'application/json'
+				},
+				body : JSON.stringify({
+					//query_arr0 : query_arr0,
+					//query_arr1 : query_arr1,
+					query_arr2 : query_arr2,
+					//query_arr3 : query_arr3
+				})
+			})
+
+			과제방식또는수업진행방식.style.display = 'none';
+			강의시간.style.display = 'block';
+			//window.location.href = 'CheckList4.html'
+			//다음으로 넘어가는 코드
+		}
+
+		//----------------------------------------------------
+		function checkButtonStates4() {
+
+			let check_num3 = [1, 2, 3];
+		
+			const check3_1 = document.getElementById("오전 수업");
+			const check3_2 = document.getElementById("야간 수업");
+			const again_message3 = document.querySelector('#message3')
+			if (check3_1.classList.contains('active')) {
+				check_num3.splice(1, 2);
+			}
+			if (check3_2.classList.contains('active')) {
+				check_num3.splice(0, 2);
+			}
+
+			if (check_num3.length === 3) {
+				query_arr3 = "";
+			}
+			else if (check_num3.length === 1) {
+				query_arr3 = "강의시간 not in ("+check_num3[0]+") and ";
+			}
+			else if (check_num3.length === 0) {
+				query_arr3 = "강의시간 not in (1,2,3) and ";
+			}
+			console.log(query_arr3)
+			check_num3 = [1, 2, 3];
+			fetch('/next_to_slecttime4',{
+				method : 'post',
+				headers : {
+					'content-type':'application/json'
+				},
+				body : JSON.stringify({
+					//query_arr0 : query_arr0,
+					//query_arr1 : query_arr1,
+					//query_arr2 : query_arr2,
+					query_arr3 : query_arr3
+				})
+			})
+			강의시간.style.display = 'none';
+			시험방식.style.display = 'block';
+			location.href = '#SelectTime';
+		}
+		// --------------------------
+		function PreviousClick2() {
+			시험방식.style.display = 'block';
+			출석방식.style.display = 'none';
+		}
+
+		function PreviousClick3() {
+			출석방식.style.display = 'block';
+			과제방식또는수업진행방식.style.display = 'none';
+		}
+
+		function PreviousClick4() {
+			과제방식또는수업진행방식.style.display = 'block';
+			강의시간.style.display = 'none';
+		}
+
+		</script>
+
+	</article>
 
 			<!-- 3 -->
 			<article id="SelectTime" class="panel">
