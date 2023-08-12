@@ -1,3 +1,4 @@
+
 html, body, div, span, applet, object,
 iframe, h1, h2, h3, h4, h5, h6, p, blockquote,
 pre, a, abbr, acronym, address, big, cite,
@@ -2068,25 +2069,6 @@ mark {
 	}
 
 
-	 /* 테이블 컨테이너 */
-	 .table-container {
-		border: 4px solid rgb(0, 0, 0);
-		border-radius: 10px;
-		overflow: hidden;
-	  }
-	  /* 테이블 스타일 */
-	  table {
-		border-collapse: collapse;
-		width: 100%; /* 테이블이 컨테이너에 꽉 차도록 설정 */
-	  }
-	  td {
-		border: 1px solid rgb(0, 0, 0);
-		padding: 10px;
-		margin: -1px; /* 셀들의 외곽선이 컨테이너의 외곽선과 겹치는 부분을 가려줌 */
-		width: 300px;
-		height: 45px;
-		}
-
 	/* List Page table */
 	table {
 		border-collapse: collapse;
@@ -2181,6 +2163,7 @@ mark {
 	  .button-CheckList.active {
 		background: linear-gradient(to right, #25aae1, #4481eb); 
 		transform: scale(1.05); /* 약간 확대되는 효과 */
+		z-index: 100;
 	  }
 
 
@@ -2267,13 +2250,13 @@ mark {
 		margin: 20px 0 0 0;
 	}
 
-	#선호 {
+	.선호 {
 		font-size: 30px;
 		color: blue;
 	}
 	@media screen and (max-width: 736px) {
 
-		#선호{
+		.선호{
 			font-size: 25px;
 		}
 
@@ -2289,4 +2272,186 @@ mark {
 			font-size: 25px;
 		}
 
+	}
+
+	/* 테이블 시간표 */
+	table tr td:first-child {
+        width: 70px;
+    }
+	@media screen and (max-width: 736px) {
+
+		table tr td:first-child {
+			width: 40px;
+			font-size: 12px;
+		}
+
+	}
+
+	table {
+	border-collapse: collapse;
+	width: 100%; 
+	table-layout:fixed;
+	}
+	td {
+	border: 1px solid rgb(0, 0, 0);
+	padding: 10px;
+	width: 100%;
+	height: 60px;
+	color: black;
+	transition: background-color 0.3s ease;
+	}
+
+	/* 시간표 디자인
+	.rwd-table {
+		margin: auto;
+		width: 100%;
+		border-collapse: collapse;
+	}
+	
+	.rwd-table tr:first-child {
+		background: #5B86EF;
+		color: #fff;
+	}
+	
+	.rwd-table tr {
+		border-top: 1px solid #ddd;
+		border-bottom: 1px solid #ddd;
+		background-color: white;
+	}
+	
+	.rwd-table th {
+		display: none;
+	}
+	
+	.rwd-table td {
+		display: block;
+	}
+	
+	.rwd-table td:first-child {
+		margin-top: .5em;
+	}
+	
+	.rwd-table td:last-child {
+		margin-bottom: .5em;
+	}
+	
+	.rwd-table td:before {
+		font-weight: bold;
+		width: 120px;
+		display: inline-block;
+		color: #000;
+	}
+	
+	.rwd-table th,
+	.rwd-table td {
+		text-align: center;
+	}
+	
+	.rwd-table {
+		color: #333;
+		border-radius: .4em;
+		overflow: hidden;
+	}
+	
+	.rwd-table tr {
+		border-color: #000000;
+	}
+	
+	.rwd-table th,
+	.rwd-table td {
+		padding: .5em 1em;
+	}
+	@media screen and (max-width: 601px) {
+		.rwd-table tr:nth-child(2) {
+			border-top: none;
+		}
+		.rwd-table th:first-child,
+		.rwd-table td:first-child {
+			font-weight : bold;
+			color: black;
+		}
+		.rwd-table td a {
+			text-decoration: none;
+			color: black;
+		}
+	}
+	@media screen and (min-width: 600px) {
+		.rwd-table tr:hover:not(:first-child) {
+			background-color: rgba(131, 244, 180, 0.3);
+		}
+		.rwd-table td:before {
+			display: none;
+		}
+		.rwd-table td a {
+			text-decoration: none;
+			color: black;
+		}
+		.rwd-table th,
+		.rwd-table td {
+			display: table-cell;
+			padding: .25em .5em;
+		}
+		.rwd-table th:first-child,
+		.rwd-table td:first-child {
+			font-weight : bold;
+			padding-left: 0;
+		}
+		.rwd-table th:last-child,
+		.rwd-table td:last-child {
+			padding-right: 0;
+		}
+		.rwd-table th,
+		.rwd-table td {
+			padding: 1em !important;
+		}
+	} */
+
+
+	/* 툴팁 박스 */
+	.modal {
+		display: none;
+		position: fixed;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		background-color: rgba(0, 0, 0, 0.5);
+		z-index: 200;
+	  }
+  
+	  .modal-content {
+		text-align: center;
+		border-radius: 10px;
+		background-color: #fff;
+		width: 50%;
+		padding: 10px;
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+	  }
+	 
+	  @media screen and (max-width: 736px) {
+
+		.modal-content {
+			width: 85%;
+		}
+
+	}
+	.modalbutton{
+		border: 0;
+		background-color: transparent;
+	}
+
+	.content-container {
+        display: flex;
+        align-items: center;
+    }
+
+    .content-container > div {
+        margin-right: 0px; 
+    }
+
+	.questionmark{
+		width: 100%;
 	}
