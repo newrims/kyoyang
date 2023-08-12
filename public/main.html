@@ -784,16 +784,20 @@
 
 			<!-- 3 -->
 			<article id="SelectTime" class="panel">
-				<label>전공 시간을 선택해주세요.</label>
-				<br>
-				<label>60분 기준</label>
+				
+				<label>전공과 필수 교양 시간을 선택해주세요.</label>
+				<div style="text-align: right;">
+				<label class="switch-text">60분</label>
 				<label class="switch-button">
 					<input type="checkbox" id="time90"/>
 					<span class="onoff-switch"></span>
-				</label>
-				<label>90분 기준</label>
+				</label>		
+				<label class="switch-text">90분</label>
+			
+				</div>
+			
 				<div>
-				<table class="rwd-table">
+				<table class="time-table">
 				</table>
 				</div>
 				<br>
@@ -848,7 +852,7 @@
 
 					function setCellsToGray() {
 						cells.forEach(cell => {
-							if (cell.style.backgroundColor !== 'rgb(0, 48, 242)') {
+							if (cell.style.backgroundColor !== 'rgb(147, 178, 231)') {
 								if (checkbox.checked) {
 									if (cell.id % 24 == 1 || cell.id % 24 == 2 || cell.id % 24 == 3 || cell.id % 24 == 7 || cell.id % 24 == 8 || cell.id % 24 == 9 || cell.id % 24 == 13 || cell.id % 24 == 14 || cell.id % 24 == 15 || cell.id % 24 == 19 || cell.id % 24 == 21 || cell.id % 24 == 23) {
 										cell.style.backgroundColor = ('#ededed');
@@ -869,6 +873,31 @@
 							}
 						})
 					}
+
+					cells.forEach(cell => {
+						if (cell.id == 0) {
+							cell.style.color = 'white';
+						}
+						else if (cell.id == 24) {
+							cell.style.color = 'white';
+						}	
+						else if (cell.id == 48) {
+							cell.style.color = 'white';
+						}
+						else if (cell.id == 72) {
+							cell.style.color = 'white';
+						}
+						else if (cell.id == 96) {		
+							cell.style.color = 'white';
+						}
+						else if (cell.id == 120) {
+							cell.style.color = 'white';
+						}
+						else if (cell.id == 144) {
+							cell.style.color = 'white';
+						}			
+					})
+
 
 					cells.forEach(cell => {
 						if (cell.id == 1) {
@@ -1132,10 +1161,10 @@
 							if (checkbox.checked) {
 								if ((cell.id >= 25 && cell.id <= 42) || (cell.id >= 49 && cell.id <= 66) || (cell.id >= 73 && cell.id <= 90) || (cell.id >= 97 && cell.id <= 114) || (cell.id >= 121 && cell.id <= 138)) {
 									if (cell.id % 3 === 1) {
-										if (cell.style.backgroundColor !== 'rgb(0, 48, 242)') {
-											cell.style.backgroundColor = '#0030f2';
-											document.getElementById(Number(cell.id) + 1).style.backgroundColor = '#0030f2';
-											document.getElementById(Number(cell.id) + 2).style.backgroundColor = '#0030f2';
+										if (cell.style.backgroundColor !== 'rgb(147, 178, 231)') {
+											cell.style.backgroundColor = '#93b2e7';
+											document.getElementById(Number(cell.id) + 1).style.backgroundColor = '#93b2e7';
+											document.getElementById(Number(cell.id) + 2).style.backgroundColor = '#93b2e7';
 										}
 										else {
 											cell.style.backgroundColor = '';
@@ -1144,10 +1173,10 @@
 										}
 									}
 									else if (cell.id % 3 === 2) {
-										if (cell.style.backgroundColor !== 'rgb(0, 48, 242)') {
-											cell.style.backgroundColor = '#0030f2';
-											document.getElementById(Number(cell.id) - 1).style.backgroundColor = '#0030f2';
-											document.getElementById(Number(cell.id) + 1).style.backgroundColor = '#0030f2';
+										if (cell.style.backgroundColor !== 'rgb(147, 178, 231)') {
+											cell.style.backgroundColor = '#93b2e7';
+											document.getElementById(Number(cell.id) - 1).style.backgroundColor = '#93b2e7';
+											document.getElementById(Number(cell.id) + 1).style.backgroundColor = '#93b2e7';
 										}
 										else {
 											cell.style.backgroundColor = '';
@@ -1156,10 +1185,10 @@
 										}
 									}
 									else {
-										if (cell.style.backgroundColor !== 'rgb(0, 48, 242)') {
-											cell.style.backgroundColor = '#0030f2';
-											document.getElementById(Number(cell.id) - 1).style.backgroundColor = '#0030f2';
-											document.getElementById(Number(cell.id) - 2).style.backgroundColor = '#0030f2';
+										if (cell.style.backgroundColor !== 'rgb(147, 178, 231)') {
+											cell.style.backgroundColor = '#93b2e7';
+											document.getElementById(Number(cell.id) - 1).style.backgroundColor = '#93b2e7';
+											document.getElementById(Number(cell.id) - 2).style.backgroundColor = '#93b2e7';
 										}
 										else {
 											cell.style.backgroundColor = '';
@@ -1169,8 +1198,8 @@
 									}
 								}
 								else if ((cell.id >= 43 && cell.id <= 47) || (cell.id >= 67 && cell.id <= 71) || (cell.id >= 91 && cell.id <= 95) || (cell.id >= 115 && cell.id <= 119) || (cell.id >= 139 && cell.id <= 143)) {
-									if (cell.style.backgroundColor !== 'rgb(0, 48, 242)') {
-										cell.style.backgroundColor = '#0030f2';
+									if (cell.style.backgroundColor !== 'rgb(147, 178, 231)') {
+										cell.style.backgroundColor = '#93b2e7';
 									}
 									else {
 										cell.style.backgroundColor = '';
@@ -1180,9 +1209,9 @@
 							else {
 								if ((cell.id >= 25 && cell.id <= 42) || (cell.id >= 49 && cell.id <= 66) || (cell.id >= 73 && cell.id <= 90) || (cell.id >= 97 && cell.id <= 114) || (cell.id >= 121 && cell.id <= 138)) {
 									if (cell.id % 2 === 1) {
-										if (cell.style.backgroundColor !== 'rgb(0, 48, 242)') {
-											cell.style.backgroundColor = '#0030f2';
-											document.getElementById(Number(cell.id) + 1).style.backgroundColor = '#0030f2';
+										if (cell.style.backgroundColor !== 'rgb(147, 178, 231)') {
+											cell.style.backgroundColor = '#93b2e7';
+											document.getElementById(Number(cell.id) + 1).style.backgroundColor = '#93b2e7';
 										}
 										else {
 											cell.style.backgroundColor = '';
@@ -1190,9 +1219,9 @@
 										}
 									}
 									else {
-										if (cell.style.backgroundColor !== 'rgb(0, 48, 242)') {
-											cell.style.backgroundColor = '#0030f2';
-											document.getElementById(Number(cell.id) - 1).style.backgroundColor = '#0030f2';
+										if (cell.style.backgroundColor !== 'rgb(147, 178, 231)') {
+											cell.style.backgroundColor = '#93b2e7';
+											document.getElementById(Number(cell.id) - 1).style.backgroundColor = '#93b2e7';
 										}
 										else {
 											cell.style.backgroundColor = '';
@@ -1201,8 +1230,8 @@
 									}
 								}
 								else if ((cell.id >= 43 && cell.id <= 47) || (cell.id >= 67 && cell.id <= 71) || (cell.id >= 91 && cell.id <= 95) || (cell.id >= 115 && cell.id <= 119) || (cell.id >= 139 && cell.id <= 143)) {
-									if (cell.style.backgroundColor !== 'rgb(0, 48, 242)') {
-										cell.style.backgroundColor = '#0030f2';
+									if (cell.style.backgroundColor !== 'rgb(147, 178, 231)') {
+										cell.style.backgroundColor = '#93b2e7';
 									}
 									else {
 										cell.style.backgroundColor = '';
@@ -1218,7 +1247,7 @@
 					// Function to handle button click and display colored cell positions
 					function displayColoredCellPositions() {
 			
-						const coloredCells = document.querySelectorAll('td[style*="background-color: rgb(0, 48, 242)"]');
+						const coloredCells = document.querySelectorAll('td[style*="background-color: rgb(147, 178, 231)"]');
 			
 						const index = [];
 						coloredCells.forEach(cell => {
@@ -1838,15 +1867,16 @@
 			<article id="List" class="panel">
 				<details>
 					<summary>필터</summary>
-					<div id="detail_info">
-						<button id="fir_0" onclick="query_1(this)">핵심교양</button>
-						<button style="color:green" id="sec_0" onclick="query_2()">심화교양</button>
-						<button id="fir_1" onclick="query_3()">1학점</button>
-						<button id="sec_1" onclick="query_4()">2학점</button>
-						<button id="thi_1" onclick="query_5()">3학점</button>
-						<button id="fir_2" onclick="query_6()">온라인</button>
-						<button id="sec_2" onclick="query_7()">오프라인</button>
-						<button id="thi_2" onclick="query_8()">온라인+오프라인</button>
+					<div>
+						<button class="btn2 color-1" id="fir_0" onclick="query_1(this)">핵심교양</button>
+						<button class="btn2 color-1" id="sec_0" onclick="query_2()">심화교양</button>
+						<br class="break-m">
+						<button class="btn2 color-2" id="fir_1" onclick="query_3()">1학점</button>
+						<button class="btn2 color-2" id="sec_1" onclick="query_4()">2학점</button>
+						<button class="btn2 color-2" id="thi_1" onclick="query_5()">3학점</button>
+						<button class="btn2 color-3" id="fir_2" onclick="query_6()">온라인</button>
+						<button class="btn2 color-3" id="sec_2" onclick="query_7()">오프라인</button>
+						<button class="btn3 color-3" id="thi_2" onclick="query_8()">온라인+오프라인</button>
 					</div>
 				</details>
 					<div id="outer">
