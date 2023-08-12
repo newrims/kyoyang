@@ -2010,6 +2010,7 @@ mark {
         display: inline-block;
         width: 55px;
         height: 30px;
+		margin: 15px 0 0 0;	
     }
 
     .switch-button input {
@@ -2055,6 +2056,18 @@ mark {
         -ms-transform: translateX(26px);
         transform: translateX(26px);
     }
+
+	.switch-text{
+		font-size: 20px;
+		color:black;
+	}
+	@media screen and (max-width: 736px) {
+
+		.switch-text{
+			font-size: 14px;
+		}
+
+	}
 	
 
 	/* select plcaeholder */
@@ -2068,23 +2081,6 @@ mark {
 		font-family: "NEXONFootballGothicL"; 
 	}
 
-
-	/* List Page table */
-	table {
-		border-collapse: collapse;
-		margin: 10px 0 0 0;
-	}
-	td {
-		border: 3px solid black;
-		width: 100px;
-		height: 50px;
-		text-align: center;
-	}
-	#detail_info {
-		border: 3px solid black;
-		width: 300px;
-	}
-	
 		
 	/* 단과대 아이콘 버튼 */
 	.button-border {
@@ -2097,7 +2093,7 @@ mark {
 	}
 	
 
-	/* 버튼 임시 디자인 */
+	/* 버튼 디자인 */
 	* { 
 		-webkit-box-sizing: border-box;
 		-moz-box-sizing: border-box;
@@ -2227,8 +2223,11 @@ mark {
 	 @font-face {
 		font-family: "NEXONFootballGothicL"; 
 		src: url("font/NEXONFootballGothicL.ttf") format("opentype");
+	  }
 
-	
+	  @font-face {
+		font-family: "SCDream7"; 
+		src: url("font/SCDream7.otf") format("opentype");
 	  }
 	  
 	/* label */
@@ -2275,136 +2274,40 @@ mark {
 	}
 
 	/* 테이블 시간표 */
-	table tr td:first-child {
+	.time-table tr td:first-child {
         width: 70px;
+		font-size: 25px;
+		color:#4b4b4b;
     }
 	@media screen and (max-width: 736px) {
 
-		table tr td:first-child {
+		.time-table tr td:first-child {
 			width: 40px;
-			font-size: 12px;
+			font-size: 20px;
 		}
-
 	}
 
-	table {
+	.time-table {
+	margin: 10px 0;
 	border-collapse: collapse;
 	width: 100%; 
 	table-layout:fixed;
+	font-family: "SCDream7"; 
 	}
-	td {
+
+	.time-table td {
 	border: 1px solid rgb(0, 0, 0);
 	padding: 10px;
 	width: 100%;
 	height: 60px;
 	color: black;
 	transition: background-color 0.3s ease;
-	}
-
-	/* 시간표 디자인
-	.rwd-table {
-		margin: auto;
-		width: 100%;
-		border-collapse: collapse;
-	}
+	text-align: center;
 	
-	.rwd-table tr:first-child {
-		background: #5B86EF;
-		color: #fff;
 	}
-	
-	.rwd-table tr {
-		border-top: 1px solid #ddd;
-		border-bottom: 1px solid #ddd;
-		background-color: white;
+	.time-table tr:first-child {
+		background: #3f86ed;
 	}
-	
-	.rwd-table th {
-		display: none;
-	}
-	
-	.rwd-table td {
-		display: block;
-	}
-	
-	.rwd-table td:first-child {
-		margin-top: .5em;
-	}
-	
-	.rwd-table td:last-child {
-		margin-bottom: .5em;
-	}
-	
-	.rwd-table td:before {
-		font-weight: bold;
-		width: 120px;
-		display: inline-block;
-		color: #000;
-	}
-	
-	.rwd-table th,
-	.rwd-table td {
-		text-align: center;
-	}
-	
-	.rwd-table {
-		color: #333;
-		border-radius: .4em;
-		overflow: hidden;
-	}
-	
-	.rwd-table tr {
-		border-color: #000000;
-	}
-	
-	.rwd-table th,
-	.rwd-table td {
-		padding: .5em 1em;
-	}
-	@media screen and (max-width: 601px) {
-		.rwd-table tr:nth-child(2) {
-			border-top: none;
-		}
-		.rwd-table th:first-child,
-		.rwd-table td:first-child {
-			font-weight : bold;
-			color: black;
-		}
-		.rwd-table td a {
-			text-decoration: none;
-			color: black;
-		}
-	}
-	@media screen and (min-width: 600px) {
-		.rwd-table tr:hover:not(:first-child) {
-			background-color: rgba(131, 244, 180, 0.3);
-		}
-		.rwd-table td:before {
-			display: none;
-		}
-		.rwd-table td a {
-			text-decoration: none;
-			color: black;
-		}
-		.rwd-table th,
-		.rwd-table td {
-			display: table-cell;
-			padding: .25em .5em;
-		}
-		.rwd-table th:first-child,
-		.rwd-table td:first-child {
-			font-weight : bold;
-			padding-left: 0;
-		}
-		.rwd-table th:last-child,
-		.rwd-table td:last-child {
-			padding-right: 0;
-		}
-		.rwd-table th,
-		.rwd-table td {
-			padding: 1em !important;
-		}
-	} */
 
 
 	/* 툴팁 박스 */
@@ -2452,6 +2355,77 @@ mark {
         margin-right: 0px; 
     }
 
+
 	.questionmark{
 		width: 100%;
+	}
+
+
+
+	/* List Page table */
+	.list-table {
+		border-collapse: collapse;
+		margin: 10px 0 0 0;
+	}
+	.list-table td {
+		border: 3px solid black;
+		width: 100px;
+		height: 50px;
+		text-align: center;
+	}
+	#detail_info {
+		text-align: center;;
+		border: 3px solid black;
+		width: 100%;
+		height: 200px;
+		border-radius: 10px;
+	}
+
+	/* 필터 버튼 */
+	.btn2 {
+		width: 90px;
+		font-size: 17px;
+		font-weight: 600;
+		color: #fff;
+		margin: 5px 0;
+		height: 40px;
+		text-align:center;
+		border: none;
+		background-size: 300% 100%;
+		border-radius: 50px;
+	}
+	.btn2.color-1 {
+		background-image: linear-gradient(to right, #81f595, #3dee5a, #61c654, #07e12b);
+	}
+	.btn2.color-2 {
+		background-image: linear-gradient(to right, #7bdefa, #18c3f3, #6ccbe5, #6e95ff);
+	}
+	.btn2.color-3 {
+		background-image: linear-gradient(to right, #ae96ef, #8962f6, #b887dc, #851ad1);
+	}
+
+	.btn3 {
+		width: 120px;
+		font-size: 14px;
+		font-weight: 600;	
+		color: #fff;
+		margin: 10px 0;
+		height: 40px;
+		text-align:center;
+		border: none;
+		background-size: 300% 100%;
+		border-radius: 50px;
+	}
+	.btn3.color-3 {
+		background-image: linear-gradient(to right, #ae96ef, #8962f6, #b887dc, #851ad1);
+	}
+
+	summary {
+		font-family: "NEXONFootballGothicL";
+		color: black;
+	}
+
+	#outer {
+		font-family: "NEXONFootballGothicL";
+		color: black;
 	}
