@@ -11,13 +11,57 @@
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 	<link rel="stylesheet" href="assets/css/main.css" />
-	<noscript>	
+	<noscript>
 		<link rel="stylesheet" href="assets/css/noscript.css" />
 	</noscript>
 	<script src="https://kit.fontawesome.com/90f52c3695.js" crossorigin="anonymous"></script>
+	<style>
+		.banner-container {
+			position: fixed;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			z-index: 9999;
+		}
+
+		.banner {
+			position: relative;
+			background-color: #ffffff;
+			text-align: center;
+			padding: 20px;
+		}
+
+		.close-button {
+			position: absolute;
+			bottom: 10px;
+			right: 10px;
+			font-size: 20px;
+			cursor: pointer;
+			color: black;
+		}
+
+		.overlay {
+			position: fixed;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			background-color: rgba(0, 0, 0, 0.5);
+			z-index: 9998;
+			display: none;
+		}
+	</style>
 </head>
 
 <body class="is-preload">
+
+	<div class="overlay" id="overlay" onclick="closeBanner()"></div>
+	<div class="banner-container" id="myBanner">
+		<div class="banner">
+			<span class="close-button" onclick="closeBanner()">닫기 &times;</span>
+			<img src="banner.png" alt="배너 이미지" width="400" height="auto">
+		</div>
+	</div>
 
 	<!-- Wrapper-->
 	<div id="wrapper">
@@ -36,75 +80,77 @@
 			<!-- 1 -->
 			<article id="Name" class="panel">
 				<div>
-				<label>소속대학을 선택해주세요.</label>
-				<div id="소속대학선택" style="text-align: center;">
-					<div>
-						<button type="button" class="button-border" onclick="toggleImage(this)" data-id="finance">
-						<img src="icon/finance.png" alt="" class="button-icon">
-						</button>
-						
-						<button type="button" class="button-border" onclick="toggleImage(this)" data-id="gongdae">
-						<img src="icon/gongdae.png" alt="" class="button-icon">
-						</button>
-						
-						<button type="button" class="button-border" onclick="toggleImage(this)" data-id="global">
-						<img src="icon/global.png" alt="" class="button-icon">
-						</button>
-						
-						<button type="button" class="button-border" onclick="toggleImage(this)" data-id="city">
-						<img src="icon/city.png" alt="" class="button-icon">
-						</button>
-						
-						<button type="button" class="button-border" onclick="toggleImage(this)" data-id="dongbuka">
-						<img src="icon/dongbuka.png" alt="" class="button-icon">
-						</button>
-	
-						<button type="button" class="button-border" onclick="toggleImage(this)" data-id="law">
-						<img src="icon/law.png" alt="" class="button-icon">
-						</button>
-	
-						<button type="button" class="button-border" onclick="toggleImage(this)" data-id="edu">
-						<img src="icon/edu.png" alt="" class="button-icon">
-						</button>
-	
-						<button type="button" class="button-border" onclick="toggleImage(this)" data-id="socialscience">
-						<img src="icon/socialscience.png" alt="" class="button-icon">
-						</button>
-						
-						<button type="button" class="button-border" onclick="toggleImage(this)" data-id="bio">
-						<img src="icon/bio.png" alt="" class="button-icon">
-						</button>
-						
-						<button type="button" class="button-border" onclick="toggleImage(this)" data-id="art">
-						<img src="icon/art.png" alt="" class="button-icon">
-						</button>
-						
-						<button type="button" class="button-border" onclick="toggleImage(this)" data-id="humanities">
-						<img src="icon/humanities.png" alt="" class="button-icon">
-						</button>
-	
-						<button type="button" class="button-border" onclick="toggleImage(this)" data-id="natural">
-						<img src="icon/natural.png" alt="" class="button-icon">
-						</button>
-						
-						<button type="button" class="button-border" onclick="toggleImage(this)" data-id="computer">
-						<img src="icon/computer.png" alt="" class="button-icon">
-						</button>
-						
-						<button type="button" class="button-border">
-						<img src="icon/white background1.png" alt="" class="button-icon">
-						</button>
-						
-						<button type="button" class="button-border">
-						<img src="icon/white background1.png" alt="" class="button-icon">
-						</button>
-					</div>			
-				</div>
-			</div>
-	
-			<div id="department-section">
-						<label>학과를 선택해주세요.</label>
+					<label>소속대학을 선택해주세요.</label>
+					<div id="소속대학선택" style="text-align: center;">
 						<div>
+							<button type="button" class="button-border" onclick="toggleImage(this)" data-id="finance">
+								<img src="icon/finance.png" alt="" class="button-icon">
+							</button>
+
+							<button type="button" class="button-border" onclick="toggleImage(this)" data-id="gongdae">
+								<img src="icon/gongdae.png" alt="" class="button-icon">
+							</button>
+
+							<button type="button" class="button-border" onclick="toggleImage(this)" data-id="global">
+								<img src="icon/global.png" alt="" class="button-icon">
+							</button>
+
+							<button type="button" class="button-border" onclick="toggleImage(this)" data-id="city">
+								<img src="icon/city.png" alt="" class="button-icon">
+							</button>
+
+							<button type="button" class="button-border" onclick="toggleImage(this)" data-id="dongbuka">
+								<img src="icon/dongbuka.png" alt="" class="button-icon">
+							</button>
+
+							<button type="button" class="button-border" onclick="toggleImage(this)" data-id="law">
+								<img src="icon/law.png" alt="" class="button-icon">
+							</button>
+
+							<button type="button" class="button-border" onclick="toggleImage(this)" data-id="edu">
+								<img src="icon/edu.png" alt="" class="button-icon">
+							</button>
+
+							<button type="button" class="button-border" onclick="toggleImage(this)"
+								data-id="socialscience">
+								<img src="icon/socialscience.png" alt="" class="button-icon">
+							</button>
+
+							<button type="button" class="button-border" onclick="toggleImage(this)" data-id="bio">
+								<img src="icon/bio.png" alt="" class="button-icon">
+							</button>
+
+							<button type="button" class="button-border" onclick="toggleImage(this)" data-id="art">
+								<img src="icon/art.png" alt="" class="button-icon">
+							</button>
+
+							<button type="button" class="button-border" onclick="toggleImage(this)"
+								data-id="humanities">
+								<img src="icon/humanities.png" alt="" class="button-icon">
+							</button>
+
+							<button type="button" class="button-border" onclick="toggleImage(this)" data-id="natural">
+								<img src="icon/natural.png" alt="" class="button-icon">
+							</button>
+
+							<button type="button" class="button-border" onclick="toggleImage(this)" data-id="computer">
+								<img src="icon/computer.png" alt="" class="button-icon">
+							</button>
+
+							<button type="button" class="button-border">
+								<img src="icon/white background1.png" alt="" class="button-icon">
+							</button>
+
+							<button type="button" class="button-border">
+								<img src="icon/white background1.png" alt="" class="button-icon">
+							</button>
+						</div>
+					</div>
+				</div>
+
+				<div id="department-section">
+					<label>학과를 선택해주세요.</label>
+					<div>
 						<select required id="GE">
 							<option value="" disabled selected>학과</option>
 							<option value=”건설환경공학과”>건설환경공학과</option>
@@ -169,657 +215,693 @@
 							<option value=”화학과”>화학과</option>
 							<option value=”환경공학”>환경공학</option>
 						</select>
-	
-					</div>
-					
-					<div class="buttons">
-						<input class="btn-hover color-9" type="submit" value="확인" id="nextpage_to_checklist"/>
-					</div>
-	
-			</div>
-			
-			<script>
-			var selectedImages = {
-			"finance": "icon_selected/finance_selected.png",
-			"gongdae": "icon_selected/gongdae_selected.png",
-			"global": "icon_selected/global_selected.png",
-			"city": "icon_selected/city_selected.png",
-			"dongbuka": "icon_selected/dongbuka_selected.png",
-			"law": "icon_selected/law_selected.png",
-			"edu": "icon_selected/edu_selected.png",
-			"socialscience": "icon_selected/socialscience_selected.png",
-			"bio": "icon_selected/bio_selected.png",
-			"art": "icon_selected/art_selected.png",
-			"humanities": "icon_selected/humanities_selected.png",
-			"natural": "icon_selected/natural_selected.png",
-			"computer": "icon_selected/computer_selected.png",
-			};	
-	
-			var currentImage = {
-			"finance": "icon/finance.png",
-			"gongdae": "icon/gongdae.png",
-			"global": "icon/global.png",
-			"city": "icon/city.png",
-			"dongbuka": "icon/dongbuka.png",
-			"law": "icon/law.png",
-			"edu": "icon/edu.png",
-			"socialscience": "icon/socialscience.png",
-			"bio": "icon/bio.png",
-			"art": "icon/art.png",
-			"humanities": "icon/humanities.png",
-			"natural": "icon/natural.png",
-			"computer": "icon/computer.png",
-			};	
-	
-			var departmentMapping = {
-			"finance": ["경영학부", "세무회계학과", "테크노경영학과"],
-			"gongdae": ["기계공학과", "바이오-로봇 시스템공학과", "산업경영공학과", "신소재 공학과", "안전공학과", "에너지화학공학과", "전기공학과", "전자공학과"],
-			"global": ["경제학과", "무역학부", "소비자학과", "정치외교학과", "행정학과"],
-			"city": ["건설환경공학과", "건축공학", "도시건축학", "도시공학과", "도시행정학과", "환경공학"],
-			"dongbuka": ["동북아통상전공", "한국통상전공"],
-			"law": ["법학부"],
-			"edu": ["국어교육과", "수학교육과", "역사교육과", "영어교육과", "유아교육과", "윤리교육과", "일어교육과", "체육교육과"],
-			"socialscience": ["문헌정보학과", "미디어커뮤니케이션학과", "사회복지학과", "소셜데이터사이언스 연계전공", "창의인재개발학과"],
-			"bio": ["나노바이오", "분자의생명", "생명공학", "생명과학"],
-			"art": ["공연예술학과", "디자인학부", "운동건강학부", "조형예술학부", "체육학부"],
-			"humanities": ["국어국문학과", "독어독문학과", "불어불문학과", "영어영문학과", "일어일문학과", "중어중국학과"],
-			"natural": ["물리학과", "수학과", "패션산업학과", "해양학과", "화학과"],
-			"computer": ["임베디드시스템공학과", "정보통신공학과", "컴퓨터공학부"],
-			};
-	
-			
-			
-			function toggleImage(button) {
-			if (button.classList.contains("processing")) {
-				return;
-			}
-			button.classList.add("processing");
-			var imgElement = button.querySelector('img');
-			var buttonId = button.getAttribute('data-id');
-			var currentImageSrc = imgElement.getAttribute('src');
-			var selectedImageSrc = selectedImages[buttonId];
-			var originalImageSrc = currentImage[buttonId];
-			var departmentSection = document.querySelector('#department-section');
-				if (button.classList.contains("button-selected")) {
-				button.classList.remove("button-selected");
-				imgElement.setAttribute('src', originalImageSrc);
-				departmentSection.classList.add("fade-out-animation");
-				departmentSection.classList.remove("fade-in-animation");
-				
-				setTimeout(() => {
-					departmentSection.style.display = 'none';
-					departmentSection.classList.remove("fade-out-animation");
-					button.classList.remove("processing");
-				setTimeout(() => {
-				button.classList.remove("processing");
-				}, 500);
-				}, 500);
-	
-				} 
-				else {
-					button.classList.add("button-selected");
-					imgElement.setAttribute('src', selectedImageSrc);
-					departmentSection.style.display = 'block';				
-					departmentSection.classList.remove("fade-out-animation");
-					departmentSection.classList.add("fade-in-animation");
-					var selectedDepartments = departmentMapping[buttonId];
-					if (selectedDepartments) {
-						var buttons = document.querySelectorAll('.button-border');
-						buttons.forEach(function(btn) {
-							btn.classList.remove("button-selected");
-							btn.querySelector('img').setAttribute('src', currentImage[btn.getAttribute('data-id')]);
-							button.classList.add("button-selected");
-							imgElement.setAttribute('src', selectedImageSrc);
-						});
-	
-						selectedDepartments.forEach(function(department) {
-							var departmentButton = document.querySelector('.button-border[data-id="' + department + '"]');
-							if (departmentButton) {
-								departmentButton.classList.add("button-selected");
-								departmentButton.querySelector('img').setAttribute('src', selectedImages[department]);
-							}
-						});
-	
-						var departmentSelect = document.querySelector('select');
-						departmentSelect.innerHTML = `
-							<option value="" disabled selected>학과</option>
-							${selectedDepartments.map(dep => `<option value="${dep}">${dep}</option>`).join('')}
-						`;
-					} 
-	
-					else {
-						button.classList.add("button-selected");
-						imgElement.setAttribute('src', selectedImageSrc);	
-						
-						}
-						setTimeout(() => {
-						button.classList.remove("processing");
-						}, 500);
-				}		
-			}
-	
-			const btn_nextpage_to_checklist = document.getElementById("nextpage_to_checklist");
-			btn_nextpage_to_checklist.addEventListener("click", (event) => {
-			event.preventDefault();
-			const departmentSelect = document.getElementById("GE");
-			if (departmentSelect.value === "") {			
-				
-				return; 
-			}
-	
-		
-			fetch('/next_to_checklist', {
-				method: 'post',
-				headers: {
-					'content-type': 'application/json'
-				},
-				body: JSON.stringify({
-					GE: departmentSelect.value
-				})
-				})
-				location.href = '#CheckList1';
-			});
-	
-		</script>
-	
-		</article>
-	
 
-			<!-- 2 -->
-			<article id="CheckList1" class="panel">
-			<body>
-				<div id="시험방식">
-					<label class="선호">선호</label><label>하는 항목을 선택해주세요.<br class='break-m'> (1개 이상 선택)</label>
-					<div class="content-container">
-					<div>시험 방식(복수선택 가능)</div>
-					<button id="modalBtn1" class="modalbutton">
-						<img src="icon/question mark.png" alt="" class="questionmark">
-					</button>
-					<div id="myModal1" class="modal">
-						<div class="modal-content">
-							<span id="closeBtn1"></span>
-							<br>
-							<p>과제 대체 : 일반 시험 대신 레포트, <br class='break-m'>발표 등으로 대체되는 시험</p>
-						</div>
-					</div>
-					</div>
-					<div id="message1"> </div>
-					<div>
-						<input type='button' id='과제 대체' value='과제 대체' class='button-CheckList' onclick='btnClicked("과제 대체")'/>
-						<br>
-						<input type='button' id='시험 2번' value='시험 2번' class='button-CheckList' onclick='btnClicked("시험 2번")'/>
-						<br>
-						<input type='button' id='시험 1번' value='시험 1번' class='button-CheckList' onclick='btnClicked("시험 1번")'/>
-					</div>
-					<div class="buttons">
-					<button class="btn-hover color-9" id="nextButton" onclick="checkButtonStates1()">다음(1/4)</button>
-					</div>
-				</div>
-			
-			
-				<div id="출석방식">
-					<label class="불호">불호</label><label>하는 항목을 선택해주세요.<br class='break-m'> (선택하지 않으면 '상관없음'으로 간주)</label>
-					<div>출석 방식(복수선택 불가)</div> 
-					<div id="message2"></div>
-					<div>
-						<input type='button' id='전자 출결' value='전자 출결' class='button-CheckList' onclick='btnClicked("전자 출결")'/>
-						<br>
-						<input type='button' id='직접 호명' value='직접 호명' class='button-CheckList' onclick='btnClicked("직접 호명")'/>
-						<br>
-						<input type='button' id='랜덤 또는 불시 출석' value='랜덤 또는 불시 출석' class='button-CheckList' onclick='btnClicked("랜덤 또는 불시 출석")'/>
-					</div>
-					<div class="buttons">
-						<button class="btn-hover color-9" id="previousButton" onclick="PreviousClick2()">이전</button>
-						<button class="btn-hover color-9" id="nextButton" onclick="checkButtonStates2()">다음(2/4)</button>
-					</div>
-				</div>
-			
-			
-				<div id="과제방식또는수업진행방식">
-					<label class="불호">불호</label><label>하는 항목을 선택해주세요.<br class='break-m'> (선택하지 않으면 '상관없음'으로 간주)</label>
-					<div class="content-container">
-					<div>과제, 수업 진행 방식(복수선택 가능)</div> 
-					<button id="modalBtn2" class="modalbutton">
-						<img src="icon/question mark.png" alt="" class="questionmark">
-					</button>
-					<div id="myModal2" class="modal">
-						<div class="modal-content">
-							<span id="closeBtn2"></span>
-							<br>
-							<p>실습 : 체육, 실험 등 일반 강의와 <br class='break-m'>다르게 진행되는 수업</p>
-						</div>
-					</div>
-					</div>
-					<div>
-						<input type='button' id='퀴즈' value='퀴즈' class='button-CheckList' onclick='btnClicked("퀴즈")'/>
-						<br>
-						<input type='button' id='레포트' value='레포트' class='button-CheckList' onclick='btnClicked("레포트")'/>
-						<br>
-						<input type='button' id='발표' value='발표' class='button-CheckList' onclick='btnClicked("발표")'/>
-						<br>
-						<input type='button' id='토론' value='토론' class='button-CheckList' onclick='btnClicked("토론")'/>
-						<br>
-						<input type='button' id='실습' value='실습' class='button-CheckList' onclick='btnClicked("실습")'/>
-						
-						<br>
-						<input type='button' id='조별활동 조별과제' value='조별활동 조별과제'class='button-CheckList' onclick='btnClicked("조별활동 조별과제")'/>
-					</div>
-					<div class="buttons">
-					<button class="btn-hover color-9" id="previousButton" onclick="PreviousClick3()">이전</button>
-					<button class="btn-hover color-9" id="nextButton" onclick="checkButtonStates3()">다음(3/4)</button>
-					</div>
-				</div>
-			
-				
-				<div id="강의시간">
-					<label class="불호">불호</label><label>하는 항목을 선택해주세요.<br class='break-m'> (선택하지 않으면 '상관없음'으로 간주)</label>
-					<div class="content-container">
-					<div>강의 시간(복수선택 가능)</div>
-					<button id="modalBtn3" class="modalbutton">
-						<img src="icon/question mark.png" alt="" class="questionmark">
-					</button>
-					<div id="myModal3" class="modal">
-						<div class="modal-content">
-							<span id="closeBtn3"></span>
-							<br>
-							<p>오전 강의 : <br class='break-m'> 아침 9시~11시 사이에 시작하는 강의 <br><br class='break-m'>
-							   야간 강의 : <br class='break-m'> 오후 6시 이후에 시작하는 강의
-							</p>
-						</div>
-					</div>
 					</div>
 
-					<div id="message4"></div> 
-					<div>
-						<input type='button' id='오전 수업' value='오전 수업' class='button-CheckList' onclick='btnClicked("오전 수업")'/>
-						
-						<br>
-						<input type='button' id='야간 수업' value='야간 수업' class='button-CheckList' onclick='btnClicked("야간 수업")'/>
-						
-					</div>
 					<div class="buttons">
-						<button class="btn-hover color-9" id="previousButton" onclick="PreviousClick4()">이전</button>
-						<button class="btn-hover color-9" id="nextButton" onclick="checkButtonStates4()">다음(4/4)</button>
+						<input class="btn-hover color-9" type="submit" value="확인" id="nextpage_to_checklist" />
 					</div>
+
 				</div>
 
 				<script>
-					
-					// 버튼 클릭 시 호출되는 함수
-					function btnClicked(buttonId) {
-						const target = document.getElementById(buttonId);
-						target.classList.toggle('active');
+
+					function closeBanner() {
+						document.getElementById("myBanner").style.display = "none";
+						document.getElementById("overlay").style.display = "none";
 					}
 
-					
-					// Get the modal elements
-					var modal1 = document.getElementById("myModal1");
-					var modal2 = document.getElementById("myModal2");
-					var modal3 = document.getElementById("myModal3");
-
-
-
-					// Get the button elements that open the modals
-					var btn1 = document.getElementById("modalBtn1");
-					var btn2 = document.getElementById("modalBtn2");
-					var btn3 = document.getElementById("modalBtn3");
-
-
-					// Get the close button elements in the modals
-					var closeBtn1 = document.getElementById("closeBtn1");
-					var closeBtn2 = document.getElementById("closeBtn2");
-					var closeBtn3 = document.getElementById("closeBtn3");
-	
-
-					// Function to open the modal
-					function openModal(modal) {
-						modal.style.display = "block"; 
+					window.onload = function () {
+						showBanner();
 					}
 
-					// Function to close the modal
-					function closeModal(modal) {
-						modal.style.display = "none";
+					function showBanner() {
+						document.getElementById("myBanner").style.display = "block";
+						document.getElementById("overlay").style.display = "block";
 					}
+					var selectedImages = {
+						"finance": "icon_selected/finance_selected.png",
+						"gongdae": "icon_selected/gongdae_selected.png",
+						"global": "icon_selected/global_selected.png",
+						"city": "icon_selected/city_selected.png",
+						"dongbuka": "icon_selected/dongbuka_selected.png",
+						"law": "icon_selected/law_selected.png",
+						"edu": "icon_selected/edu_selected.png",
+						"socialscience": "icon_selected/socialscience_selected.png",
+						"bio": "icon_selected/bio_selected.png",
+						"art": "icon_selected/art_selected.png",
+						"humanities": "icon_selected/humanities_selected.png",
+						"natural": "icon_selected/natural_selected.png",
+						"computer": "icon_selected/computer_selected.png",
+					};
 
-					// Event listeners for opening modals
-					btn1.addEventListener("click", function() {
-						openModal(modal1);
-					});
+					var currentImage = {
+						"finance": "icon/finance.png",
+						"gongdae": "icon/gongdae.png",
+						"global": "icon/global.png",
+						"city": "icon/city.png",
+						"dongbuka": "icon/dongbuka.png",
+						"law": "icon/law.png",
+						"edu": "icon/edu.png",
+						"socialscience": "icon/socialscience.png",
+						"bio": "icon/bio.png",
+						"art": "icon/art.png",
+						"humanities": "icon/humanities.png",
+						"natural": "icon/natural.png",
+						"computer": "icon/computer.png",
+					};
 
-					btn2.addEventListener("click", function() {
-						openModal(modal2);
-					});
+					var departmentMapping = {
+						"finance": ["경영학부", "세무회계학과", "테크노경영학과"],
+						"gongdae": ["기계공학과", "바이오-로봇 시스템공학과", "산업경영공학과", "신소재 공학과", "안전공학과", "에너지화학공학과", "전기공학과", "전자공학과"],
+						"global": ["경제학과", "무역학부", "소비자학과", "정치외교학과", "행정학과"],
+						"city": ["건설환경공학과", "건축공학", "도시건축학", "도시공학과", "도시행정학과", "환경공학"],
+						"dongbuka": ["동북아통상전공", "한국통상전공"],
+						"law": ["법학부"],
+						"edu": ["국어교육과", "수학교육과", "역사교육과", "영어교육과", "유아교육과", "윤리교육과", "일어교육과", "체육교육과"],
+						"socialscience": ["문헌정보학과", "미디어커뮤니케이션학과", "사회복지학과", "소셜데이터사이언스 연계전공", "창의인재개발학과"],
+						"bio": ["나노바이오", "분자의생명", "생명공학", "생명과학"],
+						"art": ["공연예술학과", "디자인학부", "운동건강학부", "조형예술학부", "체육학부"],
+						"humanities": ["국어국문학과", "독어독문학과", "불어불문학과", "영어영문학과", "일어일문학과", "중어중국학과"],
+						"natural": ["물리학과", "수학과", "패션산업학과", "해양학과", "화학과"],
+						"computer": ["임베디드시스템공학과", "정보통신공학과", "컴퓨터공학부"],
+					};
 
-					btn3.addEventListener("click", function() {
-						openModal(modal3);
-					});
 
-					// Event listeners for closing modals
-					closeBtn1.addEventListener("click", function() {
-						closeModal(modal1);
-					});
 
-					closeBtn2.addEventListener("click", function() {
-						closeModal(modal2);
-					});
-
-					closeBtn3.addEventListener("click", function() {
-						closeModal(modal3);
-					});
-				
-					window.addEventListener("click", function(event) {
-						if (event.target === modal1) {
-							modal1.style.display = "none";
+					function toggleImage(button) {
+						if (button.classList.contains("processing")) {
+							return;
 						}
-						if (event.target === modal2) {
-							modal2.style.display = "none";
-						}
-						if (event.target === modal3) {
-							modal3.style.display = "none";
-						}
-					});
-				
-				function checkButtonStates1() {
-					let check_num0 = [];
-					let check_cnt0 = 0;
-					let query_arr0 = ""
-					const check0_1 = document.getElementById("과제 대체");
-					const check0_2 = document.getElementById("시험 2번");
-					const check0_3 = document.getElementById("시험 1번");
-					const again_message1 = document.querySelector('#message1')
+						button.classList.add("processing");
+						var imgElement = button.querySelector('img');
+						var buttonId = button.getAttribute('data-id');
+						var currentImageSrc = imgElement.getAttribute('src');
+						var selectedImageSrc = selectedImages[buttonId];
+						var originalImageSrc = currentImage[buttonId];
+						var departmentSection = document.querySelector('#department-section');
+						if (button.classList.contains("button-selected")) {
+							button.classList.remove("button-selected");
+							imgElement.setAttribute('src', originalImageSrc);
+							departmentSection.classList.add("fade-out-animation");
+							departmentSection.classList.remove("fade-in-animation");
 
-					if (check0_1.classList.contains('active')) {
-						check_num0.push(0, 2, 4, 5);
-						check_cnt0++;
-					}
-					if (check0_2.classList.contains('active')) {
-						check_num0.push(1, 5);
-						check_cnt0++;
-					}
-					if (check0_3.classList.contains('active')) {
-						check_num0.push(2, 3, 5);
-						check_cnt0++;
-					}
-					if (check_cnt0 === 0){
+							setTimeout(() => {
+								departmentSection.style.display = 'none';
+								departmentSection.classList.remove("fade-out-animation");
+								button.classList.remove("processing");
+								setTimeout(() => {
+									button.classList.remove("processing");
+								}, 500);
+							}, 500);
 
-						again_message1.textContent = '*선택항목을 다시 확인 해주세요*'
-						check_num0 = []
-						check_cnt0 = 0;
-					}
-					else{
-						const uniqueCheckNum0 = [...new Set(check_num0)];
-						uniqueCheckNum0.sort((a, b) => a - b);
-						console.log(uniqueCheckNum0);
-						check_num0 = [];
-						check_cnt0 = 0;
-						
-
-						if (uniqueCheckNum0.length > 0) {
-							query_arr0 = uniqueCheckNum0.reduce((acc, course, idx)=>{
-								if (idx === uniqueCheckNum0.length - 1) {
-									return acc+`${course}) and `;
-								}
-								return acc+`${course},`;
-							},"시험 in (");
 						}
-						again_message1.textContent = ''
-						console.log(query_arr0)
-						fetch('/next_to_slecttime1',{
-							method : 'post',
-							headers : {
-								'content-type':'application/json'
+						else {
+							button.classList.add("button-selected");
+							imgElement.setAttribute('src', selectedImageSrc);
+							departmentSection.style.display = 'block';
+							departmentSection.classList.remove("fade-out-animation");
+							departmentSection.classList.add("fade-in-animation");
+							var selectedDepartments = departmentMapping[buttonId];
+							if (selectedDepartments) {
+								var buttons = document.querySelectorAll('.button-border');
+								buttons.forEach(function (btn) {
+									btn.classList.remove("button-selected");
+									btn.querySelector('img').setAttribute('src', currentImage[btn.getAttribute('data-id')]);
+									button.classList.add("button-selected");
+									imgElement.setAttribute('src', selectedImageSrc);
+								});
+
+								selectedDepartments.forEach(function (department) {
+									var departmentButton = document.querySelector('.button-border[data-id="' + department + '"]');
+									if (departmentButton) {
+										departmentButton.classList.add("button-selected");
+										departmentButton.querySelector('img').setAttribute('src', selectedImages[department]);
+									}
+								});
+
+								var departmentSelect = document.querySelector('select');
+								departmentSelect.innerHTML = `
+							<option value="" disabled selected>학과</option>
+							${selectedDepartments.map(dep => `<option value="${dep}">${dep}</option>`).join('')}
+						`;
+							}
+
+							else {
+								button.classList.add("button-selected");
+								imgElement.setAttribute('src', selectedImageSrc);
+
+							}
+							setTimeout(() => {
+								button.classList.remove("processing");
+							}, 500);
+						}
+					}
+
+					const btn_nextpage_to_checklist = document.getElementById("nextpage_to_checklist");
+					btn_nextpage_to_checklist.addEventListener("click", (event) => {
+						event.preventDefault();
+						const departmentSelect = document.getElementById("GE");
+						if (departmentSelect.value === "") {
+
+							return;
+						}
+
+
+						fetch('/next_to_checklist', {
+							method: 'post',
+							headers: {
+								'content-type': 'application/json'
 							},
-							body : JSON.stringify({
-								query_arr0 : query_arr0,
-								//query_arr1 : query_arr1,
-								//query_arr2 : query_arr2,
-								//query_arr3 : query_arr3
+							body: JSON.stringify({
+								GE: departmentSelect.value
 							})
 						})
-						시험방식.style.display = 'none';
-						출석방식.style.display = 'block';
-						//window.location.href = 'CheckList2.html'
-						//다음으로 넘어가는 코드
-					}
-				}
-				
-				//------------------------------------------------
-				function checkButtonStates2() {
-					let check_num1 = [0, 1, 2, 3];
-					let check_cnt1 = 0;
-					let query_arr1 = ""
-					const check1_1 = document.getElementById("전자 출결");
-					const check1_2 = document.getElementById("직접 호명");
-					const check1_3 = document.getElementById("랜덤 또는 불시 출석");
-					const again_message2 = document.querySelector('#message2')
-					again_message2.textContent = ''
-					if (check1_1.classList.contains('active')) {
-						check_num1.splice(0, 3);
-						check_cnt1++;
-					}
-					if (check1_2.classList.contains('active')) {
-						check_num1.splice(0, 1);
-						check_num1.splice(1, 2);
-						check_cnt1++;
-					}
-					if (check1_3.classList.contains('active')) {
-						check_num1.splice(0, 2);
-						check_num1.splice(1, 1);
-						check_cnt1++;
-					}
-					if (check_cnt1 > 1){
-						
-						again_message2.textContent = '*선택항목을 다시 확인 해주세요*'
-						check_num1 = [0, 1, 2, 3];
-						check_cnt1 = 0;
-					}
-					else{
-						
-
-						if (check_num1.length !== 4) {
-							query_arr1 = "출석 not in ("+check_num1[0]+") and ";
-						}
-						again_message2.textContent = ''
-						
-						console.log(query_arr1)
-						fetch('/next_to_slecttime2',{
-							method : 'post',
-							headers : {
-								'content-type':'application/json'
-							},
-							body : JSON.stringify({
-								//query_arr0 : query_arr0,
-								query_arr1 : query_arr1,
-								//query_arr2 : query_arr2,
-								//query_arr3 : query_arr3
-							})
-						})
-
-						출석방식.style.display = 'none';
-						과제방식또는수업진행방식.style.display = 'block';
-						//window.location.href = 'CheckList3.html'
-						//다음으로 넘어가는 코드
-					}
-				}
-
-				//-----------------------------------------------------------
-				function checkButtonStates3() {
-					let check_num2 = [
-						[0, 0, 0, 0, 0, 0],
-						["퀴즈", "레포트", "발표", "토론", "실습", "조별활동 조별과제"]
-						];
-					let query_arr2 = ""
-					const check2_1 = document.getElementById("퀴즈");
-					const check2_2 = document.getElementById("레포트");
-					const check2_3 = document.getElementById("발표");
-					const check2_4 = document.getElementById("토론");
-					const check2_5 = document.getElementById("실습");
-					const check2_6 = document.getElementById("조별활동 조별과제");
-					if (check2_1.classList.contains('active')) {
-						check_num2[0][0] = 1;
-						
-					}
-					if (check2_2.classList.contains('active')) {
-						check_num2[0][1] = 1;
-						
-					}
-					if (check2_3.classList.contains('active')) {
-						check_num2[0][2] = 1;
-						
-					}
-					if (check2_4.classList.contains('active')) {
-						check_num2[0][3] = 1;
-						
-					}
-					if (check2_5.classList.contains('active')) {
-						check_num2[0][4] = 1;
-						
-					}
-					if (check2_6.classList.contains('active')) {
-						check_num2[0][5] = 1;
-						
-					}
-					if (check_num2[0][0] === 1) {
-						query_arr2 += "퀴즈 not in (1) and ";
-					}
-					if (check_num2[0][1] === 1) {
-						query_arr2 += "레포트 not in (1) and ";
-					}
-					if (check_num2[0][2] === 1) {
-						query_arr2 += "발표 not in (1) and ";
-					}
-					if (check_num2[0][3] === 1) {
-						query_arr2 += "토론 not in (1) and ";
-					}
-					if (check_num2[0][4] === 1) {
-						query_arr2 += "실습 not in (1) and ";
-					}
-					if (check_num2[0][5] === 1) {
-						query_arr2 += "조별 not in (1) and ";
-					}
-
-					
-					console.log(query_arr2)
-					
-					
-					fetch('/next_to_slecttime3',{
-						method : 'post',
-						headers : {
-							'content-type':'application/json'
-						},
-						body : JSON.stringify({
-							//query_arr0 : query_arr0,
-							//query_arr1 : query_arr1,
-							query_arr2 : query_arr2,
-							//query_arr3 : query_arr3
-						})
-					})
-
-					과제방식또는수업진행방식.style.display = 'none';
-					강의시간.style.display = 'block';
-					//window.location.href = 'CheckList4.html'
-					//다음으로 넘어가는 코드
-				}
-
-				//----------------------------------------------------
-				function checkButtonStates4() {
-
-					let check_num3 = [1, 2, 3];
-				
-					const check3_1 = document.getElementById("오전 수업");
-					const check3_2 = document.getElementById("야간 수업");
-					if (check3_1.classList.contains('active')) {
-						check_num3.splice(1, 2);
-					}
-					if (check3_2.classList.contains('active')) {
-						check_num3.splice(0, 2);
-					}
-
-					if (check_num3.length === 3) {
-						query_arr3 = "";
-					}
-					else if (check_num3.length === 1) {
-						query_arr3 = "강의시간 not in ("+check_num3[0]+") and ";
-					}
-					else if (check_num3.length === 0) {
-						query_arr3 = "강의시간 not in (1,2,3) and ";
-					}
-					console.log(query_arr3)
-					check_num3 = [1, 2, 3];
-					fetch('/next_to_slecttime4',{
-						method : 'post',
-						headers : {
-							'content-type':'application/json'
-						},
-						body : JSON.stringify({
-							//query_arr0 : query_arr0,
-							//query_arr1 : query_arr1,
-							//query_arr2 : query_arr2,
-							query_arr3 : query_arr3
-						})
-					})
-					강의시간.style.display = 'none';
-					시험방식.style.display = 'block';
-					location.href = '#SelectTime';
-				}
-				// --------------------------
-				function PreviousClick2() {
-					시험방식.style.display = 'block';
-					출석방식.style.display = 'none';
-				}
-
-				function PreviousClick3() {
-					출석방식.style.display = 'block';
-					과제방식또는수업진행방식.style.display = 'none';
-				}
-
-				function PreviousClick4() {
-					과제방식또는수업진행방식.style.display = 'block';
-					강의시간.style.display = 'none';
-				}
+						location.href = '#CheckList1';
+					});
 
 				</script>
-	
+
+			</article>
+
+
+			<!-- 2 -->
+			<article id="CheckList1" class="panel">
+
+				<body>
+					<div id="시험방식">
+						<label class="선호">선호</label><label>하는 항목을 선택해주세요.<br class='break-m'> (1개 이상 선택)</label>
+						<div class="content-container">
+							<div>시험 방식(복수선택 가능)</div>
+							<button id="modalBtn1" class="modalbutton">
+								<img src="icon/question mark.png" alt="" class="questionmark">
+							</button>
+							<div id="myModal1" class="modal">
+								<div class="modal-content">
+									<span id="closeBtn1"></span>
+									<br>
+									<p>과제 대체 : 일반 시험 대신 레포트, <br class='break-m'>발표 등으로 대체되는 시험</p>
+								</div>
+							</div>
+						</div>
+						<div id="message1"> </div>
+						<div>
+							<input type='button' id='과제 대체' value='과제 대체' class='button-CheckList'
+								onclick='btnClicked("과제 대체")' />
+							<br>
+							<input type='button' id='시험 2번' value='시험 2번' class='button-CheckList'
+								onclick='btnClicked("시험 2번")' />
+							<br>
+							<input type='button' id='시험 1번' value='시험 1번' class='button-CheckList'
+								onclick='btnClicked("시험 1번")' />
+						</div>
+						<div class="buttons">
+							<button class="btn-hover color-9" id="nextButton"
+								onclick="checkButtonStates1()">다음(1/4)</button>
+						</div>
+					</div>
+
+
+					<div id="출석방식">
+						<label class="불호">불호</label><label>하는 항목을 선택해주세요.<br class='break-m'> (선택하지 않으면 '상관없음'으로
+							간주)</label>
+						<div>출석 방식(복수선택 불가)</div>
+						<div id="message2"></div>
+						<div>
+							<input type='button' id='전자 출결' value='전자 출결' class='button-CheckList'
+								onclick='btnClicked("전자 출결")' />
+							<br>
+							<input type='button' id='직접 호명' value='직접 호명' class='button-CheckList'
+								onclick='btnClicked("직접 호명")' />
+							<br>
+							<input type='button' id='랜덤 또는 불시 출석' value='랜덤 또는 불시 출석' class='button-CheckList'
+								onclick='btnClicked("랜덤 또는 불시 출석")' />
+						</div>
+						<div class="buttons">
+							<button class="btn-hover color-9" id="previousButton" onclick="PreviousClick2()">이전</button>
+							<button class="btn-hover color-9" id="nextButton"
+								onclick="checkButtonStates2()">다음(2/4)</button>
+						</div>
+					</div>
+
+
+					<div id="과제방식또는수업진행방식">
+						<label class="불호">불호</label><label>하는 항목을 선택해주세요.<br class='break-m'> (선택하지 않으면 '상관없음'으로
+							간주)</label>
+						<div class="content-container">
+							<div>과제, 수업 진행 방식(복수선택 가능)</div>
+							<button id="modalBtn2" class="modalbutton">
+								<img src="icon/question mark.png" alt="" class="questionmark">
+							</button>
+							<div id="myModal2" class="modal">
+								<div class="modal-content">
+									<span id="closeBtn2"></span>
+									<br>
+									<p>실습 : 체육, 실험 등 일반 강의와 <br class='break-m'>다르게 진행되는 수업</p>
+								</div>
+							</div>
+						</div>
+						<div>
+							<input type='button' id='퀴즈' value='퀴즈' class='button-CheckList'
+								onclick='btnClicked("퀴즈")' />
+							<br>
+							<input type='button' id='레포트' value='레포트' class='button-CheckList'
+								onclick='btnClicked("레포트")' />
+							<br>
+							<input type='button' id='발표' value='발표' class='button-CheckList'
+								onclick='btnClicked("발표")' />
+							<br>
+							<input type='button' id='토론' value='토론' class='button-CheckList'
+								onclick='btnClicked("토론")' />
+							<br>
+							<input type='button' id='실습' value='실습' class='button-CheckList'
+								onclick='btnClicked("실습")' />
+
+							<br>
+							<input type='button' id='조별활동 조별과제' value='조별활동 조별과제' class='button-CheckList'
+								onclick='btnClicked("조별활동 조별과제")' />
+						</div>
+						<div class="buttons">
+							<button class="btn-hover color-9" id="previousButton" onclick="PreviousClick3()">이전</button>
+							<button class="btn-hover color-9" id="nextButton"
+								onclick="checkButtonStates3()">다음(3/4)</button>
+						</div>
+					</div>
+
+
+					<div id="강의시간">
+						<label class="불호">불호</label><label>하는 항목을 선택해주세요.<br class='break-m'> (선택하지 않으면 '상관없음'으로
+							간주)</label>
+						<div class="content-container">
+							<div>강의 시간(복수선택 가능)</div>
+							<button id="modalBtn3" class="modalbutton">
+								<img src="icon/question mark.png" alt="" class="questionmark">
+							</button>
+							<div id="myModal3" class="modal">
+								<div class="modal-content">
+									<span id="closeBtn3"></span>
+									<br>
+									<p>오전 강의 : <br class='break-m'> 아침 9시~11시 사이에 시작하는 강의 <br><br class='break-m'>
+										야간 강의 : <br class='break-m'> 오후 6시 이후에 시작하는 강의
+									</p>
+								</div>
+							</div>
+						</div>
+
+						<div id="message4"></div>
+						<div>
+							<input type='button' id='오전 수업' value='오전 수업' class='button-CheckList'
+								onclick='btnClicked("오전 수업")' />
+
+							<br>
+							<input type='button' id='야간 수업' value='야간 수업' class='button-CheckList'
+								onclick='btnClicked("야간 수업")' />
+
+						</div>
+						<div class="buttons">
+							<button class="btn-hover color-9" id="previousButton" onclick="PreviousClick4()">이전</button>
+							<button class="btn-hover color-9" id="nextButton"
+								onclick="checkButtonStates4()">다음(4/4)</button>
+						</div>
+					</div>
+
+					<script>
+
+						// 버튼 클릭 시 호출되는 함수
+						function btnClicked(buttonId) {
+							const target = document.getElementById(buttonId);
+							target.classList.toggle('active');
+						}
+
+
+						// Get the modal elements
+						var modal1 = document.getElementById("myModal1");
+						var modal2 = document.getElementById("myModal2");
+						var modal3 = document.getElementById("myModal3");
+
+
+
+						// Get the button elements that open the modals
+						var btn1 = document.getElementById("modalBtn1");
+						var btn2 = document.getElementById("modalBtn2");
+						var btn3 = document.getElementById("modalBtn3");
+
+
+						// Get the close button elements in the modals
+						var closeBtn1 = document.getElementById("closeBtn1");
+						var closeBtn2 = document.getElementById("closeBtn2");
+						var closeBtn3 = document.getElementById("closeBtn3");
+
+
+						// Function to open the modal
+						function openModal(modal) {
+							modal.style.display = "block";
+						}
+
+						// Function to close the modal
+						function closeModal(modal) {
+							modal.style.display = "none";
+						}
+
+						// Event listeners for opening modals
+						btn1.addEventListener("click", function () {
+							openModal(modal1);
+						});
+
+						btn2.addEventListener("click", function () {
+							openModal(modal2);
+						});
+
+						btn3.addEventListener("click", function () {
+							openModal(modal3);
+						});
+
+						// Event listeners for closing modals
+						closeBtn1.addEventListener("click", function () {
+							closeModal(modal1);
+						});
+
+						closeBtn2.addEventListener("click", function () {
+							closeModal(modal2);
+						});
+
+						closeBtn3.addEventListener("click", function () {
+							closeModal(modal3);
+						});
+
+						window.addEventListener("click", function (event) {
+							if (event.target === modal1) {
+								modal1.style.display = "none";
+							}
+							if (event.target === modal2) {
+								modal2.style.display = "none";
+							}
+							if (event.target === modal3) {
+								modal3.style.display = "none";
+							}
+						});
+
+						function checkButtonStates1() {
+							let check_num0 = [];
+							let check_cnt0 = 0;
+							let query_arr0 = ""
+							const check0_1 = document.getElementById("과제 대체");
+							const check0_2 = document.getElementById("시험 2번");
+							const check0_3 = document.getElementById("시험 1번");
+							const again_message1 = document.querySelector('#message1')
+
+							if (check0_1.classList.contains('active')) {
+								check_num0.push(0, 2, 4, 5);
+								check_cnt0++;
+							}
+							if (check0_2.classList.contains('active')) {
+								check_num0.push(1, 5);
+								check_cnt0++;
+							}
+							if (check0_3.classList.contains('active')) {
+								check_num0.push(2, 3, 5);
+								check_cnt0++;
+							}
+							if (check_cnt0 === 0) {
+
+								again_message1.textContent = '*선택항목을 다시 확인 해주세요*'
+								check_num0 = []
+								check_cnt0 = 0;
+							}
+							else {
+								const uniqueCheckNum0 = [...new Set(check_num0)];
+								uniqueCheckNum0.sort((a, b) => a - b);
+								console.log(uniqueCheckNum0);
+								check_num0 = [];
+								check_cnt0 = 0;
+
+
+								if (uniqueCheckNum0.length > 0) {
+									query_arr0 = uniqueCheckNum0.reduce((acc, course, idx) => {
+										if (idx === uniqueCheckNum0.length - 1) {
+											return acc + `${course}) and `;
+										}
+										return acc + `${course},`;
+									}, "시험 in (");
+								}
+								again_message1.textContent = ''
+								console.log(query_arr0)
+								fetch('/next_to_slecttime1', {
+									method: 'post',
+									headers: {
+										'content-type': 'application/json'
+									},
+									body: JSON.stringify({
+										query_arr0: query_arr0,
+										//query_arr1 : query_arr1,
+										//query_arr2 : query_arr2,
+										//query_arr3 : query_arr3
+									})
+								})
+								시험방식.style.display = 'none';
+								출석방식.style.display = 'block';
+								//window.location.href = 'CheckList2.html'
+								//다음으로 넘어가는 코드
+							}
+						}
+
+						//------------------------------------------------
+						function checkButtonStates2() {
+							let check_num1 = [0, 1, 2, 3];
+							let check_cnt1 = 0;
+							let query_arr1 = ""
+							const check1_1 = document.getElementById("전자 출결");
+							const check1_2 = document.getElementById("직접 호명");
+							const check1_3 = document.getElementById("랜덤 또는 불시 출석");
+							const again_message2 = document.querySelector('#message2')
+							again_message2.textContent = ''
+							if (check1_1.classList.contains('active')) {
+								check_num1.splice(0, 3);
+								check_cnt1++;
+							}
+							if (check1_2.classList.contains('active')) {
+								check_num1.splice(0, 1);
+								check_num1.splice(1, 2);
+								check_cnt1++;
+							}
+							if (check1_3.classList.contains('active')) {
+								check_num1.splice(0, 2);
+								check_num1.splice(1, 1);
+								check_cnt1++;
+							}
+							if (check_cnt1 > 1) {
+
+								again_message2.textContent = '*선택항목을 다시 확인 해주세요*'
+								check_num1 = [0, 1, 2, 3];
+								check_cnt1 = 0;
+							}
+							else {
+
+
+								if (check_num1.length !== 4) {
+									query_arr1 = "출석 not in (" + check_num1[0] + ") and ";
+								}
+								again_message2.textContent = ''
+
+								console.log(query_arr1)
+								fetch('/next_to_slecttime2', {
+									method: 'post',
+									headers: {
+										'content-type': 'application/json'
+									},
+									body: JSON.stringify({
+										//query_arr0 : query_arr0,
+										query_arr1: query_arr1,
+										//query_arr2 : query_arr2,
+										//query_arr3 : query_arr3
+									})
+								})
+
+								출석방식.style.display = 'none';
+								과제방식또는수업진행방식.style.display = 'block';
+								//window.location.href = 'CheckList3.html'
+								//다음으로 넘어가는 코드
+							}
+						}
+
+						//-----------------------------------------------------------
+						function checkButtonStates3() {
+							let check_num2 = [
+								[0, 0, 0, 0, 0, 0],
+								["퀴즈", "레포트", "발표", "토론", "실습", "조별활동 조별과제"]
+							];
+							let query_arr2 = ""
+							const check2_1 = document.getElementById("퀴즈");
+							const check2_2 = document.getElementById("레포트");
+							const check2_3 = document.getElementById("발표");
+							const check2_4 = document.getElementById("토론");
+							const check2_5 = document.getElementById("실습");
+							const check2_6 = document.getElementById("조별활동 조별과제");
+							if (check2_1.classList.contains('active')) {
+								check_num2[0][0] = 1;
+
+							}
+							if (check2_2.classList.contains('active')) {
+								check_num2[0][1] = 1;
+
+							}
+							if (check2_3.classList.contains('active')) {
+								check_num2[0][2] = 1;
+
+							}
+							if (check2_4.classList.contains('active')) {
+								check_num2[0][3] = 1;
+
+							}
+							if (check2_5.classList.contains('active')) {
+								check_num2[0][4] = 1;
+
+							}
+							if (check2_6.classList.contains('active')) {
+								check_num2[0][5] = 1;
+
+							}
+							if (check_num2[0][0] === 1) {
+								query_arr2 += "퀴즈 not in (1) and ";
+							}
+							if (check_num2[0][1] === 1) {
+								query_arr2 += "레포트 not in (1) and ";
+							}
+							if (check_num2[0][2] === 1) {
+								query_arr2 += "발표 not in (1) and ";
+							}
+							if (check_num2[0][3] === 1) {
+								query_arr2 += "토론 not in (1) and ";
+							}
+							if (check_num2[0][4] === 1) {
+								query_arr2 += "실습 not in (1) and ";
+							}
+							if (check_num2[0][5] === 1) {
+								query_arr2 += "조별 not in (1) and ";
+							}
+
+
+							console.log(query_arr2)
+
+
+							fetch('/next_to_slecttime3', {
+								method: 'post',
+								headers: {
+									'content-type': 'application/json'
+								},
+								body: JSON.stringify({
+									//query_arr0 : query_arr0,
+									//query_arr1 : query_arr1,
+									query_arr2: query_arr2,
+									//query_arr3 : query_arr3
+								})
+							})
+
+							과제방식또는수업진행방식.style.display = 'none';
+							강의시간.style.display = 'block';
+							//window.location.href = 'CheckList4.html'
+							//다음으로 넘어가는 코드
+						}
+
+						//----------------------------------------------------
+						function checkButtonStates4() {
+
+							let check_num3 = [1, 2, 3];
+
+							const check3_1 = document.getElementById("오전 수업");
+							const check3_2 = document.getElementById("야간 수업");
+							if (check3_1.classList.contains('active')) {
+								check_num3.splice(1, 2);
+							}
+							if (check3_2.classList.contains('active')) {
+								check_num3.splice(0, 2);
+							}
+
+							if (check_num3.length === 3) {
+								query_arr3 = "";
+							}
+							else if (check_num3.length === 1) {
+								query_arr3 = "강의시간 not in (" + check_num3[0] + ") and ";
+							}
+							else if (check_num3.length === 0) {
+								query_arr3 = "강의시간 not in (1,2,3) and ";
+							}
+							console.log(query_arr3)
+							check_num3 = [1, 2, 3];
+							fetch('/next_to_slecttime4', {
+								method: 'post',
+								headers: {
+									'content-type': 'application/json'
+								},
+								body: JSON.stringify({
+									//query_arr0 : query_arr0,
+									//query_arr1 : query_arr1,
+									//query_arr2 : query_arr2,
+									query_arr3: query_arr3
+								})
+							})
+							강의시간.style.display = 'none';
+							시험방식.style.display = 'block';
+							location.href = '#SelectTime';
+						}
+						// --------------------------
+						function PreviousClick2() {
+							시험방식.style.display = 'block';
+							출석방식.style.display = 'none';
+						}
+
+						function PreviousClick3() {
+							출석방식.style.display = 'block';
+							과제방식또는수업진행방식.style.display = 'none';
+						}
+
+						function PreviousClick4() {
+							과제방식또는수업진행방식.style.display = 'block';
+							강의시간.style.display = 'none';
+						}
+
+					</script>
+
 			</article>
 
 			<!-- 3 -->
 			<article id="SelectTime" class="panel">
-				
+
 				<label>전공과 필수 교양 시간을 선택해주세요.</label>
 				<div style="text-align: right;">
-				<label class="switch-text">60분</label>
-				<label class="switch-button">
-					<input type="checkbox" id="time90"/>
-					<span class="onoff-switch"></span>
-				</label>		
-				<label class="switch-text">90분</label>
-			
+					<label class="switch-text">60분</label>
+					<label class="switch-button">
+						<input type="checkbox" id="time90" />
+						<span class="onoff-switch"></span>
+					</label>
+					<label class="switch-text">90분</label>
+
 				</div>
-			
+
 				<div>
-				<table class="time-table">
-				</table>
+					<table class="time-table">
+					</table>
 				</div>
 				<br>
 				<!-- Button to display colored cell positions -->
 				<div class="buttons">
-				<button class="btn-hover color-9" onclick="displayColoredCellPositions()">확인</button>				
+					<button class="btn-hover color-9" onclick="displayColoredCellPositions()">확인</button>
 				</div>
-							
-				<script>			
+
+				<script>
 					// 테이블 요소 선택
 					var table = document.querySelector('table');
-			
+
 					// 카운터 초기화
 					var counter_tr = -1;
 					var counter_th = 0;
-			
+
 					// 행을 28개 생성
 					for (var i = 0; i < 24; i++) {
 						var tr = document.createElement('tr');
 						counter_tr++;
 						counter_th = 0;
-			
+
 						// 각 행에 6개의 셀 생성
 						for (var j = 0; j < 6; j++) {
 							var td = document.createElement('td');
@@ -846,7 +928,7 @@
 
 						table.appendChild(tr);
 					}
-			
+
 					const cells = document.querySelectorAll('td');
 					const checkbox = document.getElementById('time90');
 
@@ -862,7 +944,7 @@
 									}
 								}
 								else {
-			
+
 									if ((cell.id % 24 == 1 || cell.id % 24 == 2 || cell.id % 24 == 5 || cell.id % 24 == 6 || cell.id % 24 == 9 || cell.id % 24 == 10 || cell.id % 24 == 13 || cell.id % 24 == 14 || cell.id % 24 == 17 || cell.id % 24 == 18 || cell.id % 24 == 20 || cell.id % 24 == 22)) {
 										cell.style.backgroundColor = ('#ededed');
 									}
@@ -880,14 +962,14 @@
 						}
 						else if (cell.id == 24) {
 							cell.style.color = 'white';
-						}	
+						}
 						else if (cell.id == 48) {
 							cell.style.color = 'white';
 						}
 						else if (cell.id == 72) {
 							cell.style.color = 'white';
 						}
-						else if (cell.id == 96) {		
+						else if (cell.id == 96) {
 							cell.style.color = 'white';
 						}
 						else if (cell.id == 120) {
@@ -895,7 +977,7 @@
 						}
 						else if (cell.id == 144) {
 							cell.style.color = 'white';
-						}			
+						}
 					})
 
 
@@ -905,26 +987,26 @@
 						}
 						else if (cell.id == 2) {
 							cell.style.borderTop = 'none';
-						}	
+						}
 						else if (cell.id == 3) {
 							cell.style.borderBottom = 'none';
 						}
 						else if (cell.id == 4) {
 							cell.style.borderTop = 'none';
 						}
-						else if (cell.id == 5) {		
+						else if (cell.id == 5) {
 							cell.style.borderBottom = 'none';
 						}
 						else if (cell.id == 6) {
 							cell.style.borderTop = 'none';
-						}		
+						}
 						else if (cell.id == 7) {
 							cell.style.borderBottom = 'none';
 						}
 						else if (cell.id == 8) {
 							cell.style.borderTop = 'none';
 						}
-						else if (cell.id == 9) {		
+						else if (cell.id == 9) {
 							cell.style.borderBottom = 'none';
 						}
 						else if (cell.id == 10) {
@@ -932,7 +1014,7 @@
 						}
 						else if (cell.id == 11) {
 							cell.style.borderBottom = 'none';
-						}	
+						}
 						else if (cell.id == 12) {
 							cell.style.borderTop = 'none';
 						}
@@ -948,14 +1030,14 @@
 						else if (cell.id == 16) {
 							cell.style.borderTop = 'none';
 						}
-						else if (cell.id == 17) {			
+						else if (cell.id == 17) {
 							cell.style.borderBottom = 'none';
 						}
 						else if (cell.id == 18) {
 							cell.style.borderTop = 'none';
-						}	
+						}
 					})
-					
+
 					function show_time() {
 						cells.forEach(cell => {
 							if (checkbox.checked) {
@@ -967,7 +1049,7 @@
 									cell.textContent = "~";
 									cell.style.borderTop = 'none';
 									cell.style.borderBottom = 'none';
-								}	
+								}
 								else if (cell.id == 3) {
 									cell.textContent = "2a"
 									cell.style.borderTop = 'none';
@@ -985,7 +1067,7 @@
 								else if (cell.id == 6) {
 									cell.textContent = "3"
 									cell.style.borderTop = 'none';
-								}		
+								}
 								else if (cell.id == 7) {
 									cell.textContent = "4";
 									cell.style.borderBottom = 'none';
@@ -1061,7 +1143,7 @@
 									cell.textContent = "1";
 								}
 								else if (cell.id == 2) {
-									cell.textContent = ""							
+									cell.textContent = ""
 									cell.style.borderBottom = 'solid 1px';
 								}
 								else if (cell.id == 3) {
@@ -1086,11 +1168,11 @@
 									cell.style.borderBottom = 'solid 1px';
 								}
 								else if (cell.id == 9) {
-									cell.textContent = "5"				
+									cell.textContent = "5"
 									cell.style.borderBottom = 'none';
 								}
 								else if (cell.id == 10) {
-									cell.textContent = ""				
+									cell.textContent = ""
 									cell.style.borderBottom = 'solid 1px';
 								}
 								else if (cell.id == 11) {
@@ -1147,15 +1229,15 @@
 							}
 						})
 					}
-							
+
 					checkbox.addEventListener('click', () => {
 						setCellsToGray();
 						show_time();
 					})
-			
+
 					setCellsToGray();
 					show_time();
-					
+
 					cells.forEach(cell => {
 						cell.addEventListener('click', () => {
 							if (checkbox.checked) {
@@ -1236,24 +1318,24 @@
 									else {
 										cell.style.backgroundColor = '';
 									}
-			
+
 								}
-			
+
 							}
 							setCellsToGray();
 						});
 					});
-			
+
 					// Function to handle button click and display colored cell positions
 					function displayColoredCellPositions() {
-			
+
 						const coloredCells = document.querySelectorAll('td[style*="background-color: rgb(147, 178, 231)"]');
-			
+
 						const index = [];
 						coloredCells.forEach(cell => {
 							index.push(Number(cell.id));
 						});
-			
+
 						let idx = "(`시간표 - 데이터베이스용`, '";
 						const len = index.length;
 
@@ -1606,7 +1688,7 @@
 									break;
 							}
 						};
-						
+
 						if (idx.endsWith('|')) {
 							idx = idx.slice(0, -1);
 						}
@@ -1614,7 +1696,7 @@
 
 						const controller = new AbortController();
 						const { signal } = controller;
-						
+
 						fetch('/next_to_test', {
 							method: 'post',
 							headers: {
@@ -1628,18 +1710,18 @@
 						controller.abort();
 
 						location.href = '#List';
-			
-							fetch('/callDB',{
-								method : 'post',
-								headers : {
-									'content-type':'application/json'
-								},
-								body : JSON.stringify({
-									last_query : "(이수구분 = '핵심교양' or 이수구분 = '심화교양') and (학점 = 1 or 학점 = 2 or 학점 = 3) and (수업방법 in ('온라인(동영상)','온라인(화상)') or 수업방법 = '' or 수업방법 = '온라인(동영상)+오프라인')"
-								})
-							}).then((res)=>res.json())
-							.then((res)=>{
-			
+
+						fetch('/callDB', {
+							method: 'post',
+							headers: {
+								'content-type': 'application/json'
+							},
+							body: JSON.stringify({
+								last_query: "(이수구분 = '핵심교양' or 이수구분 = '심화교양') and (학점 = 1 or 학점 = 2 or 학점 = 3) and (수업방법 in ('온라인(동영상)','온라인(화상)') or 수업방법 = '' or 수업방법 = '온라인(동영상)+오프라인')"
+							})
+						}).then((res) => res.json())
+							.then((res) => {
+
 								if (res.result != 'ok') {
 									console.log('result is not ok');
 									return;
@@ -1647,24 +1729,24 @@
 								var div_GE = document.getElementById("교양리스트");
 								let id = 0;
 								let len = res.이름.length;
-			
+
 								for (let l = 0; l < len; l++) {
 									var details = document.createElement('details');
 									details.id = "d";
-			
+
 									var summary = document.createElement('summary');
 									summary.id = id;
-									summary.textContent = res.이름[l]+" / "+res.교수[l]+" / "+res.시간[l];
+									summary.textContent = res.이름[l] + " / " + res.교수[l] + " / " + res.시간[l];
 									if (res.이수구분[l] === "심화교양") {
 										summary.style.color = "green";
 									}
-									
+
 									var table = document.createElement('table');
 									let td_num = 0;
-									for (let i=0; i<6; i++) {
+									for (let i = 0; i < 6; i++) {
 										var tr = document.createElement('tr');
 										if (i === 5) {
-											for (let j=0; j<2; j++) {
+											for (let j = 0; j < 2; j++) {
 												var td = document.createElement('td');
 												if (td_num === 20) {
 													td.textContent = "특이사항";
@@ -1677,7 +1759,7 @@
 											}
 										}
 										else {
-											for (let j=0; j<4; j++) {
+											for (let j = 0; j < 4; j++) {
 												var td = document.createElement('td');
 												if (td_num === 0) {
 													td.textContent = "발표"
@@ -1849,7 +1931,7 @@
 										}
 										table.appendChild(tr);
 									}
-			
+
 									var br = document.createElement('br');
 									details.appendChild(summary);
 									details.appendChild(table);
@@ -1879,143 +1961,143 @@
 						<button class="btn3 color-3" id="thi_2" onclick="query_8()">온라인+오프라인</button>
 					</div>
 				</details>
-					<div id="outer">
-						<div id="교양리스트"></div>
-					</div>
-					<script>
-			
-						let query1real = [];
-						let query1rea2 = [];
-						let query1rea3 = [];
-			
-						let labels;
-			
-						let query1 = "이수구분 = '핵심교양'";
-						let query2 = "이수구분 = '심화교양'";
-						let query3 = "학점 = 1";
-						let query4 = "학점 = 2";
-						let query5 = "학점 = 3";
-						let query6 = "수업방법 in ('온라인(동영상)','온라인(화상)')";
-						let query7 = "수업방법 = ''";
-						let query8 = "수업방법 = '온라인(동영상)+오프라인'";
-						
-			
-						const query_1 = ()=> {
-							const _btn = document.getElementById("fir_0");
-							if (_btn.style.opacity == 0.3) {
-								_btn.style.opacity = 1;
-								query1 = "이수구분 = '핵심교양'"
-							}
-							else {
-								_btn.style.opacity = 0.3;
-								query1 = "이수구분 = ''"
-							}
-							show_GE();
+				<div id="outer">
+					<div id="교양리스트"></div>
+				</div>
+				<script>
+
+					let query1real = [];
+					let query1rea2 = [];
+					let query1rea3 = [];
+
+					let labels;
+
+					let query1 = "이수구분 = '핵심교양'";
+					let query2 = "이수구분 = '심화교양'";
+					let query3 = "학점 = 1";
+					let query4 = "학점 = 2";
+					let query5 = "학점 = 3";
+					let query6 = "수업방법 in ('온라인(동영상)','온라인(화상)')";
+					let query7 = "수업방법 = ''";
+					let query8 = "수업방법 = '온라인(동영상)+오프라인'";
+
+
+					const query_1 = () => {
+						const _btn = document.getElementById("fir_0");
+						if (_btn.style.opacity == 0.3) {
+							_btn.style.opacity = 1;
+							query1 = "이수구분 = '핵심교양'"
 						}
-						const query_2 = ()=> {
-							const _btn = document.getElementById("sec_0");
-							if (_btn.style.opacity == 0.3) {
-								_btn.style.opacity = 1;
-								query2 = "이수구분 = '심화교양'"
-							}
-							else {
-								_btn.style.opacity = 0.3;
-								query2 = "이수구분 = ''"
-							}
-							show_GE();
+						else {
+							_btn.style.opacity = 0.3;
+							query1 = "이수구분 = ''"
 						}
-						const query_3 = ()=> {
-							const _btn = document.getElementById("fir_1");
-							if (_btn.style.opacity == 0.3) {
-								_btn.style.opacity = 1;
-								query3 = "학점 = 1"
-							}
-							else {
-								_btn.style.opacity = 0.3;
-								query3 = "학점 = ''"
-							}
-							show_GE();
+						show_GE();
+					}
+					const query_2 = () => {
+						const _btn = document.getElementById("sec_0");
+						if (_btn.style.opacity == 0.3) {
+							_btn.style.opacity = 1;
+							query2 = "이수구분 = '심화교양'"
 						}
-						const query_4 = ()=> {
-							const _btn = document.getElementById("sec_1");
-							if (_btn.style.opacity == 0.3) {
-								_btn.style.opacity = 1;
-								query4 = "학점 = 2"
-							}
-							else {
-								_btn.style.opacity = 0.3;
-								query4 = "학점 = ''"
-							}
-							show_GE();
+						else {
+							_btn.style.opacity = 0.3;
+							query2 = "이수구분 = ''"
 						}
-						const query_5 = ()=> {
-							const _btn = document.getElementById("thi_1");
-							if (_btn.style.opacity == 0.3) {
-								_btn.style.opacity = 1;
-								query5 = "학점 = 3"
-							}
-							else {
-								_btn.style.opacity = 0.3;
-								query5 = "학점 = ''"
-							}
-							show_GE();
+						show_GE();
+					}
+					const query_3 = () => {
+						const _btn = document.getElementById("fir_1");
+						if (_btn.style.opacity == 0.3) {
+							_btn.style.opacity = 1;
+							query3 = "학점 = 1"
 						}
-						const query_6 = ()=> {
-							const _btn = document.getElementById("fir_2");
-							if (_btn.style.opacity == 0.3) {
-								_btn.style.opacity = 1;
-								query6 = "수업방법 in ('온라인(동영상)','온라인(화상)')"
-							}
-							else {
-								_btn.style.opacity = 0.3;
-								query6 = "수업방법 = '123'"
-							}
-							show_GE();
+						else {
+							_btn.style.opacity = 0.3;
+							query3 = "학점 = ''"
 						}
-						const query_7 = ()=> {
-							const _btn = document.getElementById("sec_2");
-							if (_btn.style.opacity == 0.3) {
-								_btn.style.opacity = 1;
-								query7 = "수업방법 = ''"
-							}
-							else {
-								_btn.style.opacity = 0.3;
-								query7 = "수업방법 = '123'"
-							}
-							show_GE();
+						show_GE();
+					}
+					const query_4 = () => {
+						const _btn = document.getElementById("sec_1");
+						if (_btn.style.opacity == 0.3) {
+							_btn.style.opacity = 1;
+							query4 = "학점 = 2"
 						}
-						const query_8 = ()=> {
-							const _btn = document.getElementById("thi_2");
-							if (_btn.style.opacity == 0.3) {
-								_btn.style.opacity = 1;
-								query8 = "수업방법 = '온라인(동영상)+오프라인'"
-							}
-							else {
-								_btn.style.opacity = 0.3;
-								query8 = "수업방법 = '123'"
-							}
-							show_GE();
+						else {
+							_btn.style.opacity = 0.3;
+							query4 = "학점 = ''"
 						}
-			
-						const show_GE = ()=> {
-							document.getElementById("교양리스트").remove();
-							var div = document.createElement("div");
-							div.id = "교양리스트";
-							document.getElementById("outer").appendChild(div);
-			
-							const last_query = "("+query1+" or "+query2+") and ("+query3+" or "+query4+" or "+query5+") and ("+query6+" or "+query7+" or "+query8+")"
-			
-							fetch('/callDB',{
-								method : 'post',
-								headers : {
-									'content-type':'application/json'
-								},
-								body : JSON.stringify({
-									last_query : last_query
-								})
-							}).then((res)=>res.json())
-							.then((res)=>{
-			
+						show_GE();
+					}
+					const query_5 = () => {
+						const _btn = document.getElementById("thi_1");
+						if (_btn.style.opacity == 0.3) {
+							_btn.style.opacity = 1;
+							query5 = "학점 = 3"
+						}
+						else {
+							_btn.style.opacity = 0.3;
+							query5 = "학점 = ''"
+						}
+						show_GE();
+					}
+					const query_6 = () => {
+						const _btn = document.getElementById("fir_2");
+						if (_btn.style.opacity == 0.3) {
+							_btn.style.opacity = 1;
+							query6 = "수업방법 in ('온라인(동영상)','온라인(화상)')"
+						}
+						else {
+							_btn.style.opacity = 0.3;
+							query6 = "수업방법 = '123'"
+						}
+						show_GE();
+					}
+					const query_7 = () => {
+						const _btn = document.getElementById("sec_2");
+						if (_btn.style.opacity == 0.3) {
+							_btn.style.opacity = 1;
+							query7 = "수업방법 = ''"
+						}
+						else {
+							_btn.style.opacity = 0.3;
+							query7 = "수업방법 = '123'"
+						}
+						show_GE();
+					}
+					const query_8 = () => {
+						const _btn = document.getElementById("thi_2");
+						if (_btn.style.opacity == 0.3) {
+							_btn.style.opacity = 1;
+							query8 = "수업방법 = '온라인(동영상)+오프라인'"
+						}
+						else {
+							_btn.style.opacity = 0.3;
+							query8 = "수업방법 = '123'"
+						}
+						show_GE();
+					}
+
+					const show_GE = () => {
+						document.getElementById("교양리스트").remove();
+						var div = document.createElement("div");
+						div.id = "교양리스트";
+						document.getElementById("outer").appendChild(div);
+
+						const last_query = "(" + query1 + " or " + query2 + ") and (" + query3 + " or " + query4 + " or " + query5 + ") and (" + query6 + " or " + query7 + " or " + query8 + ")"
+
+						fetch('/callDB', {
+							method: 'post',
+							headers: {
+								'content-type': 'application/json'
+							},
+							body: JSON.stringify({
+								last_query: last_query
+							})
+						}).then((res) => res.json())
+							.then((res) => {
+
 								if (res.result != 'ok') {
 									console.log('result is not ok');
 									return;
@@ -2023,24 +2105,24 @@
 								var div_GE = document.getElementById("교양리스트");
 								let id = 0;
 								let len = res.이름.length;
-			
+
 								for (let l = 0; l < len; l++) {
 									var details = document.createElement('details');
 									details.id = "d";
-			
+
 									var summary = document.createElement('summary');
 									summary.id = id;
-									summary.textContent = res.이름[l]+" / "+res.교수[l]+" / "+res.시간[l];
+									summary.textContent = res.이름[l] + " / " + res.교수[l] + " / " + res.시간[l];
 									if (res.이수구분[l] === "심화교양") {
 										summary.style.color = "green";
 									}
-									
+
 									var table = document.createElement('table');
 									let td_num = 0;
-									for (let i=0; i<6; i++) {
+									for (let i = 0; i < 6; i++) {
 										var tr = document.createElement('tr');
 										if (i === 5) {
-											for (let j=0; j<2; j++) {
+											for (let j = 0; j < 2; j++) {
 												var td = document.createElement('td');
 												if (td_num === 20) {
 													td.textContent = "특이사항";
@@ -2053,7 +2135,7 @@
 											}
 										}
 										else {
-											for (let j=0; j<4; j++) {
+											for (let j = 0; j < 4; j++) {
 												var td = document.createElement('td');
 												if (td_num === 0) {
 													td.textContent = "발표"
@@ -2225,7 +2307,7 @@
 										}
 										table.appendChild(tr);
 									}
-			
+
 									var br = document.createElement('br');
 									details.appendChild(summary);
 									details.appendChild(table);
@@ -2234,10 +2316,10 @@
 									div_GE.appendChild(details);
 								}
 							});
-						}
-						
+					}
 
-					</script>
+
+				</script>
 			</article>
 
 		</div>
