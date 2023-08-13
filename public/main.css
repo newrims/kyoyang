@@ -2448,14 +2448,37 @@ mark {
 		left: 50%;
 		transform: translate(-50%, -50%);
 		z-index: 9999;
-		
+		width: 30%;
+		height: auto;
 	}
 
 	.banner {
+		width: 100%;
 		position: relative;
 		background-color: #ffffff;
 		text-align: center;
-		padding: 20px;
+		background-image: url('banner-30x.png');
+		background-size: contain;
+	}
+
+	@media (max-width: 736px) {
+		.banner-container {
+			width: 85%;
+			max-width: none;
+			transform: none; 
+			top: 20%;
+			left: 7.5%; 
+		}
+	}	
+
+	@media (min-width: 737px) and (max-width: 1023px) {
+		.banner-container {
+			width: 85%;
+			max-width: none;
+			transform: none; 
+			left: 7.5%; 
+			top: 6%;
+		}
 	}
 
 	.close-button {
@@ -2478,32 +2501,4 @@ mark {
 		display: none;
 	}
 
-	
-	.banner-image {
-		width: 90% ;
-		height: 90%;
-	}
 
-	@media screen and (max-width: 400px) {
-		.banner-image {
-			width: 280px;
-		}
-	}
-
-	@media screen and (min-width: 401px) {
-		.banner-image {
-			width: 320px;
-		}
-	}
-
-	@media screen and (min-width: 551px) {
-		.banner-image {
-			width: 400px;
-		}
-	}
-
-	@media screen and (min-width: 750px) {
-		.banner-image {
-			width: 500px;
-		}
-	}
