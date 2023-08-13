@@ -2419,14 +2419,14 @@ mark {
 
 
     /* List Page table */
-    .list-table {
+    #list-table {
       border-collapse: separate; /*Separate borders for cells */
       border-spacing: 0; /* No spacing between cells */
       margin: 10px 0 0 0;
       border: 3px solid black; /* Outer border */
     }
 
-    .list-table td {
+    #list-table td {
       border: 1px solid lightgray; /* Inner border */
       width: 100px;
       height: 50px;
@@ -2435,7 +2435,44 @@ mark {
     }
 
     /* background to cells in the 1st and 3rd columns */
-    .list-table td:nth-child(1),
-    .list-table td:nth-child(3) {
+    #list-table td:nth-child(1),
+    #list-table td:nth-child(3) {
       background-color: #dcf1ff;
     }
+
+
+	/* first page banner */
+	.banner-container {
+		position: fixed;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		z-index: 9999;
+	}
+
+	.banner {
+		position: relative;
+		background-color: #ffffff;
+		text-align: center;
+		padding: 20px;
+	}
+
+	.close-button {
+		position: absolute;
+		bottom: 10px;
+		right: 10px;
+		font-size: 20px;
+		cursor: pointer;
+		color: black;
+	}
+
+	.overlay {
+		position: fixed;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		background-color: rgba(0, 0, 0, 0.5);
+		z-index: 9998;
+		display: none;
+	}
