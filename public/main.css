@@ -2448,6 +2448,7 @@ mark {
 		left: 50%;
 		transform: translate(-50%, -50%);
 		z-index: 9999;
+		
 	}
 
 	.banner {
@@ -2475,4 +2476,34 @@ mark {
 		background-color: rgba(0, 0, 0, 0.5);
 		z-index: 9998;
 		display: none;
+	}
+
+	
+	.banner-image {
+		width: 90% ;
+		height: 90%;
+	}
+
+	@media screen and (max-width: 400px) {
+		.banner-image {
+			width: 280px;
+		}
+	}
+
+	@media screen and (min-width: 401px) {
+		.banner-image {
+			width: 320px;
+		}
+	}
+
+	@media screen and (min-width: 551px) {
+		.banner-image {
+			width: 400px;
+		}
+	}
+
+	@media screen and (min-width: 750px) {
+		.banner-image {
+			width: 500px;
+		}
 	}
