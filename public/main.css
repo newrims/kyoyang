@@ -5,7 +5,7 @@ pre, a, abbr, acronym, address, big, cite,
 code, del, dfn, em, img, ins, kbd, q, s, samp,
 small, strike, strong, sub, sup, tt, var, b,
 u, i, center, dl, dt, dd, ol, ul, li, fieldset,
-form, label, legend, table, caption, tbody,
+form, label, legend, caption, tbody,
 tfoot, thead, tr, th, td, article, aside,
 canvas, details, embed, figure, figcaption,
 footer, header, hgroup, menu, nav, output, ruby,
@@ -2010,7 +2010,7 @@ mark {
         display: inline-block;
         width: 55px;
         height: 30px;
-		margin: 15px 0 0 0;	
+		margin: 15px 0 10px 0;	
     }
 
     .switch-button input {
@@ -2288,27 +2288,35 @@ mark {
 	}
 
 	.time-table {
-	margin: 10px 0;
-	border-collapse: collapse;
-	width: 100%; 
-	table-layout:fixed;
-	font-family: "SCDream7"; 
+		border-collapse: collapse;
+		width: 100%; 
+		table-layout:fixed;
+		font-family: "SCDream7"; 
 	}
 
 	.time-table td {
-	border: 1px solid rgb(0, 0, 0);
-	padding: 10px;
-	width: 100%;
-	height: 60px;
-	color: black;
-	transition: background-color 0.3s ease;
-	text-align: center;
-	
+		margin: 0;
+		border: 1px solid rgb(152, 152, 152);
+		padding: 10px;
+		width: 100%;
+		height: 60px;
+		color: black;
+		transition: background-color 0.3s ease;
+		text-align: center;
 	}
 	.time-table tr:first-child {
 		background: #3f86ed;
 	}
 
+	.time-table-container {
+		display: inline-block;
+		border-radius: 10px; 
+		overflow: hidden; 
+		box-shadow: 0 0 0 1px rgb(152, 152, 152);
+		width: fit-content; 
+		margin: 0 auto; 
+		position: relative; 
+	  }
 
 	/* 툴팁 박스 */
 	.modal {
@@ -2360,27 +2368,6 @@ mark {
 		width: 100%;
 	}
 
-
-
-	/* List Page table */
-	.list-table {
-		border-collapse: collapse;
-		margin: 10px 0 0 0;
-	}
-	.list-table td {
-		border: 3px solid black;
-		width: 100px;
-		height: 50px;
-		text-align: center;
-	}
-	#detail_info {
-		text-align: center;;
-		border: 3px solid black;
-		width: 100%;
-		height: 200px;
-		border-radius: 10px;
-	}
-
 	/* 필터 버튼 */
 	.btn2 {
 		width: 90px;
@@ -2429,3 +2416,26 @@ mark {
 		font-family: "NEXONFootballGothicL";
 		color: black;
 	}
+
+
+    /* List Page table */
+    .list-table {
+      border-collapse: separate; /*Separate borders for cells */
+      border-spacing: 0; /* No spacing between cells */
+      margin: 10px 0 0 0;
+      border: 3px solid black; /* Outer border */
+    }
+
+    .list-table td {
+      border: 1px solid lightgray; /* Inner border */
+      width: 100px;
+      height: 50px;
+      text-align: center;
+      padding: 5px; /* Add some padding for cell content */
+    }
+
+    /* background to cells in the 1st and 3rd columns */
+    .list-table td:nth-child(1),
+    .list-table td:nth-child(3) {
+      background-color: #dcf1ff;
+    }
