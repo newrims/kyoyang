@@ -1,9 +1,11 @@
+// 필요한 모듈을 불러오기
 const express = require('express');
 const mysql = require('mysql2');
 const path = require('path');
 const static = require('serve-static');
 const dbconfig = require('./config/dbconfig.json');
 
+// MySQL 연결을 위한 풀을 생성
 const pool = mysql.createPool({
     connectionLimit: 10,
     host: dbconfig.host,
@@ -18,73 +20,21 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use('/public', static(path.join(__dirname, 'public')));
 
-let query_GE;
-let query_time;
-let query_checklist = "";
-
-app.post('/next_to_checklist', (req, res) => {
-    console.log('next_to_checklist 호출됨')
-
-    let GE = req.body.GE;
-
-    query_GE = GE;
-    console.log(query_GE);
-    return;
-
-})
-let query_arr0 = '';
-let query_arr1 = '';
-let query_arr2 = '';
-let query_arr3 = '';
-
-app.post('/next_to_slecttime1', (req, res) => {
-    console.log('next_to_selecttime 호출됨');
-
-    query_arr0 = req.body.query_arr0;
-
-    console.log(query_arr0);
-    return;
-})
-app.post('/next_to_slecttime2', (req, res) => {
-    console.log('next_to_selecttime 호출됨');
-
-    query_arr1 = req.body.query_arr1;
-
-    console.log(query_arr1);
-    return;
-})
-app.post('/next_to_slecttime3', (req, res) => {
-    console.log('next_to_selecttime 호출됨');
-
-    query_arr2 = req.body.query_arr2;
-
-    console.log(query_arr2);
-    return;
-})
-app.post('/next_to_slecttime4', (req, res) => {
-    console.log('next_to_selecttime 호출됨');
-
-    query_arr3 = req.body.query_arr3;
-
-    query_checklist = query_arr0 + query_arr1 + query_arr2 + query_arr3;
-    console.log(query_checklist);
-    return;
-})
-
-app.post('/next_to_test', (req) => {
-    console.log('next_to_test 호출됨')
-
-    query_time = req.body.idx;
-
-    console.log(query_time);
-    return;
-})
-
+// DB에서 데이터를 검색하고 클라이언트에 응답
 app.post('/callDB', (req, res) => {
     console.log('callDB 호출됨')
     
     const last_query = req.body.last_query;
+    const query_GE = req.body._GE;
+    const query_arr0 = req.body._query_arr0;
+    const query_arr1 = req.body._query_arr1;
+    const query_arr2 = req.body._query_arr2;
+    const query_arr3 = req.body._query_arr3;
+    const query_time = req.body._idx;
 
+    const query_checklist = query_arr0 + query_arr1 + query_arr2 + query_arr3;
+
+    // 쿼리 결과를 받을 resData
     const resData = {}
     resData.result = 'error'
     resData.이름 = []
@@ -103,8 +53,10 @@ app.post('/callDB', (req, res) => {
     resData.특이사항 = []
     resData.학점 = []
 
+    // 최종 쿼리문
     console.log(`select * from kyoyang where not regexp_like ${query_time} and '수강제한학과' not like '%${query_GE}%' and ${query_checklist} ${last_query};`);
 
+    // 쿼리 결과를 받아서 resData 객체에 저장하고 응답
     pool.getConnection((err, conn)=>{
         if (err) {
             conn.release();
@@ -125,8 +77,8 @@ app.post('/callDB', (req, res) => {
             conn.release();
             resData.result = 'ok';
 
+            // DB의 내용을 resData에 저장
             rows.forEach((val)=>{
-                // resData.name.push(val.교과목명)
                 resData.이름.push(val.교과목명)
                 resData.교수.push(val.교수명)
                 resData.시간.push(val.시간표)
@@ -141,7 +93,7 @@ app.post('/callDB', (req, res) => {
                 resData.평가.push(val.평가방법)
                 resData.퀴즈.push(val.퀴즈)
                 resData.학점.push(val.학점)
-                // resData.특이사항.push()
+                resData.특이사항.push(val.crosscheck)
             })
             res.json(resData);
         })
@@ -149,6 +101,7 @@ app.post('/callDB', (req, res) => {
     
 })
 
+// 서버를 3000번 포트에서 실행
 app.listen(3000, ()=>{
     console.log('Server started at 3000');
 })
