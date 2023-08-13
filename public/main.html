@@ -63,6 +63,26 @@
 			z-index: 9998;
 			display: none;
 		}
+
+		#list-table {
+		border-collapse: separate; 
+		border-spacing: 0; 
+		margin: 10px 0 0 0;
+		border: 3px solid black;
+		}
+
+		#list-table td {
+		border: 1px solid lightgray;
+		width: 100px;
+		height: 50px;
+		text-align: center;
+		padding: 5px; 
+		}
+
+		#list-table td:nth-child(1),
+		#list-table td:nth-child(3) {
+		background-color: #dcf1ff;
+		}
 	</style>
 </head>
 
@@ -800,1206 +820,1205 @@
 	
 			</article>
 
-		<!-- 3 -->
-		<article id="SelectTime" class="panel">
-			
-			<label>전공과 필수 교양 시간을 선택해주세요.</label>
-			<div style="text-align: right;">
-			<label class="switch-text">60분</label>
-			<label class="switch-button">
-				<input type="checkbox" id="time90"/>
-				<span class="onoff-switch"></span>
-			</label>		
-			<label class="switch-text">90분</label>
-		
-			</div>
-		
-			<div class="time-table-container">
-			<table class="time-table">
-			</table>
-			</div>
-			<br>
-			<!-- Button to display colored cell positions -->
-			<div class="buttons">
-			<button class="btn-hover color-9" onclick="displayColoredCellPositions()">확인</button>				
-			</div>
-						
-			<script>			
-				// 테이블 요소 선택
-				var table = document.querySelector('table');
-		
-				// 카운터 초기화
-				var counter_tr = -1;
-				var counter_th = 0;
-		
-				// 행을 28개 생성
-				for (var i = 0; i < 24; i++) {
-					var tr = document.createElement('tr');
-					counter_tr++;
-					counter_th = 0;
-		
-					// 각 행에 6개의 셀 생성
-					for (var j = 0; j < 6; j++) {
-						var td = document.createElement('td');
-						td.id = counter_tr + counter_th; // 현재 카운터 값을 ID로 설정
-						if (td.id == 24) {
+			<!-- 3 -->
+			<article id="SelectTime" class="panel">
+            
+				<label>전공과 필수 교양 시간을 선택해주세요.</label>
+				<div style="text-align: right;">
+				<label class="switch-text">60분</label>
+				<label class="switch-button">
+				   <input type="checkbox" id="time90"/>
+				   <span class="onoff-switch"></span>
+				</label>      
+				<label class="switch-text">90분</label>
+			 
+				</div>
+			 
+				<div class="time-table-container">
+				<table class="time-table">
+				</table>
+				</div>
+				<br>
+				<!-- Button to display colored cell positions -->
+				<div class="buttons">
+				<button class="btn-hover color-9" onclick="displayColoredCellPositions()">확인</button>            
+				</div>
+						 
+				<script>         
+				   // 테이블 요소 선택
+				   var table = document.querySelector('table');
+			 
+				   // 카운터 초기화
+				   var counter_tr = -1;
+				   var counter_th = 0;
+			 
+				   // 행을 28개 생성
+				   for (var i = 0; i < 24; i++) {
+					  var tr = document.createElement('tr');
+					  counter_tr++;
+					  counter_th = 0;
+			 
+					  // 각 행에 6개의 셀 생성
+					  for (var j = 0; j < 6; j++) {
+						 var td = document.createElement('td');
+						 td.id = counter_tr + counter_th; // 현재 카운터 값을 ID로 설정
+						 if (td.id == 24) {
 							td.textContent = "월"
-						}
-						else if (td.id == 48) {
+						 }
+						 else if (td.id == 48) {
 							td.textContent = "화"
-						}
-						else if (td.id == 72) {
+						 }
+						 else if (td.id == 72) {
 							td.textContent = "수"
-						}
-						else if (td.id == 96) {
+						 }
+						 else if (td.id == 96) {
 							td.textContent = "목"
-						}
-						else if (td.id == 120) {
+						 }
+						 else if (td.id == 120) {
 							td.textContent = "금"
-						}
-						counter_th += 24;
-						td.style.backgroundColor = 'white';
-						tr.appendChild(td);
-					}
+						 }
+						 counter_th += 24;
+						 td.style.backgroundColor = 'white';
+						 tr.appendChild(td);
+					  }
 	
-					table.appendChild(tr);
-				}
-		
-				const cells = document.querySelectorAll('td');
-				const checkbox = document.getElementById('time90');
+					  table.appendChild(tr);
+				   }
+			 
+				   const cells = document.querySelectorAll('td');
+				   const checkbox = document.getElementById('time90');
 	
-				function setCellsToGray() {
-					cells.forEach(cell => {
-						if (cell.style.backgroundColor !== 'rgb(147, 178, 231)') {
+				   function setCellsToGray() {
+					  cells.forEach(cell => {
+						 if (cell.style.backgroundColor !== 'rgb(147, 178, 231)') {
 							if (checkbox.checked) {
-								if (cell.id % 24 == 1 || cell.id % 24 == 2 || cell.id % 24 == 3 || cell.id % 24 == 7 || cell.id % 24 == 8 || cell.id % 24 == 9 || cell.id % 24 == 13 || cell.id % 24 == 14 || cell.id % 24 == 15 || cell.id % 24 == 19 || cell.id % 24 == 21 || cell.id % 24 == 23) {
-									cell.style.backgroundColor = ('#ededed');
-								}
-								else {
-									cell.style.backgroundColor = ('');
-								}
+							   if (cell.id % 24 == 1 || cell.id % 24 == 2 || cell.id % 24 == 3 || cell.id % 24 == 7 || cell.id % 24 == 8 || cell.id % 24 == 9 || cell.id % 24 == 13 || cell.id % 24 == 14 || cell.id % 24 == 15 || cell.id % 24 == 19 || cell.id % 24 == 21 || cell.id % 24 == 23) {
+								  cell.style.backgroundColor = ('#ededed');
+							   }
+							   else {
+								  cell.style.backgroundColor = ('');
+							   }
 							}
 							else {
-		
-								if ((cell.id % 24 == 1 || cell.id % 24 == 2 || cell.id % 24 == 5 || cell.id % 24 == 6 || cell.id % 24 == 9 || cell.id % 24 == 10 || cell.id % 24 == 13 || cell.id % 24 == 14 || cell.id % 24 == 17 || cell.id % 24 == 18 || cell.id % 24 == 20 || cell.id % 24 == 22)) {
-									cell.style.backgroundColor = ('#ededed');
-								}
-								else {
-									cell.style.backgroundColor = ('');
-								}
+			 
+							   if ((cell.id % 24 == 1 || cell.id % 24 == 2 || cell.id % 24 == 5 || cell.id % 24 == 6 || cell.id % 24 == 9 || cell.id % 24 == 10 || cell.id % 24 == 13 || cell.id % 24 == 14 || cell.id % 24 == 17 || cell.id % 24 == 18 || cell.id % 24 == 20 || cell.id % 24 == 22)) {
+								  cell.style.backgroundColor = ('#ededed');
+							   }
+							   else {
+								  cell.style.backgroundColor = ('');
+							   }
 							}
-						}
-					})
-				}
+						 }
+					  })
+				   }
 	
-				cells.forEach(cell => {
-					if (cell.id == 0) {
-						cell.style.color = 'white';
-						cell.style.borderTop = 'none';
-						cell.style.borderLeft = 'none';
-					}	
-					else if (cell.id == 1) {
-						cell.style.borderBottom = 'none';
-						cell.style.borderLeft = 'none';
-					}
-					else if (cell.id == 2) {
-						cell.style.borderTop = 'none';
-						cell.style.borderLeft = 'none';
-					}	
-					else if (cell.id == 3) {
-						cell.style.borderBottom = 'none';
-						cell.style.borderLeft = 'none';
-					}
-					else if (cell.id == 4) {
-						cell.style.borderTop = 'none';
-						cell.style.borderLeft = 'none';
-					}
-					else if (cell.id == 5) {		
-						cell.style.borderBottom = 'none';
-						cell.style.borderLeft = 'none';
-					}
-					else if (cell.id == 6) {
-						cell.style.borderTop = 'none';
-						cell.style.borderLeft = 'none';
-					}		
-					else if (cell.id == 7) {
-						cell.style.borderBottom = 'none';
-						cell.style.borderLeft = 'none';
-					}
-					else if (cell.id == 8) {
-						cell.style.borderTop = 'none';
-						cell.style.borderLeft = 'none';
-					}
-					else if (cell.id == 9) {		
-						cell.style.borderBottom = 'none';
-						cell.style.borderLeft = 'none';
-					}
-					else if (cell.id == 10) {
-						cell.style.borderTop = 'none';
-						cell.style.borderLeft = 'none';
-					}
-					else if (cell.id == 11) {
-						cell.style.borderBottom = 'none';
-						cell.style.borderLeft = 'none';
-					}	
-					else if (cell.id == 12) {
-						cell.style.borderTop = 'none';
-						cell.style.borderLeft = 'none';
-					}
-					else if (cell.id == 13) {
-						cell.style.borderBottom = 'none';
-						cell.style.borderLeft = 'none';
-					}
-					else if (cell.id == 14) {
-						cell.style.borderTop = 'none';
-						cell.style.borderLeft = 'none';
-					}
-					else if (cell.id == 15) {
-						cell.style.borderBottom = 'none';
-						cell.style.borderLeft = 'none';
-					}
-					else if (cell.id == 16) {
-						cell.style.borderTop = 'none';
-						cell.style.borderLeft = 'none';
-					}
-					else if (cell.id == 17) {			
-						cell.style.borderBottom = 'none';
-						cell.style.borderLeft = 'none';
-					}
-					else if (cell.id == 18) {
-						cell.style.borderTop = 'none';
-						cell.style.borderLeft = 'none';
-					}	
-					else if (cell.id == 19) {
-						cell.style.borderLeft = 'none';
-					}	
-					else if (cell.id == 20) {
-						cell.style.borderLeft = 'none';
-					}	
-					else if (cell.id == 21) {
-						cell.style.borderLeft = 'none';
-					}	
-					else if (cell.id == 22) {
-						cell.style.borderLeft = 'none';
-					}	
-					else if (cell.id == 23) {
-						cell.style.borderLeft = 'none';
-						cell.style.borderBottom = 'none';
-					}	
-					else if (cell.id == 24) {
-						cell.style.color = 'white';
-						cell.style.borderTop = 'none';
-					}	
-					else if (cell.id == 47) {
-						cell.style.borderBottom = 'none';
-					}	
-					else if (cell.id == 48) {
-						cell.style.color = 'white';
-						cell.style.borderTop = 'none';
-					}
-					else if (cell.id == 71) {
-						cell.style.borderBottom = 'none';
-					}	
-					else if (cell.id == 72) {
-						cell.style.color = 'white';
-						cell.style.borderTop = 'none';
-					}
-					else if (cell.id == 95) {
-						cell.style.borderBottom = 'none';
-					}	
-					else if (cell.id == 96) {		
-						cell.style.color = 'white';
-						cell.style.borderTop = 'none';
-					}
-					else if (cell.id == 119) {
-						cell.style.borderBottom = 'none';
-					}	
-					else if (cell.id == 120) {
-						cell.style.color = 'white';
-						cell.style.borderTop = 'none';
-						cell.style.borderRight = 'none';
-					}
-					else if (cell.id == 120) {
-						cell.style.borderRight = 'none';
-					}
-					else if (cell.id == 121) {
-						cell.style.borderRight = 'none';
-					}
-					else if (cell.id == 122) {
-						cell.style.borderRight = 'none';
-					}
-					else if (cell.id == 123) {
-						cell.style.borderRight = 'none';
-					}
-					else if (cell.id == 124) {
-						cell.style.borderRight = 'none';
-					}
-					else if (cell.id == 125) {
-						cell.style.borderRight = 'none';
-					}
-					else if (cell.id == 126) {
-						cell.style.borderRight = 'none';
-					}
-					else if (cell.id == 127) {
-						cell.style.borderRight = 'none';
-					}
-					else if (cell.id == 128) {
-						cell.style.borderRight = 'none';
-					}
-					else if (cell.id == 129) {
-						cell.style.borderRight = 'none';
-					}
-					else if (cell.id == 130) {
-						cell.style.borderRight = 'none';
-					}
-					else if (cell.id == 131) {
-						cell.style.borderRight = 'none';
-					}
-					else if (cell.id == 132) {
-						cell.style.borderRight = 'none';
-					}
-					else if (cell.id == 133) {
-						cell.style.borderRight = 'none';
-					}
-					else if (cell.id == 134) {
-						cell.style.borderRight = 'none';
-					}
-					else if (cell.id == 135) {
-						cell.style.borderRight = 'none';
-					}
-					else if (cell.id == 136) {
-						cell.style.borderRight = 'none';
-					}
-					else if (cell.id == 137) {
-						cell.style.borderRight = 'none';
-					}
-					else if (cell.id == 138) {
-						cell.style.borderRight = 'none';
-					}
-					else if (cell.id == 139) {
-						cell.style.borderRight = 'none';
-					}
-					else if (cell.id == 140) {
-						cell.style.borderRight = 'none';
-					}
-					else if (cell.id == 141) {
-						cell.style.borderRight = 'none';
-					}	
-					else if (cell.id == 142) {
-						cell.style.borderRight = 'none';
-					}	
-					else if (cell.id == 143) {
-						cell.style.borderBottom = 'none';
-						cell.style.borderRight = 'none';
-					}	
-				})
-				
-				function show_time() {
-					cells.forEach(cell => {
-						if (checkbox.checked) {
+				   cells.forEach(cell => {
+					  if (cell.id == 0) {
+						 cell.style.color = 'white';
+						 cell.style.borderTop = 'none';
+						 cell.style.borderLeft = 'none';
+					  }   
+					  else if (cell.id == 1) {
+						 cell.style.borderBottom = 'none';
+						 cell.style.borderLeft = 'none';
+					  }
+					  else if (cell.id == 2) {
+						 cell.style.borderTop = 'none';
+						 cell.style.borderLeft = 'none';
+					  }   
+					  else if (cell.id == 3) {
+						 cell.style.borderBottom = 'none';
+						 cell.style.borderLeft = 'none';
+					  }
+					  else if (cell.id == 4) {
+						 cell.style.borderTop = 'none';
+						 cell.style.borderLeft = 'none';
+					  }
+					  else if (cell.id == 5) {      
+						 cell.style.borderBottom = 'none';
+						 cell.style.borderLeft = 'none';
+					  }
+					  else if (cell.id == 6) {
+						 cell.style.borderTop = 'none';
+						 cell.style.borderLeft = 'none';
+					  }      
+					  else if (cell.id == 7) {
+						 cell.style.borderBottom = 'none';
+						 cell.style.borderLeft = 'none';
+					  }
+					  else if (cell.id == 8) {
+						 cell.style.borderTop = 'none';
+						 cell.style.borderLeft = 'none';
+					  }
+					  else if (cell.id == 9) {      
+						 cell.style.borderBottom = 'none';
+						 cell.style.borderLeft = 'none';
+					  }
+					  else if (cell.id == 10) {
+						 cell.style.borderTop = 'none';
+						 cell.style.borderLeft = 'none';
+					  }
+					  else if (cell.id == 11) {
+						 cell.style.borderBottom = 'none';
+						 cell.style.borderLeft = 'none';
+					  }   
+					  else if (cell.id == 12) {
+						 cell.style.borderTop = 'none';
+						 cell.style.borderLeft = 'none';
+					  }
+					  else if (cell.id == 13) {
+						 cell.style.borderBottom = 'none';
+						 cell.style.borderLeft = 'none';
+					  }
+					  else if (cell.id == 14) {
+						 cell.style.borderTop = 'none';
+						 cell.style.borderLeft = 'none';
+					  }
+					  else if (cell.id == 15) {
+						 cell.style.borderBottom = 'none';
+						 cell.style.borderLeft = 'none';
+					  }
+					  else if (cell.id == 16) {
+						 cell.style.borderTop = 'none';
+						 cell.style.borderLeft = 'none';
+					  }
+					  else if (cell.id == 17) {         
+						 cell.style.borderBottom = 'none';
+						 cell.style.borderLeft = 'none';
+					  }
+					  else if (cell.id == 18) {
+						 cell.style.borderTop = 'none';
+						 cell.style.borderLeft = 'none';
+					  }   
+					  else if (cell.id == 19) {
+						 cell.style.borderLeft = 'none';
+					  }   
+					  else if (cell.id == 20) {
+						 cell.style.borderLeft = 'none';
+					  }   
+					  else if (cell.id == 21) {
+						 cell.style.borderLeft = 'none';
+					  }   
+					  else if (cell.id == 22) {
+						 cell.style.borderLeft = 'none';
+					  }   
+					  else if (cell.id == 23) {
+						 cell.style.borderLeft = 'none';
+						 cell.style.borderBottom = 'none';
+					  }   
+					  else if (cell.id == 24) {
+						 cell.style.color = 'white';
+						 cell.style.borderTop = 'none';
+					  }   
+					  else if (cell.id == 47) {
+						 cell.style.borderBottom = 'none';
+					  }   
+					  else if (cell.id == 48) {
+						 cell.style.color = 'white';
+						 cell.style.borderTop = 'none';
+					  }
+					  else if (cell.id == 71) {
+						 cell.style.borderBottom = 'none';
+					  }   
+					  else if (cell.id == 72) {
+						 cell.style.color = 'white';
+						 cell.style.borderTop = 'none';
+					  }
+					  else if (cell.id == 95) {
+						 cell.style.borderBottom = 'none';
+					  }   
+					  else if (cell.id == 96) {      
+						 cell.style.color = 'white';
+						 cell.style.borderTop = 'none';
+					  }
+					  else if (cell.id == 119) {
+						 cell.style.borderBottom = 'none';
+					  }   
+					  else if (cell.id == 120) {
+						 cell.style.color = 'white';
+						 cell.style.borderTop = 'none';
+						 cell.style.borderRight = 'none';
+					  }
+					  else if (cell.id == 120) {
+						 cell.style.borderRight = 'none';
+					  }
+					  else if (cell.id == 121) {
+						 cell.style.borderRight = 'none';
+					  }
+					  else if (cell.id == 122) {
+						 cell.style.borderRight = 'none';
+					  }
+					  else if (cell.id == 123) {
+						 cell.style.borderRight = 'none';
+					  }
+					  else if (cell.id == 124) {
+						 cell.style.borderRight = 'none';
+					  }
+					  else if (cell.id == 125) {
+						 cell.style.borderRight = 'none';
+					  }
+					  else if (cell.id == 126) {
+						 cell.style.borderRight = 'none';
+					  }
+					  else if (cell.id == 127) {
+						 cell.style.borderRight = 'none';
+					  }
+					  else if (cell.id == 128) {
+						 cell.style.borderRight = 'none';
+					  }
+					  else if (cell.id == 129) {
+						 cell.style.borderRight = 'none';
+					  }
+					  else if (cell.id == 130) {
+						 cell.style.borderRight = 'none';
+					  }
+					  else if (cell.id == 131) {
+						 cell.style.borderRight = 'none';
+					  }
+					  else if (cell.id == 132) {
+						 cell.style.borderRight = 'none';
+					  }
+					  else if (cell.id == 133) {
+						 cell.style.borderRight = 'none';
+					  }
+					  else if (cell.id == 134) {
+						 cell.style.borderRight = 'none';
+					  }
+					  else if (cell.id == 135) {
+						 cell.style.borderRight = 'none';
+					  }
+					  else if (cell.id == 136) {
+						 cell.style.borderRight = 'none';
+					  }
+					  else if (cell.id == 137) {
+						 cell.style.borderRight = 'none';
+					  }
+					  else if (cell.id == 138) {
+						 cell.style.borderRight = 'none';
+					  }
+					  else if (cell.id == 139) {
+						 cell.style.borderRight = 'none';
+					  }
+					  else if (cell.id == 140) {
+						 cell.style.borderRight = 'none';
+					  }
+					  else if (cell.id == 141) {
+						 cell.style.borderRight = 'none';
+					  }   
+					  else if (cell.id == 142) {
+						 cell.style.borderRight = 'none';
+					  }   
+					  else if (cell.id == 143) {
+						 cell.style.borderBottom = 'none';
+						 cell.style.borderRight = 'none';
+					  }   
+				   })
+				   
+				   function show_time() {
+					  cells.forEach(cell => {
+						 if (checkbox.checked) {
 							if (cell.id == 1) {
-								cell.textContent = "1";
-								cell.style.borderBottom = 'none';
+							   cell.textContent = "1";
+							   cell.style.borderBottom = 'none';
 							}
 							else if (cell.id == 2) {
-								cell.textContent = "~";
-								cell.style.borderTop = 'none';
-								cell.style.borderBottom = 'none';
-							}	
+							   cell.textContent = "~";
+							   cell.style.borderTop = 'none';
+							   cell.style.borderBottom = 'none';
+							}   
 							else if (cell.id == 3) {
-								cell.textContent = "2a"
-								cell.style.borderTop = 'none';
-								cell.style.borderBottom = 'solid 1px rgb(152, 152, 152)';
+							   cell.textContent = "2a"
+							   cell.style.borderTop = 'none';
+							   cell.style.borderBottom = 'solid 1px rgb(152, 152, 152)';
 							}
 							else if (cell.id == 4) {
-								cell.textContent = "2b";
-								cell.style.borderBottom = 'none';
+							   cell.textContent = "2b";
+							   cell.style.borderBottom = 'none';
 							}
 							else if (cell.id == 5) {
-								cell.textContent = "~"
-								cell.style.borderTop = 'none';
-								cell.style.borderBottom = 'none';
+							   cell.textContent = "~"
+							   cell.style.borderTop = 'none';
+							   cell.style.borderBottom = 'none';
 							}
 							else if (cell.id == 6) {
-								cell.textContent = "3"
-								cell.style.borderTop = 'none';
-							}		
+							   cell.textContent = "3"
+							   cell.style.borderTop = 'none';
+							}      
 							else if (cell.id == 7) {
-								cell.textContent = "4";
-								cell.style.borderBottom = 'none';
+							   cell.textContent = "4";
+							   cell.style.borderBottom = 'none';
 							}
 							else if (cell.id == 8) {
-								cell.textContent = "~";
-								cell.style.borderTop = 'none';
-								cell.style.borderBottom = 'none';
+							   cell.textContent = "~";
+							   cell.style.borderTop = 'none';
+							   cell.style.borderBottom = 'none';
 							}
 							else if (cell.id == 9) {
-								cell.textContent = "5a"
-								cell.style.borderTop = 'none';
-								cell.style.borderBottom = 'solid 1px rgb(152, 152, 152)';
+							   cell.textContent = "5a"
+							   cell.style.borderTop = 'none';
+							   cell.style.borderBottom = 'solid 1px rgb(152, 152, 152)';
 							}
 							else if (cell.id == 10) {
-								cell.textContent = "5b";
-								cell.style.borderBottom = 'none';
+							   cell.textContent = "5b";
+							   cell.style.borderBottom = 'none';
 							}
 							else if (cell.id == 11) {
-								cell.textContent = "~"
-								cell.style.borderTop = 'none';
-								cell.style.borderBottom = 'none';
+							   cell.textContent = "~"
+							   cell.style.borderTop = 'none';
+							   cell.style.borderBottom = 'none';
 							}
 							else if (cell.id == 12) {
-								cell.textContent = "6"
-								cell.style.borderTop = 'none';
+							   cell.textContent = "6"
+							   cell.style.borderTop = 'none';
 							}
 							else if (cell.id == 13) {
-								cell.textContent = "7";
-								cell.style.borderBottom = 'none';
+							   cell.textContent = "7";
+							   cell.style.borderBottom = 'none';
 							}
 							else if (cell.id == 14) {
-								cell.textContent = "~";
-								cell.style.borderTop = 'none';
-								cell.style.borderBottom = 'none';
+							   cell.textContent = "~";
+							   cell.style.borderTop = 'none';
+							   cell.style.borderBottom = 'none';
 							}
 							else if (cell.id == 15) {
-								cell.textContent = "8a"
-								cell.style.borderTop = 'none';
-								cell.style.borderBottom = 'solid 1px rgb(152, 152, 152)';
+							   cell.textContent = "8a"
+							   cell.style.borderTop = 'none';
+							   cell.style.borderBottom = 'solid 1px rgb(152, 152, 152)';
 							}
 							else if (cell.id == 16) {
-								cell.textContent = "8b";
-								cell.style.borderBottom = 'none';
+							   cell.textContent = "8b";
+							   cell.style.borderBottom = 'none';
 							}
 							else if (cell.id == 17) {
-								cell.textContent = "~"
-								cell.style.borderTop = 'none';
-								cell.style.borderBottom = 'none';
+							   cell.textContent = "~"
+							   cell.style.borderTop = 'none';
+							   cell.style.borderBottom = 'none';
 							}
 							else if (cell.id == 18) {
-								cell.textContent = "9"
-								cell.style.borderTop = 'none';
+							   cell.textContent = "9"
+							   cell.style.borderTop = 'none';
 							}
 							else if (cell.id == 19) {
-								cell.textContent = "야1";
+							   cell.textContent = "야1";
 							}
 							else if (cell.id == 20) {
-								cell.textContent = "야2";
+							   cell.textContent = "야2";
 							}
 							else if (cell.id == 21) {
-								cell.textContent = "야3";
+							   cell.textContent = "야3";
 							}
 							else if (cell.id == 22) {
-								cell.textContent = "야4";
+							   cell.textContent = "야4";
 							}
 							else if (cell.id == 23) {
-								cell.textContent = "야5";
+							   cell.textContent = "야5";
 							}
-						}
-						else {
+						 }
+						 else {
 							if (cell.id == 1) {
-								cell.textContent = "1";
+							   cell.textContent = "1";
 							}
 							else if (cell.id == 2) {
-								cell.textContent = ""							
-								cell.style.borderBottom = 'solid 1px rgb(152, 152, 152)';
+							   cell.textContent = ""                     
+							   cell.style.borderBottom = 'solid 1px rgb(152, 152, 152)';
 							}
 							else if (cell.id == 3) {
-								cell.textContent = "2"
-								cell.style.borderBottom = 'none';
+							   cell.textContent = "2"
+							   cell.style.borderBottom = 'none';
 							}
 							else if (cell.id == 4) {
-								cell.textContent = ""
-								cell.style.borderBottom = 'solid 1px rgb(152, 152, 152)';
+							   cell.textContent = ""
+							   cell.style.borderBottom = 'solid 1px rgb(152, 152, 152)';
 							}
 							else if (cell.id == 5) {
-								cell.textContent = "3"
+							   cell.textContent = "3"
 							}
 							else if (cell.id == 6) {
-								cell.textContent = ""
+							   cell.textContent = ""
 							}
 							else if (cell.id == 7) {
-								cell.textContent = "4"
+							   cell.textContent = "4"
 							}
 							else if (cell.id == 8) {
-								cell.textContent = ""
-								cell.style.borderBottom = 'solid 1px rgb(152, 152, 152)';
+							   cell.textContent = ""
+							   cell.style.borderBottom = 'solid 1px rgb(152, 152, 152)';
 							}
 							else if (cell.id == 9) {
-								cell.textContent = "5"				
-								cell.style.borderBottom = 'none';
+							   cell.textContent = "5"            
+							   cell.style.borderBottom = 'none';
 							}
 							else if (cell.id == 10) {
-								cell.textContent = ""				
-								cell.style.borderBottom = 'solid 1px rgb(152, 152, 152)';
+							   cell.textContent = ""            
+							   cell.style.borderBottom = 'solid 1px rgb(152, 152, 152)';
 							}
 							else if (cell.id == 11) {
-								cell.textContent = "6"
+							   cell.textContent = "6"
 							}
 							else if (cell.id == 12) {
-								cell.textContent = ""
+							   cell.textContent = ""
 							}
 							else if (cell.id == 13) {
-								cell.textContent = "7"
+							   cell.textContent = "7"
 							}
 							else if (cell.id == 14) {
-								cell.textContent = ""
-								cell.style.borderBottom = 'solid 1px rgb(152, 152, 152)';
+							   cell.textContent = ""
+							   cell.style.borderBottom = 'solid 1px rgb(152, 152, 152)';
 							}
 							else if (cell.id == 15) {
-								cell.textContent = "8"
-								cell.style.borderBottom = 'none';
+							   cell.textContent = "8"
+							   cell.style.borderBottom = 'none';
 							}
 							else if (cell.id == 16) {
-								cell.textContent = ""
-								cell.style.borderBottom = 'solid 1px rgb(152, 152, 152)';
+							   cell.textContent = ""
+							   cell.style.borderBottom = 'solid 1px rgb(152, 152, 152)';
 							}
 							else if (cell.id == 17) {
-								cell.textContent = "9"
+							   cell.textContent = "9"
 							}
 							else if (cell.id == 18) {
-								cell.textContent = ""
+							   cell.textContent = ""
 							}
 							else if (cell.id == 19) {
-								cell.textContent = "야1"
+							   cell.textContent = "야1"
 							}
 							else if (cell.id == 20) {
-								cell.textContent = "야2"
+							   cell.textContent = "야2"
 							}
 							else if (cell.id == 21) {
-								cell.textContent = "야3"
+							   cell.textContent = "야3"
 							}
 							else if (cell.id == 22) {
-								cell.textContent = "야4"
+							   cell.textContent = "야4"
 							}
 							else if (cell.id == 23) {
-								cell.textContent = "야5"
+							   cell.textContent = "야5"
 							}
 							else if (cell.id == 4) {
-								cell.textContent = "";
+							   cell.textContent = "";
 							}
 							else if (cell.id == 10) {
-								cell.textContent = "";
+							   cell.textContent = "";
 							}
 							else if (cell.id == 16) {
-								cell.textContent = "";
+							   cell.textContent = "";
 							}
-						}
-					})
-				}
-						
-				checkbox.addEventListener('click', () => {
-					setCellsToGray();
-					show_time();
-				})
-		
-				setCellsToGray();
-				show_time();
-				
-				cells.forEach(cell => {
-					cell.addEventListener('click', () => {
-						if (checkbox.checked) {
+						 }
+					  })
+				   }
+						 
+				   checkbox.addEventListener('click', () => {
+					  setCellsToGray();
+					  show_time();
+				   })
+			 
+				   setCellsToGray();
+				   show_time();
+				   
+				   cells.forEach(cell => {
+					  cell.addEventListener('click', () => {
+						 if (checkbox.checked) {
 							if ((cell.id >= 25 && cell.id <= 42) || (cell.id >= 49 && cell.id <= 66) || (cell.id >= 73 && cell.id <= 90) || (cell.id >= 97 && cell.id <= 114) || (cell.id >= 121 && cell.id <= 138)) {
-								if (cell.id % 3 === 1) {
-									if (cell.style.backgroundColor !== 'rgb(147, 178, 231)') {
-										cell.style.backgroundColor = '#93b2e7';
-										document.getElementById(Number(cell.id) + 1).style.backgroundColor = '#93b2e7';
-										document.getElementById(Number(cell.id) + 2).style.backgroundColor = '#93b2e7';
-									}
-									else {
-										cell.style.backgroundColor = '';
-										document.getElementById(Number(cell.id) + 1).style.backgroundColor = '';
-										document.getElementById(Number(cell.id) + 2).style.backgroundColor = '';
-									}
-								}
-								else if (cell.id % 3 === 2) {
-									if (cell.style.backgroundColor !== 'rgb(147, 178, 231)') {
-										cell.style.backgroundColor = '#93b2e7';
-										document.getElementById(Number(cell.id) - 1).style.backgroundColor = '#93b2e7';
-										document.getElementById(Number(cell.id) + 1).style.backgroundColor = '#93b2e7';
-									}
-									else {
-										cell.style.backgroundColor = '';
-										document.getElementById(Number(cell.id) - 1).style.backgroundColor = '';
-										document.getElementById(Number(cell.id) + 1).style.backgroundColor = '';
-									}
-								}
-								else {
-									if (cell.style.backgroundColor !== 'rgb(147, 178, 231)') {
-										cell.style.backgroundColor = '#93b2e7';
-										document.getElementById(Number(cell.id) - 1).style.backgroundColor = '#93b2e7';
-										document.getElementById(Number(cell.id) - 2).style.backgroundColor = '#93b2e7';
-									}
-									else {
-										cell.style.backgroundColor = '';
-										document.getElementById(Number(cell.id) - 1).style.backgroundColor = '';
-										document.getElementById(Number(cell.id) - 2).style.backgroundColor = '';
-									}
-								}
+							   if (cell.id % 3 === 1) {
+								  if (cell.style.backgroundColor !== 'rgb(147, 178, 231)') {
+									 cell.style.backgroundColor = '#93b2e7';
+									 document.getElementById(Number(cell.id) + 1).style.backgroundColor = '#93b2e7';
+									 document.getElementById(Number(cell.id) + 2).style.backgroundColor = '#93b2e7';
+								  }
+								  else {
+									 cell.style.backgroundColor = '';
+									 document.getElementById(Number(cell.id) + 1).style.backgroundColor = '';
+									 document.getElementById(Number(cell.id) + 2).style.backgroundColor = '';
+								  }
+							   }
+							   else if (cell.id % 3 === 2) {
+								  if (cell.style.backgroundColor !== 'rgb(147, 178, 231)') {
+									 cell.style.backgroundColor = '#93b2e7';
+									 document.getElementById(Number(cell.id) - 1).style.backgroundColor = '#93b2e7';
+									 document.getElementById(Number(cell.id) + 1).style.backgroundColor = '#93b2e7';
+								  }
+								  else {
+									 cell.style.backgroundColor = '';
+									 document.getElementById(Number(cell.id) - 1).style.backgroundColor = '';
+									 document.getElementById(Number(cell.id) + 1).style.backgroundColor = '';
+								  }
+							   }
+							   else {
+								  if (cell.style.backgroundColor !== 'rgb(147, 178, 231)') {
+									 cell.style.backgroundColor = '#93b2e7';
+									 document.getElementById(Number(cell.id) - 1).style.backgroundColor = '#93b2e7';
+									 document.getElementById(Number(cell.id) - 2).style.backgroundColor = '#93b2e7';
+								  }
+								  else {
+									 cell.style.backgroundColor = '';
+									 document.getElementById(Number(cell.id) - 1).style.backgroundColor = '';
+									 document.getElementById(Number(cell.id) - 2).style.backgroundColor = '';
+								  }
+							   }
 							}
 							else if ((cell.id >= 43 && cell.id <= 47) || (cell.id >= 67 && cell.id <= 71) || (cell.id >= 91 && cell.id <= 95) || (cell.id >= 115 && cell.id <= 119) || (cell.id >= 139 && cell.id <= 143)) {
-								if (cell.style.backgroundColor !== 'rgb(147, 178, 231)') {
-									cell.style.backgroundColor = '#93b2e7';
-								}
-								else {
-									cell.style.backgroundColor = '';
-								}
+							   if (cell.style.backgroundColor !== 'rgb(147, 178, 231)') {
+								  cell.style.backgroundColor = '#93b2e7';
+							   }
+							   else {
+								  cell.style.backgroundColor = '';
+							   }
 							}
-						}
-						else {
+						 }
+						 else {
 							if ((cell.id >= 25 && cell.id <= 42) || (cell.id >= 49 && cell.id <= 66) || (cell.id >= 73 && cell.id <= 90) || (cell.id >= 97 && cell.id <= 114) || (cell.id >= 121 && cell.id <= 138)) {
-								if (cell.id % 2 === 1) {
-									if (cell.style.backgroundColor !== 'rgb(147, 178, 231)') {
-										cell.style.backgroundColor = '#93b2e7';
-										document.getElementById(Number(cell.id) + 1).style.backgroundColor = '#93b2e7';
-									}
-									else {
-										cell.style.backgroundColor = '';
-										document.getElementById(Number(cell.id) + 1).style.backgroundColor = '';
-									}
-								}
-								else {
-									if (cell.style.backgroundColor !== 'rgb(147, 178, 231)') {
-										cell.style.backgroundColor = '#93b2e7';
-										document.getElementById(Number(cell.id) - 1).style.backgroundColor = '#93b2e7';
-									}
-									else {
-										cell.style.backgroundColor = '';
-										document.getElementById(Number(cell.id) - 1).style.backgroundColor = '';
-									}
-								}
+							   if (cell.id % 2 === 1) {
+								  if (cell.style.backgroundColor !== 'rgb(147, 178, 231)') {
+									 cell.style.backgroundColor = '#93b2e7';
+									 document.getElementById(Number(cell.id) + 1).style.backgroundColor = '#93b2e7';
+								  }
+								  else {
+									 cell.style.backgroundColor = '';
+									 document.getElementById(Number(cell.id) + 1).style.backgroundColor = '';
+								  }
+							   }
+							   else {
+								  if (cell.style.backgroundColor !== 'rgb(147, 178, 231)') {
+									 cell.style.backgroundColor = '#93b2e7';
+									 document.getElementById(Number(cell.id) - 1).style.backgroundColor = '#93b2e7';
+								  }
+								  else {
+									 cell.style.backgroundColor = '';
+									 document.getElementById(Number(cell.id) - 1).style.backgroundColor = '';
+								  }
+							   }
 							}
 							else if ((cell.id >= 43 && cell.id <= 47) || (cell.id >= 67 && cell.id <= 71) || (cell.id >= 91 && cell.id <= 95) || (cell.id >= 115 && cell.id <= 119) || (cell.id >= 139 && cell.id <= 143)) {
-								if (cell.style.backgroundColor !== 'rgb(147, 178, 231)') {
-									cell.style.backgroundColor = '#93b2e7';
-								}
-								else {
-									cell.style.backgroundColor = '';
-								}
-		
+							   if (cell.style.backgroundColor !== 'rgb(147, 178, 231)') {
+								  cell.style.backgroundColor = '#93b2e7';
+							   }
+							   else {
+								  cell.style.backgroundColor = '';
+							   }
+			 
 							}
-		
-						}
-						setCellsToGray();
-					});
-				});
-		
-				// Function to handle button click and display colored cell positions
-				function displayColoredCellPositions() {
-		
-					const coloredCells = document.querySelectorAll('td[style*="background-color: rgb(147, 178, 231)"]');
-		
-					const index = [];
-					coloredCells.forEach(cell => {
-						index.push(Number(cell.id));
-					});
-		
-					let idx = "(`시간표 - 데이터베이스용`, '";
-					const len = index.length;
-	
-					for (let i = 0; i < len; i++) {
-						switch (index[i]) {
-							case 25:
-								idx += '011|';
-								break;
-							case 26:
-								idx += '012|';
-								break;
-							case 27:
-								idx += '021|';
-								break;
-							case 28:
-								idx += '022|';
-								break;
-							case 29:
-								idx += '031|';
-								break;
-							case 30:
-								idx += '032|';
-								break;
-							case 31:
-								idx += '041|';
-								break;
-							case 32:
-								idx += '042|';
-								break;
-							case 33:
-								idx += '051|';
-								break;
-							case 34:
-								idx += '052|';
-								break;
-							case 35:
-								idx += '061|';
-								break;
-							case 36:
-								idx += '062|';
-								break;
-							case 37:
-								idx += '071|';
-								break;
-							case 38:
-								idx += '072|';
-								break;
-							case 39:
-								idx += '081|';
-								break;
-							case 40:
-								idx += '082|';
-								break;
-							case 41:
-								idx += '091|';
-								break;
-							case 42:
-								idx += '092|';
-								break;
-							case 43:
-								idx += '510|';
-								break;
-							case 44:
-								idx += '520|';
-								break;
-							case 45:
-								idx += '530|';
-								break;
-							case 46:
-								idx += '540|';
-								break;
-							case 47:
-								idx += '550|';
-								break;
-							case 49:
-								idx += '111|';
-								break;
-							case 50:
-								idx += '112|';
-								break;
-							case 51:
-								idx += '121|';
-								break;
-							case 52:
-								idx += '122|';
-								break;
-							case 53:
-								idx += '131|';
-								break;
-							case 54:
-								idx += '132|';
-								break;
-							case 55:
-								idx += '141|';
-								break;
-							case 56:
-								idx += '142|';
-								break;
-							case 57:
-								idx += '151|';
-								break;
-							case 58:
-								idx += '152|';
-								break;
-							case 59:
-								idx += '161|';
-								break;
-							case 60:
-								idx += '162|';
-								break;
-							case 61:
-								idx += '171|';
-								break;
-							case 62:
-								idx += '172|';
-								break;
-							case 63:
-								idx += '181|';
-								break;
-							case 64:
-								idx += '182|';
-								break;
-							case 65:
-								idx += '191|';
-								break;
-							case 66:
-								idx += '192|';
-								break;
-							case 67:
-								idx += '610|';
-								break;
-							case 68:
-								idx += '620|';
-								break;
-							case 69:
-								idx += '630|';
-								break;
-							case 70:
-								idx += '640|';
-								break;
-							case 71:
-								idx += '650|';
-								break;
-							case 73:
-								idx += '211|';
-								break;
-							case 74:
-								idx += '212|';
-								break;
-							case 75:
-								idx += '221|';
-								break;
-							case 76:
-								idx += '222|';
-								break;
-							case 77:
-								idx += '231|';
-								break;
-							case 78:
-								idx += '232|';
-								break;
-							case 79:
-								idx += '241|';
-								break;
-							case 80:
-								idx += '242|';
-								break;
-							case 81:
-								idx += '251|';
-								break;
-							case 82:
-								idx += '252|';
-								break;
-							case 83:
-								idx += '261|';
-								break;
-							case 84:
-								idx += '262|';
-								break;
-							case 85:
-								idx += '271|';
-								break;
-							case 86:
-								idx += '272|';
-								break;
-							case 87:
-								idx += '281|';
-								break;
-							case 88:
-								idx += '282|';
-								break;
-							case 89:
-								idx += '291|';
-								break;
-							case 90:
-								idx += '292|';
-								break;
-							case 91:
-								idx += '710|';
-								break;
-							case 92:
-								idx += '720|';
-								break;
-							case 93:
-								idx += '730|';
-								break;
-							case 94:
-								idx += '740|';
-								break;
-							case 95:
-								idx += '750|';
-								break;
-							case 97:
-								idx += '311|';
-								break;
-							case 98:
-								idx += '312|';
-								break;
-							case 99:
-								idx += '321|';
-								break;
-							case 100:
-								idx += '322|';
-								break;
-							case 101:
-								idx += '331|';
-								break;
-							case 102:
-								idx += '332|';
-								break;
-							case 103:
-								idx += '341|';
-								break;
-							case 104:
-								idx += '342|';
-								break;
-							case 105:
-								idx += '351|';
-								break;
-							case 106:
-								idx += '352|';
-								break;
-							case 107:
-								idx += '361|';
-								break;
-							case 108:
-								idx += '362|';
-								break;
-							case 109:
-								idx += '371|';
-								break;
-							case 110:
-								idx += '372|';
-								break;
-							case 111:
-								idx += '381|';
-								break;
-							case 112:
-								idx += '382|';
-								break;
-							case 113:
-								idx += '391|';
-								break;
-							case 114:
-								idx += '392|';
-								break;
-							case 115:
-								idx += '810|';
-								break;
-							case 116:
-								idx += '820|';
-								break;
-							case 117:
-								idx += '830|';
-								break;
-							case 118:
-								idx += '840|';
-								break;
-							case 119:
-								idx += '850|';
-								break;
-							case 121:
-								idx += '411|';
-								break;
-							case 122:
-								idx += '412|';
-								break;
-							case 123:
-								idx += '421|';
-								break;
-							case 124:
-								idx += '422|';
-								break;
-							case 125:
-								idx += '431|';
-								break;
-							case 126:
-								idx += '432|';
-								break;
-							case 127:
-								idx += '441|';
-								break;
-							case 128:
-								idx += '442|';
-								break;
-							case 129:
-								idx += '451|';
-								break;
-							case 130:
-								idx += '452|';
-								break;
-							case 131:
-								idx += '461|';
-								break;
-							case 132:
-								idx += '462|';
-								break;
-							case 133:
-								idx += '471|';
-								break;
-							case 134:
-								idx += '472|';
-								break;
-							case 135:
-								idx += '481|';
-								break;
-							case 136:
-								idx += '482|';
-								break;
-							case 137:
-								idx += '491|';
-								break;
-							case 138:
-								idx += '492|';
-								break;
-							case 139:
-								idx += '910|';
-								break;
-							case 140:
-								idx += '920|';
-								break;
-							case 141:
-								idx += '930|';
-								break;
-							case 142:
-								idx += '940|';
-								break;
-							case 143:
-								idx += '950|';
-								break;
-						}
-					};
-					
-					if (idx.endsWith('|')) {
-						idx = idx.slice(0, -1);
-					}
-					idx += "')";
-	
-					const controller = new AbortController();
-					const { signal } = controller;
-					
-					fetch('/next_to_test', {
-						method: 'post',
-						headers: {
-							'content-type': 'application/json'
-						},
-						body: JSON.stringify({
-							idx: idx
-						}),
-						signal
-					})
-					controller.abort();
-	
-					location.href = '#List';
-		
-						fetch('/callDB',{
-							method : 'post',
-							headers : {
-								'content-type':'application/json'
-							},
-							body : JSON.stringify({
-								last_query : "(이수구분 = '핵심교양' or 이수구분 = '심화교양') and (학점 = 1 or 학점 = 2 or 학점 = 3) and (수업방법 in ('온라인(동영상)','온라인(화상)') or 수업방법 = '' or 수업방법 = '온라인(동영상)+오프라인')"
-							})
-						}).then((res)=>res.json())
-						.then((res)=>{
-		
-							if (res.result != 'ok') {
-								console.log('result is not ok');
-								return;
-							}
-							var div_GE = document.getElementById("교양리스트");
-							let id = 0;
-							let len = res.이름.length;
-		
-							for (let l = 0; l < len; l++) {
-								var details = document.createElement('details');
-								details.id = "d";
-		
-								var summary = document.createElement('summary');
-								summary.id = id;
-								summary.textContent = res.이름[l]+" / "+res.교수[l]+" / "+res.시간[l];
-								if (res.이수구분[l] === "심화교양") {
-									summary.style.color = "green";
-								}
-								
-								var table = document.createElement('table');
-								let td_num = 0;
-								for (let i=0; i<6; i++) {
-									var tr = document.createElement('tr');
-									if (i === 5) {
-										for (let j=0; j<2; j++) {
-											var td = document.createElement('td');
-											if (td_num === 20) {
-												td.textContent = "특이사항";
-											}
-											else if (td_num === 21) {
-												td.colSpan = 3;
-											}
-											td_num++;
-											tr.appendChild(td);
-										}
-									}
-									else {
-										for (let j=0; j<4; j++) {
-											var td = document.createElement('td');
-											if (td_num === 0) {
-												td.textContent = "발표"
-											}
-											else if (td_num === 1) {
-												if (res.발표[l] === 0) {
-													td.textContent = "X";
-													td.style.color = "red";
-												}
-												else if (res.발표[l] === 1) {
-													td.textContent = "O";
-													td.style.color = "blue";
-												}
-												else if (res.발표[l] === 2) {
-													td.textContent = "정보 없음";
-												}
-											}
-											else if (td_num === 2) {
-												td.textContent = "시험"
-											}
-											else if (td_num === 3) {
-												if (res.시험[l] === 1) {
-													td.textContent = "2번";
-												}
-												else if (res.시험[l] === 2) {
-													td.textContent = "1번+과제1번";
-												}
-												else if (res.시험[l] === 3) {
-													td.textContent = "1번";
-												}
-												else if (res.시험[l] === 4) {
-													td.textContent = "과제2번";
-												}
-												else if (res.시험[l] === 5) {
-													td.textContent = "정보 없음";
-												}
-											}
-											else if (td_num === 4) {
-												td.textContent = "토론"
-											}
-											else if (td_num === 5) {
-												if (res.토론[l] === 0) {
-													td.textContent = "X";
-													td.style.color = "red";
-												}
-												else if (res.토론[l] === 1) {
-													td.textContent = "O";
-													td.style.color = "blue";
-												}
-												else if (res.토론[l] === 2) {
-													td.textContent = "정보 없음";
-												}
-											}
-											else if (td_num === 6) {
-												td.textContent = "조별"
-											}
-											else if (td_num === 7) {
-												if (res.조별[l] === 0) {
-													td.textContent = "X";
-													td.style.color = "red";
-												}
-												else if (res.조별[l] === 1) {
-													td.textContent = "O";
-													td.style.color = "blue";
-												}
-												else if (res.조별[l] === 2) {
-													td.textContent = "정보 없음";
-												}
-											}
-											else if (td_num === 8) {
-												td.textContent = "퀴즈"
-											}
-											else if (td_num === 9) {
-												if (res.퀴즈[l] === 0) {
-													td.textContent = "X";
-													td.style.color = "red";
-												}
-												else if (res.퀴즈[l] === 1) {
-													td.textContent = "O";
-													td.style.color = "blue";
-												}
-												else if (res.퀴즈[l] === 2) {
-													td.textContent = "정보 없음";
-												}
-											}
-											else if (td_num === 10) {
-												td.textContent = "실습"
-											}
-											else if (td_num === 11) {
-												if (res.실습[l] === 0) {
-													td.textContent = "X";
-													td.style.color = "red";
-												}
-												else if (res.실습[l] === 1) {
-													td.textContent = "O";
-													td.style.color = "blue";
-												}
-												else if (res.실습[l] === 2) {
-													td.textContent = "정보 없음";
-												}
-											}
-											else if (td_num === 12) {
-												td.textContent = "출석"
-											}
-											else if (td_num === 13) {
-												if (res.출석[l] === 0) {
-													td.textContent = "출결 없음";
-												}
-												else if (res.출석[l] === 1) {
-													td.textContent = "호명";
-												}
-												else if (res.출석[l] === 2) {
-													td.textContent = "랜덤";
-												}
-												else if (res.출석[l] === 3) {
-													td.textContent = "전자출결";
-												}
-												else if (res.출석[l] === 4) {
-													td.textContent = "정보 없음";
-												}
-											}
-											else if (td_num === 14) {
-												td.textContent = "레포트"
-											}
-											else if (td_num === 15) {
-												if (res.레포트[l] === 0) {
-													td.textContent = "X";
-													td.style.color = "red";
-												}
-												else if (res.레포트[l] === 1) {
-													td.textContent = "O";
-													td.style.color = "blue";
-												}
-												else if (res.레포트[l] === 2) {
-													td.textContent = "정보 없음";
-												}
-											}
-											else if (td_num === 16) {
-												td.textContent = "평가"
-											}
-											else if (td_num === 17) {
-												if (res.평가[l] === 1) {
-													td.textContent = "상평";
-												}
-												else if (res.평가[l] === 2) {
-													td.textContent = "절평";
-												}
-												else if (res.평가[l] === 3) {
-													td.textContent = "패논패";
-												}
-											}
-											else if (td_num === 18) {
-												td.textContent = "학점"
-											}
-											else if (td_num === 19) {
-												if (res.학점[l] === 3) {
-													td.textContent = "3";
-												}
-												else if (res.학점[l] === 2) {
-													td.textContent = "2";
-												}
-												else if (res.학점[l] === 1) {
-													td.textContent = "1";
-												}
-											}
-											td_num++;
-											tr.appendChild(td);
-										}
-									}
-									table.appendChild(tr);
-								}
-		
-								var br = document.createElement('br');
-								details.appendChild(summary);
-								details.appendChild(table);
-								details.appendChild(br);
-								id++;
-								div_GE.appendChild(details);
-							}
+			 
+						 }
+						 setCellsToGray();
+					  });
+				   });
+			
+					// Function to handle button click and display colored cell positions
+					function displayColoredCellPositions() {
+			
+						const coloredCells = document.querySelectorAll('td[style*="background-color: rgb(147, 178, 231)"]');
+			
+						const index = [];
+						coloredCells.forEach(cell => {
+							index.push(Number(cell.id));
 						});
-				}
-			</script>
+			
+						let idx = "(`시간표 - 데이터베이스용`, '";
+						const len = index.length;
 
-			</article>
+						for (let i = 0; i < len; i++) {
+							switch (index[i]) {
+								case 25:
+									idx += '011|';
+									break;
+								case 26:
+									idx += '012|';
+									break;
+								case 27:
+									idx += '021|';
+									break;
+								case 28:
+									idx += '022|';
+									break;
+								case 29:
+									idx += '031|';
+									break;
+								case 30:
+									idx += '032|';
+									break;
+								case 31:
+									idx += '041|';
+									break;
+								case 32:
+									idx += '042|';
+									break;
+								case 33:
+									idx += '051|';
+									break;
+								case 34:
+									idx += '052|';
+									break;
+								case 35:
+									idx += '061|';
+									break;
+								case 36:
+									idx += '062|';
+									break;
+								case 37:
+									idx += '071|';
+									break;
+								case 38:
+									idx += '072|';
+									break;
+								case 39:
+									idx += '081|';
+									break;
+								case 40:
+									idx += '082|';
+									break;
+								case 41:
+									idx += '091|';
+									break;
+								case 42:
+									idx += '092|';
+									break;
+								case 43:
+									idx += '510|';
+									break;
+								case 44:
+									idx += '520|';
+									break;
+								case 45:
+									idx += '530|';
+									break;
+								case 46:
+									idx += '540|';
+									break;
+								case 47:
+									idx += '550|';
+									break;
+								case 49:
+									idx += '111|';
+									break;
+								case 50:
+									idx += '112|';
+									break;
+								case 51:
+									idx += '121|';
+									break;
+								case 52:
+									idx += '122|';
+									break;
+								case 53:
+									idx += '131|';
+									break;
+								case 54:
+									idx += '132|';
+									break;
+								case 55:
+									idx += '141|';
+									break;
+								case 56:
+									idx += '142|';
+									break;
+								case 57:
+									idx += '151|';
+									break;
+								case 58:
+									idx += '152|';
+									break;
+								case 59:
+									idx += '161|';
+									break;
+								case 60:
+									idx += '162|';
+									break;
+								case 61:
+									idx += '171|';
+									break;
+								case 62:
+									idx += '172|';
+									break;
+								case 63:
+									idx += '181|';
+									break;
+								case 64:
+									idx += '182|';
+									break;
+								case 65:
+									idx += '191|';
+									break;
+								case 66:
+									idx += '192|';
+									break;
+								case 67:
+									idx += '610|';
+									break;
+								case 68:
+									idx += '620|';
+									break;
+								case 69:
+									idx += '630|';
+									break;
+								case 70:
+									idx += '640|';
+									break;
+								case 71:
+									idx += '650|';
+									break;
+								case 73:
+									idx += '211|';
+									break;
+								case 74:
+									idx += '212|';
+									break;
+								case 75:
+									idx += '221|';
+									break;
+								case 76:
+									idx += '222|';
+									break;
+								case 77:
+									idx += '231|';
+									break;
+								case 78:
+									idx += '232|';
+									break;
+								case 79:
+									idx += '241|';
+									break;
+								case 80:
+									idx += '242|';
+									break;
+								case 81:
+									idx += '251|';
+									break;
+								case 82:
+									idx += '252|';
+									break;
+								case 83:
+									idx += '261|';
+									break;
+								case 84:
+									idx += '262|';
+									break;
+								case 85:
+									idx += '271|';
+									break;
+								case 86:
+									idx += '272|';
+									break;
+								case 87:
+									idx += '281|';
+									break;
+								case 88:
+									idx += '282|';
+									break;
+								case 89:
+									idx += '291|';
+									break;
+								case 90:
+									idx += '292|';
+									break;
+								case 91:
+									idx += '710|';
+									break;
+								case 92:
+									idx += '720|';
+									break;
+								case 93:
+									idx += '730|';
+									break;
+								case 94:
+									idx += '740|';
+									break;
+								case 95:
+									idx += '750|';
+									break;
+								case 97:
+									idx += '311|';
+									break;
+								case 98:
+									idx += '312|';
+									break;
+								case 99:
+									idx += '321|';
+									break;
+								case 100:
+									idx += '322|';
+									break;
+								case 101:
+									idx += '331|';
+									break;
+								case 102:
+									idx += '332|';
+									break;
+								case 103:
+									idx += '341|';
+									break;
+								case 104:
+									idx += '342|';
+									break;
+								case 105:
+									idx += '351|';
+									break;
+								case 106:
+									idx += '352|';
+									break;
+								case 107:
+									idx += '361|';
+									break;
+								case 108:
+									idx += '362|';
+									break;
+								case 109:
+									idx += '371|';
+									break;
+								case 110:
+									idx += '372|';
+									break;
+								case 111:
+									idx += '381|';
+									break;
+								case 112:
+									idx += '382|';
+									break;
+								case 113:
+									idx += '391|';
+									break;
+								case 114:
+									idx += '392|';
+									break;
+								case 115:
+									idx += '810|';
+									break;
+								case 116:
+									idx += '820|';
+									break;
+								case 117:
+									idx += '830|';
+									break;
+								case 118:
+									idx += '840|';
+									break;
+								case 119:
+									idx += '850|';
+									break;
+								case 121:
+									idx += '411|';
+									break;
+								case 122:
+									idx += '412|';
+									break;
+								case 123:
+									idx += '421|';
+									break;
+								case 124:
+									idx += '422|';
+									break;
+								case 125:
+									idx += '431|';
+									break;
+								case 126:
+									idx += '432|';
+									break;
+								case 127:
+									idx += '441|';
+									break;
+								case 128:
+									idx += '442|';
+									break;
+								case 129:
+									idx += '451|';
+									break;
+								case 130:
+									idx += '452|';
+									break;
+								case 131:
+									idx += '461|';
+									break;
+								case 132:
+									idx += '462|';
+									break;
+								case 133:
+									idx += '471|';
+									break;
+								case 134:
+									idx += '472|';
+									break;
+								case 135:
+									idx += '481|';
+									break;
+								case 136:
+									idx += '482|';
+									break;
+								case 137:
+									idx += '491|';
+									break;
+								case 138:
+									idx += '492|';
+									break;
+								case 139:
+									idx += '910|';
+									break;
+								case 140:
+									idx += '920|';
+									break;
+								case 141:
+									idx += '930|';
+									break;
+								case 142:
+									idx += '940|';
+									break;
+								case 143:
+									idx += '950|';
+									break;
+							}
+						};
+						
+						if (idx.endsWith('|')) {
+							idx = idx.slice(0, -1);
+						}
+						idx += "')";
+
+						_idx = idx;
+
+						location.href = '#List';
+
+						console.log(_GE,_query_arr0,_query_arr1,_query_arr2,_query_arr3,_idx);
+
+							document.getElementById("교양리스트").remove();
+							var div = document.createElement("div");
+							div.id = "교양리스트";
+							document.getElementById("outer").appendChild(div);
+			
+							fetch('/callDB',{
+								method : 'post',
+								headers : {
+									'content-type':'application/json'
+								},
+								body : JSON.stringify({
+									last_query : "(이수구분 = '핵심교양' or 이수구분 = '심화교양') and (학점 = 1 or 학점 = 2 or 학점 = 3) and (수업방법 in ('온라인(동영상)','온라인(화상)') or 수업방법 = '' or 수업방법 = '온라인(동영상)+오프라인')",
+									_GE : _GE,
+									_query_arr0 : _query_arr0,
+									_query_arr1 : _query_arr1,
+									_query_arr2 : _query_arr2,
+									_query_arr3 : _query_arr3,
+									_idx : _idx
+								})
+							}).then((res)=>res.json())
+							.then((res)=>{
+			
+								if (res.result != 'ok') {
+									console.log('result is not ok');
+									return;
+								}
+								var div_GE = document.getElementById("교양리스트");
+								let id = 0;
+								let len = res.이름.length;
+			
+								for (let l = 0; l < len; l++) {
+									var details = document.createElement('details');
+									details.id = "d";
+			
+									var summary = document.createElement('summary');
+									summary.id = id;
+									summary.textContent = res.이름[l]+" / "+res.교수[l]+" / "+res.시간[l];
+									if (res.이수구분[l] === "심화교양") {
+										summary.style.color = "green";
+									}
+									
+									var table = document.createElement('table');
+									table.id = 'list-table';
+									let td_num = 0;
+									for (let i=0; i<6; i++) {
+										var tr = document.createElement('tr');
+										if (i === 5) {
+											for (let j=0; j<2; j++) {
+												var td = document.createElement('td');
+												if (td_num === 20) {
+													td.textContent = "특이사항";
+												}
+												else if (td_num === 21) {
+													td.colSpan = 3;
+												}
+												td_num++;
+												tr.appendChild(td);
+											}
+										}
+										else {
+											for (let j=0; j<4; j++) {
+												var td = document.createElement('td');
+												if (td_num === 0) {
+													td.textContent = "발표"
+												}
+												else if (td_num === 1) {
+													if (res.발표[l] === 0) {
+														td.textContent = "X";
+														td.style.color = "red";
+													}
+													else if (res.발표[l] === 1) {
+														td.textContent = "O";
+														td.style.color = "blue";
+													}
+													else if (res.발표[l] === 2) {
+														td.textContent = "정보 없음";
+													}
+												}
+												else if (td_num === 2) {
+													td.textContent = "시험"
+												}
+												else if (td_num === 3) {
+													if (res.시험[l] === 1) {
+														td.textContent = "2번";
+													}
+													else if (res.시험[l] === 2) {
+														td.textContent = "1번+과제1번";
+													}
+													else if (res.시험[l] === 3) {
+														td.textContent = "1번";
+													}
+													else if (res.시험[l] === 4) {
+														td.textContent = "과제2번";
+													}
+													else if (res.시험[l] === 5) {
+														td.textContent = "정보 없음";
+													}
+												}
+												else if (td_num === 4) {
+													td.textContent = "토론"
+												}
+												else if (td_num === 5) {
+													if (res.토론[l] === 0) {
+														td.textContent = "X";
+														td.style.color = "red";
+													}
+													else if (res.토론[l] === 1) {
+														td.textContent = "O";
+														td.style.color = "blue";
+													}
+													else if (res.토론[l] === 2) {
+														td.textContent = "정보 없음";
+													}
+												}
+												else if (td_num === 6) {
+													td.textContent = "조별"
+												}
+												else if (td_num === 7) {
+													if (res.조별[l] === 0) {
+														td.textContent = "X";
+														td.style.color = "red";
+													}
+													else if (res.조별[l] === 1) {
+														td.textContent = "O";
+														td.style.color = "blue";
+													}
+													else if (res.조별[l] === 2) {
+														td.textContent = "정보 없음";
+													}
+												}
+												else if (td_num === 8) {
+													td.textContent = "퀴즈"
+												}
+												else if (td_num === 9) {
+													if (res.퀴즈[l] === 0) {
+														td.textContent = "X";
+														td.style.color = "red";
+													}
+													else if (res.퀴즈[l] === 1) {
+														td.textContent = "O";
+														td.style.color = "blue";
+													}
+													else if (res.퀴즈[l] === 2) {
+														td.textContent = "정보 없음";
+													}
+												}
+												else if (td_num === 10) {
+													td.textContent = "실습"
+												}
+												else if (td_num === 11) {
+													if (res.실습[l] === 0) {
+														td.textContent = "X";
+														td.style.color = "red";
+													}
+													else if (res.실습[l] === 1) {
+														td.textContent = "O";
+														td.style.color = "blue";
+													}
+													else if (res.실습[l] === 2) {
+														td.textContent = "정보 없음";
+													}
+												}
+												else if (td_num === 12) {
+													td.textContent = "출석"
+												}
+												else if (td_num === 13) {
+													if (res.출석[l] === 0) {
+														td.textContent = "출결 없음";
+													}
+													else if (res.출석[l] === 1) {
+														td.textContent = "호명";
+													}
+													else if (res.출석[l] === 2) {
+														td.textContent = "랜덤";
+													}
+													else if (res.출석[l] === 3) {
+														td.textContent = "전자출결";
+													}
+													else if (res.출석[l] === 4) {
+														td.textContent = "정보 없음";
+													}
+												}
+												else if (td_num === 14) {
+													td.textContent = "레포트"
+												}
+												else if (td_num === 15) {
+													if (res.레포트[l] === 0) {
+														td.textContent = "X";
+														td.style.color = "red";
+													}
+													else if (res.레포트[l] === 1) {
+														td.textContent = "O";
+														td.style.color = "blue";
+													}
+													else if (res.레포트[l] === 2) {
+														td.textContent = "정보 없음";
+													}
+												}
+												else if (td_num === 16) {
+													td.textContent = "평가"
+												}
+												else if (td_num === 17) {
+													if (res.평가[l] === 1) {
+														td.textContent = "상평";
+													}
+													else if (res.평가[l] === 2) {
+														td.textContent = "절평";
+													}
+													else if (res.평가[l] === 3) {
+														td.textContent = "패논패";
+													}
+												}
+												else if (td_num === 18) {
+													td.textContent = "학점"
+												}
+												else if (td_num === 19) {
+													if (res.학점[l] === 3) {
+														td.textContent = "3";
+													}
+													else if (res.학점[l] === 2) {
+														td.textContent = "2";
+													}
+													else if (res.학점[l] === 1) {
+														td.textContent = "1";
+													}
+												}
+												td_num++;
+												tr.appendChild(td);
+											}
+										}
+										table.appendChild(tr);
+									}
+			
+									var br = document.createElement('br');
+									details.appendChild(summary);
+									details.appendChild(table);
+									details.appendChild(br);
+									id++;
+									div_GE.appendChild(details);
+								}
+							});
+					}
+				</script>
 
 			</article>
 
@@ -2182,6 +2201,7 @@
 									}
 									
 									var table = document.createElement('table');
+									table.id = 'list-table';
 									let td_num = 0;
 									for (let i=0; i<6; i++) {
 										var tr = document.createElement('tr');
