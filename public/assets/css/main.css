@@ -1,10 +1,11 @@
+
 html, body, div, span, applet, object,
 iframe, h1, h2, h3, h4, h5, h6, p, blockquote,
 pre, a, abbr, acronym, address, big, cite,
 code, del, dfn, em, img, ins, kbd, q, s, samp,
 small, strike, strong, sub, sup, tt, var, b,
 u, i, center, dl, dt, dd, ol, ul, li, fieldset,
-form, label, legend, table, caption, tbody,
+form, label, legend, caption, tbody,
 tfoot, thead, tr, th, td, article, aside,
 canvas, details, embed, figure, figcaption,
 footer, header, hgroup, menu, nav, output, ruby,
@@ -2009,6 +2010,7 @@ mark {
         display: inline-block;
         width: 55px;
         height: 30px;
+		margin: 15px 0 10px 0;	
     }
 
     .switch-button input {
@@ -2054,6 +2056,18 @@ mark {
         -ms-transform: translateX(26px);
         transform: translateX(26px);
     }
+
+	.switch-text{
+		font-size: 20px;
+		color:black;
+	}
+	@media screen and (max-width: 736px) {
+
+		.switch-text{
+			font-size: 14px;
+		}
+
+	}
 	
 
 	/* select plcaeholder */
@@ -2067,42 +2081,6 @@ mark {
 		font-family: "NEXONFootballGothicL"; 
 	}
 
-
-	 /* 테이블 컨테이너 */
-	 .table-container {
-		border: 4px solid rgb(0, 0, 0);
-		border-radius: 10px;
-		overflow: hidden;
-	  }
-	  /* 테이블 스타일 */
-	  table {
-		border-collapse: collapse;
-		width: 100%; /* 테이블이 컨테이너에 꽉 차도록 설정 */
-	  }
-	  td {
-		border: 1px solid rgb(0, 0, 0);
-		padding: 10px;
-		margin: -1px; /* 셀들의 외곽선이 컨테이너의 외곽선과 겹치는 부분을 가려줌 */
-		width: 300px;
-		height: 45px;
-		}
-
-	/* List Page table */
-	table {
-		border-collapse: collapse;
-		margin: 10px 0 0 0;
-	}
-	td {
-		border: 3px solid black;
-		width: 100px;
-		height: 50px;
-		text-align: center;
-	}
-	#detail_info {
-		border: 3px solid black;
-		width: 300px;
-	}
-	
 		
 	/* 단과대 아이콘 버튼 */
 	.button-border {
@@ -2115,7 +2093,7 @@ mark {
 	}
 	
 
-	/* 버튼 임시 디자인 */
+	/* 버튼 디자인 */
 	* { 
 		-webkit-box-sizing: border-box;
 		-moz-box-sizing: border-box;
@@ -2181,6 +2159,7 @@ mark {
 	  .button-CheckList.active {
 		background: linear-gradient(to right, #25aae1, #4481eb); 
 		transform: scale(1.05); /* 약간 확대되는 효과 */
+		z-index: 100;
 	  }
 
 
@@ -2244,8 +2223,11 @@ mark {
 	 @font-face {
 		font-family: "NEXONFootballGothicL"; 
 		src: url("font/NEXONFootballGothicL.ttf") format("opentype");
+	  }
 
-	
+	  @font-face {
+		font-family: "SCDream7"; 
+		src: url("font/SCDream7.otf") format("opentype");
 	  }
 	  
 	/* label */
@@ -2267,13 +2249,13 @@ mark {
 		margin: 20px 0 0 0;
 	}
 
-	#선호 {
+	.선호 {
 		font-size: 30px;
 		color: blue;
 	}
 	@media screen and (max-width: 736px) {
 
-		#선호{
+		.선호{
 			font-size: 25px;
 		}
 
@@ -2289,4 +2271,232 @@ mark {
 			font-size: 25px;
 		}
 
+	}
+
+	/* 테이블 시간표 */
+	.time-table tr td:first-child {
+        width: 70px;
+		font-size: 25px;
+		color:#4b4b4b;
+    }
+	@media screen and (max-width: 736px) {
+
+		.time-table tr td:first-child {
+			width: 40px;
+			font-size: 20px;
+		}
+	}
+
+	.time-table {
+		border-collapse: collapse;
+		width: 100%; 
+		table-layout:fixed;
+		font-family: "SCDream7"; 
+	}
+
+	.time-table td {
+		margin: 0;
+		border: 1px solid rgb(152, 152, 152);
+		padding: 10px;
+		width: 100%;
+		height: 60px;
+		color: black;
+		transition: background-color 0.3s ease;
+		text-align: center;
+	}
+	.time-table tr:first-child {
+		background: #3f86ed;
+	}
+
+	.time-table-container {
+		display: inline-block;
+		border-radius: 10px; 
+		overflow: hidden; 
+		box-shadow: 0 0 0 1px rgb(152, 152, 152);
+		width: fit-content; 
+		margin: 0 auto; 
+		position: relative; 
+	  }
+
+	/* 툴팁 박스 */
+	.modal {
+		display: none;
+		position: fixed;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		background-color: rgba(0, 0, 0, 0.5);
+		z-index: 200;
+	  }
+  
+	  .modal-content {
+		text-align: center;
+		border-radius: 10px;
+		background-color: #fff;
+		width: 50%;
+		padding: 10px;
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+	  }
+	 
+	  @media screen and (max-width: 736px) {
+
+		.modal-content {
+			width: 85%;
+		}
+
+	}
+	.modalbutton{
+		border: 0;
+		background-color: transparent;
+	}
+
+	.content-container {
+        display: flex;
+        align-items: center;
+    }
+
+    .content-container > div {
+        margin-right: 0px; 
+    }
+
+
+	.questionmark{
+		width: 100%;
+	}
+
+	/* 필터 버튼 */
+	.btn2 {
+		width: 90px;
+		font-size: 17px;
+		font-weight: 600;
+		color: #fff;
+		margin: 5px 0;
+		height: 40px;
+		text-align:center;
+		border: none;
+		background-size: 300% 100%;
+		border-radius: 50px;
+	}
+	.btn2.color-1 {
+		background-image: linear-gradient(to right, #81f595, #3dee5a, #61c654, #07e12b);
+	}
+	.btn2.color-2 {
+		background-image: linear-gradient(to right, #7bdefa, #18c3f3, #6ccbe5, #6e95ff);
+	}
+	.btn2.color-3 {
+		background-image: linear-gradient(to right, #ae96ef, #8962f6, #b887dc, #851ad1);
+	}
+
+	.btn3 {
+		width: 120px;
+		font-size: 14px;
+		font-weight: 600;	
+		color: #fff;
+		margin: 10px 0;
+		height: 40px;
+		text-align:center;
+		border: none;
+		background-size: 300% 100%;
+		border-radius: 50px;
+	}
+	.btn3.color-3 {
+		background-image: linear-gradient(to right, #ae96ef, #8962f6, #b887dc, #851ad1);
+	}
+
+	summary {
+		font-family: "NEXONFootballGothicL";
+		color: black;
+	}
+
+	#outer {
+		font-family: "NEXONFootballGothicL";
+		color: black;
+	}
+
+
+    /* List Page table */
+    #list-table {
+      border-collapse: separate; /*Separate borders for cells */
+      border-spacing: 0; /* No spacing between cells */
+      margin: 10px 0 0 0;
+      border: 3px solid black; /* Outer border */
+    }
+
+    #list-table td {
+      border: 1px solid lightgray; /* Inner border */
+      width: 100px;
+      height: 50px;
+      text-align: center;
+      padding: 5px; /* Add some padding for cell content */
+    }
+
+    /* background to cells in the 1st and 3rd columns */
+    #list-table td:nth-child(1),
+    #list-table td:nth-child(3) {
+      background-color: #dcf1ff;
+    }
+
+
+	/* first page banner */
+	.banner-container {
+		position: fixed;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		z-index: 9999;
+		width: 30%;
+		height: auto;
+	}
+
+	.banner {
+		width: 100%;
+		position: relative;
+		background-color: #ffffff;
+		text-align: center;
+		background-image: url('banner-30x.png');
+		background-size: contain;
+	}
+
+	@media (max-width: 736px) {
+		.banner-container {
+			width: 85%;
+			max-width: none;
+			transform: none; 
+			top: 20%;
+			left: 7.5%; 
+		}
+	}	
+
+	@media (min-width: 737px) and (max-width: 1023px) {
+		.banner-container {
+			width: 85%;
+			max-width: none;
+			transform: none; 
+			left: 7.5%; 
+			top: 6%;
+		}
+	}
+
+	.close-button {
+		position: absolute;
+		bottom: 10px;
+		right: 10px;
+		font-size: 20px;
+		cursor: pointer;
+		color: black;
+	}
+
+	.overlay {
+		position: fixed;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		background-color: rgba(0, 0, 0, 0.5);
+		z-index: 9998;
+		display: none;
 	}
