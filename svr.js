@@ -61,8 +61,10 @@ app.post('/callDB', (req, res) => {
     // 쿼리 결과를 받아서 resData 객체에 저장하고 응답
     pool.getConnection((err, conn)=>{
         if (err) {
-            conn.release();
-            console.log('pool.getConnection 에러발생'); 
+            if (conn) {
+                conn.release();
+            }
+            console.log('pool.getConnection 에러발생: ' + err.message); 
             console.dir(err);
             res.json(resData);
             return;
