@@ -3,6 +3,7 @@ const express = require('express');
 const mysql = require('mysql2');
 const path = require('path');
 const static = require('serve-static');
+const cors = require('cors');
 const dbconfig = require('./config/dbconfig.json');
 
 // MySQL 연결을 위한 풀을 생성
@@ -16,6 +17,7 @@ const pool = mysql.createPool({
 })
 
 const app = express();
+app.use(cors());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use('/public', static(path.join(__dirname, 'public')));
