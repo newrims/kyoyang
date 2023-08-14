@@ -15,75 +15,6 @@
 		<link rel="stylesheet" href="assets/css/noscript.css" />
 	</noscript>
 	<script src="https://kit.fontawesome.com/90f52c3695.js" crossorigin="anonymous"></script>
-	<style>
-		table {
-			border-collapse: collapse;
-		}
-		td {
-			border: 3px solid black;
-			width: 100px;
-			height: 50px;
-			text-align: center;
-		}
-		#detail_info {
-			border: 3px solid black;
-			width: 300px;
-		}
-		.banner-container {
-			position: fixed;
-			top: 50%;
-			left: 50%;
-			transform: translate(-50%, -50%);
-			z-index: 9999;
-		}
-
-		.banner {
-			position: relative;
-			background-color: #ffffff;
-			text-align: center;
-			padding: 20px;
-		}
-
-		.close-button {
-			position: absolute;
-			bottom: 10px;
-			right: 10px;
-			font-size: 20px;
-			cursor: pointer;
-			color: black;
-		}
-
-		.overlay {
-			position: fixed;
-			top: 0;
-			left: 0;
-			width: 100%;
-			height: 100%;
-			background-color: rgba(0, 0, 0, 0.5);
-			z-index: 9998;
-			display: none;
-		}
-
-		#list-table {
-		border-collapse: separate; 
-		border-spacing: 0; 
-		margin: 10px 0 0 0;
-		border: 3px solid black;
-		}
-
-		#list-table td {
-		border: 1px solid lightgray;
-		width: 100px;
-		height: 50px;
-		text-align: center;
-		padding: 5px; 
-		}
-
-		#list-table td:nth-child(1),
-		#list-table td:nth-child(3) {
-		background-color: #dcf1ff;
-		}
-	</style>
 </head>
 
 <body class="is-preload">
@@ -108,6 +39,13 @@
 
 			<!-- 1 -->
 			<article id="Name" class="panel">
+				<div class="overlay" id="overlay" onclick="closeBanner()"></div>
+                <div class="banner-container" id="myBanner">
+                  <div class="banner">
+                    <span class ="close-button" onclick="closeBanner()"></span>
+                    <img src="banner.png" alt="배너 이미지" width="100%" height="100%">
+                  </div>
+                </div>
 				<div>
 				<label>소속대학을 선택해주세요.</label>
 				<div id="소속대학선택" style="text-align: center;">
@@ -253,18 +191,18 @@
 			
 			<script>
 				function closeBanner() {
-						document.getElementById("myBanner").style.display = "none";
-						document.getElementById("overlay").style.display = "none";
-					}
+					document.getElementById("myBanner").style.display = "none";
+					document.getElementById("overlay").style.display = "none";
+				}
 
-					window.onload = function () {
-						showBanner();
-					}
+				window.onload = function () {
+					showBanner();
+				}
 
-					function showBanner() {
-						document.getElementById("myBanner").style.display = "block";
-						document.getElementById("overlay").style.display = "block";
-					}
+				function showBanner() {
+					document.getElementById("myBanner").style.display = "block";
+					document.getElementById("overlay").style.display = "block";
+				}
 					
 			var selectedImages = {
 			"finance": "icon_selected/finance_selected.png",
@@ -342,7 +280,7 @@
 				}, 500);
 				}, 500);
 	
-				} 
+				}
 				else {
 					button.classList.add("button-selected");
 					imgElement.setAttribute('src', selectedImageSrc);
@@ -501,7 +439,7 @@
 						<div class="modal-content">
 							<span id="closeBtn3"></span>
 							<br>
-							<p>오전 강의 : <br class='break-m'> 아침 9시~11시 사이에 시작하는 강의 <br><br class='break-m'>
+							<p>오전 강의 : <br class='break-m'> 아침 9시~10시 30분 사이에 시작하는 강의 <br><br class='break-m'>
 							   야간 강의 : <br class='break-m'> 오후 6시 이후에 시작하는 강의
 							</p>
 						</div>
