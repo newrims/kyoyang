@@ -1706,7 +1706,12 @@
 						}
 						idx += "')";
 
-						_idx = idx;
+						if (idx == "(`시간표 - 데이터베이스용`, '')"){
+							_idx = "";
+						}
+						else {
+							_idx = idx;
+						}
 
 						location.href = '#List';
 
