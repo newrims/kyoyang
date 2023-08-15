@@ -1771,7 +1771,12 @@
 												}
 												else if (td_num === 21) {
 													td.colSpan = 3;
-													td.textContent = res.특이사항[l];
+													if (res.특이사항[l] == "0" || res.특이사항[l] == ""){
+														td.textContent = "X";
+													}
+													else {
+														td.textContent = res.특이사항[l];
+													}
 												}
 												td_num++;
 												tr.appendChild(td);
@@ -2162,7 +2167,12 @@
 												}
 												else if (td_num === 21) {
 													td.colSpan = 3;
-													td.textContent = res.특이사항[l];
+													if (res.특이사항[l] == "0" || res.특이사항[l] == ""){
+														td.textContent = "X";
+													}
+													else {
+														td.textContent = res.특이사항[l];
+													}
 												}
 												td_num++;
 												tr.appendChild(td);
