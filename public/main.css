@@ -2446,6 +2446,7 @@ mark {
       border-spacing: 0; /* No spacing between cells */
       margin: 10px 0 0 0;
       border: 3px solid black; /* Outer border */
+	  white-space: pre-line;
     }
 
     #list-table td {
