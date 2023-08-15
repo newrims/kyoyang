@@ -68,7 +68,7 @@ app.post('/callDB', (req, res) => {
             return;
         }
 
-        conn.query(`select * from kyoyang where not regexp_like ${query_time} and '수강제한학과' not like '%${query_GE}%' and ${query_checklist} ${last_query};`, (error, rows, fields)=>{
+        conn.query(`select * from kyoyang where not regexp_like ${query_time} and 수강제한학과 not like '%${query_GE}%' and ${query_checklist} ${last_query};`, (error, rows, fields)=>{
             if (error) {  // db query 실패
                 conn.release();
                 console.dir(error);
